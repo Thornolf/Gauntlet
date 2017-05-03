@@ -6,4 +6,4 @@
 --   media      : /usr/local/share/OGRE/Media
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/guillobits/workspace/epitech/cpp_indie_studio/cmake-build-debug
+-- Build files have been written to: /home/guillobits/workspace/epitech/cpp_indie_studio

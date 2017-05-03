@@ -1,0 +1,3 @@
+/home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/rebuild_cache.dir
+/home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/edit_cache.dir
+/home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/IndieStudio.dir
