@@ -1,0 +1,191 @@
+
+material _missing_material_
+{
+    receive_shadows off
+    technique
+    {
+        pass
+        {
+            ambient 0.1 0.1 0.1 1.0
+            diffuse 0.8 0.0 0.0 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.3 0.3 0.3 1.0
+        }
+    }
+}
+
+// Boots4 genrated by blender2ogre 0.6.0
+
+material Boots4 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass Boots4
+        {
+            ambient 0.1928966521886446 0.1928966521886446 0.1928966521886446 1.0
+            diffuse 0.4392000138759613 0.4392000138759613 0.4392000138759613 1.0
+            specular 0.0 0.0 0.0 1.0 1.5
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+        }
+    }
+}
+// Boots3 genrated by blender2ogre 0.6.0
+
+material Boots3 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass Boots3
+        {
+            ambient 0.3459792083623512 0.3459792083623512 0.3459792083623512 1.0
+            diffuse 0.5881999731063843 0.5881999731063843 0.5881999731063843 1.0
+            specular 0.0 0.0 0.0 1.0 1.5
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+        }
+    }
+}
+// Boots2 genrated by blender2ogre 0.6.0
+
+material Boots2 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass Boots2
+        {
+            ambient 0.3459792083623512 0.3459792083623512 0.3459792083623512 1.0
+            diffuse 0.5881999731063843 0.5881999731063843 0.5881999731063843 1.0
+            specular 0.0 0.0 0.0 1.0 1.5
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+        }
+    }
+}
+// Boots1 genrated by blender2ogre 0.6.0
+
+material Boots1 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass Boots1
+        {
+            ambient 0.3459792083623512 0.3459792083623512 0.3459792083623512 1.0
+            diffuse 0.5881999731063843 0.5881999731063843 0.5881999731063843 1.0
+            specular 0.0 0.0 0.0 1.0 1.5
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+        }
+    }
+}
+// ass genrated by blender2ogre 0.6.0
+
+material ass 
+{
+    receive_shadows on 
+
+    technique
+    {
+        pass ass
+        {
+            ambient 0.12180100482606893 0.12180100482606893 0.12180100482606893 1.0
+            diffuse 0.3490000069141388 0.3490000069141388 0.3490000069141388 1.0
+            specular 0.0 0.0 0.0 1.0 1.5
+            emissive 0.0 0.0 0.0 1.0
+
+            alpha_to_coverage off
+            colour_write on
+            cull_hardware clockwise
+            depth_check on
+            depth_func less_equal
+            depth_write on
+            illumination_stage 
+            light_clip_planes off
+            light_scissor off
+            lighting on
+            normalise_normals off
+            polygon_mode solid
+            scene_blend one zero
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+        }
+    }
+}
