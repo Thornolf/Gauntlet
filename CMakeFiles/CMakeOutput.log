@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/3.7.1/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/3.7.2/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,33 +23,33 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/3.7.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/3.7.2/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4cf21/fast"
-/usr/bin/make -f CMakeFiles/cmTC_4cf21.dir/build.make CMakeFiles/cmTC_4cf21.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_4cf21.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_4cf21.dir/testCCompiler.c.o   -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_4cf21
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4cf21.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_4cf21.dir/testCCompiler.c.o  -o cmTC_4cf21 -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_76e81/fast"
+/usr/bin/make -f CMakeFiles/cmTC_76e81.dir/build.make CMakeFiles/cmTC_76e81.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_76e81.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_76e81.dir/testCCompiler.c.o   -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp/testCCompiler.c"
+Linking C executable cmTC_76e81
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76e81.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_76e81.dir/testCCompiler.c.o  -o cmTC_76e81 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_84f64/fast"
-/usr/bin/make -f CMakeFiles/cmTC_84f64.dir/build.make CMakeFiles/cmTC_84f64.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o   -c /opt/clion/bin/cmake/share/cmake-3.7/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_84f64
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84f64.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o  -o cmTC_84f64 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_a8276/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a8276.dir/build.make CMakeFiles/cmTC_a8276.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.7/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_a8276
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8276.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o  -o cmTC_a8276 -rdynamic  
 Utilisation des specs internes.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper
@@ -59,24 +59,24 @@ Modèle de thread: posix
 gcc version 6.3.1 20170306 (GCC) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_84f64' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAfTgFN.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_84f64 /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_84f64' '-rdynamic' '-mtune=generic' '-march=x86-64'
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a8276' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccXiGjMM.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a8276 /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a8276' '-rdynamic' '-mtune=generic' '-march=x86-64'
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_84f64/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_84f64.dir/build.make CMakeFiles/cmTC_84f64.dir/build]
-  ignore line: [make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »]
-  ignore line: [Building C object CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o   -c /opt/clion/bin/cmake/share/cmake-3.7/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_84f64]
-  ignore line: [/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84f64.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o  -o cmTC_84f64 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_a8276/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_a8276.dir/build.make CMakeFiles/cmTC_a8276.dir/build]
+  ignore line: [make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »]
+  ignore line: [Building C object CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.7/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_a8276]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8276.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o  -o cmTC_a8276 -rdynamic  ]
   ignore line: [Utilisation des specs internes.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper]
@@ -86,13 +86,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 6.3.1 20170306 (GCC) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_84f64' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAfTgFN.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_84f64 /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a8276' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccXiGjMM.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_a8276 /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o]
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccAfTgFN.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccXiGjMM.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -107,7 +107,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_84f64] ==> ignore
+    arg [cmTC_a8276] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o] ==> ignore
@@ -116,7 +116,7 @@ Parsed C implicit link information from above output:
     arg [-L/lib/../lib] ==> dir [/lib/../lib]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../..]
-    arg [CMakeFiles/cmTC_84f64.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_a8276.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -145,17 +145,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0dc76/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0dc76.dir/build.make CMakeFiles/cmTC_0dc76.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_0dc76.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_0dc76.dir/feature_tests.c.o   -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/feature_tests.c
-Linking C executable cmTC_0dc76
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0dc76.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_0dc76.dir/feature_tests.c.o  -o cmTC_0dc76 -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_61ebb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_61ebb.dir/build.make CMakeFiles/cmTC_61ebb.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_61ebb.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_61ebb.dir/feature_tests.c.o   -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/feature_tests.c"
+Linking C executable cmTC_61ebb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_61ebb.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_61ebb.dir/feature_tests.c.o  -o cmTC_61ebb -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -165,17 +165,17 @@ make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_i
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_43b0b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_43b0b.dir/build.make CMakeFiles/cmTC_43b0b.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_43b0b.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_43b0b.dir/feature_tests.c.o   -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/feature_tests.c
-Linking C executable cmTC_43b0b
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_43b0b.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_43b0b.dir/feature_tests.c.o  -o cmTC_43b0b -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_02216/fast"
+/usr/bin/make -f CMakeFiles/cmTC_02216.dir/build.make CMakeFiles/cmTC_02216.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_02216.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_02216.dir/feature_tests.c.o   -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/feature_tests.c"
+Linking C executable cmTC_02216
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02216.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_02216.dir/feature_tests.c.o  -o cmTC_02216 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -185,17 +185,17 @@ make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_i
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c4aef/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c4aef.dir/build.make CMakeFiles/cmTC_c4aef.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building C object CMakeFiles/cmTC_c4aef.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_c4aef.dir/feature_tests.c.o   -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/feature_tests.c
-Linking C executable cmTC_c4aef
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c4aef.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_c4aef.dir/feature_tests.c.o  -o cmTC_c4aef -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_2b258/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2b258.dir/build.make CMakeFiles/cmTC_2b258.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_2b258.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_2b258.dir/feature_tests.c.o   -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/feature_tests.c"
+Linking C executable cmTC_2b258
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b258.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_2b258.dir/feature_tests.c.o  -o cmTC_2b258 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -203,30 +203,30 @@ make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_i
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_75de0/fast"
-/usr/bin/make -f CMakeFiles/cmTC_75de0.dir/build.make CMakeFiles/cmTC_75de0.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_75de0.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_75de0.dir/testCXXCompiler.cxx.o -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_75de0
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75de0.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_75de0.dir/testCXXCompiler.cxx.o  -o cmTC_75de0 -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_6c098/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6c098.dir/build.make CMakeFiles/cmTC_6c098.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building CXX object CMakeFiles/cmTC_6c098.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_6c098.dir/testCXXCompiler.cxx.o -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp/testCXXCompiler.cxx"
+Linking CXX executable cmTC_6c098
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6c098.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_6c098.dir/testCXXCompiler.cxx.o  -o cmTC_6c098 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e098e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e098e.dir/build.make CMakeFiles/cmTC_e098e.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o -c /opt/clion/bin/cmake/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_e098e
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e098e.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e098e -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTC_39cd6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_39cd6.dir/build.make CMakeFiles/cmTC_39cd6.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building CXX object CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_39cd6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_39cd6.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_39cd6 -rdynamic  
 Utilisation des specs internes.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper
@@ -236,24 +236,24 @@ Modèle de thread: posix
 gcc version 6.3.1 20170306 (GCC) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e098e' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cczd7SCd.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e098e /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e098e' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_39cd6' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccsxNf8b.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_39cd6 /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_39cd6' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_e098e/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_e098e.dir/build.make CMakeFiles/cmTC_e098e.dir/build]
-  ignore line: [make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »]
-  ignore line: [Building CXX object CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o -c /opt/clion/bin/cmake/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_e098e]
-  ignore line: [/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e098e.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e098e -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_39cd6/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_39cd6.dir/build.make CMakeFiles/cmTC_39cd6.dir/build]
+  ignore line: [make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »]
+  ignore line: [Building CXX object CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_39cd6]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_39cd6.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_39cd6 -rdynamic  ]
   ignore line: [Utilisation des specs internes.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper]
@@ -263,13 +263,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 6.3.1 20170306 (GCC) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e098e' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/cczd7SCd.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e098e /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_39cd6' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccsxNf8b.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_39cd6 /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../.. CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtend.o /usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crtn.o]
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cczd7SCd.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccsxNf8b.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -284,7 +284,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_e098e] ==> ignore
+    arg [cmTC_39cd6] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../../../lib/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/crtbegin.o] ==> ignore
@@ -293,7 +293,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/lib/../lib] ==> dir [/lib/../lib]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/6.3.1/../../..]
-    arg [CMakeFiles/cmTC_e098e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_39cd6.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -320,17 +320,17 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ba53c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ba53c.dir/build.make CMakeFiles/cmTC_ba53c.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_ba53c.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_ba53c.dir/feature_tests.cxx.o -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ba53c
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba53c.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_ba53c.dir/feature_tests.cxx.o  -o cmTC_ba53c -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_8ebdf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8ebdf.dir/build.make CMakeFiles/cmTC_8ebdf.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building CXX object CMakeFiles/cmTC_8ebdf.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_8ebdf.dir/feature_tests.cxx.o -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_8ebdf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8ebdf.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_8ebdf.dir/feature_tests.cxx.o  -o cmTC_8ebdf -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -393,17 +393,17 @@ make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_i
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a3ac4/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a3ac4.dir/build.make CMakeFiles/cmTC_a3ac4.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_a3ac4.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_a3ac4.dir/feature_tests.cxx.o -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_a3ac4
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3ac4.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_a3ac4.dir/feature_tests.cxx.o  -o cmTC_a3ac4 -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_d66b4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d66b4.dir/build.make CMakeFiles/cmTC_d66b4.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building CXX object CMakeFiles/cmTC_d66b4.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_d66b4.dir/feature_tests.cxx.o -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_d66b4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d66b4.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_d66b4.dir/feature_tests.cxx.o  -o cmTC_d66b4 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -466,17 +466,17 @@ make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_i
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e5f6b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e5f6b.dir/build.make CMakeFiles/cmTC_e5f6b.dir/build
-make[1] : on entre dans le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
-Building CXX object CMakeFiles/cmTC_e5f6b.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_e5f6b.dir/feature_tests.cxx.o -c /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_e5f6b
-/opt/clion/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5f6b.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_e5f6b.dir/feature_tests.cxx.o  -o cmTC_e5f6b -rdynamic 
-make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Run Build Command:"/usr/bin/make" "cmTC_c0899/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c0899.dir/build.make CMakeFiles/cmTC_c0899.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building CXX object CMakeFiles/cmTC_c0899.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_c0899.dir/feature_tests.cxx.o -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/feature_tests.cxx"
+Linking CXX executable cmTC_c0899
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c0899.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_c0899.dir/feature_tests.cxx.o  -o cmTC_c0899 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -536,3 +536,87 @@ make[1] : on quitte le répertoire « /home/guillobits/workspace/epitech/cpp_i
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_40d22/fast"
+/usr/bin/make -f CMakeFiles/cmTC_40d22.dir/build.make CMakeFiles/cmTC_40d22.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_40d22.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_40d22.dir/CheckIncludeFile.c.o   -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp/CheckIncludeFile.c"
+Linking C executable cmTC_40d22
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_40d22.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_40d22.dir/CheckIncludeFile.c.o  -o cmTC_40d22 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ea014/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ea014.dir/build.make CMakeFiles/cmTC_ea014.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_ea014.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ea014.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ea014
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ea014.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_ea014.dir/CheckFunctionExists.c.o  -o cmTC_ea014 -rdynamic -lpthread 
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e6df1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e6df1.dir/build.make CMakeFiles/cmTC_e6df1.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_e6df1.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_e6df1.dir/CheckIncludeFile.c.o   -c /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e6df1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6df1.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_e6df1.dir/CheckIncludeFile.c.o  -o cmTC_e6df1 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bdae5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bdae5.dir/build.make CMakeFiles/cmTC_bdae5.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_bdae5.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_bdae5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bdae5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bdae5.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_bdae5.dir/CheckFunctionExists.c.o  -o cmTC_bdae5 -rdynamic -lpthread 
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_90254/fast"
+/usr/bin/make -f CMakeFiles/cmTC_90254.dir/build.make CMakeFiles/cmTC_90254.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_90254.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_90254.dir/CheckIncludeFile.c.o   -c /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_90254
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90254.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_90254.dir/CheckIncludeFile.c.o  -o cmTC_90254 -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c5b55/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c5b55.dir/build.make CMakeFiles/cmTC_c5b55.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_c5b55.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_c5b55.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c5b55
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5b55.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_c5b55.dir/CheckFunctionExists.c.o  -o cmTC_c5b55 -rdynamic -lpthread 
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+
+

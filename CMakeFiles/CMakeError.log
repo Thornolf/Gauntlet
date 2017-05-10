@@ -1,0 +1,153 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_df2ab/fast"
+/usr/bin/make -f CMakeFiles/cmTC_df2ab.dir/build.make CMakeFiles/cmTC_df2ab.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_df2ab.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_df2ab.dir/CheckSymbolExists.c.o   -c "/home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp/CheckSymbolExists.c"
+Linking C executable cmTC_df2ab
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_df2ab.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_df2ab.dir/CheckSymbolExists.c.o  -o cmTC_df2ab -rdynamic 
+CMakeFiles/cmTC_df2ab.dir/CheckSymbolExists.c.o : Dans la fonction « main » :
+CheckSymbolExists.c:(.text+0x16) : référence indéfinie vers « pthread_create »
+collect2: erreur : ld a retourné 1 code d'état d'exécution
+make[1]: *** [CMakeFiles/cmTC_df2ab.dir/build.make:98: cmTC_df2ab] Error 1
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+make: *** [Makefile:126: cmTC_df2ab/fast] Error 2
+
+File /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2b3af/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2b3af.dir/build.make CMakeFiles/cmTC_2b3af.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_2b3af.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_2b3af.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2b3af
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b3af.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_2b3af.dir/CheckFunctionExists.c.o  -o cmTC_2b3af -rdynamic -lpthreads 
+/usr/bin/ld : ne peut trouver -lpthreads
+collect2: erreur : ld a retourné 1 code d'état d'exécution
+make[1]: *** [CMakeFiles/cmTC_2b3af.dir/build.make:98: cmTC_2b3af] Error 1
+make[1] : on quitte le répertoire « /home/fossae_t/Téléchargements/clean_ogre_cmake_project_1-9(2)/clean_ogre_cmake_project/CMakeFiles/CMakeTmp »
+make: *** [Makefile:126: cmTC_2b3af/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b83ed/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b83ed.dir/build.make CMakeFiles/cmTC_b83ed.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_b83ed.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b83ed.dir/CheckSymbolExists.c.o   -c /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_b83ed
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b83ed.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b83ed.dir/CheckSymbolExists.c.o  -o cmTC_b83ed -rdynamic 
+CMakeFiles/cmTC_b83ed.dir/CheckSymbolExists.c.o : Dans la fonction « main » :
+CheckSymbolExists.c:(.text+0x16) : référence indéfinie vers « pthread_create »
+collect2: erreur : ld a retourné 1 code d'état d'exécution
+make[1]: *** [CMakeFiles/cmTC_b83ed.dir/build.make:98: cmTC_b83ed] Error 1
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+make: *** [Makefile:126: cmTC_b83ed/fast] Error 2
+
+File /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_92daa/fast"
+/usr/bin/make -f CMakeFiles/cmTC_92daa.dir/build.make CMakeFiles/cmTC_92daa.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_92daa.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_92daa.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_92daa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92daa.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_92daa.dir/CheckFunctionExists.c.o  -o cmTC_92daa -rdynamic -lpthreads 
+/usr/bin/ld : ne peut trouver -lpthreads
+collect2: erreur : ld a retourné 1 code d'état d'exécution
+make[1]: *** [CMakeFiles/cmTC_92daa.dir/build.make:98: cmTC_92daa] Error 1
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+make: *** [Makefile:126: cmTC_92daa/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9d9a9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9d9a9.dir/build.make CMakeFiles/cmTC_9d9a9.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_9d9a9.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_9d9a9.dir/CheckSymbolExists.c.o   -c /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_9d9a9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d9a9.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_9d9a9.dir/CheckSymbolExists.c.o  -o cmTC_9d9a9 -rdynamic 
+CMakeFiles/cmTC_9d9a9.dir/CheckSymbolExists.c.o : Dans la fonction « main » :
+CheckSymbolExists.c:(.text+0x16) : référence indéfinie vers « pthread_create »
+collect2: erreur : ld a retourné 1 code d'état d'exécution
+make[1]: *** [CMakeFiles/cmTC_9d9a9.dir/build.make:98: cmTC_9d9a9] Error 1
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+make: *** [Makefile:126: cmTC_9d9a9/fast] Error 2
+
+File /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_74bd8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_74bd8.dir/build.make CMakeFiles/cmTC_74bd8.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_74bd8.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_74bd8.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_74bd8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74bd8.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_74bd8.dir/CheckFunctionExists.c.o  -o cmTC_74bd8 -rdynamic -lpthreads 
+/usr/bin/ld : ne peut trouver -lpthreads
+collect2: erreur : ld a retourné 1 code d'état d'exécution
+make[1]: *** [CMakeFiles/cmTC_74bd8.dir/build.make:98: cmTC_74bd8] Error 1
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
+make: *** [Makefile:126: cmTC_74bd8/fast] Error 2
+
+

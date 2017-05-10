@@ -1,1 +1,0 @@
-/usr/bin/c++   -lboost_system -g   CMakeFiles/IndieStudio.dir/main.cpp.o  -o IndieStudio 

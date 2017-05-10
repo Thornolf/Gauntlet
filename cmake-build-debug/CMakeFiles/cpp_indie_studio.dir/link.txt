@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/cpp_indie_studio.dir/main.cpp.o  -o cpp_indie_studio 

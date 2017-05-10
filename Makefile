@@ -39,38 +39,38 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion/bin/cmake/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/guillobits/workspace/epitech/cpp_indie_studio
+CMAKE_SOURCE_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/guillobits/workspace/epitech/cpp_indie_studio
+CMAKE_BINARY_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target install/local
+install/local/fast: install/local
 
-.PHONY : rebuild_cache/fast
+.PHONY : install/local/fast
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/opt/clion/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,11 +78,44 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +144,76 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named IndieStudio
+# Target rules for targets named OgreApp
 
 # Build rule for target.
-IndieStudio: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 IndieStudio
-.PHONY : IndieStudio
+OgreApp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 OgreApp
+.PHONY : OgreApp
 
 # fast build rule for target.
-IndieStudio/fast:
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/build
-.PHONY : IndieStudio/fast
+OgreApp/fast:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/build
+.PHONY : OgreApp/fast
 
-main.o: main.cpp.o
+# Manual pre-install relink rule for target.
+OgreApp/preinstall:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/preinstall
+.PHONY : OgreApp/preinstall
 
-.PHONY : main.o
+BaseApplication.o: BaseApplication.cpp.o
+
+.PHONY : BaseApplication.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/main.cpp.o
-.PHONY : main.cpp.o
+BaseApplication.cpp.o:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.o
+.PHONY : BaseApplication.cpp.o
 
-main.i: main.cpp.i
+BaseApplication.i: BaseApplication.cpp.i
 
-.PHONY : main.i
+.PHONY : BaseApplication.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/main.cpp.i
-.PHONY : main.cpp.i
+BaseApplication.cpp.i:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.i
+.PHONY : BaseApplication.cpp.i
 
-main.s: main.cpp.s
+BaseApplication.s: BaseApplication.cpp.s
 
-.PHONY : main.s
+.PHONY : BaseApplication.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/main.cpp.s
-.PHONY : main.cpp.s
+BaseApplication.cpp.s:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.s
+.PHONY : BaseApplication.cpp.s
+
+TutorialApplication.o: TutorialApplication.cpp.o
+
+.PHONY : TutorialApplication.o
+
+# target to build an object file
+TutorialApplication.cpp.o:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o
+.PHONY : TutorialApplication.cpp.o
+
+TutorialApplication.i: TutorialApplication.cpp.i
+
+.PHONY : TutorialApplication.i
+
+# target to preprocess a source file
+TutorialApplication.cpp.i:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.i
+.PHONY : TutorialApplication.cpp.i
+
+TutorialApplication.s: TutorialApplication.cpp.s
+
+.PHONY : TutorialApplication.s
+
+# target to generate assembly for a file
+TutorialApplication.cpp.s:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.s
+.PHONY : TutorialApplication.cpp.s
 
 # Help Target
 help:
@@ -156,12 +221,18 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
+	@echo "... install/local"
+	@echo "... OgreApp"
 	@echo "... edit_cache"
-	@echo "... IndieStudio"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... rebuild_cache"
+	@echo "... install"
+	@echo "... list_install_components"
+	@echo "... BaseApplication.o"
+	@echo "... BaseApplication.i"
+	@echo "... BaseApplication.s"
+	@echo "... TutorialApplication.o"
+	@echo "... TutorialApplication.i"
+	@echo "... TutorialApplication.s"
 .PHONY : help
 
 

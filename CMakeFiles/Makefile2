@@ -45,54 +45,64 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /opt/clion/bin/cmake/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/guillobits/workspace/epitech/cpp_indie_studio
+CMAKE_SOURCE_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/guillobits/workspace/epitech/cpp_indie_studio
+CMAKE_BINARY_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
 
 #=============================================================================
-# Target rules for target CMakeFiles/IndieStudio.dir
+# Target rules for target CMakeFiles/OgreApp.dir
 
 # All Build rule for target.
-CMakeFiles/IndieStudio.dir/all:
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/depend
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles --progress-num=1,2 "Built target IndieStudio"
-.PHONY : CMakeFiles/IndieStudio.dir/all
+CMakeFiles/OgreApp.dir/all:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/depend
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles --progress-num=1,2,3,4 "Built target OgreApp"
+.PHONY : CMakeFiles/OgreApp.dir/all
 
 # Include target in all.
-all: CMakeFiles/IndieStudio.dir/all
+all: CMakeFiles/OgreApp.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/IndieStudio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/IndieStudio.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/guillobits/workspace/epitech/cpp_indie_studio/CMakeFiles 0
-.PHONY : CMakeFiles/IndieStudio.dir/rule
+CMakeFiles/OgreApp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/OgreApp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles 0
+.PHONY : CMakeFiles/OgreApp.dir/rule
 
 # Convenience name for target.
-IndieStudio: CMakeFiles/IndieStudio.dir/rule
+OgreApp: CMakeFiles/OgreApp.dir/rule
 
-.PHONY : IndieStudio
+.PHONY : OgreApp
+
+# Pre-install relink rule for target.
+CMakeFiles/OgreApp.dir/preinstall:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/preinstall
+.PHONY : CMakeFiles/OgreApp.dir/preinstall
+
+# Prepare target for install.
+preinstall: CMakeFiles/OgreApp.dir/preinstall
+
+.PHONY : preinstall
 
 # clean rule for target.
-CMakeFiles/IndieStudio.dir/clean:
-	$(MAKE) -f CMakeFiles/IndieStudio.dir/build.make CMakeFiles/IndieStudio.dir/clean
-.PHONY : CMakeFiles/IndieStudio.dir/clean
+CMakeFiles/OgreApp.dir/clean:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/clean
+.PHONY : CMakeFiles/OgreApp.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/IndieStudio.dir/clean
+clean: CMakeFiles/OgreApp.dir/clean
 
 .PHONY : clean
 
