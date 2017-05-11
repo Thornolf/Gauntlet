@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
+CMAKE_SOURCE_DIR = /home/fossae_t/rendu2/cpp_indie_studio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
+CMAKE_BINARY_DIR = /home/fossae_t/rendu2/cpp_indie_studio
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OgreApp.dir/depend.make
@@ -57,64 +57,64 @@ include CMakeFiles/OgreApp.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/OgreApp.dir/flags.make
 
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.o: CMakeFiles/OgreApp.dir/flags.make
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.o: BaseApplication.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OgreApp.dir/BaseApplication.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OgreApp.dir/BaseApplication.cpp.o -c /home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.cpp
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o: CMakeFiles/OgreApp.dir/flags.make
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o: src/BaseApplication.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o -c /home/fossae_t/rendu2/cpp_indie_studio/src/BaseApplication.cpp
 
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OgreApp.dir/BaseApplication.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.cpp > CMakeFiles/OgreApp.dir/BaseApplication.cpp.i
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/fossae_t/rendu2/cpp_indie_studio/src/BaseApplication.cpp > CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.i
 
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OgreApp.dir/BaseApplication.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.cpp -o CMakeFiles/OgreApp.dir/BaseApplication.cpp.s
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fossae_t/rendu2/cpp_indie_studio/src/BaseApplication.cpp -o CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.s
 
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.requires:
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.requires:
 
-.PHONY : CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.requires
+.PHONY : CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.requires
 
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.provides: CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.requires
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.provides.build
-.PHONY : CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.provides
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.provides: CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.requires
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.provides.build
+.PHONY : CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.provides
 
-CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.provides.build: CMakeFiles/OgreApp.dir/BaseApplication.cpp.o
+CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.provides.build: CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o
 
 
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o: CMakeFiles/OgreApp.dir/flags.make
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o: TutorialApplication.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o -c /home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.cpp
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o: CMakeFiles/OgreApp.dir/flags.make
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o: src/TutorialApplication.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o -c /home/fossae_t/rendu2/cpp_indie_studio/src/TutorialApplication.cpp
 
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OgreApp.dir/TutorialApplication.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.cpp > CMakeFiles/OgreApp.dir/TutorialApplication.cpp.i
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/fossae_t/rendu2/cpp_indie_studio/src/TutorialApplication.cpp > CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.i
 
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OgreApp.dir/TutorialApplication.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.cpp -o CMakeFiles/OgreApp.dir/TutorialApplication.cpp.s
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fossae_t/rendu2/cpp_indie_studio/src/TutorialApplication.cpp -o CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.s
 
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.requires:
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.requires:
 
-.PHONY : CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.requires
+.PHONY : CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.requires
 
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.provides: CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.requires
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.provides.build
-.PHONY : CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.provides
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.provides: CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.requires
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.provides.build
+.PHONY : CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.provides
 
-CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.provides.build: CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o
+CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.provides.build: CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o
 
 
 # Object files for target OgreApp
 OgreApp_OBJECTS = \
-"CMakeFiles/OgreApp.dir/BaseApplication.cpp.o" \
-"CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o"
+"CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o" \
+"CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o"
 
 # External object files for target OgreApp
 OgreApp_EXTERNAL_OBJECTS =
 
-dist/bin/OgreApp: CMakeFiles/OgreApp.dir/BaseApplication.cpp.o
-dist/bin/OgreApp: CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o
+dist/bin/OgreApp: CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o
+dist/bin/OgreApp: CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o
 dist/bin/OgreApp: CMakeFiles/OgreApp.dir/build.make
 dist/bin/OgreApp: /usr/local/lib/libOgreMain.so
 dist/bin/OgreApp: /usr/lib64/libboost_thread.so
@@ -125,7 +125,7 @@ dist/bin/OgreApp: /usr/lib64/libboost_chrono.so
 dist/bin/OgreApp: /usr/lib64/libOIS.so
 dist/bin/OgreApp: /usr/local/lib/libOgreOverlay.so
 dist/bin/OgreApp: CMakeFiles/OgreApp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable dist/bin/OgreApp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable dist/bin/OgreApp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OgreApp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -135,14 +135,14 @@ CMakeFiles/OgreApp.dir/build: dist/bin/OgreApp
 
 # Object files for target OgreApp
 OgreApp_OBJECTS = \
-"CMakeFiles/OgreApp.dir/BaseApplication.cpp.o" \
-"CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o"
+"CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o" \
+"CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o"
 
 # External object files for target OgreApp
 OgreApp_EXTERNAL_OBJECTS =
 
-CMakeFiles/CMakeRelink.dir/OgreApp: CMakeFiles/OgreApp.dir/BaseApplication.cpp.o
-CMakeFiles/CMakeRelink.dir/OgreApp: CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o
+CMakeFiles/CMakeRelink.dir/OgreApp: CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o
+CMakeFiles/CMakeRelink.dir/OgreApp: CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o
 CMakeFiles/CMakeRelink.dir/OgreApp: CMakeFiles/OgreApp.dir/build.make
 CMakeFiles/CMakeRelink.dir/OgreApp: /usr/local/lib/libOgreMain.so
 CMakeFiles/CMakeRelink.dir/OgreApp: /usr/lib64/libboost_thread.so
@@ -153,7 +153,7 @@ CMakeFiles/CMakeRelink.dir/OgreApp: /usr/lib64/libboost_chrono.so
 CMakeFiles/CMakeRelink.dir/OgreApp: /usr/lib64/libOIS.so
 CMakeFiles/CMakeRelink.dir/OgreApp: /usr/local/lib/libOgreOverlay.so
 CMakeFiles/CMakeRelink.dir/OgreApp: CMakeFiles/OgreApp.dir/relink.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable CMakeFiles/CMakeRelink.dir/OgreApp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable CMakeFiles/CMakeRelink.dir/OgreApp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OgreApp.dir/relink.txt --verbose=$(VERBOSE)
 
 # Rule to relink during preinstall.
@@ -161,8 +161,8 @@ CMakeFiles/OgreApp.dir/preinstall: CMakeFiles/CMakeRelink.dir/OgreApp
 
 .PHONY : CMakeFiles/OgreApp.dir/preinstall
 
-CMakeFiles/OgreApp.dir/requires: CMakeFiles/OgreApp.dir/BaseApplication.cpp.o.requires
-CMakeFiles/OgreApp.dir/requires: CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o.requires
+CMakeFiles/OgreApp.dir/requires: CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o.requires
+CMakeFiles/OgreApp.dir/requires: CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o.requires
 
 .PHONY : CMakeFiles/OgreApp.dir/requires
 
@@ -171,6 +171,6 @@ CMakeFiles/OgreApp.dir/clean:
 .PHONY : CMakeFiles/OgreApp.dir/clean
 
 CMakeFiles/OgreApp.dir/depend:
-	cd /home/fossae_t/rendu2/cpp_indie_studio/ogre && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fossae_t/rendu2/cpp_indie_studio/ogre /home/fossae_t/rendu2/cpp_indie_studio/ogre /home/fossae_t/rendu2/cpp_indie_studio/ogre /home/fossae_t/rendu2/cpp_indie_studio/ogre /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/OgreApp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fossae_t/rendu2/cpp_indie_studio && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fossae_t/rendu2/cpp_indie_studio /home/fossae_t/rendu2/cpp_indie_studio /home/fossae_t/rendu2/cpp_indie_studio /home/fossae_t/rendu2/cpp_indie_studio /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/OgreApp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/OgreApp.dir/depend
 

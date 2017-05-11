@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.cpp" "/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/OgreApp.dir/BaseApplication.cpp.o"
-  "/home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.cpp" "/home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o"
+  "/home/fossae_t/rendu2/cpp_indie_studio/src/BaseApplication.cpp" "/home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o"
+  "/home/fossae_t/rendu2/cpp_indie_studio/src/TutorialApplication.cpp" "/home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,6 +16,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "./include"
   "/usr/include/OIS"
   "/usr/local/include/OGRE"
   "/usr/local/include"

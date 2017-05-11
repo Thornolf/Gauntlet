@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.cpp
-BaseApplication.h
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.h
-
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.h
+./include/BaseApplication.h
 OgreCamera.h
 -
 OgreEntity.h
@@ -40,15 +36,19 @@ SdkTrays.h
 SdkCameraMan.h
 -
 
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.cpp
-TutorialApplication.h
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.h
-windows.h
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/windows.h
-
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/TutorialApplication.h
+./include/TutorialApplication.h
 BaseApplication.h
-/home/fossae_t/rendu2/cpp_indie_studio/ogre/BaseApplication.h
+./include/BaseApplication.h
+
+/home/fossae_t/rendu2/cpp_indie_studio/src/BaseApplication.cpp
+BaseApplication.h
+/home/fossae_t/rendu2/cpp_indie_studio/src/BaseApplication.h
+
+/home/fossae_t/rendu2/cpp_indie_studio/src/TutorialApplication.cpp
+TutorialApplication.h
+/home/fossae_t/rendu2/cpp_indie_studio/src/TutorialApplication.h
+windows.h
+/home/fossae_t/rendu2/cpp_indie_studio/src/windows.h
 
 /usr/include/OIS/OIS.h
 OISPrereqs.h

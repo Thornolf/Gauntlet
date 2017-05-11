@@ -620,3 +620,31 @@ Linking C executable cmTC_c5b55
 make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/CMakeTmp »
 
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fbaee/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fbaee.dir/build.make CMakeFiles/cmTC_fbaee.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_fbaee.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_fbaee.dir/CheckIncludeFile.c.o   -c /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_fbaee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbaee.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_fbaee.dir/CheckIncludeFile.c.o  -o cmTC_fbaee -rdynamic 
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp »
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_84269/fast"
+/usr/bin/make -f CMakeFiles/cmTC_84269.dir/build.make CMakeFiles/cmTC_84269.dir/build
+make[1] : on entre dans le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp »
+Building C object CMakeFiles/cmTC_84269.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_84269.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.7/Modules/CheckFunctionExists.c
+Linking C executable cmTC_84269
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84269.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_84269.dir/CheckFunctionExists.c.o  -o cmTC_84269 -rdynamic -lpthread 
+make[1] : on quitte le répertoire « /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/CMakeTmp »
+
+

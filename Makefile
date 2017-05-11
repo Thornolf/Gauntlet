@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
+CMAKE_SOURCE_DIR = /home/fossae_t/rendu2/cpp_indie_studio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fossae_t/rendu2/cpp_indie_studio/ogre
+CMAKE_BINARY_DIR = /home/fossae_t/rendu2/cpp_indie_studio
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,9 +113,9 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/ogre/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fossae_t/rendu2/cpp_indie_studio/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -161,59 +161,59 @@ OgreApp/preinstall:
 	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/preinstall
 .PHONY : OgreApp/preinstall
 
-BaseApplication.o: BaseApplication.cpp.o
+src/BaseApplication.o: src/BaseApplication.cpp.o
 
-.PHONY : BaseApplication.o
-
-# target to build an object file
-BaseApplication.cpp.o:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.o
-.PHONY : BaseApplication.cpp.o
-
-BaseApplication.i: BaseApplication.cpp.i
-
-.PHONY : BaseApplication.i
-
-# target to preprocess a source file
-BaseApplication.cpp.i:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.i
-.PHONY : BaseApplication.cpp.i
-
-BaseApplication.s: BaseApplication.cpp.s
-
-.PHONY : BaseApplication.s
-
-# target to generate assembly for a file
-BaseApplication.cpp.s:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/BaseApplication.cpp.s
-.PHONY : BaseApplication.cpp.s
-
-TutorialApplication.o: TutorialApplication.cpp.o
-
-.PHONY : TutorialApplication.o
+.PHONY : src/BaseApplication.o
 
 # target to build an object file
-TutorialApplication.cpp.o:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.o
-.PHONY : TutorialApplication.cpp.o
+src/BaseApplication.cpp.o:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.o
+.PHONY : src/BaseApplication.cpp.o
 
-TutorialApplication.i: TutorialApplication.cpp.i
+src/BaseApplication.i: src/BaseApplication.cpp.i
 
-.PHONY : TutorialApplication.i
+.PHONY : src/BaseApplication.i
 
 # target to preprocess a source file
-TutorialApplication.cpp.i:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.i
-.PHONY : TutorialApplication.cpp.i
+src/BaseApplication.cpp.i:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.i
+.PHONY : src/BaseApplication.cpp.i
 
-TutorialApplication.s: TutorialApplication.cpp.s
+src/BaseApplication.s: src/BaseApplication.cpp.s
 
-.PHONY : TutorialApplication.s
+.PHONY : src/BaseApplication.s
 
 # target to generate assembly for a file
-TutorialApplication.cpp.s:
-	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/TutorialApplication.cpp.s
-.PHONY : TutorialApplication.cpp.s
+src/BaseApplication.cpp.s:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/BaseApplication.cpp.s
+.PHONY : src/BaseApplication.cpp.s
+
+src/TutorialApplication.o: src/TutorialApplication.cpp.o
+
+.PHONY : src/TutorialApplication.o
+
+# target to build an object file
+src/TutorialApplication.cpp.o:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.o
+.PHONY : src/TutorialApplication.cpp.o
+
+src/TutorialApplication.i: src/TutorialApplication.cpp.i
+
+.PHONY : src/TutorialApplication.i
+
+# target to preprocess a source file
+src/TutorialApplication.cpp.i:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.i
+.PHONY : src/TutorialApplication.cpp.i
+
+src/TutorialApplication.s: src/TutorialApplication.cpp.s
+
+.PHONY : src/TutorialApplication.s
+
+# target to generate assembly for a file
+src/TutorialApplication.cpp.s:
+	$(MAKE) -f CMakeFiles/OgreApp.dir/build.make CMakeFiles/OgreApp.dir/src/TutorialApplication.cpp.s
+.PHONY : src/TutorialApplication.cpp.s
 
 # Help Target
 help:
@@ -227,12 +227,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... BaseApplication.o"
-	@echo "... BaseApplication.i"
-	@echo "... BaseApplication.s"
-	@echo "... TutorialApplication.o"
-	@echo "... TutorialApplication.i"
-	@echo "... TutorialApplication.s"
+	@echo "... src/BaseApplication.o"
+	@echo "... src/BaseApplication.i"
+	@echo "... src/BaseApplication.s"
+	@echo "... src/TutorialApplication.o"
+	@echo "... src/TutorialApplication.i"
+	@echo "... src/TutorialApplication.s"
 .PHONY : help
 
 

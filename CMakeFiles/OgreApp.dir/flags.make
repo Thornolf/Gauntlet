@@ -6,5 +6,5 @@ CXX_FLAGS = -O2 -g -DNDEBUG
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB
 
-CXX_INCLUDES = -I/usr/include/OIS -I/usr/local/include/OGRE -I/usr/local/include -I/usr/local/share/OGRE/samples/Common/include -I/usr/local/include/OGRE/Overlay 
+CXX_INCLUDES = -I/home/fossae_t/rendu2/cpp_indie_studio/./include -I/usr/include/OIS -I/usr/local/include/OGRE -I/usr/local/include -I/usr/local/share/OGRE/samples/Common/include -I/usr/local/include/OGRE/Overlay 
 
