@@ -97,12 +97,13 @@ endif()
 
 set(HDRS
 	./include/BaseApplication.h
-	./include/TutorialApplication.h
+	./include/Application.h
 )
 
 set(SRCS
+	./src/main.cpp
 	./src/BaseApplication.cpp
-	./src/TutorialApplication.cpp
+	./src/Application.cpp
 )
 
 include_directories( ${OIS_INCLUDE_DIRS}
