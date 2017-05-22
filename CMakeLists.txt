@@ -98,12 +98,24 @@ endif()
 set(HDRS
 	./include/BaseApplication.h
 	./include/Application.h
+	./include/Character.hpp
+	./include/foodStack.hpp
+	./include/goldStack.hpp
+	./include/Loot.hpp
+	./include/Npc.hpp
+	./include/Zombie.hpp
 )
 
 set(SRCS
 	./src/main.cpp
 	./src/BaseApplication.cpp
 	./src/Application.cpp
+	./src/Loot.cpp
+	./src/goldStack.cpp
+	./src/foodStack.cpp
+	./src/Character/Character.cpp
+	./src/Character/Npc/Npc.cpp
+	./src/Character/Npc/Zombie.cpp
 )
 
 include_directories( ${OIS_INCLUDE_DIRS}
