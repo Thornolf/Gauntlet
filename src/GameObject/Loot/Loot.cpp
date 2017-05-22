@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 19 17:17:24 2017 Thomas Fossaert
+** Last update Mon May 22 11:36:30 2017 Thomas Fossaert
 */
 
 #include "Loot.hpp"
@@ -23,4 +23,9 @@ Loot& Loot::operator=(Loot const & other)
 {
   (void) other;
   return *this;
+}
+
+Loot::~Loot()
+{
+
 }

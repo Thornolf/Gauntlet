@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 09:51:23 2017 Thomas Fossaert
+** Last update Mon May 22 10:44:17 2017 Thomas Fossaert
 */
 
 #include "Zombie.hpp"
@@ -29,6 +29,11 @@ Zombie& Zombie::operator=(Zombie const & other)
 {
   (void) other;
   return *this;
+}
+
+Zombie::~Zombie()
+{
+
 }
 
 void Zombie::getDamage()

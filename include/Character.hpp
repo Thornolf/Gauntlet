@@ -5,15 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 10:00:26 2017 Thomas Fossaert
+** Last update Mon May 22 11:21:05 2017 Thomas Fossaert
 */
 
 #ifndef _CHARACTER_HPP_
 #define _CHARACTER_HPP_
 
 #include <iostream>
+#include "GameObject.hpp"
 
-class Character
+class Character : public GameObject
 {
   protected:
   size_t    _health;
@@ -29,7 +30,7 @@ public:
   Character();
   Character(Character const &);
   Character& operator=(Character const &);
-  //virtual ~Character();
+  virtual ~Character();
 
   /* Classes */
 

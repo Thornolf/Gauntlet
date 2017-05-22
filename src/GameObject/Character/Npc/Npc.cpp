@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 09:54:52 2017 Thomas Fossaert
+** Last update Mon May 22 10:43:12 2017 Thomas Fossaert
 */
 
 #include "Npc.hpp"
@@ -23,6 +23,11 @@ Npc& Npc::operator=(Npc const & other)
 {
   (void) other;
   return *this;
+}
+
+Npc::~Npc()
+{
+
 }
 
 void Npc::getDamage()

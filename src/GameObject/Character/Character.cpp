@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 09:55:22 2017 Thomas Fossaert
+** Last update Mon May 22 10:42:05 2017 Thomas Fossaert
 */
 
 #include "Character.hpp"
@@ -23,6 +23,11 @@ Character& Character::operator=(Character const & other)
 {
   (void) other;
   return *this;
+}
+
+Character::~Character()
+{
+  
 }
 
 void Character::getDamage()

@@ -105,6 +105,8 @@ set(HDRS
 	./include/Loot.hpp
 	./include/Npc.hpp
 	./include/Zombie.hpp
+	./include/GameObject.hpp
+	./include/Position.hpp
         ./include/Score/Score.hpp
 )
 
@@ -113,12 +115,14 @@ set(SRCS
 	./src/IndieException.cpp
 	./src/BaseApplication.cpp
 	./src/Application.cpp
-	./src/Loot.cpp
-	./src/goldStack.cpp
-	./src/foodStack.cpp
-	./src/Character/Character.cpp
-	./src/Character/Npc/Npc.cpp
-	./src/Character/Npc/Zombie.cpp
+	./src/GameObject/Loot/Loot.cpp
+	./src/GameObject/Loot/goldStack.cpp
+	./src/GameObject/Loot/foodStack.cpp
+	./src/GameObject/Character/Character.cpp
+	./src/GameObject/Character/Npc/Npc.cpp
+	./src/GameObject/Character/Npc/Zombie.cpp
+	./src/GameObject/GameObject.cpp
+	./src/Position/Position.cpp
         ./src/Score/Score.cpp
 )
 
