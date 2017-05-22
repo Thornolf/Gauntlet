@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 10:01:29 2017 Thomas Fossaert
+** Last update Mon May 22 12:10:48 2017 Thomas Fossaert
 */
 
 #ifndef _FOODSTACK_HPP_
@@ -19,7 +19,7 @@ public:
   foodStack();
   foodStack(foodStack const &);
   foodStack& operator=(foodStack const &);
-  //virtual ~foodStack();
+  ~foodStack();
 
   /* Classes */
 
