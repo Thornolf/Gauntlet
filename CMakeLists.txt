@@ -98,6 +98,7 @@ endif()
 set(HDRS
 	./include/BaseApplication.h
 	./include/Application.h
+	./include/IndieException.hpp
 	./include/Character.hpp
 	./include/foodStack.hpp
 	./include/goldStack.hpp
@@ -109,6 +110,7 @@ set(HDRS
 
 set(SRCS
 	./src/main.cpp
+	./src/IndieException.cpp
 	./src/BaseApplication.cpp
 	./src/Application.cpp
 	./src/GameObject/Loot/Loot.cpp
