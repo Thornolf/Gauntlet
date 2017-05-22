@@ -106,6 +106,7 @@ set(HDRS
 	./include/Npc.hpp
 	./include/Zombie.hpp
 	./include/GameObject.hpp
+	./include/Position.hpp
 )
 
 set(SRCS
@@ -120,6 +121,7 @@ set(SRCS
 	./src/GameObject/Character/Npc/Npc.cpp
 	./src/GameObject/Character/Npc/Zombie.cpp
 	./src/GameObject/GameObject.cpp
+	./src/Position/Position.cpp
 )
 
 include_directories( ${OIS_INCLUDE_DIRS}
