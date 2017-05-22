@@ -105,6 +105,7 @@ set(HDRS
 	./include/Loot.hpp
 	./include/Npc.hpp
 	./include/Zombie.hpp
+        ./include/Score/Score.hpp
 )
 
 set(SRCS
@@ -118,6 +119,7 @@ set(SRCS
 	./src/Character/Character.cpp
 	./src/Character/Npc/Npc.cpp
 	./src/Character/Npc/Zombie.cpp
+        ./src/Score/Score.cpp
 )
 
 include_directories( ${OIS_INCLUDE_DIRS}
