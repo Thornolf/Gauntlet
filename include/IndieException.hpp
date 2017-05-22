@@ -1,5 +1,5 @@
 /*
-** IndieException.hpp for cpp_indie_studio in /home/gratte_r/Rendu/Teck_2/CPP/indie/cpp_indie_studio/include
+** IndieException.hpp for cpp_indie_studio
 **
 ** Made by Robin Grattepanche
 ** Login   <gratte_r@epitech.net>
@@ -15,13 +15,13 @@
 
 class IndieException : public std::exception
 {
-	private:
-		const std::string	_errMessage;
+private:
+  const std::string	_errMessage;
 
 public:
-	IndieException (std::string) throw();
-	virtual ~IndieException () throw() {};
-	virtual const char *what() const throw();
+  IndieException (std::string) throw();
+  virtual ~IndieException () throw() {};
+  virtual const char *what() const throw();
 };
 
 #endif 			/* !_INDIE_EXCEPTION_HPP_ */
