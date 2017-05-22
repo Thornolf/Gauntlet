@@ -5,11 +5,13 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 11:39:46 2017 Thomas Fossaert
+** Last update Mon May 22 14:16:19 2017 Thomas Fossaert
 */
 
 #ifndef _GAMEOBJECT_HPP_
 #define _GAMEOBJECT_HPP_
+
+#include "Position.hpp"
 
 class GameObject
 {
@@ -17,9 +19,9 @@ protected:
   /**_Animation;
   *_Texture;
   *_Mesh;*/
-  /*_position */
+  Position *_position;
 public:
-  GameObject();
+  GameObject(int, int, int);
   GameObject(GameObject const &);
   GameObject& operator=(GameObject const &);
   virtual ~GameObject();

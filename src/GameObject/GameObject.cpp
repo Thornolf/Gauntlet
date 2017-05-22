@@ -5,23 +5,24 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 11:18:53 2017 Thomas Fossaert
+** Last update Mon May 22 14:16:35 2017 Thomas Fossaert
 */
 
 #include "GameObject.hpp"
 
-GameObject::GameObject()
+GameObject::GameObject(int x, int y, int z)
 {
+  _position = new Position(x, y, z);
 }
 
 GameObject::GameObject(GameObject const & other)
 {
-  (void) other;
+  _position = other._position;
 }
 
 GameObject& GameObject::operator=(GameObject const & other)
 {
-  (void) other;
+  _position = other._position;
   return *this;
 }
 

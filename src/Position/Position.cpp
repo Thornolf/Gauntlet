@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 09:37:41 2017 Adrien Warin
-** Last update Mon May 22 13:37:12 2017 Adrien Warin
+** Last update Mon May 22 14:25:53 2017 Thomas Fossaert
 */
 
 #include "Position.hpp"
@@ -54,6 +54,11 @@ int     Position::getYPosition() const
 int     Position::getZPosition() const
 {
     return (this->_z);
+}
+
+Ogre::Vector3 Position::getVector() const
+{
+  return (_vector);
 }
 
 void    Position::setXposition(int new_pos_x)

@@ -5,12 +5,12 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 10:44:17 2017 Thomas Fossaert
+** Last update Mon May 22 14:12:09 2017 Thomas Fossaert
 */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(int x, int y, int z) : Npc(x, y, z)
 {
   _health = 2;
   _cooldow = 1;
@@ -20,7 +20,7 @@ Zombie::Zombie()
   _range = 1;
 }
 
-Zombie::Zombie(Zombie const & other)
+Zombie::Zombie(Zombie const & other) : Npc(other)
 {
   (void) other;
 }
@@ -48,7 +48,12 @@ void Zombie::attack()
 
 bool Zombie::isAlive()
 {
-    return (false);
+  if (_health <= 0)
+    {
+      _health = 0;
+      return (false);
+    }
+    return (true);
 }
 
 void Zombie::getDistance()

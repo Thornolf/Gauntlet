@@ -5,16 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 11:36:30 2017 Thomas Fossaert
+** Last update Mon May 22 14:09:27 2017 Thomas Fossaert
 */
 
 #include "Loot.hpp"
 
-Loot::Loot()
+Loot::Loot(int x, int y, int z) : GameObject(x, y, z)
 {
 }
 
-Loot::Loot(Loot const & other)
+Loot::Loot(Loot const & other) : GameObject(other)
 {
   (void) other;
 }

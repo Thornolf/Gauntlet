@@ -5,16 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 11:36:53 2017 Thomas Fossaert
+** Last update Mon May 22 14:10:21 2017 Thomas Fossaert
 */
 
 #include "goldStack.hpp"
 
-goldStack::goldStack()
+goldStack::goldStack(int x, int y, int z) : Loot(x, y, z)
 {
 }
 
-goldStack::goldStack(goldStack const & other)
+goldStack::goldStack(goldStack const & other) : Loot(other)
 {
   (void) other;
 }

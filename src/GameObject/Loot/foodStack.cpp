@@ -5,16 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 11:38:10 2017 Thomas Fossaert
+** Last update Mon May 22 14:10:32 2017 Thomas Fossaert
 */
 
 #include "foodStack.hpp"
 
-foodStack::foodStack()
+foodStack::foodStack(int x, int y, int z) : Loot(x, y, z)
 {
 }
 
-foodStack::foodStack(foodStack const & other)
+foodStack::foodStack(foodStack const & other) : Loot(other)
 {
   (void) other;
 }

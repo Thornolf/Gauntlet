@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 10:43:50 2017 Thomas Fossaert
+** Last update Mon May 22 13:59:20 2017 Thomas Fossaert
 */
 
 #ifndef _Zombie_HPP_
@@ -17,7 +17,7 @@
 class Zombie : public Npc
 {
 public:
-  Zombie();
+  Zombie(int x, int y, int z);
   Zombie(Zombie const &);
   Zombie& operator=(Zombie const &);
   ~Zombie();

@@ -5,16 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 10:43:12 2017 Thomas Fossaert
+** Last update Mon May 22 14:12:23 2017 Thomas Fossaert
 */
 
 #include "Npc.hpp"
 
-Npc::Npc()
+Npc::Npc(int x, int y, int z) : Character(x, y, z)
 {
 }
 
-Npc::Npc(Npc const & other)
+Npc::Npc(Npc const & other) : Character(other)
 {
   (void) other;
 }

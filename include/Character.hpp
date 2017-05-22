@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 11:21:05 2017 Thomas Fossaert
+** Last update Mon May 22 13:58:28 2017 Thomas Fossaert
 */
 
 #ifndef _CHARACTER_HPP_
@@ -27,7 +27,7 @@ class Character : public GameObject
   size_t _range;
 
 public:
-  Character();
+  Character(int x, int y, int z);
   Character(Character const &);
   Character& operator=(Character const &);
   virtual ~Character();

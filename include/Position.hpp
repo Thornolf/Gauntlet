@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 10:57:10 2017 Adrien Warin
-** Last update Mon May 22 13:36:15 2017 Adrien Warin
+** Last update Mon May 22 14:27:39 2017 Thomas Fossaert
 */
 
 #ifndef POSITION_HPP_
@@ -27,13 +27,14 @@ class Position
         Position (const Position&);
         Position &operator=(const Position&);
 
-        int     getXPosition() const;
-        int     getYPosition() const;
-        int     getZPosition() const;
-        void    setXposition(int);
-        void    setYPosition(int);
-        void    setZPosition(int);
-        void    setPosition(int, int, int);
+        int               getXPosition() const;
+        int               getYPosition() const;
+        int               getZPosition() const;
+        Ogre::Vector3     getVector() const;
+        void              setXposition(int);
+        void              setYPosition(int);
+        void              setZPosition(int);
+        void              setPosition(int, int, int);
 };
 
 #endif

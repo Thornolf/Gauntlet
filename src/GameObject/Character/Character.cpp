@@ -5,16 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 10:42:05 2017 Thomas Fossaert
+** Last update Mon May 22 14:12:49 2017 Thomas Fossaert
 */
 
 #include "Character.hpp"
 
-Character::Character()
+Character::Character(int x, int y, int z) : GameObject(x, y, z)
 {
 }
 
-Character::Character(Character const & other)
+Character::Character(Character const & other) : GameObject(other)
 {
   (void) other;
 }
@@ -27,7 +27,7 @@ Character& Character::operator=(Character const & other)
 
 Character::~Character()
 {
-  
+
 }
 
 void Character::getDamage()
