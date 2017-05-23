@@ -1,5 +1,5 @@
 /*
-** ArcadeException.cpp for cpp_indie_studio in /home/gratte_r/Rendu/Teck_2/CPP/indie/cpp_indie_studio/src
+** ArcadeException.cpp for cpp_indie_studio
 **
 ** Made by Robin Grattepanche
 ** Login   <gratte_r@epitech.net>
@@ -14,5 +14,5 @@ IndieException::IndieException(std::string errMsg) throw() : _errMessage(errMsg)
 
 const char		*IndieException::what() const throw()
 {
-	return (this->_errMessage.c_str());
+  return (this->_errMessage.c_str());
 }
