@@ -104,10 +104,11 @@ set(HDRS
 	./include/goldStack.hpp
 	./include/Loot.hpp
 	./include/Npc.hpp
+	./include/Pc.hpp
 	./include/Zombie.hpp
 	./include/GameObject.hpp
 	./include/Position.hpp
-        ./include/Score/Score.hpp
+  ./include/Score/Score.hpp
 )
 
 set(SRCS
@@ -121,9 +122,10 @@ set(SRCS
 	./src/GameObject/Character/Character.cpp
 	./src/GameObject/Character/Npc/Npc.cpp
 	./src/GameObject/Character/Npc/Zombie.cpp
+	./src/GameObject/Character/Pc/Pc.cpp
 	./src/GameObject/GameObject.cpp
 	./src/Position/Position.cpp
-        ./src/Score/Score.cpp
+  ./src/Score/Score.cpp
 )
 
 include_directories( ${OIS_INCLUDE_DIRS}
