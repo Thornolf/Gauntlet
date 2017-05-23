@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 09:37:41 2017 Adrien Warin
-** Last update Mon May 22 14:25:53 2017 Thomas Fossaert
+** Last update Tue May 23 16:03:51 2017 Thomas Fossaert
 */
 
 #include "Position.hpp"
@@ -36,6 +36,13 @@ Position&	Position::operator=(const Position &other)
   this->_z = other._z;
   this->_vector = other._vector;
   return (*this);
+}
+
+bool	Position::operator==(const Position &other)
+{
+  if (this->_vector == other._vector)
+    return (true);
+  return (false);
 }
 
 int	Position::getXPosition() const

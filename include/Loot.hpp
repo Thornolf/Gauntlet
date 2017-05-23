@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 15:33:46 2017 Thomas Fossaert
+** Last update Tue May 23 15:03:47 2017 Thomas Fossaert
 */
 
 #ifndef _LOOT_HPP_
@@ -24,7 +24,7 @@ public:
 
   /* Classes */
 
-  virtual bool isTaken();
+  virtual bool isTaken(Pc const &);
 };
 
 #endif
