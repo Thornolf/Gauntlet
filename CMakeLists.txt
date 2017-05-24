@@ -113,7 +113,8 @@ set(HDRS
         ./include/Configuration.hpp
         ./include/Ranged.hpp
         ./include/Input/DeviceManager.hpp
-        ./include/Input/ParserInputFile.hpp)
+        ./include/Input/ParserInputFile.hpp
+    ./include/Melee.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -134,7 +135,8 @@ set(SRCS
         ./src/Configuration.cpp
         ./src/Ranged.cpp
         ./src/Input/DeviceManager.cpp
-        ./src/Input/ParserInputFile.cpp)
+        ./src/Input/ParserInputFile.cpp
+        ./src/Melee.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
