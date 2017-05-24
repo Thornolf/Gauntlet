@@ -112,22 +112,24 @@ set(HDRS
     ./include/Configuration.hpp)
 
 set(SRCS
-    ./src/main.cpp
-    ./src/IndieException.cpp
-    ./src/BaseApplication.cpp
-    ./src/Application.cpp
-    ./src/GameObject/Loot/Loot.cpp
-    ./src/GameObject/Loot/goldStack.cpp
-    ./src/GameObject/Loot/foodStack.cpp
-    ./src/GameObject/Character/Character.cpp
-    ./src/GameObject/Character/Npc/Npc.cpp
-    ./src/GameObject/Character/Npc/Zombie.cpp
-    ./src/GameObject/Character/Pc/Pc.cpp
-    ./src/GameObject/GameObject.cpp
-    ./src/Position/Position.cpp
-    ./src/Score/Score.cpp
+        ./src/main.cpp
+        ./src/IndieException.cpp
+        ./src/BaseApplication.cpp
+        ./src/Application.cpp
+        ./src/GameObject/Loot/Loot.cpp
+        ./src/GameObject/Loot/goldStack.cpp
+        ./src/GameObject/Loot/foodStack.cpp
+        ./src/GameObject/Character/Character.cpp
+        ./src/GameObject/Character/Npc/Npc.cpp
+        ./src/GameObject/Character/Npc/Zombie.cpp
+        ./src/GameObject/Character/Pc/Pc.cpp
+        ./src/GameObject/GameObject.cpp
+        ./src/Position/Position.cpp
+        ./src/Score/Score.cpp
         ./src/Configuration.cpp
         )
+
+SET_SOURCE_FILES_PROPERTIES("./src/Configuration.cpp" PROPERTIES COMPILE_FLAGS "-W -Wall -Wextra -Werror")
 
 include_directories( ${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
