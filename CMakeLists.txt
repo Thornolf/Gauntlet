@@ -96,22 +96,24 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
 
 set(HDRS
-    ./include/BaseApplication.h
-    ./include/Application.h
-    ./include/IndieException.hpp
-    ./include/Character.hpp
-    ./include/foodStack.hpp
-    ./include/goldStack.hpp
-    ./include/Loot.hpp
-    ./include/Npc.hpp
-    ./include/Pc.hpp
-    ./include/Zombie.hpp
-    ./include/GameObject.hpp
-    ./include/Position.hpp
-    ./include/Score/Score.hpp
-    ./include/Configuration.hpp
-	./include/Ranged.hpp
-        )
+        ./include/Input/Device.hpp
+        ./include/BaseApplication.h
+        ./include/Application.h
+        ./include/IndieException.hpp
+        ./include/Character.hpp
+        ./include/foodStack.hpp
+        ./include/goldStack.hpp
+        ./include/Loot.hpp
+        ./include/Npc.hpp
+        ./include/Pc.hpp
+        ./include/Zombie.hpp
+        ./include/GameObject.hpp
+        ./include/Position.hpp
+        ./include/Score/Score.hpp
+        ./include/Configuration.hpp
+        ./include/Ranged.hpp
+        ./include/Input/DeviceManager.hpp
+        ./include/Input/ParserInputFile.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -128,13 +130,13 @@ set(SRCS
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp
         ./src/Score/Score.cpp
+        ./src/Input/Device.cpp
         ./src/Configuration.cpp
-		./src/Ranged.cpp
-        )
+        ./src/Ranged.cpp
+        ./src/Input/DeviceManager.cpp
+        ./src/Input/ParserInputFile.cpp)
 
-SET_SOURCE_FILES_PROPERTIES("./src/Configuration.cpp" PROPERTIES COMPILE_FLAGS "-W -Wall -Wextra -Werror")
-
-include_directories( ${OIS_INCLUDE_DIRS}
+include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
         ${OGRE_SAMPLES_INCLUDEPATH}
         ${OGRE_Overlay_INCLUDE_DIRS}
