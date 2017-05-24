@@ -96,35 +96,37 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
 
 set(HDRS
-        ./include/BaseApplication.h
-        ./include/Application.h
-        ./include/IndieException.hpp
-        ./include/Character.hpp
-        ./include/foodStack.hpp
-        ./include/goldStack.hpp
-        ./include/Loot.hpp
-        ./include/Npc.hpp
-        ./include/Zombie.hpp
-        ./include/GameObject.hpp
-        ./include/Position.hpp
-        ./include/Score/Score.hpp
-        ./include/Configuration.hpp
+    ./include/BaseApplication.h
+    ./include/Application.h
+    ./include/IndieException.hpp
+    ./include/Character.hpp
+    ./include/foodStack.hpp
+    ./include/goldStack.hpp
+    ./include/Loot.hpp
+    ./include/Npc.hpp
+    ./include/Pc.hpp
+    ./include/Zombie.hpp
+    ./include/GameObject.hpp
+    ./include/Position.hpp
+    ./include/Score/Score.hpp
+    ./include/Configuration.hpp
         )
 
 set(SRCS
-        ./src/main.cpp
-        ./src/IndieException.cpp
-        ./src/BaseApplication.cpp
-        ./src/Application.cpp
-        ./src/GameObject/Loot/Loot.cpp
-        ./src/GameObject/Loot/goldStack.cpp
-        ./src/GameObject/Loot/foodStack.cpp
-        ./src/GameObject/Character/Character.cpp
-        ./src/GameObject/Character/Npc/Npc.cpp
-        ./src/GameObject/Character/Npc/Zombie.cpp
-        ./src/GameObject/GameObject.cpp
-        ./src/Position/Position.cpp
-        ./src/Score/Score.cpp
+    ./src/main.cpp
+    ./src/IndieException.cpp
+    ./src/BaseApplication.cpp
+    ./src/Application.cpp
+    ./src/GameObject/Loot/Loot.cpp
+    ./src/GameObject/Loot/goldStack.cpp
+    ./src/GameObject/Loot/foodStack.cpp
+    ./src/GameObject/Character/Character.cpp
+    ./src/GameObject/Character/Npc/Npc.cpp
+    ./src/GameObject/Character/Npc/Zombie.cpp
+    ./src/GameObject/Character/Pc/Pc.cpp
+    ./src/GameObject/GameObject.cpp
+    ./src/Position/Position.cpp
+    ./src/Score/Score.cpp
         ./src/Configuration.cpp
         )
 

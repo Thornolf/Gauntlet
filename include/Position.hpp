@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 10:57:10 2017 Adrien Warin
-** Last update Mon May 22 14:27:39 2017 Thomas Fossaert
+** Last update Tue May 23 16:04:32 2017 Thomas Fossaert
 */
 
 #ifndef POSITION_HPP_
@@ -26,6 +26,7 @@ public:
   virtual ~Position ();
   Position (const Position&);
   Position &operator=(const Position&);
+  bool operator==(const Position &);
 
   int               getXPosition() const;
   int               getYPosition() const;
