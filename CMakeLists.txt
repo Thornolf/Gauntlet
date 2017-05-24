@@ -109,7 +109,9 @@ set(HDRS
     ./include/GameObject.hpp
     ./include/Position.hpp
     ./include/Score/Score.hpp
-    ./include/Configuration.hpp)
+    ./include/Configuration.hpp
+	./include/Ranged.hpp
+        )
 
 set(SRCS
         ./src/main.cpp
@@ -127,6 +129,7 @@ set(SRCS
         ./src/Position/Position.cpp
         ./src/Score/Score.cpp
         ./src/Configuration.cpp
+		./src/Ranged.cpp
         )
 
 SET_SOURCE_FILES_PROPERTIES("./src/Configuration.cpp" PROPERTIES COMPILE_FLAGS "-W -Wall -Wextra -Werror")
