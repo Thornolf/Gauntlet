@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 10:57:10 2017 Adrien Warin
-** Last update Mon May 22 14:27:39 2017 Thomas Fossaert
+** Last update Tue May 23 16:04:32 2017 Thomas Fossaert
 */
 
 #ifndef POSITION_HPP_
@@ -15,26 +15,27 @@
 
 class Position
 {
-    private:
-        int             _x;
-        int             _y;
-        int             _z;
-        Ogre::Vector3   _vector;
+private:
+  int             _x;
+  int             _y;
+  int             _z;
+  Ogre::Vector3   _vector;
 
-    public:
-        Position (int, int, int);
-        ~Position ();
-        Position (const Position&);
-        Position &operator=(const Position&);
+public:
+  Position (int, int, int);
+  virtual ~Position ();
+  Position (const Position&);
+  Position &operator=(const Position&);
+  bool operator==(const Position &);
 
-        int               getXPosition() const;
-        int               getYPosition() const;
-        int               getZPosition() const;
-        Ogre::Vector3     getVector() const;
-        void              setXposition(int);
-        void              setYPosition(int);
-        void              setZPosition(int);
-        void              setPosition(int, int, int);
+  int               getXPosition() const;
+  int               getYPosition() const;
+  int               getZPosition() const;
+  Ogre::Vector3     getVector() const;
+  void              setXposition(int);
+  void              setYPosition(int);
+  void              setZPosition(int);
+  void              setPosition(int, int, int);
 };
 
 #endif

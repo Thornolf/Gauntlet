@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 14:10:32 2017 Thomas Fossaert
+** Last update Tue May 23 16:12:52 2017 Thomas Fossaert
 */
 
 #include "foodStack.hpp"
@@ -28,4 +28,11 @@ foodStack& foodStack::operator=(foodStack const & other)
 foodStack::~foodStack()
 {
 
+}
+
+bool foodStack::isTaken(Pc const & other)
+{
+  if (this->_position == other.getPosition())
+    return (true);
+  return (false);
 }

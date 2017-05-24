@@ -5,13 +5,14 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 14:07:02 2017 Thomas Fossaert
+** Last update Tue May 23 15:03:47 2017 Thomas Fossaert
 */
 
 #ifndef _LOOT_HPP_
 #define _LOOT_HPP_
 
 #include "GameObject.hpp"
+#include "Pc.hpp"
 
 class Loot : public GameObject
 {
@@ -23,7 +24,7 @@ public:
 
   /* Classes */
 
-  bool isTaken();
+  virtual bool isTaken(Pc const &);
 };
 
 #endif
