@@ -111,6 +111,7 @@ set(HDRS
     ./include/Score/Score.hpp
     ./include/Configuration.hpp
 	./include/Ranged.hpp
+    ./include/Melee.hpp
         )
 
 set(SRCS
@@ -130,6 +131,7 @@ set(SRCS
         ./src/Score/Score.cpp
         ./src/Configuration.cpp
 		./src/Ranged.cpp
+        ./src/Melee.cpp
         )
 
 SET_SOURCE_FILES_PROPERTIES("./src/Configuration.cpp" PROPERTIES COMPILE_FLAGS "-W -Wall -Wextra -Werror")
