@@ -10,9 +10,7 @@
 
 #ifndef		_CONFIGURATION__HPP_
 # define	_CONFIGURATION__HPP_
-
-/* # include	"InputManager.hpp" */
-/* # include	"PC.h" */
+# include	"Pc.hpp"
 
 class Configuration
 {
@@ -22,8 +20,13 @@ public:
   virtual ~Configuration();
   Configuration		&operator=(const Configuration &);
 
+  /* Member functions */
+  std::vector<Pc>	getPlayers(void) const;
+  void			setPlayers(std::vector<Pc>);
+
 private:
-  /* std::vector<NPC> */
+  std::vector<Pc>	_players;
+
 };
 
 #endif		/* _CONFIGURATION__HPP_ */

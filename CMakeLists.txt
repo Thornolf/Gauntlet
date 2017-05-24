@@ -109,8 +109,7 @@ set(HDRS
     ./include/GameObject.hpp
     ./include/Position.hpp
     ./include/Score/Score.hpp
-    ./include/Configuration.hpp
-        )
+    ./include/Configuration.hpp)
 
 set(SRCS
     ./src/main.cpp
