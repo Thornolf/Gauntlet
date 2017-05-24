@@ -5,46 +5,110 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Fri May 19 15:03:21 2017 Thomas Fossaert
+** Last update Wed May 24 13:46:25 2017 Thomas Fossaert
 */
 
 #include "Application.h"
+#include "Position.hpp"
 
-Application::Application(void)
+Application::Application()
 {
 }
 
-Application::~Application(void)
+Application::~Application()
 {
 }
 
-void Application::createScene(void)
+void Application::createScene()
 {
-  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
-  Ogre::Entity* ogreEntity = mSceneMgr->createEntity("ogrehead.mesh");
-  Ogre::SceneNode* ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-  ogreNode->attachObject(ogreEntity);
-  Ogre::Light* light = mSceneMgr->createLight("MainLight");
-  light->setPosition(20, 80, 50);
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(.25, .25, .25));
 
-  mCamera->setPosition(0, 47, 222);
-  Ogre::Entity* ogreEntity2 = mSceneMgr->createEntity("ogrehead.mesh");
+  Ogre::Light* pointLight = mSceneMgr->createLight("PointLight");
+  pointLight->setType(Ogre::Light::LT_POINT);
+  pointLight->setPosition(250, 150, 250);
+  pointLight->setDiffuseColour(Ogre::ColourValue::Green);
+  pointLight->setSpecularColour(Ogre::ColourValue::Green);
 
-  Ogre::SceneNode* ogreNode2 = ogreNode->createChildSceneNode(
-  Ogre::Vector3(84, 48, 0));
-  ogreNode2->attachObject(ogreEntity2);
+  Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("penguin.mesh");
+  Ogre::SceneNode* ninjaNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(
+    "NinjaNode");
+  ninjaNode->attachObject(ninjaEntity);
 
-  Ogre::Entity* ogreEntity3 = mSceneMgr->createEntity("ogrehead.mesh");
+}
 
-  Ogre::SceneNode* ogreNode3 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-  ogreNode3->setPosition(0, 104, 0);
-  ogreNode3->setScale(2, 1.2, 1);
-  ogreNode3->attachObject(ogreEntity3);
+bool Application::frameRenderingQueued(const Ogre::FrameEvent& fe)
+{
+  bool ret = BaseApplication::frameRenderingQueued(fe);
 
-  Ogre::Entity* ogreEntity4 = mSceneMgr->createEntity("ogrehead.mesh");
+  if (!processUnbufferedInput(fe))
+    return false;
 
-  Ogre::SceneNode* ogreNode4 = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-  ogreNode4->setPosition(-84, 48, 0);
-  ogreNode4->roll(Ogre::Degree(-90));
-  ogreNode4->attachObject(ogreEntity4);
+  return ret;
+}
+
+bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
+{
+  static bool mouseDownLastFrame = false;
+  static Ogre::Real toggleTimer = 0.0;
+  static Ogre::Real rotate = .13;
+  static Ogre::Real move = 50;
+
+  // First toggle method
+  bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
+
+  if (leftMouseDown && !mouseDownLastFrame)
+  {
+    Ogre::Light* light = mSceneMgr->getLight("PointLight");
+    light->setVisible(!light->isVisible());
+  }
+
+  mouseDownLastFrame = leftMouseDown;
+
+  // Second toggle method
+  toggleTimer -= fe.timeSinceLastFrame;
+
+  if ((toggleTimer < 0) && mMouse->getMouseState().buttonDown(OIS::MB_Right))
+  {
+    toggleTimer = .5;
+
+    Ogre::Light* light = mSceneMgr->getLight("PointLight");
+    light->setVisible(!light->isVisible());
+  }
+
+  // Moving the Ninja
+  Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
+
+  if (mKeyboard->isKeyDown(OIS::KC_K))
+    dirVec.x -= move;
+
+  if (mKeyboard->isKeyDown(OIS::KC_M))
+    dirVec.x += move;
+
+  if (mKeyboard->isKeyDown(OIS::KC_O))
+    dirVec.z += move;
+
+  if (mKeyboard->isKeyDown(OIS::KC_L))
+    dirVec.z -= move;
+
+  if (mKeyboard->isKeyDown(OIS::KC_J))
+  {
+    if (mKeyboard->isKeyDown(OIS::KC_LSHIFT))
+      mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Degree(5 * rotate));
+    else
+      dirVec.x -= move;
+  }
+
+  if (mKeyboard->isKeyDown(OIS::KC_U))
+  {
+    if (mKeyboard->isKeyDown(OIS::KC_LSHIFT))
+      mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Degree(-5 * rotate));
+    else
+      dirVec.x += move;
+  }
+
+  mSceneMgr->getSceneNode("NinjaNode")->translate(
+    dirVec * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);
+
+  return true;
 }
