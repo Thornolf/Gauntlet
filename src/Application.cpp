@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed May 24 16:05:45 2017 Robin Grattepanche
+** Last update Thu May 25 17:08:09 2017 Thomas Fossaert
 */
 
 #include "Application.h"
@@ -21,6 +21,7 @@ Application::~Application()
 
 void Application::createScene()
 {
+
   mSceneMgr->setAmbientLight(Ogre::ColourValue(.25, .25, .25));
 
 	mSceneMgr->setSkyDome(true, "Examples/CloudySky");
@@ -34,9 +35,10 @@ void Application::createScene()
   Ogre::Entity* penguinEntity = mSceneMgr->createEntity("penguin.mesh");
   Ogre::SceneNode* pinguinNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(
     "PinguinNode");
-	pinguinNode->setPosition(0, 50, 0);
+	pinguinNode->setPosition(/*pinguinPos->getVector()*/0, 0, 0);
   pinguinNode->attachObject(penguinEntity);
 
+  mCamera->lookAt(0,0,0);
 	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 
 	Ogre::MeshManager::getSingleton().createPlane("ground",
@@ -51,6 +53,13 @@ void Application::createScene()
 	mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
 
 	groundEntity->setMaterialName("Examples/Rockwall");
+
+  Ogre::Entity *ninjaEntity = mSceneMgr->createEntity("ninja.mesh");
+  Ogre::SceneNode* ninjaNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(
+    "NinjaNode");;
+  ninjaNode->setPosition(100, 50, 0);
+  ninjaNode->attachObject(ninjaEntity);
+
 }
 
 bool Application::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -70,7 +79,6 @@ bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static Ogre::Real rotate = 0;
   static Ogre::Real move = 100;
 
-  // First toggle method
   bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
 
   if (leftMouseDown && !mouseDownLastFrame)
@@ -81,7 +89,6 @@ bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   mouseDownLastFrame = leftMouseDown;
 
-  // Second toggle method
   toggleTimer -= fe.timeSinceLastFrame;
 
   if ((toggleTimer < 0) && mMouse->getMouseState().buttonDown(OIS::MB_Right))
@@ -92,19 +99,18 @@ bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
     light->setVisible(!light->isVisible());
   }
 
-  // Moving the Ninja
+
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
+  Ogre::Vector3 dirVec2 = Ogre::Vector3::ZERO;
 
   if (mKeyboard->isKeyDown(OIS::KC_K))
     {
-			rotate -= .3;
 			dirVec.x -= move;
 		}
 
   if (mKeyboard->isKeyDown(OIS::KC_M))
 		{
-			rotate += .3;
-    	dirVec.x += move;
+      dirVec.x += move;
 		}
 
   if (mKeyboard->isKeyDown(OIS::KC_L))
@@ -112,25 +118,8 @@ bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   if (mKeyboard->isKeyDown(OIS::KC_O))
     {
-			// mSceneMgr->getSceneNode("PinguinNode")->yaw(Ogre::Degree(20 * rotate));
-			dirVec.z -= move;
+      dirVec.z -= move;
 		}
-
-  // if (mKeyboard->isKeyDown(OIS::KC_J))
-  // {
-  //   if (mKeyboard->isKeyDown(OIS::KC_LSHIFT))
-  //     mSceneMgr->getSceneNode("PinguinNode")->yaw(Ogre::Degree(5 * rotate));
-  //   else
-  //     dirVec.x -= move;
-  // }
-	//
-  // if (mKeyboard->isKeyDown(OIS::KC_U))
-  // {
-  //   if (mKeyboard->isKeyDown(OIS::KC_LSHIFT))
-  //     mSceneMgr->getSceneNode("PinguinNode")->yaw(Ogre::Degree(-5 * rotate));
-  //   else
-  //     dirVec.x += move;
-  // }
 
   mSceneMgr->getSceneNode("PinguinNode")->translate(
     dirVec * fe.timeSinceLastFrame,
@@ -139,6 +128,12 @@ bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mSceneMgr->getSceneNode("PinguinNode")->yaw(
     Ogre::Degree(rotate * fe.timeSinceLastFrame));
 
+    dirVec2.z += 10;
+  mSceneMgr->getSceneNode("NinjaNode")->translate(
+      dirVec2 * fe.timeSinceLastFrame,
+      Ogre::Node::TS_LOCAL);
+
+mCamera->setPosition(mCamera->getPosition() + dirVec);
 		rotate = 0;
   return true;
 }

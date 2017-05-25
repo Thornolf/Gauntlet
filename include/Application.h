@@ -21,6 +21,7 @@ This source file is part of the
 #include <Terrain/OgreTerrainGroup.h>
 
 #include "BaseApplication.h"
+#include "Position.hpp"
 
 class Application : public BaseApplication
 {
@@ -32,6 +33,7 @@ protected:
   virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 private:
   bool processUnbufferedInput(const Ogre::FrameEvent& fe);
+  Position *pinguinPos;
 };
 
 #endif // #ifndef __Application_h_
