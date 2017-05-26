@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:25 2017 Adrien Warin
-** Last update Wed May 24 15:51:16 2017 Adrien Warin
+** Last update Fri May 26 16:57:24 2017 Adrien Warin
 */
 
 #ifndef _TANK_HPP_
@@ -27,8 +27,7 @@ public:
   virtual ~Tank();
 
   /* Classes */
-
-  virtual void getDamage();
+  virtual void takeDamage(size_t dmg);
   virtual void attack();
   virtual bool isAlive();
   virtual void getDistance();

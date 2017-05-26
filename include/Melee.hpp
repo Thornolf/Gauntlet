@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 11:22:02 2017 Adrien Warin
-** Last update Wed May 24 11:54:32 2017 Adrien Warin
+** Last update Fri May 26 16:39:00 2017 Adrien Warin
 */
 
 #ifndef MELEE_HPP_
@@ -26,7 +26,7 @@ class Melee : public Pc
 
         /* Méthodes */
 
-        virtual void getDamage();
+        virtual void takeDamage(size_t);
         virtual void attack();
         virtual bool isAlive();
         virtual void getDistance();

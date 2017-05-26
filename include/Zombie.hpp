@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 13:59:20 2017 Thomas Fossaert
+** Last update Fri May 26 11:47:44 2017 Thomas Fossaert
 */
 
 #ifndef _Zombie_HPP_
@@ -26,6 +26,7 @@ public:
 
   void getDamage();
   void attack();
+  void takeDamage(size_t dmg);
   bool isAlive();
   void getDistance();
   size_t getRange();
