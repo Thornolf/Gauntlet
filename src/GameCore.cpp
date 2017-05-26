@@ -22,21 +22,65 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  Music *music = new Music();
-  music->playAudio("src/audio/all_star.ogg");
-  mSceneMgr->setAmbientLight(Ogre::ColourValue(.25, .25, .25));
+  // Set the default lighting.
+     mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+     // Create the entity
+     mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 
-  Ogre::Light* pointLight = mSceneMgr->createLight("PointLight");
-  pointLight->setType(Ogre::Light::LT_POINT);
-  pointLight->setPosition(250, 150, 250);
-  pointLight->setDiffuseColour(Ogre::ColourValue::Green);
-  pointLight->setSpecularColour(Ogre::ColourValue::Green);
+     // Create the scene node
+     mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(0.0f, 0.0f, 25.0f));
+     mNode->attachObject(mEntity);
+     // Create the walking list
+     mWalkList.push_back(Ogre::Vector3(550.0f,  0.0f,  50.0f ));
+     mWalkList.push_back(Ogre::Vector3(-100.0f,  0.0f, -200.0f));
+     // Create objects so we can see movement
+     Ogre::Entity *ent;
+     Ogre::SceneNode *node;
 
-  Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("penguin.mesh");
-  Ogre::SceneNode* ninjaNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(
-    "NinjaNode");
-  ninjaNode->attachObject(ninjaEntity);
+     ent = mSceneMgr->createEntity("Knot1", "robot.mesh");
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot1Node", Ogre::Vector3(0.0f, -10.0f,  25.0f));
+     node->attachObject(ent);
+     node->setScale(0.1f, 0.1f, 0.1f);
 
+     ent = mSceneMgr->createEntity("Knot2", "robot.mesh");
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot2Node", Ogre::Vector3(550.0f, -10.0f,  50.0f));
+     node->attachObject(ent);
+     node->setScale(0.1f, 0.1f, 0.1f);
+
+     ent = mSceneMgr->createEntity("Knot3", "robot.mesh");
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot3Node", Ogre::Vector3(-100.0f, -10.0f,-200.0f));
+     node->attachObject(ent);
+     node->setScale(0.1f, 0.1f, 0.1f);
+
+     // Set the camera to look at our handiwork
+     mCamera->setPosition(90.0f, 280.0f, 535.0f);
+     mCamera->pitch(Ogre::Degree(-30.0f));
+     mCamera->yaw(Ogre::Degree(-15.0f));
+
+  Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+
+  Ogre::MeshManager::getSingleton().createPlane("ground",
+  Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+  plane, 1500, 1500, 20, 20, true, 1, 5, 5,
+  Ogre::Vector3::UNIT_Z);
+
+  Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
+  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
+
+  groundEntity->setMaterialName("Examples/Rockwall");
+  /*mAnimationState = ninjaEntity->getAnimationState("Idle1");
+  mAnimationState->setLoop(true);
+  mAnimationState->setEnabled(true);*/
+
+}
+
+void GameCore::createFrameListener(void)
+{
+    BaseGauntlet::createFrameListener();
+    // Set idle animation
+    mAnimationState = mEntity->getAnimationState("Idle1");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -45,6 +89,10 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
   if (!processUnbufferedInput(fe))
     return false;
+    /*mAnimationState = mEntity->getAnimationState("Walk");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);*/
+  mAnimationState->addTime(fe.timeSinceLastFrame);
 
   return ret;
 }
@@ -54,44 +102,72 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static bool mouseDownLastFrame = false;
   static Ogre::Real toggleTimer = 0.0;
   static Ogre::Real rotate = .13;
-  static Ogre::Real move = 50;
+  static Ogre::Real move = 150;
 
-  // First toggle method
   bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
 
-  if (leftMouseDown && !mouseDownLastFrame)
+  if (leftMouseDown)
   {
-    Ogre::Light* light = mSceneMgr->getLight("PointLight");
-    light->setVisible(!light->isVisible());
+    mAnimationState = mEntity->getAnimationState("Attack2");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+    mAnimationState->setLength(2);
+
   }
-
-  mouseDownLastFrame = leftMouseDown;
-
-  // Second toggle method
-  toggleTimer -= fe.timeSinceLastFrame;
-
-  if ((toggleTimer < 0) && mMouse->getMouseState().buttonDown(OIS::MB_Right))
-  {
-    toggleTimer = .5;
-
-    Ogre::Light* light = mSceneMgr->getLight("PointLight");
-    light->setVisible(!light->isVisible());
-  }
-
-  // Moving the Ninja
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
   if (mKeyboard->isKeyDown(OIS::KC_K))
+  {
     dirVec.x -= move;
+    mAnimationState = mEntity->getAnimationState("Walk");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+  }
 
   if (mKeyboard->isKeyDown(OIS::KC_M))
+  {
     dirVec.x += move;
+    mAnimationState = mEntity->getAnimationState("Walk");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+  }
 
   if (mKeyboard->isKeyDown(OIS::KC_O))
+  {
     dirVec.z += move;
+    mAnimationState = mEntity->getAnimationState("Walk");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+  }
 
   if (mKeyboard->isKeyDown(OIS::KC_L))
+  {
     dirVec.z -= move;
+    mAnimationState = mEntity->getAnimationState("Walk");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+  }
+
+  if (mKeyboard->isKeyDown(OIS::KC_SPACE))
+  {
+    mAnimationState = mEntity->getAnimationState("Jump");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+  }
+
+  if (mKeyboard->isKeyDown(OIS::KC_I))
+  {
+    mAnimationState = mEntity->getAnimationState("Spin");
+    mAnimationState->setLoop(true);
+    mAnimationState->setEnabled(true);
+    mAnimationState->addTime(fe.timeSinceLastFrame);
+  }
 
   if (mKeyboard->isKeyDown(OIS::KC_J))
   {
@@ -112,6 +188,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mSceneMgr->getSceneNode("NinjaNode")->translate(
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
-
+  mAnimationState = mEntity->getAnimationState("Idle1");
+  mAnimationState->setLoop(true);
+  mAnimationState->setEnabled(true);
   return true;
 }
