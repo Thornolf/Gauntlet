@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 11:50:51 2017 Thomas Fossaert
+** Last update Fri May 26 17:06:03 2017 Adrien Warin
 */
 
 #include "Pc.hpp"
@@ -26,11 +26,6 @@ Pc& Pc::operator=(Pc const & other)
 }
 
 Pc::~Pc()
-{
-
-}
-
-void Pc::getDamage()
 {
 
 }
