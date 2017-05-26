@@ -151,6 +151,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     mAnimationState->setLoop(true);
     mAnimationState->setEnabled(true);
     mAnimationState->addTime(fe.timeSinceLastFrame);
+    if ((mNode->getOrientation()).getYaw() != Ogre::Degree(180))
+      mNode->yaw(Ogre::Degree(180));
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_SPACE))

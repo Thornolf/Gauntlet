@@ -21,6 +21,7 @@ This source file is part of the
 #include <Terrain/OgreTerrainGroup.h>
 
 #include "BaseGauntlet.hpp"
+#include "Position.hpp"
 
 class GameCore : public BaseGauntlet
 {
