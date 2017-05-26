@@ -1,46 +1,22 @@
-/*#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#define WIN32_LEAN_AND_MEAN
-#include "windows.h"
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-    INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
-#else
-    int main(int argc, char *argv[])
-#endif
-    {
-        // Create application object
-        TutorialApplication app;
-
-	        try {
-	            app.go();
-	        } catch( Ogre::Exception& e ) {
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-            MessageBox( NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
-#else
-            std::cerr << "An exception has occured: " <<
-                e.getFullDescription().c_str() << std::endl;
-#endif
-        }
-
-        return 0;
-    }
-
-#ifdef __cplusplus
-}
-#endif*/
+/*
+** main.cpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/src
+**
+** Made by Pierre
+** Login   <pierre@epitech.net>
+**
+** Started on  Wed May 24 10:40:34 2017 Pierre
+** Last update Wed May 24 14:32:29 2017 Pierre
+*/
 
 #include "Application.h"
+#include "audio/Music.hpp"
+#include "audio/SoundSystem.hpp"
 
 int						main()
 {
   try
     {
-      Application		app;
+      Application	app;
       app.go();
     }
   catch (Ogre::Exception const& e)
