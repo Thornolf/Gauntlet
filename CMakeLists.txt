@@ -111,9 +111,13 @@ set(HDRS
     ./include/Score/Score.hpp
     ./include/Configuration.hpp
 	./include/Ranged.hpp
-  ./include/audio/IAudio.hpp
-  ./include/audio/Music.hpp
-  ./include/audio/SoundSystem.hpp
+      ./include/audio/IAudio.hpp
+      ./include/audio/Music.hpp
+      ./include/audio/SoundSystem.hpp
+      ./include/Input/Device.hpp
+      ./include/Input/DeviceManager.hpp
+      ./include/Input/ParserInputFile.hpp
+    ./include/Melee.hpp
         )
 
 set(SRCS
@@ -130,14 +134,17 @@ set(SRCS
     ./src/GameObject/Character/Pc/Pc.cpp
     ./src/GameObject/GameObject.cpp
     ./src/Position/Position.cpp
+    ./src/Input/Device.cpp
     ./src/Score/Score.cpp
+    ./src/Melee.cpp
     ./src/Configuration.cpp
-		./src/GameObject/Character/Pc/Ranged.cpp
+	./src/GameObject/Character/Pc/Ranged.cpp
     ./src/audio/SoundSystem.cpp
     ./src/audio/Music.cpp
-        )
+    ./src/Input/DeviceManager.cpp
+    ./src/Input/ParserInputFile.cpp)
 
-include_directories( ${OIS_INCLUDE_DIRS}
+include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
         ${OGRE_SAMPLES_INCLUDEPATH}
         ${OGRE_Overlay_INCLUDE_DIRS}
