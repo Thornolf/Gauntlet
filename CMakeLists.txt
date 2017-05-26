@@ -132,7 +132,7 @@ set(SRCS
     ./src/Position/Position.cpp
     ./src/Score/Score.cpp
     ./src/Configuration.cpp
-		./src/Ranged.cpp
+		./src/GameObject/Character/Pc/Ranged.cpp
     ./src/audio/SoundSystem.cpp
     ./src/audio/Music.cpp
         )

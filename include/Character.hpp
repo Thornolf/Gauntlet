@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 13:58:28 2017 Thomas Fossaert
+** Last update Fri May 26 11:47:03 2017 Thomas Fossaert
 */
 
 #ifndef _CHARACTER_HPP_
@@ -35,6 +35,7 @@ public:
   /* Classes */
 
   virtual void getDamage();
+  virtual void takeDamage(size_t dmg);
   virtual void attack();
   virtual bool isAlive();
   virtual void getDistance();
