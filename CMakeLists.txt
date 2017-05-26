@@ -111,6 +111,9 @@ set(HDRS
     ./include/Score/Score.hpp
     ./include/Configuration.hpp
 	./include/Ranged.hpp
+  ./include/audio/IAudio.hpp
+  ./include/audio/Music.hpp
+  ./include/audio/SoundSystem.hpp
         )
 
 set(SRCS
@@ -128,8 +131,10 @@ set(SRCS
     ./src/GameObject/GameObject.cpp
     ./src/Position/Position.cpp
     ./src/Score/Score.cpp
-        ./src/Configuration.cpp
+    ./src/Configuration.cpp
 		./src/Ranged.cpp
+    ./src/audio/SoundSystem.cpp
+    ./src/audio/Music.cpp
         )
 
 include_directories( ${OIS_INCLUDE_DIRS}
@@ -139,6 +144,14 @@ include_directories( ${OIS_INCLUDE_DIRS}
         )
 
 add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+
+find_package(SFML 2 REQUIRED network audio graphics window system)
+if(SFML_FOUND)
+  include_directories(${SFML_INCLUDE_DIR})
+  target_link_libraries(OgreApp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+endif()
 
 set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
 

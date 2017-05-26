@@ -5,11 +5,12 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed May 24 13:46:25 2017 Thomas Fossaert
+// Last update Fri May 26 10:57:04 2017 Thomas Fossaert
 */
 
 #include "Application.h"
 #include "Position.hpp"
+#include "audio/Music.hpp"
 
 Application::Application()
 {
@@ -21,6 +22,8 @@ Application::~Application()
 
 void Application::createScene()
 {
+  Music *music = new Music();
+  music->playAudio("src/audio/all_star.ogg");
   mSceneMgr->setAmbientLight(Ogre::ColourValue(.25, .25, .25));
 
   Ogre::Light* pointLight = mSceneMgr->createLight("PointLight");
