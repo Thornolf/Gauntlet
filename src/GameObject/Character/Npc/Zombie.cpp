@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 14:12:09 2017 Thomas Fossaert
+** Last update Fri May 26 11:49:33 2017 Thomas Fossaert
 */
 
 #include "Zombie.hpp"
@@ -39,6 +39,14 @@ Zombie::~Zombie()
 void Zombie::getDamage()
 {
 
+}
+
+void Zombie::takeDamage(size_t dmg)
+{
+  if (this->_health - dmg < 0)
+    this->_health = 0;
+  else
+    this->_health = this->_health - dmg;
 }
 
 void Zombie::attack()

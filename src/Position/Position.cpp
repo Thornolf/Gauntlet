@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 09:37:41 2017 Adrien Warin
-** Last update Tue May 23 16:03:51 2017 Thomas Fossaert
+** Last update Thu May 25 17:11:42 2017 Thomas Fossaert
 */
 
 #include "Position.hpp"
@@ -68,19 +68,19 @@ Ogre::Vector3	Position::getVector() const
 void	Position::setXposition(int new_pos_x)
 {
   this->_x = new_pos_x;
-  this->_vector = Ogre::Vector3(new_pos_x, 0, 0);
+  this->_vector += Ogre::Vector3(new_pos_x, 0, 0);
 }
 
 void	Position::setYPosition(int new_pos_y)
 {
   this->_y = new_pos_y;
-  this->_vector = Ogre::Vector3(0, new_pos_y, 0);
+  this->_vector += Ogre::Vector3(0, new_pos_y, 0);
 }
 
 void	Position::setZPosition(int new_pos_z)
 {
   this->_z = new_pos_z;
-  this->_vector = Ogre::Vector3(0, 0, new_pos_z);
+  this->_vector += Ogre::Vector3(0, 0, new_pos_z);
 }
 
 void	Position::setPosition(int new_x, int new_y, int new_z)

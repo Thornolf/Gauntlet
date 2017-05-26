@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 14:12:23 2017 Thomas Fossaert
+** Last update Fri May 26 11:51:24 2017 Thomas Fossaert
 */
 
 #include "Npc.hpp"
@@ -33,6 +33,11 @@ Npc::~Npc()
 void Npc::getDamage()
 {
 
+}
+
+void Npc::takeDamage(size_t dmg)
+{
+  (void) dmg;
 }
 
 void Npc::attack()
