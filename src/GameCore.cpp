@@ -115,3 +115,5 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   return true;
 }
+
+void GameObject::hide(void) {}
