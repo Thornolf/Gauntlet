@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 10:16:02 2017 Adrien Warin
-** Last update Fri May 26 11:52:26 2017 Thomas Fossaert
+** Last update Fri May 26 16:47:28 2017 Adrien Warin
 */
 
 #include "Ranged.hpp"
@@ -27,11 +27,6 @@ Ranged& Ranged::operator=(Ranged const & other)
 }
 
 Ranged::~Ranged ()
-{
-
-}
-
-void Ranged::getDamage()
 {
 
 }

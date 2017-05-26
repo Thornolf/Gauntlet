@@ -133,7 +133,6 @@ set(SRCS
     ./src/Position/Position.cpp
     ./src/Score/Score.cpp
         ./src/Configuration.cpp
-		./src/Ranged.cpp
         ./src/Melee.cpp
     ./src/Configuration.cpp
 		./src/GameObject/Character/Pc/Ranged.cpp
