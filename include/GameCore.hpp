@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
-Filename:    Application.h
+Filename:    GameCore.h
 -----------------------------------------------------------------------------
 
 This source file is part of the
@@ -14,19 +14,19 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-#ifndef __Application_h_
-#define __Application_h_
+#ifndef __GameCore_h_
+#define __GameCore_h_
 
 #include <Terrain/OgreTerrain.h>
 #include <Terrain/OgreTerrainGroup.h>
 
-#include "BaseApplication.h"
+#include "BaseGauntlet.hpp"
 
-class Application : public BaseApplication
+class GameCore : public BaseGauntlet
 {
 public:
-  Application();
-  virtual ~Application();
+  GameCore();
+  virtual ~GameCore();
 protected:
   virtual void createScene();
   virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
@@ -34,4 +34,4 @@ private:
   bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 };
 
-#endif // #ifndef __Application_h_
+#endif // #ifndef __GameCore_h_

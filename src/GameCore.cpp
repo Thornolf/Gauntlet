@@ -1,5 +1,5 @@
 /*
-** Application.cpp for cpp_indie_studio in /home/fossae_t/rendu2/cpp_indie_studio/src
+** GameCore.cpp for cpp_indie_studio in /home/fossae_t/rendu2/cpp_indie_studio/src
 **
 ** Made by Thomas Fossaert
 ** Login   <fossae_t@epitech.net>
@@ -8,19 +8,19 @@
 // Last update Fri May 26 10:57:04 2017 Thomas Fossaert
 */
 
-#include "Application.h"
+#include "GameCore.hpp"
 #include "Position.hpp"
 #include "audio/Music.hpp"
 
-Application::Application()
+GameCore::GameCore()
 {
 }
 
-Application::~Application()
+GameCore::~GameCore()
 {
 }
 
-void Application::createScene()
+void GameCore::createScene()
 {
   Music *music = new Music();
   music->playAudio("src/audio/all_star.ogg");
@@ -39,9 +39,9 @@ void Application::createScene()
 
 }
 
-bool Application::frameRenderingQueued(const Ogre::FrameEvent& fe)
+bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
-  bool ret = BaseApplication::frameRenderingQueued(fe);
+  bool ret = BaseGauntlet::frameRenderingQueued(fe);
 
   if (!processUnbufferedInput(fe))
     return false;
@@ -49,7 +49,7 @@ bool Application::frameRenderingQueued(const Ogre::FrameEvent& fe)
   return ret;
 }
 
-bool Application::processUnbufferedInput(const Ogre::FrameEvent& fe)
+bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
   static bool mouseDownLastFrame = false;
   static Ogre::Real toggleTimer = 0.0;

@@ -96,8 +96,8 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
 
 set(HDRS
-    ./include/BaseApplication.h
-    ./include/Application.h
+    ./include/BaseGauntlet.hpp
+    ./include/GameCore.hpp
     ./include/IndieException.hpp
     ./include/Character.hpp
     ./include/foodStack.hpp
@@ -119,8 +119,8 @@ set(HDRS
 set(SRCS
     ./src/main.cpp
     ./src/IndieException.cpp
-    ./src/BaseApplication.cpp
-    ./src/Application.cpp
+    ./src/BaseGauntlet.cpp
+    ./src/GameCore.cpp
     ./src/GameObject/Loot/Loot.cpp
     ./src/GameObject/Loot/goldStack.cpp
     ./src/GameObject/Loot/foodStack.cpp
