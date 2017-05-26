@@ -4,12 +4,12 @@ Filename:    BaseApplication.cpp
 -----------------------------------------------------------------------------
 
 This source file is part of the
-   ___                 __    __ _ _    _ 
+   ___                 __    __ _ _    _
   /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
  //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
 / \_// (_| | | |  __/  \  /\  /| |   <| |
 \___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/                              
+      |___/
       Tutorial Framework
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
@@ -115,7 +115,7 @@ void BaseApplication::createFrameListener(void)
     Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
 	OgreBites::InputContext inputContext;
-	inputContext.mMouse = mMouse; 
+	inputContext.mMouse = mMouse;
 	inputContext.mKeyboard = mKeyboard;
     mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);

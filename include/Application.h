@@ -17,16 +17,21 @@ This source file is part of the
 #ifndef __Application_h_
 #define __Application_h_
 
+#include <Terrain/OgreTerrain.h>
+#include <Terrain/OgreTerrainGroup.h>
+
 #include "BaseApplication.h"
 
 class Application : public BaseApplication
 {
 public:
-    Application(void);
-    virtual ~Application(void);
-
+  Application();
+  virtual ~Application();
 protected:
-    virtual void createScene(void);
+  virtual void createScene();
+  virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
+private:
+  bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 };
 
 #endif // #ifndef __Application_h_

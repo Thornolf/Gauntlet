@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon May 22 10:00:41 2017 Thomas Fossaert
+** Last update Mon May 22 15:45:53 2017 Thomas Fossaert
 */
 
 #ifndef _NPC_HPP_
@@ -17,10 +17,10 @@
 class Npc : public Character
 {
 public:
-  Npc();
+  Npc(int x, int y, int z);
   Npc(Npc const &);
   Npc& operator=(Npc const &);
-  //virtual ~Npc();
+  virtual ~Npc();
 
   /* Classes */
 
