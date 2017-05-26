@@ -94,7 +94,7 @@ protected:
     OIS::Mouse*    mMouse;
     OIS::Keyboard* mKeyboard;
 
-    Position *pinguinPos;
+    Ogre::AnimationState* mAnimationState;
 };
 
 #endif // #ifndef __BaseApplication_h_

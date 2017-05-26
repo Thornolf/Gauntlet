@@ -33,7 +33,6 @@ BaseApplication::BaseApplication(void)
     mMouse(0),
     mKeyboard(0)
 {
-  pinguinPos = new Position(0, 0, 0);
 }
 
 //-------------------------------------------------------------------------------------
