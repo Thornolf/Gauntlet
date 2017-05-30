@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 10:15:37 2017 Adrien Warin
-** Last update Wed May 24 11:06:15 2017 Adrien Warin
+** Last update Fri May 26 16:39:26 2017 Adrien Warin
 */
 
 #ifndef RANGED_HPP_
@@ -26,8 +26,8 @@ class Ranged : public Pc
 
         /* Méthodes */
 
-        virtual void getDamage();
         virtual void attack();
+        virtual void takeDamage(size_t dmg);
         virtual bool isAlive();
         virtual void getDistance();
         virtual size_t getRange();

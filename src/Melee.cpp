@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 11:21:55 2017 Adrien Warin
-** Last update Wed May 24 11:54:59 2017 Adrien Warin
+** Last update Fri May 26 16:40:51 2017 Adrien Warin
 */
 
 #include "Melee.hpp"
@@ -31,10 +31,11 @@ Melee::~Melee ()
 
 }
 
-void Melee::getDamage()
+void Melee::takeDamage(size_t dmg)
 {
-
+    (void) dmg;
 }
+
 
 void Melee::attack()
 {

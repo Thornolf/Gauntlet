@@ -1,21 +1,21 @@
 /*
 -----------------------------------------------------------------------------
-Filename:    BaseApplication.h
+Filename:    BaseGauntlet.h
 -----------------------------------------------------------------------------
 
 This source file is part of the
-   ___                 __    __ _ _    _ 
+   ___                 __    __ _ _    _
   /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
  //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
 / \_// (_| | | |  __/  \  /\  /| |   <| |
 \___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/                              
+      |___/
       Tutorial Framework
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-#ifndef __BaseApplication_h_
-#define __BaseApplication_h_
+#ifndef __BaseGauntlet_h_
+#define __BaseGauntlet_h_
 
 #include <OgreCamera.h>
 #include <OgreEntity.h>
@@ -33,12 +33,15 @@ This source file is part of the
 
 #include <SdkTrays.h>
 #include <SdkCameraMan.h>
+#include "NewMOC.hpp"
 
-class BaseApplication : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
+using namespace Collision;
+
+class BaseGauntlet : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
 {
 public:
-    BaseApplication(void);
-    virtual ~BaseApplication(void);
+    BaseGauntlet(void);
+    virtual ~BaseGauntlet(void);
 
     virtual void go(void);
 
@@ -78,7 +81,8 @@ protected:
     Ogre::RenderWindow* mWindow;
     Ogre::String mResourcesCfg;
     Ogre::String mPluginsCfg;
-	Ogre::OverlaySystem *mOverlaySystem;
+	  Ogre::OverlaySystem *mOverlaySystem;
+    CollisionTools* collision;
 
     // OgreBites
     OgreBites::SdkTrayManager* mTrayMgr;
@@ -93,4 +97,4 @@ protected:
     OIS::Keyboard* mKeyboard;
 };
 
-#endif // #ifndef __BaseApplication_h_
+#endif // #ifndef __BaseGauntlet_h_

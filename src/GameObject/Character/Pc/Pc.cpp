@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Tue May 23 15:27:59 2017 Thomas Fossaert
+** Last update Fri May 26 17:06:03 2017 Adrien Warin
 */
 
 #include "Pc.hpp"
@@ -30,14 +30,14 @@ Pc::~Pc()
 
 }
 
-void Pc::getDamage()
+void Pc::attack()
 {
 
 }
 
-void Pc::attack()
+void Pc::takeDamage(size_t dmg)
 {
-
+  (void) dmg;
 }
 
 bool Pc::isAlive()

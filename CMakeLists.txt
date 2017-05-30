@@ -96,8 +96,8 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
 
 set(HDRS
-    ./include/BaseApplication.h
-    ./include/Application.h
+    ./include/BaseGauntlet.hpp
+    ./include/GameCore.hpp
     ./include/IndieException.hpp
     ./include/Character.hpp
     ./include/foodStack.hpp
@@ -111,38 +111,59 @@ set(HDRS
     ./include/Score/Score.hpp
     ./include/Configuration.hpp
 	./include/Ranged.hpp
+      ./include/audio/IAudio.hpp
+      ./include/audio/Music.hpp
+      ./include/audio/SoundSystem.hpp
+      ./include/Input/Device.hpp
+      ./include/Input/DeviceManager.hpp
+      ./include/Input/ParserInputFile.hpp
     ./include/Melee.hpp
+    ./include/NewMOC.hpp
+    ./include/Animation.hpp
         )
 
 set(SRCS
-        ./src/main.cpp
-        ./src/IndieException.cpp
-        ./src/BaseApplication.cpp
-        ./src/Application.cpp
-        ./src/GameObject/Loot/Loot.cpp
-        ./src/GameObject/Loot/goldStack.cpp
-        ./src/GameObject/Loot/foodStack.cpp
-        ./src/GameObject/Character/Character.cpp
-        ./src/GameObject/Character/Npc/Npc.cpp
-        ./src/GameObject/Character/Npc/Zombie.cpp
-        ./src/GameObject/Character/Pc/Pc.cpp
-        ./src/GameObject/GameObject.cpp
-        ./src/Position/Position.cpp
-        ./src/Score/Score.cpp
-        ./src/Configuration.cpp
-		./src/Ranged.cpp
-        ./src/Melee.cpp
-        )
+    ./src/main.cpp
+    ./src/Animation/Animation.cpp
+    ./src/IndieException.cpp
+    ./src/BaseGauntlet.cpp
+    ./src/GameCore.cpp
+    ./src/GameObject/Loot/Loot.cpp
+    ./src/GameObject/Loot/goldStack.cpp
+    ./src/GameObject/Loot/foodStack.cpp
+    ./src/GameObject/Character/Character.cpp
+    ./src/GameObject/Character/Npc/Npc.cpp
+    ./src/GameObject/Character/Npc/Zombie.cpp
+    ./src/GameObject/Character/Pc/Pc.cpp
+    ./src/GameObject/GameObject.cpp
+    ./src/Position/Position.cpp
+    ./src/Input/Device.cpp
+    ./src/Score/Score.cpp
+    ./src/Melee.cpp
+    ./src/Configuration.cpp
+	./src/GameObject/Character/Pc/Ranged.cpp
+    ./src/audio/SoundSystem.cpp
+    ./src/audio/Music.cpp
+    ./src/Input/DeviceManager.cpp
+    ./src/Input/ParserInputFile.cpp
+  ./src/NewMOC.cpp
+  )
 
-SET_SOURCE_FILES_PROPERTIES("./src/Configuration.cpp" PROPERTIES COMPILE_FLAGS "-W -Wall -Wextra -Werror")
-
-include_directories( ${OIS_INCLUDE_DIRS}
+include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
         ${OGRE_SAMPLES_INCLUDEPATH}
         ${OGRE_Overlay_INCLUDE_DIRS}
         )
 
 add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+
+find_package(SFML 2 REQUIRED network audio graphics window system)
+if(SFML_FOUND)
+  include_directories(${SFML_INCLUDE_DIR})
+  target_link_libraries(OgreApp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+endif()
 
 set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
 

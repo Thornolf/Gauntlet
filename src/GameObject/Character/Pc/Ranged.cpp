@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 10:16:02 2017 Adrien Warin
-** Last update Wed May 24 11:10:11 2017 Adrien Warin
+** Last update Fri May 26 16:47:28 2017 Adrien Warin
 */
 
 #include "Ranged.hpp"
@@ -31,9 +31,9 @@ Ranged::~Ranged ()
 
 }
 
-void Ranged::getDamage()
+void Ranged::takeDamage(size_t dmg)
 {
-
+  (void) dmg;
 }
 
 void Ranged::attack()
