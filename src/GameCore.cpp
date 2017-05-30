@@ -35,12 +35,14 @@ void GameCore::createScene()
      mWalkList.push_back(Ogre::Vector3(-100.0f,  0.0f, -200.0f));
      // Create objects so we can see movement
      Ogre::Entity *ent;
+     Ogre::Entity *wall;
      Ogre::SceneNode *node;
 
-     ent = mSceneMgr->createEntity("Knot1", "robot.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot1Node", Ogre::Vector3(0.0f, -10.0f,  25.0f));
-     node->attachObject(ent);
-     node->setScale(0.1f, 0.1f, 0.1f);
+     wall = mSceneMgr->createEntity("Cube", "cube.mesh");
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
+     node->attachObject(wall);
+     wall->setMaterialName("Examples/Rocky");
+     node->setScale(15.0f, 7.0f, 0.3f);
 
      ent = mSceneMgr->createEntity("Knot2", "robot.mesh");
      node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot2Node", Ogre::Vector3(550.0f, -10.0f,  50.0f));
@@ -57,17 +59,23 @@ void GameCore::createScene()
      mCamera->pitch(Ogre::Degree(-30.0f));
      mCamera->yaw(Ogre::Degree(-15.0f));
 
-  Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+     Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 
-  Ogre::MeshManager::getSingleton().createPlane("ground",
-  Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-  plane, 1500, 1500, 20, 20, true, 1, 5, 5,
-  Ogre::Vector3::UNIT_Z);
+     Ogre::MeshManager::getSingleton().createPlane("ground",
+     Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+     plane, 1500, 1500, 20, 20, true, 1, 5, 5,
+     Ogre::Vector3::UNIT_Z);
 
-  Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
-  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
+     Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
+     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
 
-  groundEntity->setMaterialName("Examples/Rockwall");
+     groundEntity->setMaterialName("Examples/Rockwall");
+
+     CollisionTools *collision = new CollisionTools();
+
+     collision->register_entity(mEntity, COLLISION_BOX);
+     collision->register_entity(wall, COLLISION_BOX);
+
   /*mAnimationState = ninjaEntity->getAnimationState("Idle1");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);*/
@@ -93,7 +101,6 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
     mAnimationState->setLoop(true);
     mAnimationState->setEnabled(true);*/
   mAnimationState->addTime(fe.timeSinceLastFrame);
-
   return ret;
 }
 
@@ -116,6 +123,12 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   }
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
+
+  SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(/*mNode->getPosition(), Ogre::Vector3(0.0f, 50.0f,  750.0f)*/), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
+  if (collider.collided)
+  {
+      dirVec.x += 500;
+  }
 
   if (mKeyboard->isKeyDown(OIS::KC_K))
   {
@@ -151,8 +164,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     mAnimationState->setLoop(true);
     mAnimationState->setEnabled(true);
     mAnimationState->addTime(fe.timeSinceLastFrame);
-    if ((mNode->getOrientation()).getYaw() != Ogre::Degree(180))
-      mNode->yaw(Ogre::Degree(180));
+    /*if ((mNode->getOrientation()).getYaw() != Ogre::Degree(180))
+      mNode->yaw(Ogre::Degree(180));*/
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_SPACE))

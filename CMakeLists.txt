@@ -118,6 +118,7 @@ set(HDRS
       ./include/Input/DeviceManager.hpp
       ./include/Input/ParserInputFile.hpp
     ./include/Melee.hpp
+    ./include/NewMOC.hpp
         )
 
 set(SRCS
@@ -142,7 +143,8 @@ set(SRCS
     ./src/audio/SoundSystem.cpp
     ./src/audio/Music.cpp
     ./src/Input/DeviceManager.cpp
-    ./src/Input/ParserInputFile.cpp)
+    ./src/Input/ParserInputFile.cpp
+  ./src/NewMOC.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
