@@ -22,6 +22,7 @@ This source file is part of the
 
 #include "BaseGauntlet.hpp"
 #include "Position.hpp"
+#include "Animation.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -44,6 +45,7 @@ protected:
     Ogre::AnimationState *mAnimationState; // The current animation state of the object
 
     Ogre::Entity *mEntity;                 // The Entity we are animating
+    Animation *_animation;
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
     std::deque<Ogre::Vector3> mWalkList;   // The list of points we are walking to
 

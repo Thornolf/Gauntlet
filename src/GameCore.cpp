@@ -22,18 +22,12 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  // Set the default lighting.
      mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-     // Create the entity
      mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 
-     // Create the scene node
      mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(0.0f, 0.0f, 25.0f));
      mNode->attachObject(mEntity);
-     // Create the walking list
-     mWalkList.push_back(Ogre::Vector3(550.0f,  0.0f,  50.0f ));
-     mWalkList.push_back(Ogre::Vector3(-100.0f,  0.0f, -200.0f));
-     // Create objects so we can see movement
+
      Ogre::Entity *ent;
      Ogre::Entity *wall;
      Ogre::SceneNode *node;
@@ -44,48 +38,29 @@ void GameCore::createScene()
      wall->setMaterialName("Examples/Rocky");
      node->setScale(15.0f, 7.0f, 0.3f);
 
-     ent = mSceneMgr->createEntity("Knot2", "robot.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot2Node", Ogre::Vector3(550.0f, -10.0f,  50.0f));
+     ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(100.0f, 60.0f, -100.0f));
      node->attachObject(ent);
-     node->setScale(0.1f, 0.1f, 0.1f);
-
-     ent = mSceneMgr->createEntity("Knot3", "robot.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Knot3Node", Ogre::Vector3(-100.0f, -10.0f,-200.0f));
-     node->attachObject(ent);
-     node->setScale(0.1f, 0.1f, 0.1f);
-
-     // Set the camera to look at our handiwork
-     mCamera->setPosition(90.0f, 280.0f, 535.0f);
-     mCamera->pitch(Ogre::Degree(-30.0f));
-     mCamera->yaw(Ogre::Degree(-15.0f));
+     node->setScale(3.0f, 3.0f, 3.0f);
 
      Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-
      Ogre::MeshManager::getSingleton().createPlane("ground",
      Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
      plane, 1500, 1500, 20, 20, true, 1, 5, 5,
      Ogre::Vector3::UNIT_Z);
-
      Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
      mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
-
      groundEntity->setMaterialName("Examples/Rockwall");
 
-     CollisionTools *collision = new CollisionTools();
 
+     CollisionTools *collision = new CollisionTools();
      collision->register_entity(mEntity, COLLISION_BOX);
      collision->register_entity(wall, COLLISION_BOX);
-
-  /*mAnimationState = ninjaEntity->getAnimationState("Idle1");
-  mAnimationState->setLoop(true);
-  mAnimationState->setEnabled(true);*/
-
 }
 
 void GameCore::createFrameListener(void)
 {
     BaseGauntlet::createFrameListener();
-    // Set idle animation
     mAnimationState = mEntity->getAnimationState("Idle1");
     mAnimationState->setLoop(true);
     mAnimationState->setEnabled(true);
@@ -97,9 +72,6 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
   if (!processUnbufferedInput(fe))
     return false;
-    /*mAnimationState = mEntity->getAnimationState("Walk");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);*/
   mAnimationState->addTime(fe.timeSinceLastFrame);
   return ret;
 }
@@ -133,71 +105,25 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   if (mKeyboard->isKeyDown(OIS::KC_K))
   {
     dirVec.x -= move;
-    mAnimationState = mEntity->getAnimationState("Walk");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_M))
   {
     dirVec.x += move;
-    mAnimationState = mEntity->getAnimationState("Walk");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_O))
   {
     dirVec.z += move;
-    mAnimationState = mEntity->getAnimationState("Walk");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
     dirVec.z -= move;
-    mAnimationState = mEntity->getAnimationState("Walk");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
-    /*if ((mNode->getOrientation()).getYaw() != Ogre::Degree(180))
-      mNode->yaw(Ogre::Degree(180));*/
-  }
-
-  if (mKeyboard->isKeyDown(OIS::KC_SPACE))
-  {
-    mAnimationState = mEntity->getAnimationState("Jump");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
-  }
-
-  if (mKeyboard->isKeyDown(OIS::KC_I))
-  {
-    mAnimationState = mEntity->getAnimationState("Spin");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
-  }
-
-  if (mKeyboard->isKeyDown(OIS::KC_J))
-  {
-    if (mKeyboard->isKeyDown(OIS::KC_LSHIFT))
-      mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Degree(5 * rotate));
-    else
-      dirVec.x -= move;
-  }
-
-  if (mKeyboard->isKeyDown(OIS::KC_U))
-  {
-    if (mKeyboard->isKeyDown(OIS::KC_LSHIFT))
-      mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Degree(-5 * rotate));
-    else
-      dirVec.x += move;
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
 
   mSceneMgr->getSceneNode("NinjaNode")->translate(

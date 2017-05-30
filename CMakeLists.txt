@@ -119,10 +119,12 @@ set(HDRS
       ./include/Input/ParserInputFile.hpp
     ./include/Melee.hpp
     ./include/NewMOC.hpp
+    ./include/Animation.hpp
         )
 
 set(SRCS
     ./src/main.cpp
+    ./src/Animation/Animation.cpp
     ./src/IndieException.cpp
     ./src/BaseGauntlet.cpp
     ./src/GameCore.cpp
@@ -144,7 +146,8 @@ set(SRCS
     ./src/audio/Music.cpp
     ./src/Input/DeviceManager.cpp
     ./src/Input/ParserInputFile.cpp
-  ./src/NewMOC.cpp)
+  ./src/NewMOC.cpp
+  )
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
