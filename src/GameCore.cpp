@@ -138,3 +138,5 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mAnimationState->setEnabled(true);
   return true;
 }
+
+void GameObject::hide(void) {}
