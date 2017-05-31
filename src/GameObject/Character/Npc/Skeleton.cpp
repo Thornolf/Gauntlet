@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 12:02:08 2017 Thomas Fossaert
+** Last update Wed May 31 11:03:51 2017 Quentin Baudet
 */
 
 #include "Skeleton.hpp"
@@ -41,7 +41,7 @@ void Skeleton::getDamage()
 
 }
 
-void Skeleton::takeDamage(size_t dmg)
+void Skeleton::takeDamage(int dmg)
 {
   if (this->_health - dmg < 0)
     this->_health = 0;
@@ -69,7 +69,7 @@ void Skeleton::getDistance()
 
 }
 
-size_t Skeleton::getRange()
+int Skeleton::getRange()
 {
   return (_range);
 }
