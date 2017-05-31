@@ -31,6 +31,7 @@ void GameCore::createScene()
      Ogre::Entity *ent;
      Ogre::Entity *wall;
      Ogre::SceneNode *node;
+      mCamera->lookAt(Ogre::Vector3(200.0f, 0.0f, 25.0f));
 
      wall = mSceneMgr->createEntity("Cube", "cube.mesh");
      node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
@@ -39,7 +40,7 @@ void GameCore::createScene()
      node->setScale(15.0f, 7.0f, 0.3f);
 
      ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(100.0f, 60.0f, -100.0f));
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(100.0f, 80.0f, -750.0f));
      node->attachObject(ent);
      node->setScale(3.0f, 3.0f, 3.0f);
 
@@ -54,8 +55,9 @@ void GameCore::createScene()
 
 
      CollisionTools *collision = new CollisionTools();
-     collision->register_entity(mEntity, COLLISION_BOX);
-     collision->register_entity(wall, COLLISION_BOX);
+     collision->register_entity(mEntity, COLLISION_ACCURATE);
+     collision->register_entity(wall, COLLISION_ACCURATE);
+     collision->register_entity(ent, COLLISION_ACCURATE);
 }
 
 void GameCore::createFrameListener(void)
@@ -96,10 +98,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   }
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(/*mNode->getPosition(), Ogre::Vector3(0.0f, 50.0f,  750.0f)*/), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
+  SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(mNode->getPosition(), Ogre::Vector3(100.0f, 0.0f,  100.0f)), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
   if (collider.collided)
   {
-      dirVec.x += 500;
+      dirVec.y += 500;
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_K))
