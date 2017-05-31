@@ -19,7 +19,7 @@ class Melee : public Pc
     private:
 
     public:
-        Melee (int, int, int);
+        Melee (const std::string &, int, int, int);
         Melee(Melee const &);
         Melee& operator=(Melee const &);
         virtual ~Melee ();

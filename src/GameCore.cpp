@@ -23,42 +23,42 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-     mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-     mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+  mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 
-     mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(0.0f, 0.0f, 25.0f));
-     mNode->attachObject(mEntity);
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(0.0f, 0.0f, 25.0f));
+  mNode->attachObject(mEntity);
 
-     Ogre::Entity *ent;
-     Ogre::Entity *wall;
-     Ogre::SceneNode *node;
-      mCamera->lookAt(Ogre::Vector3(200.0f, 0.0f, 25.0f));
+  Ogre::Entity *ent;
+  Ogre::Entity *wall;
+  Ogre::SceneNode *node;
+  mCamera->lookAt(Ogre::Vector3(200.0f, 0.0f, 25.0f));
 
-     wall = mSceneMgr->createEntity("Cube", "cube.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
-     node->attachObject(wall);
-     wall->setMaterialName("Examples/Rocky");
-     node->setScale(15.0f, 7.0f, 0.3f);
+  wall = mSceneMgr->createEntity("Cube", "cube.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
+  node->attachObject(wall);
+  wall->setMaterialName("Examples/Rocky");
+  node->setScale(15.0f, 7.0f, 0.3f);
 
-     ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 00.0f, -750.0f));
-     node->attachObject(ent);
-     node->setScale(3.0f, 3.0f, 3.0f);
+  ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 00.0f, -750.0f));
+  node->attachObject(ent);
+  node->setScale(3.0f, 3.0f, 3.0f);
 
-     Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-     Ogre::MeshManager::getSingleton().createPlane("ground",
-     Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-     plane, 1500, 1500, 20, 20, true, 1, 5, 5,
-     Ogre::Vector3::UNIT_Z);
-     Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
-     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
-     groundEntity->setMaterialName("Examples/Rockwall");
+  Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+  Ogre::MeshManager::getSingleton().createPlane("ground",
+						Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+						plane, 1500, 1500, 20, 20, true, 1, 5, 5,
+						Ogre::Vector3::UNIT_Z);
+  Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
+  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
+  groundEntity->setMaterialName("Examples/Rockwall");
 
 
-     CollisionTools *collision = new CollisionTools();
-     collision->register_entity(mEntity, COLLISION_ACCURATE);
-     collision->register_entity(wall, COLLISION_ACCURATE);
-     collision->register_entity(ent, COLLISION_ACCURATE);
+  CollisionTools *collision = new CollisionTools();
+  collision->register_entity(mEntity, COLLISION_ACCURATE);
+  collision->register_entity(wall, COLLISION_ACCURATE);
+  collision->register_entity(ent, COLLISION_ACCURATE);
 }
 
 void GameCore::createFrameListener(void)

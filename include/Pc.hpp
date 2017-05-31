@@ -11,13 +11,14 @@
 #ifndef		_PC_HPP_
 # define	_PC_HPP_
 # include	<iostream>
+# include	<string>
 # include	"Character.hpp"
 # include	"Input/Device.hpp"
 
 class Pc : public Character
 {
 public:
-  Pc(int x, int y, int z);
+  Pc(const std::string &, int, int, int);
   Pc(Pc const &);
   Pc& operator=(Pc const &);
   virtual ~Pc();
@@ -25,13 +26,17 @@ public:
   /* Classes */
 
   virtual void		attack();
-  virtual void		takeDamage(int dmg);
+  virtual void		takeDamage(int);
   virtual bool		isAlive();
   virtual void		getDistance();
   virtual int		getRange();
-  void			setDevice(Device *dev);
+  void			setDevice(Device *);
+  Device		*getDevice(void) const;
+  const std::string	&getName(void) const;
+
 private:
-  Device	*_device;
+  Device		*_device;
+  const std::string	_name;
 };
 
 #endif

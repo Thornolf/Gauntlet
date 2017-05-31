@@ -14,6 +14,8 @@
 # include	<string>
 # include	<OIS.h>
 # include	<Ogre.h>
+# include	<fstream>
+# include	<iostream>
 # include	"Input/DeviceManager.hpp"
 # include	"IndieException.hpp"
 # include	"Input/ParserInputFile.hpp"
