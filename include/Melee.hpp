@@ -26,11 +26,11 @@ class Melee : public Pc
 
         /* Méthodes */
 
-        virtual void takeDamage(size_t);
-        virtual void attack();
-        virtual bool isAlive();
-        virtual void getDistance();
-        virtual size_t getRange();
+        virtual void	takeDamage(int);
+        virtual void	attack();
+        virtual bool	isAlive();
+        virtual void	getDistance();
+        virtual int	getRange();
 };
 
 #endif

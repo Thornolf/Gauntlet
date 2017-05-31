@@ -28,7 +28,7 @@ public:
   virtual void		takeDamage(int dmg);
   virtual bool		isAlive();
   virtual void		getDistance();
-  virtual size_t	getRange();
+  virtual int		getRange();
   void			setDevice(Device *dev);
 private:
   Device	*_device;

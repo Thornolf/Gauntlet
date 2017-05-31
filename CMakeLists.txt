@@ -124,7 +124,7 @@ set(SRCS
         ./src/Position/Position.cpp
         ./src/Input/Device.cpp
         ./src/Score/Score.cpp
-        ./src/Melee.cpp
+        src/GameObject/Character/Pc/Melee.cpp
         ./src/Configuration.cpp
         ./src/GameObject/Character/Pc/Ranged.cpp
         ./src/audio/SoundSystem.cpp
