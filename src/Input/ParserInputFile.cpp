@@ -1,11 +1,11 @@
 /*
-** ParserInputFile.cpp for OgreApp in /home/guillobits/workspace/epitech/cpp_indie_studio/src/Input/ParserInputFile.cpp
+** ParserInputFile.cpp for OgreApp
 **
 ** Made by Guillaume CAUCHOIS
 ** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed May 24 17:03:55 2017 Guillaume CAUCHOIS
-** Last update Wed May 24 17:03:55 2017 Guillaume CAUCHOIS
+** Started on  Wed May 31 09:04:59 2017 Guillaume CAUCHOIS
+** Last update Wed May 31 09:04:59 2017 Guillaume CAUCHOIS
 */
 
 #include "Input/ParserInputFile.hpp"
@@ -14,7 +14,7 @@ ParserInputFile::ParserInputFile() {}
 
 ParserInputFile::~ParserInputFile() {}
 
-void		ParserInputFile::saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data) const
+void		ParserInputFile::saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data, const std::string &path) const
 {
 
 }
