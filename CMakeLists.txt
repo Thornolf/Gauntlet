@@ -139,6 +139,8 @@ include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_Overlay_INCLUDE_DIRS}
         )
 
+SET_SOURCE_FILES_PROPERTIES(${SRCS} PROPERTIES COMPILE_FLAGS -W -Wall -Wextra)
+
 add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
