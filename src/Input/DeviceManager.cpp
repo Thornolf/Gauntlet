@@ -1,14 +1,13 @@
 /*
-** DeviceManager.cpp for Gauntlet
+** DeviceManager.cpp for OgreApp
 **
 ** Made by Guillaume CAUCHOIS
 ** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed May 24 13:55:40 2017 Guillaume CAUCHOIS
-** Last update Wed May 24 13:55:40 2017 Guillaume CAUCHOIS
+** Started on  Wed May 31 09:04:05 2017 Guillaume CAUCHOIS
+** Last update Wed May 31 09:04:05 2017 Guillaume CAUCHOIS
 */
 
-#include <Ogre.h>
 #include "Input/DeviceManager.hpp"
 
 DeviceManager::DeviceManager(Ogre::RenderWindow *win)

@@ -33,6 +33,9 @@ This source file is part of the
 
 #include <SdkTrays.h>
 #include <SdkCameraMan.h>
+#include "NewMOC.hpp"
+
+using namespace Collision;
 
 class BaseGauntlet : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
 {
@@ -78,7 +81,8 @@ protected:
     Ogre::RenderWindow* mWindow;
     Ogre::String mResourcesCfg;
     Ogre::String mPluginsCfg;
-	Ogre::OverlaySystem *mOverlaySystem;
+	  Ogre::OverlaySystem *mOverlaySystem;
+    CollisionTools* collision;
 
     // OgreBites
     OgreBites::SdkTrayManager* mTrayMgr;

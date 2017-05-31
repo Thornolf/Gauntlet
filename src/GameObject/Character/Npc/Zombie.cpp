@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 11:49:33 2017 Thomas Fossaert
+** Last update Wed May 31 11:04:02 2017 Quentin Baudet
 */
 
 #include "Zombie.hpp"
@@ -41,7 +41,7 @@ void Zombie::getDamage()
 
 }
 
-void Zombie::takeDamage(size_t dmg)
+void Zombie::takeDamage(int dmg)
 {
   if (this->_health - dmg < 0)
     this->_health = 0;
@@ -69,7 +69,7 @@ void Zombie::getDistance()
 
 }
 
-size_t Zombie::getRange()
+int Zombie::getRange()
 {
   return (_range);
 }

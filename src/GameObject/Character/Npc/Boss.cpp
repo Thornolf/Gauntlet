@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 12:03:44 2017 Thomas Fossaert
+** Last update Wed May 31 11:02:57 2017 baudet_q
 */
 
 #include "Boss.hpp"
@@ -41,7 +41,7 @@ void Boss::getDamage()
 
 }
 
-void Boss::takeDamage(size_t dmg)
+void Boss::takeDamage(int dmg)
 {
   if (this->_health - dmg < 0)
     this->_health = 0;
@@ -69,7 +69,7 @@ void Boss::getDistance()
 
 }
 
-size_t Boss::getRange()
+int Boss::getRange()
 {
   return (_range);
 }
