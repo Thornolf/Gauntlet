@@ -23,6 +23,8 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
+    Zombie *mZob = new Zombie(100, 100, 100);
+    Position *mPosition = new Position(100, 100, -1456);
      mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
      mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 
@@ -32,23 +34,25 @@ void GameCore::createScene()
      Ogre::Entity *ent;
      Ogre::Entity *wall;
      Ogre::SceneNode *node;
-      mCamera->lookAt(Ogre::Vector3(200.0f, 0.0f, 25.0f));
-
+      //mCamera->lookAt(Ogre::Vector3(200.0f, 0.0f, 25.0f));
+     mNode->attachObject(mCamera);
      wall = mSceneMgr->createEntity("Cube", "cube.mesh");
      node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
      node->attachObject(wall);
      wall->setMaterialName("Examples/Rocky");
      node->setScale(15.0f, 7.0f, 0.3f);
 
-     ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 00.0f, -750.0f));
-     node->attachObject(ent);
-     node->setScale(3.0f, 3.0f, 3.0f);
+     mZombieEnt = mSceneMgr->createEntity("Robot", "robot.mesh");
+     mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
+     mZombie->attachObject(mZombieEnt);
+     mZombie->setScale(3.0f, 3.0f, 3.0f);
+
+     mZob->setOgreBase(mSceneMgr);
 
      Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
      Ogre::MeshManager::getSingleton().createPlane("ground",
      Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-     plane, 1500, 1500, 20, 20, true, 1, 5, 5,
+     plane, 1500, 1500, 20, 20, true, 1, 20, 20,
      Ogre::Vector3::UNIT_Z);
      Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
      mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
@@ -58,7 +62,9 @@ void GameCore::createScene()
      CollisionTools *collision = new CollisionTools();
      collision->register_entity(mEntity, COLLISION_ACCURATE);
      collision->register_entity(wall, COLLISION_ACCURATE);
-     collision->register_entity(ent, COLLISION_ACCURATE);
+     collision->register_entity(mZombieEnt, COLLISION_ACCURATE);
+
+     Script *mScript = new Script();
 }
 
 void GameCore::createFrameListener(void)
@@ -67,6 +73,10 @@ void GameCore::createFrameListener(void)
   mAnimationState = mEntity->getAnimationState("Idle1");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
+
+  mAnimationStateZombie = mZombieEnt->getAnimationState("Walk");
+  mAnimationStateZombie->setLoop(true);
+  mAnimationStateZombie->setEnabled(true);
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -76,6 +86,7 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
   if (!processUnbufferedInput(fe))
     return false;
   mAnimationState->addTime(fe.timeSinceLastFrame);
+  mAnimationStateZombie->addTime(fe.timeSinceLastFrame);
   return ret;
 }
 
@@ -133,8 +144,16 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mSceneMgr->getSceneNode("NinjaNode")->translate(
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
+
+  mSceneMgr->getSceneNode("RobotNode")->translate(
+    mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);
   mAnimationState = mEntity->getAnimationState("Idle1");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
+
+  mAnimationStateZombie = mZombieEnt->getAnimationState("Walk");
+  mAnimationStateZombie->setLoop(true);
+  mAnimationStateZombie->setEnabled(true);
   return true;
 }
