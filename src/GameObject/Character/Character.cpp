@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 16:44:31 2017 Adrien Warin
+** Last update Wed May 31 11:03:08 2017 Quentin Baudet
 */
 
 #include "Character.hpp"
@@ -30,7 +30,7 @@ Character::~Character()
 
 }
 
-void Character::takeDamage(size_t dmg)
+void Character::takeDamage(int dmg)
 {
   (void) dmg;
 }
@@ -50,7 +50,7 @@ void Character::getDistance()
 
 }
 
-size_t Character::getRange()
+int Character::getRange()
 {
   return (_range);
 }

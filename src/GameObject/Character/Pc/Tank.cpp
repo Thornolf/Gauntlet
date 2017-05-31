@@ -5,8 +5,10 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Fri May 26 16:56:29 2017 Adrien Warin
+** Last update Wed May 31 11:05:28 2017 Quentin Baudet
 */
+
+#include "Tank.hpp"
 
 Tank::Tank(int x, int y, int z)
 {
@@ -32,7 +34,7 @@ Tank::~Tank()
 
 }
 
-void takeDamage(size_t dmg)
+void takeDamage(int dmg)
 {
     this->_hp -= dmg;
 }
@@ -52,7 +54,7 @@ void Tank::getDistance()
 
 }
 
-size_t Tank::getRange()
+int Tank::getRange()
 {
 
 }
