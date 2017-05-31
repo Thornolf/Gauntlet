@@ -22,7 +22,7 @@ if(UNIX)
 
     else ()
         message(SEND_ERROR "Failed to find module path.")
-    endif(EXISTS "/usr/local/lib/OGRE")
+    endif(EXISTS "/usr/local/lib/OGRE/cmake")
 endif(UNIX)
 
 if (CMAKE_BUILD_TYPE STREQUAL "")
@@ -140,6 +140,8 @@ include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_SAMPLES_INCLUDEPATH}
         ${OGRE_Overlay_INCLUDE_DIRS}
         )
+
+SET_SOURCE_FILES_PROPERTIES(${SRCS} PROPERTIES COMPILE_FLAGS -W -Wall -Wextra)
 
 add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
 

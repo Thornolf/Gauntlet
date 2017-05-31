@@ -11,6 +11,7 @@
 #ifndef		_PARSER_INPUT_FILE__HPP_
 # define	_PARSER_INPUT_FILE__HPP_
 
+# include	<iostream>
 # include	<map>
 # include	<string>
 # include	<sstream>
@@ -28,7 +29,7 @@ public:
 
   /* Public member functions */
   std::map<eventType, OIS::KeyCode>	getArrayBindingFromFile(const std::string &);
-  void					saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data, const std::string &path) const;
+  void					saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data, const std::string &path);
 private:
   void		addLineSaveToScores(const std::string &line);
 

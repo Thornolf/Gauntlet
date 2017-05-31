@@ -11,28 +11,27 @@
 #include "Input/ParserInputFile.hpp"
 #include "Input/Device.hpp"
 
-Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor) :
+Device::Device(const std::string &name, DeviceManager *manager, OIS::Type &typeDev, Pc *player) :
   _name(name)
 {
   this->_parser = new ParserInputFile;
-  this->_device = manager->getIManager()->createInputObject(typeDev, false);
-  this->_vendor = vendor;
-  this->_binding = this->_parser->getArrayBindingFromFile("./save/device/" + name + ".gnt_dev");
+  this->_device = manager->createObject(typeDev);
+  this->_player = player;
+  this->_binding = this->_parser->getArrayBindingFromFile("./save/device/" + this->_name + ".gnt_dev");
 }
 
 Device::~Device()
 {
-  ParserInputFile	parser;
-
   if (this->_device != nullptr)
     delete this->_device;
-  parser.saveBindingInFile(this->_binding, "./save/device/" + this->_name);
+  this->_parser->saveBindingInFile(this->_binding, "./save/device/" + this->_name + ".gnt_dev");
+  delete this->_parser;
 }
 
 Device	&Device::operator=(const Device &obj)
 {
   this->_device = obj._device;
-  this->_vendor = obj._vendor;
+  this->_player = obj._player;
   return (*this);
 }
 
@@ -78,7 +77,7 @@ void	Device::keyReleased(const OIS::KeyEvent& ke)
 void		Device::dumpBinding(void) const
 {
   for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
-    std::cout << "EVENT [" << it->first << "] IS AFFECT TO THE KEY [" << it-> second << "]";
+    std::cout << "EVENT [" << it->first << "]  => KEY [" << it-> second << "]" << std::endl;
 }
 
 void		Device::editBinding(const eventType &event, const OIS::KeyCode &key)

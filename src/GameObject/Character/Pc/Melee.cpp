@@ -10,7 +10,7 @@
 
 #include "Melee.hpp"
 
-Melee::Melee (int x, int y, int z) : Pc(x, y, z)
+Melee::Melee (const std::string &name, int x, int y, int z) : Pc(name, x, y, z)
 {
 
 }

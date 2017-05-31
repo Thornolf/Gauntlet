@@ -7,6 +7,7 @@
 ** Started on  Wed May 31 08:57:19 2017 Guillaume CAUCHOIS
 ** Last update Wed May 31 08:57:19 2017 Guillaume CAUCHOIS
 */
+
 #ifndef		_DEVICE_MANAGER__HPP_
 # define	_DEVICE_MANAGER__HPP_
 #include	<Ogre.h>
@@ -19,6 +20,7 @@ public:
   virtual ~DeviceManager();
 
   OIS::InputManager	*getIManager(void) const;
+  OIS::Object		*createObject(OIS::Type &type) const;
 private:
   OIS::InputManager	*_iManager;
 };

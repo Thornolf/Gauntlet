@@ -16,19 +16,8 @@
 
 class Warrior : public Melee
 {
-private:
-    size_t    _health;
-    size_t    _cooldow;
-    size_t    _speed;
-    size_t   _attack;
-    /*Script    *_script <---------- décommenter après la classe Script*/
-    /*Position  *_possition <------- décommenter après la Classe position*/
-    bool   _alive;
-    int    _id;
-    size_t _range;
-
 public:
-  Warrior(size_t, size_t, size_t);
+  Warrior(const std::string &, int, int, int);
   Warrior(Warrior const &);
   Warrior& operator=(Warrior const &);
   virtual ~Warrior();
@@ -39,6 +28,16 @@ public:
   virtual bool isAlive();
   virtual void getDistance();
   virtual size_t getRange();
+private:
+  size_t    _health;
+  size_t    _cooldow;
+  size_t    _speed;
+  size_t   _attack;
+  /*Script    *_script <---------- décommenter après la classe Script*/
+  /*Position  *_possition <------- décommenter après la Classe position*/
+  bool   _alive;
+  int    _id;
+  size_t _range;
 };
 
 #endif
