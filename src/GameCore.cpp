@@ -40,7 +40,7 @@ void GameCore::createScene()
      node->setScale(15.0f, 7.0f, 0.3f);
 
      ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(100.0f, 80.0f, -750.0f));
+     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 00.0f, -750.0f));
      node->attachObject(ent);
      node->setScale(3.0f, 3.0f, 3.0f);
 
@@ -98,8 +98,9 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   }
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(mNode->getPosition(), Ogre::Vector3(100.0f, 0.0f,  100.0f)), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
-  if (collider.collided)
+  //SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(mNode->getPosition(), Ogre::Vector3(100.0f, 0.0f,  100.0f)), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
+  SCheckCollisionAnswer ret = collision->check_ray_collision(mNode->getPosition(), mNode->getPosition() + Ogre::Vector3(0.0f, 0.0f,  -750.0f), 1.0f, 1.0f, Ogre::SceneManager::ENTITY_TYPE_MASK, mEntity, false);
+  if (ret.collided)
   {
       dirVec.y += 500;
   }
