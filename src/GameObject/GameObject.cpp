@@ -28,7 +28,10 @@ GameObject& GameObject::operator=(GameObject const & other)
 
 GameObject::~GameObject() {}
 
-Position* GameObject::getPosition() const
+Position*	GameObject::getPosition() const
 {
   return (this->_position);
 }
+
+void	GameObject::hide(void) {}
+

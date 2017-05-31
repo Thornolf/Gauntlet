@@ -28,7 +28,7 @@ public:
 
   /* Classes */
   Position* getPosition() const;
-  void      hide() const;
+  void      hide();
 };
 
 #endif
