@@ -1,19 +1,3 @@
-#/*
-#-----------------------------------------------------------------------------
-#Filename:    CMakeLists.txt
-#-----------------------------------------------------------------------------
-#
-#This source file is part of the
-#   ___                 __    __ _ _    _
-#  /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
-# //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
-#/ \_// (_| | | |  __/  \  /\  /| |   <| |
-#\___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-#      |___/
-#      Tutorial Framework
-#      http://www.ogre3d.org/tikiwiki/
-#-----------------------------------------------------------------------------
-#*/
 cmake_minimum_required(VERSION 2.6)
 
 project(OgreApp)
@@ -96,58 +80,58 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
 
 set(HDRS
-    ./include/BaseGauntlet.hpp
-    ./include/GameCore.hpp
-    ./include/IndieException.hpp
-    ./include/Character.hpp
-    ./include/foodStack.hpp
-    ./include/goldStack.hpp
-    ./include/Loot.hpp
-    ./include/Npc.hpp
-    ./include/Pc.hpp
-    ./include/Zombie.hpp
-    ./include/GameObject.hpp
-    ./include/Position.hpp
-    ./include/Score/Score.hpp
-    ./include/Configuration.hpp
-	./include/Ranged.hpp
-      ./include/audio/IAudio.hpp
-      ./include/audio/Music.hpp
-      ./include/audio/SoundSystem.hpp
-      ./include/Input/Device.hpp
-      ./include/Input/DeviceManager.hpp
-      ./include/Input/ParserInputFile.hpp
-    ./include/Melee.hpp
-    ./include/NewMOC.hpp
-    ./include/Animation.hpp
+        ./include/BaseGauntlet.hpp
+        ./include/GameCore.hpp
+        ./include/IndieException.hpp
+        ./include/Character.hpp
+        ./include/foodStack.hpp
+        ./include/goldStack.hpp
+        ./include/Loot.hpp
+        ./include/Npc.hpp
+        ./include/Pc.hpp
+        ./include/Zombie.hpp
+        ./include/GameObject.hpp
+        ./include/Position.hpp
+        ./include/Score/Score.hpp
+        ./include/Configuration.hpp
+        ./include/Ranged.hpp
+        ./include/audio/IAudio.hpp
+        ./include/audio/Music.hpp
+        ./include/audio/SoundSystem.hpp
+        ./include/Input/Device.hpp
+        ./include/Input/DeviceManager.hpp
+        ./include/Input/ParserInputFile.hpp
+        ./include/Input/eventType.hpp
+        ./include/Melee.hpp
+        ./include/NewMOC.hpp
+        ./include/Animation.hpp
         )
 
 set(SRCS
-    ./src/main.cpp
-    ./src/Animation/Animation.cpp
-    ./src/IndieException.cpp
-    ./src/BaseGauntlet.cpp
-    ./src/GameCore.cpp
-    ./src/GameObject/Loot/Loot.cpp
-    ./src/GameObject/Loot/goldStack.cpp
-    ./src/GameObject/Loot/foodStack.cpp
-    ./src/GameObject/Character/Character.cpp
-    ./src/GameObject/Character/Npc/Npc.cpp
-    ./src/GameObject/Character/Npc/Zombie.cpp
-    ./src/GameObject/Character/Pc/Pc.cpp
-    ./src/GameObject/GameObject.cpp
-    ./src/Position/Position.cpp
-    ./src/Input/Device.cpp
-    ./src/Score/Score.cpp
-    ./src/Melee.cpp
-    ./src/Configuration.cpp
-	./src/GameObject/Character/Pc/Ranged.cpp
-    ./src/audio/SoundSystem.cpp
-    ./src/audio/Music.cpp
-    ./src/Input/DeviceManager.cpp
-    ./src/Input/ParserInputFile.cpp
-  ./src/NewMOC.cpp
-  )
+        ./src/main.cpp
+        ./src/Animation/Animation.cpp
+        ./src/IndieException.cpp
+        ./src/BaseGauntlet.cpp
+        ./src/GameCore.cpp
+        ./src/GameObject/Loot/Loot.cpp
+        ./src/GameObject/Loot/goldStack.cpp
+        ./src/GameObject/Loot/foodStack.cpp
+        ./src/GameObject/Character/Character.cpp
+        ./src/GameObject/Character/Npc/Npc.cpp
+        ./src/GameObject/Character/Npc/Zombie.cpp
+        ./src/GameObject/Character/Pc/Pc.cpp
+        ./src/GameObject/GameObject.cpp
+        ./src/Position/Position.cpp
+        ./src/Input/Device.cpp
+        ./src/Score/Score.cpp
+        src/GameObject/Character/Pc/Melee.cpp
+        ./src/Configuration.cpp
+        ./src/GameObject/Character/Pc/Ranged.cpp
+        ./src/audio/SoundSystem.cpp
+        ./src/audio/Music.cpp
+        ./src/Input/DeviceManager.cpp
+        ./src/Input/ParserInputFile.cpp
+        ./src/NewMOC.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
@@ -161,8 +145,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 find_package(SFML 2 REQUIRED network audio graphics window system)
 if(SFML_FOUND)
-  include_directories(${SFML_INCLUDE_DIR})
-  target_link_libraries(OgreApp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+    include_directories(${SFML_INCLUDE_DIR})
+    target_link_libraries(OgreApp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 endif()
 
 set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)

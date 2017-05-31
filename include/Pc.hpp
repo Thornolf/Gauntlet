@@ -8,11 +8,11 @@
 ** Last update Wed May 31 11:09:05 2017 Quentin Baudet
 */
 
-#ifndef _PC_HPP_
-#define _PC_HPP_
-
-#include <iostream>
-#include "Character.hpp"
+#ifndef		_PC_HPP_
+# define	_PC_HPP_
+# include	<iostream>
+# include	"Character.hpp"
+# include	"Input/Device.hpp"
 
 class Pc : public Character
 {
@@ -24,11 +24,14 @@ public:
 
   /* Classes */
 
-  virtual void attack();
-  virtual void takeDamage(int dmg);
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual int getRange();
+  virtual void		attack();
+  virtual void		takeDamage(int dmg);
+  virtual bool		isAlive();
+  virtual void		getDistance();
+  virtual int		getRange();
+  void			setDevice(Device *dev);
+private:
+  Device	*_device;
 };
 
 #endif

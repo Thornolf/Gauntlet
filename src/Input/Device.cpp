@@ -1,29 +1,32 @@
 /*
-** Device.cpp for OgreApp in /home/guillobits/workspace/epitech/cpp_indie_studio/src/Input/Device.cpp
+** Device.cpp for OgreApp
 **
 ** Made by Guillaume CAUCHOIS
 ** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed May 24 12:16:35 2017 Guillaume CAUCHOIS
-** Last update Wed May 24 12:16:35 2017 Guillaume CAUCHOIS
+** Started on  Wed May 31 09:02:12 2017 Guillaume CAUCHOIS
+** Last update Wed May 31 09:02:12 2017 Guillaume CAUCHOIS
 */
 
-#include <Input/ParserInputFile.hpp>
+#include "Input/ParserInputFile.hpp"
 #include "Input/Device.hpp"
 
-Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor)
+Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor) :
+  _name(name)
 {
-  ParserInputFile	parser;
-
+  this->_parser = new ParserInputFile;
   this->_device = manager->getIManager()->createInputObject(typeDev, false);
   this->_vendor = vendor;
-  this->_binding = parser.getArrayBindingFromFile("./save/device/" + name + ".gnt_dev");
+  this->_binding = this->_parser->getArrayBindingFromFile("./save/device/" + name + ".gnt_dev");
 }
 
 Device::~Device()
 {
+  ParserInputFile	parser;
+
   if (this->_device != nullptr)
     delete this->_device;
+  parser.saveBindingInFile(this->_binding, "./save/device/" + this->_name);
 }
 
 Device	&Device::operator=(const Device &obj)
@@ -70,6 +73,12 @@ void	Device::keyReleased(const OIS::KeyEvent& ke)
     default:
       break;
   }
+}
+
+void		Device::dumpBinding(void) const
+{
+  for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
+    std::cout << "EVENT [" << it->first << "] IS AFFECT TO THE KEY [" << it-> second << "]";
 }
 
 void		Device::editBinding(const eventType &event, const OIS::KeyCode &key)

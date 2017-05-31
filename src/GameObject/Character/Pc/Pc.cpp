@@ -12,16 +12,18 @@
 
 Pc::Pc(int x, int y, int z) : Character(x, y, z)
 {
+  this->_device = nullptr;
 }
 
 Pc::Pc(Pc const & other) : Character(other)
 {
-  (void) other;
+  if (this->_device != nullptr)
+    delete this->_device;
 }
 
 Pc& Pc::operator=(Pc const & other)
 {
-  (void) other;
+  (void)other;
   return *this;
 }
 
@@ -53,4 +55,9 @@ void Pc::getDistance()
 int Pc::getRange()
 {
   return (_range);
+}
+
+void	Pc::setDevice(Device *dev)
+{
+  this->_device = dev;
 }

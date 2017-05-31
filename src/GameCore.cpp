@@ -11,6 +11,7 @@
 #include "GameCore.hpp"
 #include "Position.hpp"
 #include "audio/Music.hpp"
+#include "Pc.hpp"
 
 GameCore::GameCore()
 {
@@ -62,10 +63,10 @@ void GameCore::createScene()
 
 void GameCore::createFrameListener(void)
 {
-    BaseGauntlet::createFrameListener();
-    mAnimationState = mEntity->getAnimationState("Idle1");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
+  BaseGauntlet::createFrameListener();
+  mAnimationState = mEntity->getAnimationState("Idle1");
+  mAnimationState->setLoop(true);
+  mAnimationState->setEnabled(true);
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -102,7 +103,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   SCheckCollisionAnswer ret = collision->check_ray_collision(mNode->getPosition(), mNode->getPosition() + Ogre::Vector3(0.0f, 0.0f,  -750.0f), 1.0f, 1.0f, Ogre::SceneManager::ENTITY_TYPE_MASK, mEntity, false);
   if (ret.collided)
   {
-      dirVec.y += 500;
+    dirVec.y += 500;
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_K))

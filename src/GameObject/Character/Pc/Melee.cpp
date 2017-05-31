@@ -31,28 +31,27 @@ Melee::~Melee ()
 
 }
 
-void Melee::takeDamage(size_t dmg)
+void	Melee::takeDamage(int dmg)
 {
     (void) dmg;
 }
 
-
-void Melee::attack()
+void	Melee::attack()
 {
 
 }
 
-bool Melee::isAlive()
+bool	Melee::isAlive()
 {
     return (false);
 }
 
-void Melee::getDistance()
+void	Melee::getDistance()
 {
 
 }
 
-size_t Melee::getRange()
+int	Melee::getRange()
 {
     return (_range);
 }
