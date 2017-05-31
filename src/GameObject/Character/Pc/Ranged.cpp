@@ -10,7 +10,7 @@
 
 #include "Ranged.hpp"
 
-Ranged::Ranged (int newX, int newY, int newZ) : Pc(newX, newY, newZ)
+Ranged::Ranged (const std::string &name, int newX, int newY, int newZ) : Pc(name, newX, newY, newZ)
 {
 
 }

@@ -19,7 +19,7 @@ class Ranged : public Pc
     private:
 
     public:
-        Ranged (int, int, int);
+        Ranged (const std::string &, int, int, int);
         Ranged (Ranged const &);
         Ranged& operator=(Ranged const &);
         virtual ~Ranged ();
