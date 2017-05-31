@@ -28,3 +28,8 @@ OIS::InputManager	*DeviceManager::getIManager(void) const
 {
   return (this->_iManager);
 }
+
+OIS::Object		*DeviceManager::createObject(OIS::Type &type) const
+{
+  this->_iManager->createInputObject(type, false);
+}

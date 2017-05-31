@@ -11,12 +11,12 @@
 #include "Input/ParserInputFile.hpp"
 #include "Input/Device.hpp"
 
-Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor) :
+Device::Device(const std::string &name, DeviceManager *manager, OIS::Type &typeDev, Pc *player) :
   _name(name)
 {
   this->_parser = new ParserInputFile;
-  this->_device = manager->getIManager()->createInputObject(typeDev, false);
-  this->_vendor = vendor;
+  this->_device = manager->createObject(typeDev);
+  this->_player = player;
   this->_binding = this->_parser->getArrayBindingFromFile("./save/device/" + this->_name + ".gnt_dev");
 }
 
@@ -31,7 +31,7 @@ Device::~Device()
 Device	&Device::operator=(const Device &obj)
 {
   this->_device = obj._device;
-  this->_vendor = obj._vendor;
+  this->_player = obj._player;
   return (*this);
 }
 
