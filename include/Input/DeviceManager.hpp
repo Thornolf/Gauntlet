@@ -20,6 +20,7 @@ public:
   virtual ~DeviceManager();
 
   OIS::InputManager	*getIManager(void) const;
+  OIS::Object		*createObject(OIS::Type &type) const;
 private:
   OIS::InputManager	*_iManager;
 };

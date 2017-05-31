@@ -42,4 +42,4 @@ Ogre.log
 OgreApp.cbp
 
 #CLION
-.idea
+.idea/*
