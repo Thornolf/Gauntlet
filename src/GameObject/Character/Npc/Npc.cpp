@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 14:12:23 2017 Thomas Fossaert
+** Last update Wed May 31 11:09:03 2017 Quentin Baudet
 */
 
 #include "Npc.hpp"
@@ -35,6 +35,11 @@ void Npc::getDamage()
 
 }
 
+void Npc::takeDamage(int dmg)
+{
+  (void) dmg;
+}
+
 void Npc::attack()
 {
 
@@ -50,7 +55,7 @@ void Npc::getDistance()
 
 }
 
-size_t Npc::getRange()
+int Npc::getRange()
 {
   return (_range);
 }

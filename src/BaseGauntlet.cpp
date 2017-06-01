@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
-Filename:    BaseApplication.cpp
+Filename:    BaseGauntlet.cpp
 -----------------------------------------------------------------------------
 
 This source file is part of the
@@ -14,10 +14,10 @@ This source file is part of the
       http://www.ogre3d.org/tikiwiki/
 -----------------------------------------------------------------------------
 */
-#include "BaseApplication.h"
+#include "BaseGauntlet.hpp"
 
 //-------------------------------------------------------------------------------------
-BaseApplication::BaseApplication(void)
+BaseGauntlet::BaseGauntlet(void)
     : mRoot(0),
     mCamera(0),
     mSceneMgr(0),
@@ -33,10 +33,11 @@ BaseApplication::BaseApplication(void)
     mMouse(0),
     mKeyboard(0)
 {
+  collision = new CollisionTools();
 }
 
 //-------------------------------------------------------------------------------------
-BaseApplication::~BaseApplication(void)
+BaseGauntlet::~BaseGauntlet(void)
 {
     if (mTrayMgr) delete mTrayMgr;
     if (mCameraMan) delete mCameraMan;
@@ -48,7 +49,7 @@ BaseApplication::~BaseApplication(void)
 }
 
 //-------------------------------------------------------------------------------------
-bool BaseApplication::configure(void)
+bool BaseGauntlet::configure(void)
 {
     // Show the configuration dialog and initialise the system
     // You can skip this and use root.restoreConfig() to load configuration
@@ -57,7 +58,7 @@ bool BaseApplication::configure(void)
     {
         // If returned true, user clicked OK so initialise
         // Here we choose to let the system create a default rendering window by passing 'true'
-        mWindow = mRoot->initialise(true, "TutorialApplication Render Window");
+        mWindow = mRoot->initialise(true, "TutorialGameCore Render Window");
 
         return true;
     }
@@ -67,7 +68,7 @@ bool BaseApplication::configure(void)
     }
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::chooseSceneManager(void)
+void BaseGauntlet::chooseSceneManager(void)
 {
     // Get the SceneManager, in this case a generic one
     mSceneMgr = mRoot->createSceneManager(Ogre::ST_GENERIC);
@@ -75,7 +76,7 @@ void BaseApplication::chooseSceneManager(void)
 	mSceneMgr->addRenderQueueListener(mOverlaySystem);
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::createCamera(void)
+void BaseGauntlet::createCamera(void)
 {
     // Create the camera
     mCamera = mSceneMgr->createCamera("PlayerCam");
@@ -83,13 +84,13 @@ void BaseApplication::createCamera(void)
     // Position it at 500 in Z direction
     mCamera->setPosition(Ogre::Vector3(0,0,80));
     // Look back along -Z
-    mCamera->lookAt(Ogre::Vector3(0,0,-300));
+    mCamera->lookAt(Ogre::Vector3(200,200,-500));
     mCamera->setNearClipDistance(5);
 
     mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::createFrameListener(void)
+void BaseGauntlet::createFrameListener(void)
 {
     Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
     OIS::ParamList pl;
@@ -143,11 +144,11 @@ void BaseApplication::createFrameListener(void)
     mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::destroyScene(void)
+void BaseGauntlet::destroyScene(void)
 {
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::createViewports(void)
+void BaseGauntlet::createViewports(void)
 {
     // Create one viewport, entire window
     Ogre::Viewport* vp = mWindow->addViewport(mCamera);
@@ -158,7 +159,7 @@ void BaseApplication::createViewports(void)
         Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::setupResources(void)
+void BaseGauntlet::setupResources(void)
 {
     // Load resource paths from config file
     Ogre::ConfigFile cf;
@@ -183,17 +184,17 @@ void BaseApplication::setupResources(void)
     }
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::createResourceListener(void)
+void BaseGauntlet::createResourceListener(void)
 {
 
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::loadResources(void)
+void BaseGauntlet::loadResources(void)
 {
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 //-------------------------------------------------------------------------------------
-void BaseApplication::go(void)
+void BaseGauntlet::go(void)
 {
 #ifdef _DEBUG
     mResourcesCfg = "resources_d.cfg";
@@ -213,7 +214,7 @@ void BaseApplication::go(void)
     destroyScene();
 }
 //-------------------------------------------------------------------------------------
-bool BaseApplication::setup(void)
+bool BaseGauntlet::setup(void)
 {
     mRoot = new Ogre::Root(mPluginsCfg);
 
@@ -242,7 +243,7 @@ bool BaseApplication::setup(void)
     return true;
 };
 //-------------------------------------------------------------------------------------
-bool BaseApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
+bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
     if(mWindow->isClosed())
         return false;
@@ -274,7 +275,7 @@ bool BaseApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
     return true;
 }
 //-------------------------------------------------------------------------------------
-bool BaseApplication::keyPressed( const OIS::KeyEvent &arg )
+bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg )
 {
     if (mTrayMgr->isDialogVisible()) return true;   // don't process any more keys if dialog is up
 
@@ -368,27 +369,27 @@ bool BaseApplication::keyPressed( const OIS::KeyEvent &arg )
     return true;
 }
 
-bool BaseApplication::keyReleased( const OIS::KeyEvent &arg )
+bool BaseGauntlet::keyReleased( const OIS::KeyEvent &arg )
 {
     mCameraMan->injectKeyUp(arg);
     return true;
 }
 
-bool BaseApplication::mouseMoved( const OIS::MouseEvent &arg )
+bool BaseGauntlet::mouseMoved( const OIS::MouseEvent &arg )
 {
     if (mTrayMgr->injectMouseMove(arg)) return true;
     mCameraMan->injectMouseMove(arg);
     return true;
 }
 
-bool BaseApplication::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+bool BaseGauntlet::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
     if (mTrayMgr->injectMouseDown(arg, id)) return true;
     mCameraMan->injectMouseDown(arg, id);
     return true;
 }
 
-bool BaseApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+bool BaseGauntlet::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
     if (mTrayMgr->injectMouseUp(arg, id)) return true;
     mCameraMan->injectMouseUp(arg, id);
@@ -396,7 +397,7 @@ bool BaseApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButto
 }
 
 //Adjust mouse clipping area
-void BaseApplication::windowResized(Ogre::RenderWindow* rw)
+void BaseGauntlet::windowResized(Ogre::RenderWindow* rw)
 {
     unsigned int width, height, depth;
     int left, top;
@@ -408,7 +409,7 @@ void BaseApplication::windowResized(Ogre::RenderWindow* rw)
 }
 
 //Unattach OIS before window shutdown (very important under Linux)
-void BaseApplication::windowClosed(Ogre::RenderWindow* rw)
+void BaseGauntlet::windowClosed(Ogre::RenderWindow* rw)
 {
     //Only close for window that created OIS (the main window in these demos)
     if( rw == mWindow )

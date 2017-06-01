@@ -5,14 +5,14 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Tue May 23 15:27:23 2017 Thomas Fossaert
+** Last update Wed May 31 11:09:05 2017 Quentin Baudet
 */
 
-#ifndef _PC_HPP_
-#define _PC_HPP_
-
-#include <iostream>
-#include "Character.hpp"
+#ifndef		_PC_HPP_
+# define	_PC_HPP_
+# include	<iostream>
+# include	"Character.hpp"
+# include	"Input/Device.hpp"
 
 class Pc : public Character
 {
@@ -24,11 +24,14 @@ public:
 
   /* Classes */
 
-  virtual void getDamage();
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual size_t getRange();
+  virtual void		attack();
+  virtual void		takeDamage(int dmg);
+  virtual bool		isAlive();
+  virtual void		getDistance();
+  virtual int		getRange();
+  void			setDevice(Device *dev);
+private:
+  Device	*_device;
 };
 
 #endif

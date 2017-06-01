@@ -5,12 +5,12 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 10:16:02 2017 Adrien Warin
-** Last update Wed May 24 11:10:11 2017 Adrien Warin
+** Last update Wed May 31 11:04:25 2017 Quentin Baudet
 */
 
 #include "Ranged.hpp"
 
-Ranged::Ranged (int x, int y, int z) : Pc(x, y, z)
+Ranged::Ranged (int newX, int newY, int newZ) : Pc(newX, newY, newZ)
 {
 
 }
@@ -31,9 +31,9 @@ Ranged::~Ranged ()
 
 }
 
-void Ranged::getDamage()
+void Ranged::takeDamage(int dmg)
 {
-
+  (void) dmg;
 }
 
 void Ranged::attack()
@@ -51,7 +51,7 @@ void Ranged::getDistance()
 
 }
 
-size_t Ranged::getRange()
+int Ranged::getRange()
 {
     return (_range);
 }

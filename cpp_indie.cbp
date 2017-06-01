@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cpp_indie"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/guillobits/workspace/epitech/cpp_indie"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/guillobits/workspace/epitech/cpp_indie"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/guillobits/workspace/epitech/cpp_indie"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cpp_indie">
+				<Option output="/home/guillobits/workspace/epitech/cpp_indie/cpp_indie" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/guillobits/workspace/epitech/cpp_indie"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/../../../../include/c++/7.1.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/../../../../include/c++/7.1.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/../../../../include/c++/7.1.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 cpp_indie"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cpp_indie/fast">
+				<Option output="/home/guillobits/workspace/epitech/cpp_indie/cpp_indie" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/guillobits/workspace/epitech/cpp_indie"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/../../../../include/c++/7.1.1"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/../../../../include/c++/7.1.1/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/../../../../include/c++/7.1.1/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/7.1.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 cpp_indie/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/guillobits/workspace/epitech/cpp_indie/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Animation.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/BaseGauntlet.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Boss.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Character.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Configuration.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/GameCore.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/GameObject.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/IndieException.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Input/Device.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Input/DeviceManager.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Input/ParserInputFile.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Loot.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Melee.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/NewMOC.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Npc.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Pc.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Position.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Ranged.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Score/Score.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Script.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Skeleton.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Tank.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/Zombie.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/audio/IAudio.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/audio/Music.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/audio/SoundSystem.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/foodStack.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/include/goldStack.hpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Animation/Animation.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/BaseGauntlet.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Configuration.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameCore.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Character.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Npc/Boss.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Npc/Npc.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Npc/Skeleton.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Npc/Zombie.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Pc/Pc.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Pc/Ranged.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Character/Pc/Tank.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/GameObject.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Loot/Loot.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Loot/foodStack.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/GameObject/Loot/goldStack.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/IndieException.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Input/Device.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Input/DeviceManager.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Input/ParserInputFile.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Melee.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/NewMOC.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Position/Position.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Score/Score.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/Script/Script.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/audio/Music.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/audio/SoundSystem.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/src/main.cpp">
+			<Option target="cpp_indie"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

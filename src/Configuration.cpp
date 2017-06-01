@@ -14,7 +14,11 @@ Configuration::Configuration() {}
 
 Configuration::~Configuration() {}
 
-Configuration	&Configuration::operator=(const Configuration &) {}
+Configuration	&Configuration::operator=(const Configuration &obj)
+{
+  this->_players = obj._players;
+  return (*this);
+}
 
 std::vector<Pc>	Configuration::getPlayers(void) const
 {
