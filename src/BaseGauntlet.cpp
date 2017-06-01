@@ -80,13 +80,11 @@ void BaseGauntlet::createCamera(void)
 {
     // Create the camera
     mCamera = mSceneMgr->createCamera("PlayerCam");
-
     // Position it at 500 in Z direction
-    mCamera->setPosition(Ogre::Vector3(0,0,80));
+    mCamera->setPosition(Ogre::Vector3(0,1500,-700));
     // Look back along -Z
-    mCamera->lookAt(Ogre::Vector3(200,200,-500));
+    mCamera->lookAt(Ogre::Vector3(0,0,0));
     mCamera->setNearClipDistance(5);
-
     mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
 }
 //-------------------------------------------------------------------------------------
@@ -377,8 +375,8 @@ bool BaseGauntlet::keyReleased( const OIS::KeyEvent &arg )
 
 bool BaseGauntlet::mouseMoved( const OIS::MouseEvent &arg )
 {
-    if (mTrayMgr->injectMouseMove(arg)) return true;
-    mCameraMan->injectMouseMove(arg);
+    /*if (mTrayMgr->injectMouseMove(arg)) return true;
+    mCameraMan->injectMouseMove(arg);*/
     return true;
 }
 

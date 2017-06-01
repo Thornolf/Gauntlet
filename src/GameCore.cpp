@@ -23,8 +23,8 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-    Zombie *mZob = new Zombie(100, 100, 100);
-    Position *mPosition = new Position(100, 100, -1456);
+    Zombie *mZob = new Zombie(100, 0, 100);
+    Position *mPosition = new Position(100, 0, -1456);
      mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
      mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 
@@ -65,6 +65,9 @@ void GameCore::createScene()
      collision->register_entity(mZombieEnt, COLLISION_ACCURATE);
 
      Script *mScript = new Script();
+     /*mSceneMgr->getSceneNode("ZombieNode")->translate(
+       mZob->launchScript(mNode) * fe.timeSinceLastFrame,
+       Ogre::Node::TS_LOCAL);*/
 }
 
 void GameCore::createFrameListener(void)
@@ -148,6 +151,11 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mSceneMgr->getSceneNode("RobotNode")->translate(
     mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
+
+  /*mSceneMgr->getSceneNode("ZombieNode")->translate(
+    mZob->launchScript(mNode) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);*/
+
   mAnimationState = mEntity->getAnimationState("Idle1");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);

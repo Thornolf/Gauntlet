@@ -23,6 +23,8 @@ This source file is part of the
 #include "BaseGauntlet.hpp"
 #include "Position.hpp"
 #include "Animation.hpp"
+#include "Script.hpp"
+#include "Zombie.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -43,11 +45,20 @@ protected:
     Ogre::Vector3 mDestination;            // The destination the object is moving towards
 
     Ogre::AnimationState *mAnimationState; // The current animation state of the object
+    Ogre::AnimationState *mAnimationStateZombie; // The current animation state of the object
 
     Ogre::Entity *mEntity;                 // The Entity we are animating
+    Ogre::Entity *mZombieEnt;                 // The Entity we are animating
+
     Animation *_animation;
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
+    Ogre::SceneNode *mZombie;                // The -SceneNode that the Entity is attached to
+
     std::deque<Ogre::Vector3> mWalkList;   // The list of points we are walking to
+
+    Script *mScript;
+    Position *mPosition;
+    Zombie *mZob;
 
     Ogre::Real mWalkSpeed;                 // The speed at which the object is moving
 };
