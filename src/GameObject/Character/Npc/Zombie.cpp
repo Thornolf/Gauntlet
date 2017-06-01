@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 11:04:02 2017 Quentin Baudet
+** Last update Thu Jun 01 09:42:33 2017 Thomas Fossaert
 */
 
 #include "Zombie.hpp"
@@ -18,6 +18,8 @@ Zombie::Zombie(int x, int y, int z) : Npc(x, y, z)
   _alive = true;
   _id = 1;
   _range = 1;
+  mPosition = new Position(x, y, z);
+  mScript = new Script();
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
@@ -34,6 +36,27 @@ Zombie& Zombie::operator=(Zombie const & other)
 Zombie::~Zombie()
 {
 
+}
+
+void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
+{
+  mEntity = mSceneMgr->createEntity("Zombie", "robot.mesh");
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ZombieNode", mPosition->getVector());
+  mNode->attachObject(mEntity);
+  mNode->setScale(1.0f, 1.0f, 1.0f);
+}
+
+Ogre::Vector3 Zombie::launchScript(Ogre::SceneNode *target)
+{
+  Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
+  nextMove = mScript->ZombieScript(mNode, target);
+  //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
+  return (nextMove);
+}
+
+void Zombie::Animate(const Ogre::FrameEvent& fe)
+{
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
 }
 
 void Zombie::getDamage()
