@@ -22,7 +22,7 @@ if(UNIX)
 
     else ()
         message(SEND_ERROR "Failed to find module path.")
-    endif(EXISTS "/usr/local/lib/OGRE")
+    endif(EXISTS "/usr/local/lib/OGRE/cmake")
 endif(UNIX)
 
 if (CMAKE_BUILD_TYPE STREQUAL "")
@@ -105,6 +105,7 @@ set(HDRS
         ./include/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
+        ./include/Script.hpp
         )
 
 set(SRCS
@@ -124,20 +125,25 @@ set(SRCS
         ./src/Position/Position.cpp
         ./src/Input/Device.cpp
         ./src/Score/Score.cpp
-        src/GameObject/Character/Pc/Melee.cpp
+        ./src/GameObject/Character/Pc/Melee.cpp
         ./src/Configuration.cpp
         ./src/GameObject/Character/Pc/Ranged.cpp
         ./src/audio/SoundSystem.cpp
         ./src/audio/Music.cpp
         ./src/Input/DeviceManager.cpp
         ./src/Input/ParserInputFile.cpp
-        ./src/NewMOC.cpp)
+        ./src/NewMOC.cpp
+	      ./src/Script/Script.cpp
+        ./src/GameObject/Character/Pc/Warrior.cpp
+        ./src/GameObject/Character/Pc/Tank.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
         ${OGRE_SAMPLES_INCLUDEPATH}
         ${OGRE_Overlay_INCLUDE_DIRS}
         )
+
+SET_SOURCE_FILES_PROPERTIES(${SRCS} PROPERTIES COMPILE_FLAGS -W -Wall -Wextra)
 
 add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
 

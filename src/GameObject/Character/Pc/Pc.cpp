@@ -10,7 +10,7 @@
 
 #include "Pc.hpp"
 
-Pc::Pc(int x, int y, int z) : Character(x, y, z)
+Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name(name)
 {
   this->_device = nullptr;
 }
@@ -29,35 +29,23 @@ Pc& Pc::operator=(Pc const & other)
 
 Pc::~Pc()
 {
-
-}
-
-void Pc::attack()
-{
-
-}
-
-void Pc::takeDamage(int dmg)
-{
-  (void) dmg;
-}
-
-bool Pc::isAlive()
-{
-    return (false);
-}
-
-void Pc::getDistance()
-{
-
-}
-
-int Pc::getRange()
-{
-  return (_range);
+  if (this->_device != nullptr)
+  {
+    delete this->_device;
+  }
 }
 
 void	Pc::setDevice(Device *dev)
 {
   this->_device = dev;
+}
+
+Device	*Pc::getDevice(void) const
+{
+  return (this->_device);
+}
+
+const std::string	&Pc::getName(void) const
+{
+  return (this->_name);
 }

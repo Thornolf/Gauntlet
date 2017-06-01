@@ -5,16 +5,29 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:25:19 2017 Adrien Warin
-** Last update Mon May 22 15:26:14 2017 Adrien Warin
+** Last update Thu Jun 01 09:31:39 2017 Thomas Fossaert
 */
+
+#ifndef SCRIPT_HPP_
+# define SCRIPT_HPP_
+
+#include <OgreCamera.h>
+#include <OgreEntity.h>
+#include <OgreLogManager.h>
+#include <OgreRoot.h>
+#include <OgreViewport.h>
+#include <OgreSceneManager.h>
+#include <OgreRenderWindow.h>
+#include <OgreConfigFile.h>
 
 class Script
 {
-    private:
-
 
     public:
-        Script (arguments);
+        Script ();
         virtual ~Script ();
-
+        Ogre::Vector3 ZombieScript(Ogre::SceneNode *,Ogre::SceneNode *);
+        void test();
 };
+
+#endif

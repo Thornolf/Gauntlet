@@ -5,24 +5,22 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 11:04:02 2017 Quentin Baudet
+// Last update Thu Jun  1 11:29:39 2017 Guillaume CAUCHOIS
 */
 
 #include "Zombie.hpp"
 
 Zombie::Zombie(int x, int y, int z) : Npc(x, y, z)
 {
-  _health = 2;
-  _cooldow = 1;
-  _speed = 1;
-  _alive = true;
-  _id = 1;
-  _range = 1;
+  this->_health = 2;
+  this->_attack = 1;
+  mPosition = new Position(x, y, z);
+  mScript = new Script();
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
 {
-  (void) other;
+  (void)other;
 }
 
 Zombie& Zombie::operator=(Zombie const & other)
@@ -31,45 +29,25 @@ Zombie& Zombie::operator=(Zombie const & other)
   return *this;
 }
 
-Zombie::~Zombie()
-{
+Zombie::~Zombie() {}
 
+void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
+{
+  mEntity = mSceneMgr->createEntity("Zombie", "robot.mesh");
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ZombieNode", mPosition->getVector());
+  mNode->attachObject(mEntity);
+  mNode->setScale(1.0f, 1.0f, 1.0f);
 }
 
-void Zombie::getDamage()
+Ogre::Vector3 Zombie::launchScript(Ogre::SceneNode *target)
 {
-
+  Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
+  nextMove = mScript->ZombieScript(mNode, target);
+  //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
+  return (nextMove);
 }
 
-void Zombie::takeDamage(int dmg)
+void Zombie::Animate(const Ogre::FrameEvent& fe)
 {
-  if (this->_health - dmg < 0)
-    this->_health = 0;
-  else
-    this->_health = this->_health - dmg;
-}
-
-void Zombie::attack()
-{
-
-}
-
-bool Zombie::isAlive()
-{
-  if (_health <= 0)
-    {
-      _health = 0;
-      return (false);
-    }
-    return (true);
-}
-
-void Zombie::getDistance()
-{
-
-}
-
-int Zombie::getRange()
-{
-  return (_range);
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
 }

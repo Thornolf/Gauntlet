@@ -10,48 +10,20 @@
 
 #include "Ranged.hpp"
 
-Ranged::Ranged (int newX, int newY, int newZ) : Pc(newX, newY, newZ)
-{
-
-}
+Ranged::Ranged (const std::string &name, int newX, int newY, int newZ) : Pc(name, newX, newY, newZ) {}
 
 Ranged::Ranged (Ranged const & other) : Pc(other)
 {
-(void) other;
+  (void)other;
 }
 
 Ranged& Ranged::operator=(Ranged const & other)
 {
-    (void) other;
-    return (*this);
+  (void)other;
+  return (*this);
 }
 
 Ranged::~Ranged ()
 {
 
-}
-
-void Ranged::takeDamage(int dmg)
-{
-  (void) dmg;
-}
-
-void Ranged::attack()
-{
-
-}
-
-bool Ranged::isAlive()
-{
-    return (false);
-}
-
-void Ranged::getDistance()
-{
-
-}
-
-int Ranged::getRange()
-{
-    return (_range);
 }

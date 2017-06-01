@@ -5,14 +5,26 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed May 31 11:09:42 2017 Quentin Baudet
+// Last update Thu Jun  1 11:25:51 2017 Guillaume CAUCHOIS
 */
 
-#ifndef _Zombie_HPP_
-#define _Zombie_HPP_
+#ifndef		_ZOMBIE__HPP_
+# define	_ZOMBIE__HPP_
 
-#include <iostream>
-#include "Npc.hpp"
+# include <OgreCamera.h>
+# include <OgreEntity.h>
+# include <OgreLogManager.h>
+# include <OgreRoot.h>
+# include <OgreViewport.h>
+# include <OgreSceneManager.h>
+# include <OgreRenderWindow.h>
+# include <OgreConfigFile.h>
+# include <iostream>
+
+# include "Script.hpp"
+# include "Position.hpp"
+# include "Animation.hpp"
+# include "Npc.hpp"
 
 class Zombie : public Npc
 {
@@ -22,14 +34,17 @@ public:
   Zombie& operator=(Zombie const &);
   ~Zombie();
 
-  /* Classes */
-
-  void getDamage();
-  void attack();
-  void takeDamage(int dmg);
-  bool isAlive();
-  void getDistance();
-  int getRange();
+  /* Member functions */
+  void		setOgreBase(Ogre::SceneManager*);
+  Ogre::Vector3	launchScript(Ogre::SceneNode *);
+  void		Animate(const Ogre::FrameEvent&);
+private:
+  Ogre::AnimationState	*mAnimationState;
+  Ogre::Entity		*mEntity;
+  Ogre::SceneNode	*mNode;
+  Script		*mScript;
+  Position		*mPosition;
+  Animation		*mAnimation;
 };
 
-#endif
+#endif		/* _ZOMBIE__HPP_ */

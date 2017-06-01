@@ -14,6 +14,8 @@
 # include	<string>
 # include	<OIS.h>
 # include	<Ogre.h>
+# include	<fstream>
+# include	<iostream>
 # include	"Input/DeviceManager.hpp"
 # include	"IndieException.hpp"
 # include	"Input/ParserInputFile.hpp"
@@ -26,7 +28,7 @@ class Device
 {
 public:
   /* Canonical functions */
-  Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor);
+  Device(const std::string &name, DeviceManager *manager, OIS::Type &typeDev, Pc *vendor);
   virtual ~Device();
   Device	&operator=(const Device &);
 
@@ -41,7 +43,7 @@ private:
   ParserInputFile			*_parser;
   const std::string			_name;
   OIS::Object				*_device;
-  Pc					*_vendor;
+  Pc					*_player;
   std::map<eventType, OIS::KeyCode>	_binding;
 };
 

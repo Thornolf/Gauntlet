@@ -19,18 +19,10 @@ class Ranged : public Pc
     private:
 
     public:
-        Ranged (int, int, int);
+        Ranged (const std::string &, int, int, int);
         Ranged (Ranged const &);
         Ranged& operator=(Ranged const &);
         virtual ~Ranged ();
-
-        /* Méthodes */
-
-        virtual void attack();
-        virtual void takeDamage(int dmg);
-        virtual bool isAlive();
-        virtual void getDistance();
-        virtual int getRange();
 };
 
 #endif

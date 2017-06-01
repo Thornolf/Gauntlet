@@ -17,14 +17,12 @@
 class Character : public GameObject
 {
   protected:
-  int    _health;
-  int    _cooldow;
-  int    _speed;
+  int		_health;
+  int		_attack;
+  int		_cooldown;
+  int		_speed;
   /*Script    *_script <---------- décommenter après la classe Script*/
-  /*Position  *_possition <------- décommenter après la Classe position*/
-  bool   _alive;
-  int    _id;
-  int _range;
+  int		_range;
 
 public:
   Character(int x, int y, int z);
@@ -34,11 +32,11 @@ public:
 
   /* Classes */
 
-  virtual void takeDamage(int dmg);
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual int getRange();
+  void takeDamage(int dmg);
+  void attack(Character *target);
+  bool isAlive();
+  void getDistance();
+  int getRange();
 };
 
 #endif
