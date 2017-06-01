@@ -35,31 +35,6 @@ Pc::~Pc()
   }
 }
 
-void Pc::attack()
-{
-
-}
-
-void Pc::takeDamage(int dmg)
-{
-  (void)dmg;
-}
-
-bool Pc::isAlive()
-{
-    return (false);
-}
-
-void Pc::getDistance()
-{
-
-}
-
-int Pc::getRange()
-{
-  return (_range);
-}
-
 void	Pc::setDevice(Device *dev)
 {
   this->_device = dev;

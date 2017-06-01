@@ -23,14 +23,6 @@ class Ranged : public Pc
         Ranged (Ranged const &);
         Ranged& operator=(Ranged const &);
         virtual ~Ranged ();
-
-        /* Méthodes */
-
-        virtual void attack();
-        virtual void takeDamage(int dmg);
-        virtual bool isAlive();
-        virtual void getDistance();
-        virtual int getRange();
 };
 
 #endif

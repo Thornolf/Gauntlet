@@ -29,33 +29,3 @@ Npc::~Npc()
 {
 
 }
-
-void Npc::getDamage()
-{
-
-}
-
-void Npc::takeDamage(int dmg)
-{
-  (void) dmg;
-}
-
-void Npc::attack()
-{
-
-}
-
-bool Npc::isAlive()
-{
-    return (false);
-}
-
-void Npc::getDistance()
-{
-
-}
-
-int Npc::getRange()
-{
-  return (_range);
-}

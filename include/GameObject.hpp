@@ -20,6 +20,7 @@ protected:
   *_Texture;
   *_Mesh;*/
   Position *_position;
+
 public:
   GameObject(int, int, int);
   GameObject(GameObject const &);

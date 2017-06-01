@@ -16,22 +16,11 @@
 
 class Tank : public Melee
 {
-private:
-    int _hp;
-    int _attack;
-
 public:
-  Tank(int, int, int);
+  Tank(const std::string &, int, int, int);
   Tank(Tank const &);
-  Tank& operator=(Tank const &);
+  Tank&		operator=(Tank const &);
   virtual ~Tank();
-
-  /* Classes */
-  virtual void takeDamage(int dmg);
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual int getRange();
 };
 
 #endif

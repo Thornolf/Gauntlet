@@ -124,14 +124,16 @@ set(SRCS
         ./src/Position/Position.cpp
         ./src/Input/Device.cpp
         ./src/Score/Score.cpp
-        src/GameObject/Character/Pc/Melee.cpp
+        ./src/GameObject/Character/Pc/Melee.cpp
         ./src/Configuration.cpp
         ./src/GameObject/Character/Pc/Ranged.cpp
         ./src/audio/SoundSystem.cpp
         ./src/audio/Music.cpp
         ./src/Input/DeviceManager.cpp
         ./src/Input/ParserInputFile.cpp
-        ./src/NewMOC.cpp)
+        ./src/NewMOC.cpp
+        ./src/GameObject/Character/Pc/Warrior.cpp
+        ./src/GameObject/Character/Pc/Tank.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
