@@ -10,51 +10,23 @@
 
 #include "Tank.hpp"
 
-Tank::Tank(int x, int y, int z)
+Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
-    this->_hp = 150;
-    this->attack = 50;
+  this->_health = 150;
+  this->_attack = 50;
 }
 
-Tank::Tank(Tank const & other)
+Tank::Tank(Tank const & other) : Melee(other) {}
+
+Tank	&Tank::operator=(Tank const & other)
 {
-    this->_hp = other.hp;
-    this->_attack = other.attack;
+  this->_health = other._health;
+  this->_attack = other._attack;
+  this->_range = other._range;
+  this->_speed = other._speed;
+  this->_cooldown = other._cooldown;
+  this->_position = other._position;
+  return (*this);
 }
 
-Tank::Tank& operator=(Tank const & other)
-{
-    this->_hp = other.hp;
-    this->_attack = other.attack;
-    return (*this);
-}
-
-Tank::~Tank()
-{
-
-}
-
-void takeDamage(int dmg)
-{
-    this->_hp -= dmg;
-}
-
-void Tank::attack()
-{
-
-}
-
-bool Tank::isAlive()
-{
-
-}
-
-void Tank::getDistance()
-{
-
-}
-
-int Tank::getRange()
-{
-
-}
+Tank::~Tank() {}

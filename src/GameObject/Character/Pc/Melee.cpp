@@ -17,41 +17,16 @@ Melee::Melee (const std::string &name, int x, int y, int z) : Pc(name, x, y, z)
 
 Melee::Melee(Melee const & other) : Pc(other)
 {
-    (void) other;
+  (void)other;
 }
 
 Melee& Melee::operator=(Melee const & other)
 {
-    (void) other;
-    return(*this);
+  (void)other;
+  return(*this);
 }
 
 Melee::~Melee ()
 {
 
-}
-
-void	Melee::takeDamage(int dmg)
-{
-    (void) dmg;
-}
-
-void	Melee::attack()
-{
-
-}
-
-bool	Melee::isAlive()
-{
-    return (false);
-}
-
-void	Melee::getDistance()
-{
-
-}
-
-int	Melee::getRange()
-{
-    return (_range);
 }

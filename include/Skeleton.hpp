@@ -21,15 +21,6 @@ public:
   Skeleton(Skeleton const &);
   Skeleton& operator=(Skeleton const &);
   ~Skeleton();
-
-  /* Classes */
-
-  void getDamage();
-  void attack();
-  void takeDamage(int dmg);
-  bool isAlive();
-  void getDistance();
-  int getRange();
 };
 
 #endif

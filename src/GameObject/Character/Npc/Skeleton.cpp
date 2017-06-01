@@ -12,12 +12,9 @@
 
 Skeleton::Skeleton(int x, int y, int z) : Npc(x, y, z)
 {
-  _health = 1;
-  _cooldow = 1;
-  _speed = 1;
-  _alive = true;
-  _id = 1;
-  _range = 5;
+  this->_health = 1;
+  this->_range = 5;
+  this->_attack = -2;
 }
 
 Skeleton::Skeleton(Skeleton const & other) : Npc(other)
@@ -34,42 +31,4 @@ Skeleton& Skeleton::operator=(Skeleton const & other)
 Skeleton::~Skeleton()
 {
 
-}
-
-void Skeleton::getDamage()
-{
-
-}
-
-void Skeleton::takeDamage(int dmg)
-{
-  if (this->_health - dmg < 0)
-    this->_health = 0;
-  else
-    this->_health = this->_health - dmg;
-}
-
-void Skeleton::attack()
-{
-
-}
-
-bool Skeleton::isAlive()
-{
-  if (_health <= 0)
-    {
-      _health = 0;
-      return (false);
-    }
-    return (true);
-}
-
-void Skeleton::getDistance()
-{
-
-}
-
-int Skeleton::getRange()
-{
-  return (_range);
 }

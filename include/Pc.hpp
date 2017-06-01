@@ -23,13 +23,6 @@ public:
   Pc& operator=(Pc const &);
   virtual ~Pc();
 
-  /* Classes */
-
-  virtual void		attack();
-  virtual void		takeDamage(int);
-  virtual bool		isAlive();
-  virtual void		getDistance();
-  virtual int		getRange();
   void			setDevice(Device *);
   Device		*getDevice(void) const;
   const std::string	&getName(void) const;

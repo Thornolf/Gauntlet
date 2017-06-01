@@ -21,23 +21,6 @@ public:
   Warrior(Warrior const &);
   Warrior& operator=(Warrior const &);
   virtual ~Warrior();
-
-  /* Classes */
-  virtual void takeDamage(size_t dmg);
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual size_t getRange();
-private:
-  size_t    _health;
-  size_t    _cooldow;
-  size_t    _speed;
-  size_t   _attack;
-  /*Script    *_script <---------- décommenter après la classe Script*/
-  /*Position  *_possition <------- décommenter après la Classe position*/
-  bool   _alive;
-  int    _id;
-  size_t _range;
 };
 
 #endif

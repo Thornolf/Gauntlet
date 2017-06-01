@@ -21,15 +21,6 @@ public:
   Npc(Npc const &);
   Npc& operator=(Npc const &);
   virtual ~Npc();
-
-  /* Classes */
-
-  virtual void getDamage();
-  virtual void takeDamage(int dmg);
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual int getRange();
 };
 
 #endif

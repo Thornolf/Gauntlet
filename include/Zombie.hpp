@@ -21,15 +21,6 @@ public:
   Zombie(Zombie const &);
   Zombie& operator=(Zombie const &);
   ~Zombie();
-
-  /* Classes */
-
-  void getDamage();
-  void attack();
-  void takeDamage(int dmg);
-  bool isAlive();
-  void getDistance();
-  int getRange();
 };
 
 #endif
