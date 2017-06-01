@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:34:40 2017 Thomas Fossaert
-** Last update Tue May 30 13:24:14 2017 Thomas Fossaert
+** Last update Thu Jun 01 09:24:38 2017 Thomas Fossaert
 */
 
 #include "Animation.hpp"
@@ -29,6 +29,14 @@ Animation& Animation::operator=(Animation const & other)
 Animation::~Animation ()
 {
 
+}
+
+Ogre::AnimationState *Animation::initAnimation(Ogre::AnimationState *AnimationState, const std::string&, Ogre::Entity *entity)
+{
+  AnimationState = entity->getAnimationState("Walk");
+  AnimationState->setLoop(true);
+  AnimationState->setEnabled(true);
+  return (AnimationState);
 }
 
 Ogre::AnimationState *Animation::simpleAnimation(Ogre::AnimationState *AnimationState, const std::string& anim, const Ogre::FrameEvent& fe, Ogre::Entity *entity)

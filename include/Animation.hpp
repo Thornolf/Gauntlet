@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:29:30 2017 Thomas Fossaert
-** Last update Tue May 30 13:24:21 2017 Thomas Fossaert
+** Last update Thu Jun 01 09:26:07 2017 Thomas Fossaert
 */
 
 #ifndef _Animation_HPP_
@@ -23,6 +23,7 @@ public:
   ~Animation();
 
   /* Classes */
+  Ogre::AnimationState *initAnimation(Ogre::AnimationState *AnimationState, const std::string&, Ogre::Entity *entity);
   Ogre::AnimationState *simpleAnimation(Ogre::AnimationState *, const std::string&, const Ogre::FrameEvent&, Ogre::Entity *);
 };
 
