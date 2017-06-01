@@ -12,7 +12,7 @@ This source file is part of the
       |___/
       Tutorial Framework
       http://www.ogre3d.org/tikiwiki/
------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 */
 #ifndef __BaseGauntlet_h_
 #define __BaseGauntlet_h_

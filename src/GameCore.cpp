@@ -24,7 +24,7 @@ GameCore::~GameCore()
 void GameCore::createScene()
 {
     Zombie *mZob = new Zombie(100, 0, 100);
-    Position *mPosition = new Position(100, 0, -1456);
+    Position *mPosition = new Position(100, 0, -750);
      mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
      mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 

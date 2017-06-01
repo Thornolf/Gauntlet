@@ -36,7 +36,7 @@ BaseGauntlet::BaseGauntlet(void)
   collision = new CollisionTools();
 }
 
-//-------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
 BaseGauntlet::~BaseGauntlet(void)
 {
     if (mTrayMgr) delete mTrayMgr;
