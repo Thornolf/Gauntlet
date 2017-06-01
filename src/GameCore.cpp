@@ -104,13 +104,9 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   if (leftMouseDown)
   {
-    mAnimationState = mEntity->getAnimationState("Attack2");
-    mAnimationState->setLoop(true);
-    mAnimationState->setEnabled(true);
-    mAnimationState->addTime(fe.timeSinceLastFrame);
-    mAnimationState->setLength(2);
-
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Attack2", fe, mEntity);
   }
+
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
   //SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(mNode->getPosition(), Ogre::Vector3(100.0f, 0.0f,  100.0f)), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
@@ -156,9 +152,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     mZob->launchScript(mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/
 
-  mAnimationState = mEntity->getAnimationState("Idle1");
-  mAnimationState->setLoop(true);
-  mAnimationState->setEnabled(true);
+  mAnimationState = _animation->loopAnimation(mAnimationState, fe, mEntity);
 
   mAnimationStateZombie = mZombieEnt->getAnimationState("Walk");
   mAnimationStateZombie->setLoop(true);
