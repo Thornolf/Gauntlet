@@ -132,7 +132,6 @@ void BaseGauntlet::createFrameListener(void)
     mDetailsPanel->setParamValue(9, "Bilinear");
     mDetailsPanel->setParamValue(10, "Solid");
     mDetailsPanel->hide();
-
     mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
@@ -198,6 +197,7 @@ void BaseGauntlet::go(void)
 
     if (!setup())
         return;
+
 
     mRoot->startRendering();
 
