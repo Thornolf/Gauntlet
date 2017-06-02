@@ -12,7 +12,7 @@
 #define  MELEE_HPP_
 
 #include <iostream>
-#include "Pc.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 class Melee : public Pc
 {

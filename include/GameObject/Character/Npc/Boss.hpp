@@ -12,7 +12,7 @@
 #define _Boss_HPP_
 
 #include <iostream>
-#include "Npc.hpp"
+#include "GameObject/Character/Npc/Npc.hpp"
 
 class Boss : public Npc
 {

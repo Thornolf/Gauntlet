@@ -23,8 +23,8 @@ This source file is part of the
 #include "BaseGauntlet.hpp"
 #include "Position.hpp"
 #include "Animation.hpp"
-#include "Script.hpp"
-#include "Zombie.hpp"
+#include "GameObject/Character/Script.hpp"
+#include "GameObject/Character/Npc/Zombie.hpp"
 
 class GameCore : public BaseGauntlet
 {

@@ -8,7 +8,7 @@
 ** Last update Wed May 31 09:53:00 2017 Quentin Baudet
 */
 
-#include "GameObject.hpp"
+#include "GameObject/GameObject.hpp"
 
 GameObject::GameObject(int x, int y, int z)
 {

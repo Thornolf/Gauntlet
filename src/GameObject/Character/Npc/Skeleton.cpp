@@ -8,7 +8,7 @@
 ** Last update Wed May 31 11:03:51 2017 Quentin Baudet
 */
 
-#include "Skeleton.hpp"
+#include "GameObject/Character/Npc/Skeleton.hpp"
 
 Skeleton::Skeleton(int x, int y, int z) : Npc(x, y, z)
 {

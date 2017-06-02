@@ -11,7 +11,7 @@
 #include "GameCore.hpp"
 #include "Position.hpp"
 #include "audio/Music.hpp"
-#include "Pc.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 GameCore::GameCore()
 {

@@ -12,7 +12,7 @@
 # define  RANGED_HPP_
 
 #include <iostream>
-#include "Pc.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 class Ranged : public Pc
 {

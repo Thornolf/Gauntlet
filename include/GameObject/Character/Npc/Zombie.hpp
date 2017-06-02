@@ -21,10 +21,10 @@
 # include <OgreConfigFile.h>
 # include <iostream>
 
-# include "Script.hpp"
+# include "GameObject/Character/Script.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"
-# include "Npc.hpp"
+# include "GameObject/Character/Npc/Npc.hpp"
 
 class Zombie : public Npc
 {

@@ -8,7 +8,7 @@
 // Last update Thu Jun  1 11:30:22 2017 Guillaume CAUCHOIS
 */
 
-#include "Character.hpp"
+#include "GameObject/Character/Character.hpp"
 
 Character::Character(int x, int y, int z) : GameObject(x, y, z)
 {

@@ -12,7 +12,7 @@
 #define _NPC_HPP_
 
 #include <iostream>
-#include "Character.hpp"
+#include "GameObject/Character/Character.hpp"
 
 class Npc : public Character
 {
