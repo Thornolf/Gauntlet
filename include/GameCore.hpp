@@ -42,10 +42,13 @@ protected:
     Ogre::Vector3 mDirection;              // The direction the object is moving
     Ogre::Vector3 mDestination;            // The destination the object is moving towards
 
+		CollisionTools *collision;
+
     Ogre::AnimationState *mAnimationState; // The current animation state of the object
 
     Ogre::Entity *mEntity;                 // The Entity we are animating
-    Animation *_animation;
+		Ogre::Entity *wall;
+		Animation *_animation;
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
     std::deque<Ogre::Vector3> mWalkList;   // The list of points we are walking to
 

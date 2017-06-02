@@ -1,0 +1,45 @@
+/*
+** light.hpp for cpp_indie_studio in /home/gratte_r/Rendu/Teck_2/CPP/indie/cpp_indie_studio/include/Light
+**
+** Made by Robin Grattepanche
+** Login   <gratte_r@epitech.net>
+**
+** Started on  Thu Jun 01 22:22:39 2017 Robin Grattepanche
+** Last update Thu Jun 01 23:17:45 2017 Robin Grattepanche
+*/
+
+#ifndef 			_LIGHT_HPP
+#define 			_LIGHT_HPP
+
+#include			<iostream>
+#include			<string>
+#include 			<fstream>
+#include			<OgreRoot.h>
+#include			<OgreLight.h>
+#include			<OgreColourValue.h>
+#include			<OgreSceneManager.h>
+#include			<SdkTrays.h>
+
+#include			"Position.hpp"
+
+class light
+{
+		private:
+			Ogre::Light							*_light;
+			std::string							_name;
+			Ogre::Light::LightTypes	_type;
+			Ogre::ColourValue				_diffColour;
+			Ogre::ColourValue				_specColour;
+			Position								*_position;
+			Ogre::Vector3						_direction;
+
+		public:
+			light (std::string, OgreLightTypes, int, int, int);
+			virtual ~light ();
+			light(const light &, std::string);
+			light	&operator=(const light &, std::string);
+
+			void		setDiffuseColour(Ogre::ColourValue);
+};
+
+#endif 				/* !_LIGHT_HPP */
