@@ -95,6 +95,8 @@ protected:
     OIS::InputManager* mInputManager;
     OIS::Mouse*    mMouse;
     OIS::Keyboard* mKeyboard;
+
+    Ogre::AnimationState* mAnimationState;
 };
 
 #endif // #ifndef __BaseGauntlet_h_

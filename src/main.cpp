@@ -1,6 +1,7 @@
-#include "GameCore.hpp"
 
-int						main()
+#include	"GameCore.hpp"
+
+int		main()
 {
   try
     {

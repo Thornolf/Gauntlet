@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 09:37:41 2017 Adrien Warin
-** Last update Thu May 25 17:11:42 2017 Thomas Fossaert
+// Last update Fri Jun  2 11:44:03 2017 Robin Grattepanche
 */
 
 #include "Position.hpp"
