@@ -5,7 +5,7 @@
 ** Login   <gratte_r@epitech.net>
 **
 ** Started on  Thu Jun 01 22:22:39 2017 Robin Grattepanche
-** Last update Thu Jun 01 23:17:45 2017 Robin Grattepanche
+** Last update Fri Jun 02 14:08:52 2017 Robin Grattepanche
 */
 
 #ifndef 			_LIGHT_HPP
@@ -26,6 +26,8 @@ class light
 {
 		private:
 			Ogre::Light							*_light;
+
+			Ogre::SceneManager			*_scene;
 			std::string							_name;
 			Ogre::Light::LightTypes	_type;
 			Ogre::ColourValue				_diffColour;
@@ -34,12 +36,15 @@ class light
 			Ogre::Vector3						_direction;
 
 		public:
-			light (std::string, OgreLightTypes, int, int, int);
+			light (Ogre::SceneManager *, std::string, Ogre::Light::LightTypes, int, int, int);
 			virtual ~light ();
-			light(const light &, std::string);
-			light	&operator=(const light &, std::string);
+			// light(const light &, std::string);
+			// light	&operator=(const light &, std::string);
 
 			void		setDiffuseColour(Ogre::ColourValue);
+			void		setSpecularColour(Ogre::ColourValue);
+			void		setPosition(int, int, int);
+			void		setDirection(Ogre::Vector3);
 };
 
 #endif 				/* !_LIGHT_HPP */

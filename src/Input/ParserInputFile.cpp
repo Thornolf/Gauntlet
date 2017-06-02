@@ -1,11 +1,11 @@
 /*
-** ParserInputFile.cpp for OgreApp in /home/guillobits/workspace/epitech/cpp_indie_studio/src/Input/ParserInputFile.cpp
+** ParserInputFile.cpp for OgreApp
 **
 ** Made by Guillaume CAUCHOIS
 ** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed May 24 17:03:55 2017 Guillaume CAUCHOIS
-** Last update Wed May 24 17:03:55 2017 Guillaume CAUCHOIS
+** Started on  Wed May 31 09:04:59 2017 Guillaume CAUCHOIS
+** Last update Wed May 31 09:04:59 2017 Guillaume CAUCHOIS
 */
 
 #include "Input/ParserInputFile.hpp"
@@ -14,9 +14,21 @@ ParserInputFile::ParserInputFile() {}
 
 ParserInputFile::~ParserInputFile() {}
 
-void		ParserInputFile::saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data) const
+void		ParserInputFile::saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data, const std::string &path)
 {
+  std::ofstream	save_file(path, std::ios::out | std::ios::trunc);
 
+  this->_binding = data;
+  if (save_file)
+  {
+    for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
+    {
+      save_file << it->first << "=" << it->second << std::endl;
+    }
+    save_file.close();
+  }
+  else
+    throw IndieException("Cannot save the binding configuration");
 }
 
 std::map<eventType, OIS::KeyCode>	ParserInputFile::getArrayBindingFromFile(const std::string &path)

@@ -5,30 +5,31 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri May 26 17:05:50 2017 Adrien Warin
+** Last update Wed May 31 11:09:05 2017 Quentin Baudet
 */
 
-#ifndef _PC_HPP_
-#define _PC_HPP_
-
-#include <iostream>
-#include "Character.hpp"
+#ifndef		_PC_HPP_
+# define	_PC_HPP_
+# include	<iostream>
+# include	<string>
+# include	"Character.hpp"
+# include	"Input/Device.hpp"
 
 class Pc : public Character
 {
 public:
-  Pc(int x, int y, int z);
+  Pc(const std::string &, int, int, int);
   Pc(Pc const &);
   Pc& operator=(Pc const &);
   virtual ~Pc();
 
-  /* Classes */
+  void			setDevice(Device *);
+  Device		*getDevice(void) const;
+  const std::string	&getName(void) const;
 
-  virtual void attack();
-  virtual void takeDamage(size_t dmg);
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual size_t getRange();
+private:
+  Device		*_device;
+  const std::string	_name;
 };
 
 #endif

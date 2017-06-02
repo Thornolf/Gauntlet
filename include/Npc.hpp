@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri May 26 11:46:23 2017 Thomas Fossaert
+** Last update Wed May 31 11:04:57 2017 Quentin Baudet
 */
 
 #ifndef _NPC_HPP_
@@ -21,15 +21,6 @@ public:
   Npc(Npc const &);
   Npc& operator=(Npc const &);
   virtual ~Npc();
-
-  /* Classes */
-
-  virtual void getDamage();
-  virtual void takeDamage(size_t dmg);
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual size_t getRange();
 };
 
 #endif

@@ -5,19 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 12:03:44 2017 Thomas Fossaert
+** Last update Wed May 31 11:02:57 2017 baudet_q
 */
 
 #include "Boss.hpp"
 
 Boss::Boss(int x, int y, int z) : Npc(x, y, z)
 {
-  _health = 10;
-  _cooldow = 1;
-  _speed = 1;
-  _alive = true;
-  _id = 1;
-  _range = 2;
+  this->_health = 10;
+  this->_range = 2;
+  this->_attack = 120;
 }
 
 Boss::Boss(Boss const & other) : Npc(other)
@@ -34,42 +31,4 @@ Boss& Boss::operator=(Boss const & other)
 Boss::~Boss()
 {
 
-}
-
-void Boss::getDamage()
-{
-
-}
-
-void Boss::takeDamage(size_t dmg)
-{
-  if (this->_health - dmg < 0)
-    this->_health = 0;
-  else
-    this->_health = this->_health - dmg;
-}
-
-void Boss::attack()
-{
-
-}
-
-bool Boss::isAlive()
-{
-  if (_health <= 0)
-    {
-      _health = 0;
-      return (false);
-    }
-    return (true);
-}
-
-void Boss::getDistance()
-{
-
-}
-
-size_t Boss::getRange()
-{
-  return (_range);
 }

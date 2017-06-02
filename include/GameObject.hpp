@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Tue May 23 16:12:16 2017 Thomas Fossaert
+** Last update Fri May 26 17:40:05 2017 Quentin Baudet
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -20,6 +20,7 @@ protected:
   *_Texture;
   *_Mesh;*/
   Position *_position;
+
 public:
   GameObject(int, int, int);
   GameObject(GameObject const &);
@@ -28,6 +29,7 @@ public:
 
   /* Classes */
   Position* getPosition() const;
+  void      hide();
 };
 
 #endif

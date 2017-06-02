@@ -5,52 +5,47 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri May 26 17:06:03 2017 Adrien Warin
+** Last update Wed May 31 11:04:17 2017 Quentin Baudet
 */
 
 #include "Pc.hpp"
 
-Pc::Pc(int x, int y, int z) : Character(x, y, z)
+Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name(name)
 {
+  this->_device = nullptr;
 }
 
 Pc::Pc(Pc const & other) : Character(other)
 {
-  (void) other;
+  if (this->_device != nullptr)
+    delete this->_device;
 }
 
 Pc& Pc::operator=(Pc const & other)
 {
-  (void) other;
+  (void)other;
   return *this;
 }
 
 Pc::~Pc()
 {
-
+  if (this->_device != nullptr)
+  {
+    delete this->_device;
+  }
 }
 
-void Pc::attack()
+void	Pc::setDevice(Device *dev)
 {
-
+  this->_device = dev;
 }
 
-void Pc::takeDamage(size_t dmg)
+Device	*Pc::getDevice(void) const
 {
-  (void) dmg;
+  return (this->_device);
 }
 
-bool Pc::isAlive()
+const std::string	&Pc::getName(void) const
 {
-    return (false);
-}
-
-void Pc::getDistance()
-{
-
-}
-
-size_t Pc::getRange()
-{
-  return (_range);
+  return (this->_name);
 }

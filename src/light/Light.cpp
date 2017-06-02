@@ -5,21 +5,22 @@
 ** Login   <gratte_r@epitech.net>
 **
 ** Started on  Thu Jun 01 22:22:37 2017 Robin Grattepanche
-** Last update Thu Jun 01 23:21:50 2017 Robin Grattepanche
+** Last update Fri Jun 02 14:10:13 2017 Robin Grattepanche
 */
 
-#include			"Light/light.cpp"
+#include			"Light/light.hpp"
 
-light::light(std::string name, Ogre::Light::LightTypes type, int x, int y, int z)
+light::light(Ogre::SceneManager *scene, std::string name, Ogre::Light::LightTypes type, int x, int y, int z)
 {
 	this->_name = name;
+	this->_scene = scene;
 	this->_type = type;
 	this->_position = new Position(x, y, z);
 	this->_diffColour = Ogre::ColourValue(1.0, 1.0, 1.0);
 	this->_specColour = Ogre::ColourValue(1.0, 1.0, 1.0);
 	this->_direction = Ogre::Vector3(0, -1, 0);
 
-	this->_light = mSceneMgr->createLight(name);
+	this->_light = this->_scene->createLight(name);
 	this->_light->setType(type);
 	this->_light->setDiffuseColour(this->_diffColour);
 	this->_light->setSpecularColour(this->_specColour);
@@ -32,40 +33,40 @@ light::~light()
 	delete this->_position;
 }
 
-light::light(const light &obj, std::string name)
-{
-	this->_name = name;
-	this->_type = obj._type;
-	this->_position = obj._position;
-	this->_diffColour = obj._diffColour;
-	this->_specColour = obj._specColour;
-	this->_direction = obj._direction;
-
-	this->_light = mSceneMgr->createLight(name);
-	this->_light->setType(obj._type);
-	this->_light->setDiffuseColour(obj._diffColour);
-	this->_light->setSpecularColour(obj._specColour);
-	this->_light->setPosition(obj._position->getVector());
-	this->_light->setDirection(obj._direction);
-}
-
-light &light::operator=(const light &obj, std::string name)
-{
-	this->_name = name;
-	this->_type = obj._type;
-	this->_position = obj._position;
-	this->_diffColour = obj._diffColour;
-	this->_specColour = obj._specColour;
-	this->_direction = obj._direction;
-
-	this->_light = mSceneMgr->createLight(name);
-	this->_light->setType(obj._type);
-	this->_light->setDiffuseColour(obj._diffColour);
-	this->_light->setSpecularColour(obj._specColour);
-	this->_light->setPosition(obj._position->getVector());
-	this->_light->setDirection(obj._direction);
-	return (*this);
-}
+// light::light(const light &obj, std::string name)
+// {
+// 	this->_name = name;
+// 	this->_type = obj._type;
+// 	this->_position = obj._position;
+// 	this->_diffColour = obj._diffColour;
+// 	this->_specColour = obj._specColour;
+// 	this->_direction = obj._direction;
+//
+// 	this->_light = mSceneMgr->createLight(name);
+// 	this->_light->setType(obj._type);
+// 	this->_light->setDiffuseColour(obj._diffColour);
+// 	this->_light->setSpecularColour(obj._specColour);
+// 	this->_light->setPosition(obj._position->getVector());
+// 	this->_light->setDirection(obj._direction);
+// }
+//
+// light &light::operator=(const light &obj, std::string name)
+// {
+// 	this->_name = name;
+// 	this->_type = obj._type;
+// 	this->_position = obj._position;
+// 	this->_diffColour = obj._diffColour;
+// 	this->_specColour = obj._specColour;
+// 	this->_direction = obj._direction;
+//
+// 	this->_light = mSceneMgr->createLight(name);
+// 	this->_light->setType(obj._type);
+// 	this->_light->setDiffuseColour(obj._diffColour);
+// 	this->_light->setSpecularColour(obj._specColour);
+// 	this->_light->setPosition(obj._position->getVector());
+// 	this->_light->setDirection(obj._direction);
+// 	return (*this);
+// }
 
 void			light::setDiffuseColour(Ogre::ColourValue newColour)
 {
@@ -73,7 +74,7 @@ void			light::setDiffuseColour(Ogre::ColourValue newColour)
 	this->_light->setDiffuseColour(newColour);
 }
 
-void			light::setSpecularColour(Ogre::CoulourValue newColour)
+void			light::setSpecularColour(Ogre::ColourValue newColour)
 {
 	this->_specColour = newColour;
 	this->_light->setSpecularColour(newColour);
@@ -82,7 +83,7 @@ void			light::setSpecularColour(Ogre::CoulourValue newColour)
 void			light::setPosition(int x, int y, int z)
 {
 	if (this->_type != Ogre::Light::LT_DIRECTIONAL) {
-		Position tmp = new Position(x, y, z);
+		Position *tmp = new Position(x, y, z);
 		this->_position = tmp;
 		this->_light->setPosition(this->_position->getVector());
 		delete tmp;

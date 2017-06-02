@@ -19,18 +19,10 @@ class Melee : public Pc
     private:
 
     public:
-        Melee (int, int, int);
+        Melee (const std::string &, int, int, int);
         Melee(Melee const &);
         Melee& operator=(Melee const &);
         virtual ~Melee ();
-
-        /* Méthodes */
-
-        virtual void takeDamage(size_t);
-        virtual void attack();
-        virtual bool isAlive();
-        virtual void getDistance();
-        virtual size_t getRange();
 };
 
 #endif

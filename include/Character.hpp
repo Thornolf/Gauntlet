@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri May 26 16:38:04 2017 Adrien Warin
+** Last update Wed May 31 11:02:36 2017 Quentin Baudet
 */
 
 #ifndef _CHARACTER_HPP_
@@ -17,14 +17,12 @@
 class Character : public GameObject
 {
   protected:
-  size_t    _health;
-  size_t    _cooldow;
-  size_t    _speed;
+  int		_health;
+  int		_attack;
+  int		_cooldown;
+  int		_speed;
   /*Script    *_script <---------- décommenter après la classe Script*/
-  /*Position  *_possition <------- décommenter après la Classe position*/
-  bool   _alive;
-  int    _id;
-  size_t _range;
+  int		_range;
 
 public:
   Character(int x, int y, int z);
@@ -34,11 +32,11 @@ public:
 
   /* Classes */
 
-  virtual void takeDamage(size_t dmg);
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual size_t getRange();
+  void takeDamage(int dmg);
+  void attack(Character *target);
+  bool isAlive();
+  void getDistance();
+  int getRange();
 };
 
 #endif
