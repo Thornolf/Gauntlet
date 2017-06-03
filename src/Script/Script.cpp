@@ -8,7 +8,7 @@
 ** Last update Thu Jun 01 11:38:22 2017 Thomas Fossaert
 */
 
-#include "Script.hpp"
+#include "GameObject/Character/Script.hpp"
 
 Script::Script ()
 {

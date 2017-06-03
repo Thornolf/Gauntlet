@@ -8,7 +8,7 @@
 // Last update Thu Jun  1 11:29:39 2017 Guillaume CAUCHOIS
 */
 
-#include "Zombie.hpp"
+#include "GameObject/Character/Npc/Zombie.hpp"
 
 Zombie::Zombie(int x, int y, int z) : Npc(x, y, z)
 {

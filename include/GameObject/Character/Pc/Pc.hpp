@@ -12,7 +12,7 @@
 # define	_PC_HPP_
 # include	<iostream>
 # include	<string>
-# include	"Character.hpp"
+# include        "GameObject/Character/Character.hpp"
 # include	"Input/Device.hpp"
 
 class Pc : public Character

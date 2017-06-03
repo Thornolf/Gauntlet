@@ -8,7 +8,7 @@
 ** Last update Wed May 31 11:09:03 2017 Quentin Baudet
 */
 
-#include "Npc.hpp"
+#include "GameObject/Character/Npc/Npc.hpp"
 
 Npc::Npc(int x, int y, int z) : Character(x, y, z)
 {

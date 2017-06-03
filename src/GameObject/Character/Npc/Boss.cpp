@@ -8,7 +8,7 @@
 ** Last update Wed May 31 11:02:57 2017 baudet_q
 */
 
-#include "Boss.hpp"
+#include "GameObject/Character/Npc/Boss.hpp"
 
 Boss::Boss(int x, int y, int z) : Npc(x, y, z)
 {

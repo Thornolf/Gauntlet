@@ -1,15 +1,13 @@
 /*
-** main.cpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/src
+** main.cpp for IndieStudio
 **
-** Made by Pierre
-** Login   <pierre@epitech.net>
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed May 24 10:40:34 2017 Pierre
-** Last update Wed May 31 11:40:52 2017 Pierre
+** Started on  Fri Jun 02 06:36:03 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 02 06:36:03 2017 Guillaume CAUCHOIS
 */
 
-#include "audio/Music.hpp"
-#include "audio/SoundSystem.hpp"
 #include "GameCore.hpp"
 
 int						main()

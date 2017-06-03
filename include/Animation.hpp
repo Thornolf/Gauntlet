@@ -8,8 +8,8 @@
 ** Last update Thu Jun 01 11:49:59 2017 Pierre
 */
 
-#ifndef _Animation_HPP_
-#define _Animation_HPP_
+#ifndef _ANIMATION_HPP_
+#define _ANIMATION_HPP_
 
 #include <OgreSkeleton.h>
 #include "BaseGauntlet.hpp"

@@ -1,21 +1,15 @@
 /*
------------------------------------------------------------------------------
-Filename:    BaseGauntlet.h
------------------------------------------------------------------------------
-
-This source file is part of the
-   ___                 __    __ _ _    _
-  /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
- //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
-/ \_// (_| | | |  __/  \  /\  /| |   <| |
-\___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/
-      Tutorial Framework
-      http://www.ogre3d.org/tikiwiki/
-----------------------------------------------------------------------------
+** BaseGauntlet.hpp for IndieStudio
+**
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
+**
+** Started on  Fri Jun 02 06:31:36 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 02 06:31:36 2017 Guillaume CAUCHOIS
 */
-#ifndef __BaseGauntlet_h_
-#define __BaseGauntlet_h_
+
+#ifndef __BASEGAUNTLET__HPP_
+#define __BASEGAUNTLET__HPP_
 
 #include <OgreCamera.h>
 #include <OgreEntity.h>
@@ -97,4 +91,4 @@ protected:
     OIS::Keyboard* mKeyboard;
 };
 
-#endif // #ifndef __BaseGauntlet_h_
+#endif		/* !_BASEGAUNTLET__HPP_ */

@@ -12,7 +12,7 @@
 #define _CHARACTER_HPP_
 
 #include <iostream>
-#include "GameObject.hpp"
+#include "GameObject/GameObject.hpp"
 
 class Character : public GameObject
 {

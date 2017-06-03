@@ -1,22 +1,15 @@
 /*
------------------------------------------------------------------------------
-Filename:    BaseGauntlet.cpp
------------------------------------------------------------------------------
-
-This source file is part of the
-   ___                 __    __ _ _    _
-  /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
- //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
-/ \_// (_| | | |  __/  \  /\  /| |   <| |
-\___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/
-      Tutorial Framework
-      http://www.ogre3d.org/tikiwiki/
------------------------------------------------------------------------------
+** BaseGauntlet.cpp for IndieStudio
+**
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
+**
+** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
 */
+
 #include "BaseGauntlet.hpp"
 
-//-------------------------------------------------------------------------------------
 BaseGauntlet::BaseGauntlet(void)
     : mRoot(0),
     mCamera(0),

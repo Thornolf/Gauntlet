@@ -8,7 +8,7 @@
 ** Last update Wed May 31 11:04:17 2017 Quentin Baudet
 */
 
-#include "Pc.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name(name)
 {

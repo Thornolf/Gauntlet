@@ -83,14 +83,14 @@ set(HDRS
         ./include/BaseGauntlet.hpp
         ./include/GameCore.hpp
         ./include/IndieException.hpp
-        ./include/Character.hpp
+        include/GameObject/Character/Character.hpp
         ./include/foodStack.hpp
         ./include/goldStack.hpp
         ./include/Loot.hpp
-        ./include/Npc.hpp
-        ./include/Pc.hpp
-        ./include/Zombie.hpp
-        ./include/GameObject.hpp
+        include/GameObject/Character/Npc/Npc.hpp
+        include/GameObject/Character/Pc/Pc.hpp
+        include/GameObject/Character/Npc/Zombie.hpp
+        include/GameObject/GameObject.hpp
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
@@ -105,7 +105,7 @@ set(HDRS
         ./include/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
-        ./include/Script.hpp
+        include/GameObject/Character/Script.hpp
         )
 
 set(SRCS
