@@ -38,6 +38,7 @@ public:
   void		setOgreBase(Ogre::SceneManager*);
   Ogre::Vector3	launchScript(Ogre::SceneNode *);
   void		Animate(const Ogre::FrameEvent&);
+
 private:
   Ogre::AnimationState	*mAnimationState;
   Ogre::Entity		*mEntity;

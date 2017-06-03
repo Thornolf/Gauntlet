@@ -33,16 +33,19 @@ Zombie::~Zombie() {}
 
 void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
-  mEntity = mSceneMgr->createEntity("Zombie", "robot.mesh");
+  //mEntity = mSceneMgr->createEntity("Zombie", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
+  mEntity = mSceneMgr->createEntity("Zombie", "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
+
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ZombieNode", mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(1.0f, 1.0f, 1.0f);
+  mNode->setScale(100.0f, 100.0f, 100.0f);
+  mNode->setOrientation(1,1,0,0);
 }
 
 Ogre::Vector3 Zombie::launchScript(Ogre::SceneNode *target)
 {
   Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
-  nextMove = mScript->ZombieScript(mNode, target);
+  nextMove = mScript->ZombieScript(target, target);
   //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
   return (nextMove);
 }

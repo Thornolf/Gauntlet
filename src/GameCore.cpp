@@ -65,9 +65,6 @@ void GameCore::createScene()
      collision->register_entity(mZombieEnt, COLLISION_ACCURATE);
 
      Script *mScript = new Script();
-     /*mSceneMgr->getSceneNode("ZombieNode")->translate(
-       mZob->launchScript(mNode) * fe.timeSinceLastFrame,
-       Ogre::Node::TS_LOCAL);*/
 }
 
 void GameCore::createFrameListener(void)
@@ -149,7 +146,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     Ogre::Node::TS_LOCAL);
 
   /*mSceneMgr->getSceneNode("ZombieNode")->translate(
-    mZob->launchScript(mNode) * fe.timeSinceLastFrame,
+  mZob->launchScript(mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/
 
   mAnimationState = _animation->loopAnimation(mAnimationState, fe, mEntity);
