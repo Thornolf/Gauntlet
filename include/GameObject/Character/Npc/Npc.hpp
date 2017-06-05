@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed May 31 11:04:57 2017 Quentin Baudet
+** Last update Mon Jun 05 14:36:12 2017 Thomas Fossaert
 */
 
 #ifndef _NPC_HPP_
@@ -16,6 +16,8 @@
 
 class Npc : public Character
 {
+protected:
+  int _id;
 public:
   Npc(int x, int y, int z);
   Npc(Npc const &);

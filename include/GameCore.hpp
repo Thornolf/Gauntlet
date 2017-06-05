@@ -19,12 +19,14 @@ This source file is part of the
 
 #include <Terrain/OgreTerrain.h>
 #include <Terrain/OgreTerrainGroup.h>
+#include <vector>
 
 #include "BaseGauntlet.hpp"
 #include "Position.hpp"
 #include "Animation.hpp"
 #include "GameObject/Character/Script.hpp"
 #include "GameObject/Character/Npc/Zombie.hpp"
+#include "GameObject/Character/Npc/Skeleton.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -39,6 +41,8 @@ protected:
     //virtual bool nextLocation(void);
     virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
+
+    std::vector<Zombie*> _entityVector;
 
     Ogre::Real mDistance;                  // The distance the object has left to travel
     Ogre::Vector3 mDirection;              // The direction the object is moving

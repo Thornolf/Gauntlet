@@ -10,12 +10,14 @@
 
 #include "GameObject/Character/Npc/Zombie.hpp"
 
-Zombie::Zombie(int x, int y, int z) : Npc(x, y, z)
+Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z)
 {
+  this->_id = id;
   this->_health = 2;
   this->_attack = 1;
   mPosition = new Position(x, y, z);
   mScript = new Script();
+  mNodeName = "ZombieNode" + std::to_string(id);
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
@@ -34,18 +36,18 @@ Zombie::~Zombie() {}
 void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   //mEntity = mSceneMgr->createEntity("Zombie", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
-  mEntity = mSceneMgr->createEntity("Zombie", "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
+  mEntity = mSceneMgr->createEntity("Zombie" + std::to_string(_id), "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
 
-  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ZombieNode", mPosition->getVector());
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(100.0f, 100.0f, 100.0f);
   mNode->setOrientation(1,1,0,0);
 }
 
-Ogre::Vector3 Zombie::launchScript(Ogre::SceneNode *target)
+Ogre::Vector3 Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target)
 {
   Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
-  nextMove = mScript->ZombieScript(target, target);
+  nextMove = mScript->ZombieScript(mSceneMgr->getSceneNode("ZombieNode1"), target);
   //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
   return (nextMove);
 }

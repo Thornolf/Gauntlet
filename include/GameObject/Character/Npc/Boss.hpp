@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed May 31 11:09:47 2017 Quentin Baudet
+** Last update Mon Jun 05 16:15:13 2017 Thomas Fossaert
 */
 
 #ifndef _Boss_HPP_
@@ -17,19 +17,16 @@
 class Boss : public Npc
 {
 public:
-  Boss(int x, int y, int z);
+  Boss(int x, int y, int z, int id);
   Boss(Boss const &);
   Boss& operator=(Boss const &);
   ~Boss();
 
   /* Classes */
 
-  void getDamage();
-  void attack();
-  void takeDamage(int dmg);
-  bool isAlive();
-  void getDistance();
-  int getRange();
+  void		setOgreBase(Ogre::SceneManager*);
+  Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
+  void		Animate(const Ogre::FrameEvent&);
 };
 
 #endif

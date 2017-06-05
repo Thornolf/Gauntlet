@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed May 31 11:08:11 2017 Quentin Baudet
+** Last update Mon Jun 05 16:15:06 2017 Thomas Fossaert
 */
 
 #ifndef _Skeleton_HPP_
@@ -17,10 +17,14 @@
 class Skeleton : public Npc
 {
 public:
-  Skeleton(int x, int y, int z);
+  Skeleton(int x, int y, int z, int id);
   Skeleton(Skeleton const &);
   Skeleton& operator=(Skeleton const &);
   ~Skeleton();
+
+  void		setOgreBase(Ogre::SceneManager*);
+  Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
+  void		Animate(const Ogre::FrameEvent&);
 };
 
 #endif

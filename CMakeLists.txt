@@ -83,14 +83,15 @@ set(HDRS
         ./include/BaseGauntlet.hpp
         ./include/GameCore.hpp
         ./include/IndieException.hpp
-        include/GameObject/Character/Character.hpp
+        ./include/GameObject/Character/Character.hpp
         ./include/foodStack.hpp
         ./include/goldStack.hpp
         ./include/Loot.hpp
-        include/GameObject/Character/Npc/Npc.hpp
-        include/GameObject/Character/Pc/Pc.hpp
-        include/GameObject/Character/Npc/Zombie.hpp
-        include/GameObject/GameObject.hpp
+        ./include/GameObject/Character/Npc/Npc.hpp
+        ./include/GameObject/Character/Pc/Pc.hpp
+        ./include/GameObject/Character/Npc/Zombie.hpp
+        ./include/GameObject/Character/Npc/Skeleton.hpp
+        ./include/GameObject/GameObject.hpp
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
@@ -120,6 +121,7 @@ set(SRCS
         ./src/GameObject/Character/Character.cpp
         ./src/GameObject/Character/Npc/Npc.cpp
         ./src/GameObject/Character/Npc/Zombie.cpp
+        ./src/GameObject/Character/Npc/Skeleton.cpp
         ./src/GameObject/Character/Pc/Pc.cpp
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp

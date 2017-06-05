@@ -11,41 +11,20 @@
 #ifndef		_ZOMBIE__HPP_
 # define	_ZOMBIE__HPP_
 
-# include <OgreCamera.h>
-# include <OgreEntity.h>
-# include <OgreLogManager.h>
-# include <OgreRoot.h>
-# include <OgreViewport.h>
-# include <OgreSceneManager.h>
-# include <OgreRenderWindow.h>
-# include <OgreConfigFile.h>
-# include <iostream>
-
-# include "GameObject/Character/Script.hpp"
-# include "Position.hpp"
-# include "Animation.hpp"
 # include "GameObject/Character/Npc/Npc.hpp"
 
 class Zombie : public Npc
 {
 public:
-  Zombie(int x, int y, int z);
+  Zombie(int x, int y, int z, int id);
   Zombie(Zombie const &);
   Zombie& operator=(Zombie const &);
   ~Zombie();
 
   /* Member functions */
   void		setOgreBase(Ogre::SceneManager*);
-  Ogre::Vector3	launchScript(Ogre::SceneNode *);
+  Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
   void		Animate(const Ogre::FrameEvent&);
-
-private:
-  Ogre::AnimationState	*mAnimationState;
-  Ogre::Entity		*mEntity;
-  Ogre::SceneNode	*mNode;
-  Script		*mScript;
-  Position		*mPosition;
-  Animation		*mAnimation;
 };
 
 #endif		/* _ZOMBIE__HPP_ */

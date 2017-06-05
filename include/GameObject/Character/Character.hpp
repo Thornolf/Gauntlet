@@ -5,13 +5,25 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed May 31 11:02:36 2017 Quentin Baudet
+** Last update Mon Jun 05 14:35:41 2017 Thomas Fossaert
 */
 
 #ifndef _CHARACTER_HPP_
 #define _CHARACTER_HPP_
 
 #include <iostream>
+# include <OgreCamera.h>
+# include <OgreEntity.h>
+# include <OgreLogManager.h>
+# include <OgreRoot.h>
+# include <OgreViewport.h>
+# include <OgreSceneManager.h>
+# include <OgreRenderWindow.h>
+# include <OgreConfigFile.h>
+
+# include "GameObject/Character/Script.hpp"
+# include "Position.hpp"
+# include "Animation.hpp"
 #include "GameObject/GameObject.hpp"
 
 class Character : public GameObject
@@ -21,8 +33,15 @@ class Character : public GameObject
   int		_attack;
   int		_cooldown;
   int		_speed;
-  /*Script    *_script <---------- décommenter après la classe Script*/
   int		_range;
+
+  Ogre::AnimationState	*mAnimationState;
+  Ogre::Entity		      *mEntity;
+  Ogre::SceneNode       *mNode;
+  Script                *mScript;
+  Position              *mPosition;
+  Animation             *mAnimation;
+  std::string           mNodeName;
 
 public:
   Character(int x, int y, int z);
@@ -37,6 +56,10 @@ public:
   bool isAlive();
   void getDistance();
   int getRange();
+
+  /*virtual void		setOgreBase(Ogre::SceneManager*);
+  virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);
+  virtual void		Animate(const Ogre::FrameEvent&);*/
 };
 
 #endif
