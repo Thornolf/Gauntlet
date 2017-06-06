@@ -25,6 +25,8 @@ public:
   void		setOgreBase(Ogre::SceneManager*);
   Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
   void		Animate(const Ogre::FrameEvent&);
+  void    unsetEntity(Ogre::SceneManager *mSceneMgr);
+
 };
 
 #endif		/* _ZOMBIE__HPP_ */

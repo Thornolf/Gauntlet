@@ -56,7 +56,6 @@ void GameCore::createScene()
      mZombie->setScale(3.0f, 3.0f, 3.0f);
 
      mSkull->setOgreBase(mSceneMgr);
-     /*_entityVector.back()->setOgreBase(mSceneMgr);*/
      for (auto &it : _entityVector)
        {
          it->setOgreBase(mSceneMgr);
@@ -76,6 +75,7 @@ void GameCore::createScene()
      collision->register_entity(mZombieEnt, COLLISION_ACCURATE);
 
      Script *mScript = new Script();
+
 }
 
 void GameCore::createFrameListener(void)
@@ -113,6 +113,11 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   if (leftMouseDown)
   {
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Attack2", fe, mEntity);
+    if (_entityVector.empty() != true)
+    {
+      _entityVector.back()->unsetEntity(mSceneMgr);
+      _entityVector.pop_back();
+    }
   }
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;

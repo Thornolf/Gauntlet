@@ -56,3 +56,8 @@ void Zombie::Animate(const Ogre::FrameEvent& fe)
 {
   mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
 }
+
+void Zombie::unsetEntity(Ogre::SceneManager *mSceneMgr)
+{
+  mSceneMgr->destroyEntity(mEntity);
+}
