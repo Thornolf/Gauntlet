@@ -5,10 +5,10 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 11:03:08 2017 Quentin Baudet
+// Last update Thu Jun  1 11:30:22 2017 Guillaume CAUCHOIS
 */
 
-#include "Character.hpp"
+#include "GameObject/Character/Character.hpp"
 
 Character::Character(int x, int y, int z) : GameObject(x, y, z)
 {
@@ -47,7 +47,7 @@ void	Character::takeDamage(int dmg)
 
 void Character::attack(Character *target)
 {
-  target->takeDamage(1);
+  target->takeDamage(this->_attack);
 }
 
 bool Character::isAlive()

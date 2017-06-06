@@ -11,7 +11,7 @@
 #include "MapManager.hpp"
 
 MapManager::MapManager(std::string newFilePath) {
-  _filePath = newFilePath
+  _filePath = newFilePath;
 }
 
 void MapManager::loadFromFile() {}

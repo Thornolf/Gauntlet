@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 10:57:10 2017 Adrien Warin
-** Last update Tue May 23 16:04:32 2017 Thomas Fossaert
+** Last update Wed May 31 17:09:34 2017 Thomas Fossaert
 */
 
 #ifndef POSITION_HPP_
@@ -19,7 +19,7 @@ private:
   int             _x;
   int             _y;
   int             _z;
-  Ogre::Vector3   _vector;
+  Ogre::Vector3   *_vector;
 
 public:
   Position (int, int, int);

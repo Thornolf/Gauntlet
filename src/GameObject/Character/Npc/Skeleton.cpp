@@ -5,21 +5,25 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 11:03:51 2017 Quentin Baudet
+** Last update Mon Jun 05 16:11:17 2017 Thomas Fossaert
 */
 
-#include "Skeleton.hpp"
+#include "GameObject/Character/Npc/Skeleton.hpp"
 
-Skeleton::Skeleton(int x, int y, int z) : Npc(x, y, z)
+Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z)
 {
-  this->_health = 1;
+  this->_id = id;
+  this->_health = 2;
+  this->_attack = 1;
   this->_range = 5;
-  this->_attack = -2;
+  mPosition = new Position(x, y, z);
+  mScript = new Script();
+  mNodeName = "SkeletonNode" + std::to_string(id);
 }
 
 Skeleton::Skeleton(Skeleton const & other) : Npc(other)
 {
-  (void) other;
+  (void)other;
 }
 
 Skeleton& Skeleton::operator=(Skeleton const & other)
@@ -28,7 +32,27 @@ Skeleton& Skeleton::operator=(Skeleton const & other)
   return *this;
 }
 
-Skeleton::~Skeleton()
-{
+Skeleton::~Skeleton() {}
 
+void Skeleton::setOgreBase(Ogre::SceneManager* mSceneMgr)
+{
+  mEntity = mSceneMgr->createEntity("Skeleton", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
+
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
+  mNode->attachObject(mEntity);
+  mNode->setScale(100.0f, 100.0f, 100.0f);
+  mNode->setOrientation(1,1,0,0);
+}
+
+Ogre::Vector3 Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target)
+{
+  Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
+  nextMove = mScript->SkeletonScript(mSceneMgr->getSceneNode("SkeletonNode1"), target);
+  //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
+  return (nextMove);
+}
+
+void Skeleton::Animate(const Ogre::FrameEvent& fe)
+{
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
 }

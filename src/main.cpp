@@ -1,3 +1,13 @@
+/*
+** main.cpp for IndieStudio
+**
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
+**
+** Started on  Fri Jun 02 06:36:03 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 02 06:36:03 2017 Guillaume CAUCHOIS
+*/
+
 #include "GameCore.hpp"
 
 int						main()

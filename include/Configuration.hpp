@@ -10,7 +10,7 @@
 
 #ifndef		_CONFIGURATION__HPP_
 # define	_CONFIGURATION__HPP_
-# include	"Pc.hpp"
+# include        "GameObject/Character/Pc/Pc.hpp"
 
 class Configuration
 {

@@ -1,22 +1,15 @@
 /*
------------------------------------------------------------------------------
-Filename:    BaseGauntlet.cpp
------------------------------------------------------------------------------
-
-This source file is part of the
-   ___                 __    __ _ _    _
-  /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
- //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
-/ \_// (_| | | |  __/  \  /\  /| |   <| |
-\___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/
-      Tutorial Framework
-      http://www.ogre3d.org/tikiwiki/
------------------------------------------------------------------------------
+** BaseGauntlet.cpp for IndieStudio
+**
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
+**
+** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
 */
+
 #include "BaseGauntlet.hpp"
 
-//-------------------------------------------------------------------------------------
 BaseGauntlet::BaseGauntlet(void)
     : mRoot(0),
     mCamera(0),
@@ -36,7 +29,7 @@ BaseGauntlet::BaseGauntlet(void)
   collision = new CollisionTools();
 }
 
-//-------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
 BaseGauntlet::~BaseGauntlet(void)
 {
     if (mTrayMgr) delete mTrayMgr;
@@ -80,13 +73,11 @@ void BaseGauntlet::createCamera(void)
 {
     // Create the camera
     mCamera = mSceneMgr->createCamera("PlayerCam");
-
     // Position it at 500 in Z direction
-    mCamera->setPosition(Ogre::Vector3(0,0,80));
+    mCamera->setPosition(Ogre::Vector3(0,1500,-700));
     // Look back along -Z
-    mCamera->lookAt(Ogre::Vector3(200,200,-500));
+    mCamera->lookAt(Ogre::Vector3(0,0,0));
     mCamera->setNearClipDistance(5);
-
     mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
 }
 //-------------------------------------------------------------------------------------
@@ -141,7 +132,6 @@ void BaseGauntlet::createFrameListener(void)
     mDetailsPanel->setParamValue(9, "Bilinear");
     mDetailsPanel->setParamValue(10, "Solid");
     mDetailsPanel->hide();
-
     mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
@@ -207,6 +197,7 @@ void BaseGauntlet::go(void)
 
     if (!setup())
         return;
+
 
     mRoot->startRendering();
 
@@ -377,8 +368,8 @@ bool BaseGauntlet::keyReleased( const OIS::KeyEvent &arg )
 
 bool BaseGauntlet::mouseMoved( const OIS::MouseEvent &arg )
 {
-    if (mTrayMgr->injectMouseMove(arg)) return true;
-    mCameraMan->injectMouseMove(arg);
+    /*if (mTrayMgr->injectMouseMove(arg)) return true;
+    mCameraMan->injectMouseMove(arg);*/
     return true;
 }
 

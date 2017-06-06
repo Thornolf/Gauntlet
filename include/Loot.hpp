@@ -11,8 +11,8 @@
 #ifndef _LOOT_HPP_
 #define _LOOT_HPP_
 
-#include "GameObject.hpp"
-#include "Pc.hpp"
+#include "GameObject/GameObject.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 class Loot : public GameObject
 {

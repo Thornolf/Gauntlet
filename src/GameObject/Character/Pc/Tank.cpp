@@ -8,7 +8,7 @@
 ** Last update Wed May 31 11:05:28 2017 Quentin Baudet
 */
 
-#include "Tank.hpp"
+#include "GameObject/Character/Pc/Tank.hpp"
 
 Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {

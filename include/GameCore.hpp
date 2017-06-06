@@ -12,17 +12,21 @@ This source file is part of the
       |___/
       Tutorial Framework
       http://www.ogre3d.org/tikiwiki/
------------------------------------------------------------------------------
+----------------------------------------------------------------------------
 */
 #ifndef __GameCore_h_
 #define __GameCore_h_
 
 #include <Terrain/OgreTerrain.h>
 #include <Terrain/OgreTerrainGroup.h>
+#include <vector>
 
 #include "BaseGauntlet.hpp"
 #include "Position.hpp"
 #include "Animation.hpp"
+#include "GameObject/Character/Script.hpp"
+#include "GameObject/Character/Npc/Zombie.hpp"
+#include "GameObject/Character/Npc/Skeleton.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -38,16 +42,27 @@ protected:
     virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
 
+    std::vector<Zombie*> _entityVector;
+
     Ogre::Real mDistance;                  // The distance the object has left to travel
     Ogre::Vector3 mDirection;              // The direction the object is moving
     Ogre::Vector3 mDestination;            // The destination the object is moving towards
 
     Ogre::AnimationState *mAnimationState; // The current animation state of the object
+    Ogre::AnimationState *mAnimationStateZombie; // The current animation state of the object
 
     Ogre::Entity *mEntity;                 // The Entity we are animating
+    Ogre::Entity *mZombieEnt;                 // The Entity we are animating
+
     Animation *_animation;
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
+    Ogre::SceneNode *mZombie;                // The -SceneNode that the Entity is attached to
+
     std::deque<Ogre::Vector3> mWalkList;   // The list of points we are walking to
+
+    Script *mScript;
+    Position *mPosition;
+    Zombie *mZob;
 
     Ogre::Real mWalkSpeed;                 // The speed at which the object is moving
 };

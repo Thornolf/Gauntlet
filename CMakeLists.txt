@@ -83,14 +83,15 @@ set(HDRS
         ./include/BaseGauntlet.hpp
         ./include/GameCore.hpp
         ./include/IndieException.hpp
-        ./include/Character.hpp
+        ./include/GameObject/Character/Character.hpp
         ./include/foodStack.hpp
         ./include/goldStack.hpp
         ./include/Loot.hpp
-        ./include/Npc.hpp
-        ./include/Pc.hpp
-        ./include/Zombie.hpp
-        ./include/GameObject.hpp
+        ./include/GameObject/Character/Npc/Npc.hpp
+        ./include/GameObject/Character/Pc/Pc.hpp
+        ./include/GameObject/Character/Npc/Zombie.hpp
+        ./include/GameObject/Character/Npc/Skeleton.hpp
+        ./include/GameObject/GameObject.hpp
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
@@ -105,6 +106,7 @@ set(HDRS
         ./include/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
+        include/GameObject/Character/Script.hpp
         )
 
 set(SRCS
@@ -119,6 +121,7 @@ set(SRCS
         ./src/GameObject/Character/Character.cpp
         ./src/GameObject/Character/Npc/Npc.cpp
         ./src/GameObject/Character/Npc/Zombie.cpp
+        ./src/GameObject/Character/Npc/Skeleton.cpp
         ./src/GameObject/Character/Pc/Pc.cpp
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp
@@ -132,6 +135,7 @@ set(SRCS
         ./src/Input/DeviceManager.cpp
         ./src/Input/ParserInputFile.cpp
         ./src/NewMOC.cpp
+	      ./src/Script/Script.cpp
         ./src/GameObject/Character/Pc/Warrior.cpp
         ./src/GameObject/Character/Pc/Tank.cpp)
 

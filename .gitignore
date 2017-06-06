@@ -43,3 +43,6 @@ OgreApp.cbp
 
 #CLION
 .idea/*
+
+dist/bin/OgreApp
+dist/bin/OgreApp_d
