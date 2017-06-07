@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(OgreApp)
+project(Gauntlet)
 
 if(WIN32)
     set(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/CMake/;${CMAKE_MODULE_PATH}")
@@ -84,9 +84,9 @@ set(HDRS
         ./include/GameCore.hpp
         ./include/IndieException.hpp
         ./include/GameObject/Character/Character.hpp
-        ./include/foodStack.hpp
-        ./include/goldStack.hpp
-        ./include/Loot.hpp
+        include/GameObject/Loot/foodStack.hpp
+        include/GameObject/Loot/goldStack.hpp
+        include/GameObject/Loot/Loot.hpp
         ./include/GameObject/Character/Npc/Npc.hpp
         ./include/GameObject/Character/Pc/Pc.hpp
         ./include/GameObject/Character/Npc/Zombie.hpp
@@ -107,7 +107,8 @@ set(HDRS
         ./include/NewMOC.hpp
         ./include/Animation.hpp
         include/GameObject/Character/Script.hpp
-        )
+        include/MapManager.hpp
+        include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -121,6 +122,7 @@ set(SRCS
         ./src/GameObject/Character/Character.cpp
         ./src/GameObject/Character/Npc/Npc.cpp
         ./src/GameObject/Character/Npc/Zombie.cpp
+        ./src/GameObject/Character/Npc/Boss.cpp
         ./src/GameObject/Character/Npc/Skeleton.cpp
         ./src/GameObject/Character/Pc/Pc.cpp
         ./src/GameObject/GameObject.cpp
@@ -135,9 +137,11 @@ set(SRCS
         ./src/Input/DeviceManager.cpp
         ./src/Input/ParserInputFile.cpp
         ./src/NewMOC.cpp
-	      ./src/Script/Script.cpp
+        ./src/Script/Script.cpp
         ./src/GameObject/Character/Pc/Warrior.cpp
-        ./src/GameObject/Character/Pc/Tank.cpp)
+        ./src/GameObject/Character/Pc/Tank.cpp
+        ./src/Parsing/MapManager.cpp
+        src/RenderManager.cpp src/GameObject/Character/Npc/Spawner.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
@@ -147,28 +151,28 @@ include_directories(${OIS_INCLUDE_DIRS}
 
 SET_SOURCE_FILES_PROPERTIES(${SRCS} PROPERTIES COMPILE_FLAGS -W -Wall -Wextra)
 
-add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
+add_executable(Gauntlet WIN32 ${HDRS} ${SRCS})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 find_package(SFML 2 REQUIRED network audio graphics window system)
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
-    target_link_libraries(OgreApp ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+    target_link_libraries(Gauntlet ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 endif()
 
-set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
+set_target_properties(Gauntlet PROPERTIES DEBUG_POSTFIX _d)
 
-target_link_libraries(OgreApp ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES})
+target_link_libraries(Gauntlet ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES})
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
 
 # post-build copy for win32
 if(WIN32 AND NOT MINGW)
-    add_custom_command( TARGET OgreApp PRE_BUILD
+    add_custom_command( TARGET Gauntlet PRE_BUILD
             COMMAND if not exist .\\dist\\bin mkdir .\\dist\\bin )
-    add_custom_command( TARGET OgreApp POST_BUILD
+    add_custom_command( TARGET Gauntlet POST_BUILD
             COMMAND copy \"$(TargetPath)\" .\\dist\\bin )
 endif(WIN32 AND NOT MINGW)
 
@@ -178,7 +182,7 @@ endif(MINGW OR UNIX)
 
 if(WIN32)
 
-    install(TARGETS OgreApp
+    install(TARGETS Gauntlet
             RUNTIME DESTINATION bin
             CONFIGURATIONS All)
 
@@ -234,7 +238,7 @@ endif(WIN32)
 
 if(UNIX)
 
-    install(TARGETS OgreApp
+    install(TARGETS Gauntlet
             RUNTIME DESTINATION bin
             CONFIGURATIONS All)
 

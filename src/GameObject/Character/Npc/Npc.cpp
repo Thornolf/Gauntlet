@@ -10,18 +10,19 @@
 
 #include "GameObject/Character/Npc/Npc.hpp"
 
-Npc::Npc(int x, int y, int z) : Character(x, y, z)
+Npc::Npc(int x, int y, int z, int id) : Character(x, y, z)
 {
+  this->_id = id;
 }
 
 Npc::Npc(Npc const & other) : Character(other)
 {
-  (void) other;
+  this->_id = other._id;
 }
 
 Npc& Npc::operator=(Npc const & other)
 {
-  (void) other;
+  this->_id = other._id;
   return *this;
 }
 
