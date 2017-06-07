@@ -5,13 +5,17 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Fri May 19 15:03:21 2017 Thomas Fossaert
+** Last update Fri May 26 10:58:11 2017 Pierre
 */
 
 #include "Application.h"
+#include <stdio.h>
+#include "audio/Music.hpp"
+#include "audio/SoundSystem.hpp"
 
 Application::Application(void)
 {
+
 }
 
 Application::~Application(void)
@@ -20,6 +24,11 @@ Application::~Application(void)
 
 void Application::createScene(void)
 {
+  //Music *lol = new Music();
+  //lol->playAudio("all_star.ogg");
+
+
+
   mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5, 0.5, 0.5));
   Ogre::Entity* ogreEntity = mSceneMgr->createEntity("ogrehead.mesh");
   Ogre::SceneNode* ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
@@ -47,4 +56,8 @@ void Application::createScene(void)
   ogreNode4->setPosition(-84, 48, 0);
   ogreNode4->roll(Ogre::Degree(-90));
   ogreNode4->attachObject(ogreEntity4);
+
+  Music *bito = new Music();
+  bito->playAudio("./src/audio/all_star.ogg");
+
 }

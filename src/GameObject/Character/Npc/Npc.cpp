@@ -5,10 +5,10 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon May 22 14:12:23 2017 Thomas Fossaert
+** Last update Wed May 31 11:09:03 2017 Quentin Baudet
 */
 
-#include "Npc.hpp"
+#include "GameObject/Character/Npc/Npc.hpp"
 
 Npc::Npc(int x, int y, int z) : Character(x, y, z)
 {
@@ -28,29 +28,4 @@ Npc& Npc::operator=(Npc const & other)
 Npc::~Npc()
 {
 
-}
-
-void Npc::getDamage()
-{
-
-}
-
-void Npc::attack()
-{
-
-}
-
-bool Npc::isAlive()
-{
-    return (false);
-}
-
-void Npc::getDistance()
-{
-
-}
-
-size_t Npc::getRange()
-{
-  return (_range);
 }

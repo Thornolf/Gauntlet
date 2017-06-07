@@ -5,10 +5,10 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Tue May 23 16:12:10 2017 Thomas Fossaert
+** Last update Wed May 31 09:53:00 2017 Quentin Baudet
 */
 
-#include "GameObject.hpp"
+#include "GameObject/GameObject.hpp"
 
 GameObject::GameObject(int x, int y, int z)
 {
@@ -26,12 +26,12 @@ GameObject& GameObject::operator=(GameObject const & other)
   return *this;
 }
 
-GameObject::~GameObject()
-{
+GameObject::~GameObject() {}
 
-}
-
-Position* GameObject::getPosition() const
+Position*	GameObject::getPosition() const
 {
   return (this->_position);
 }
+
+void	GameObject::hide(void) {}
+
