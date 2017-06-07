@@ -10,7 +10,6 @@
 
 #include "GameCore.hpp"
 
-/*
 int	main()
 {
   try
@@ -23,26 +22,5 @@ int	main()
       std::cerr << e.what() << " from " << e.getSource() << std::endl;
       return (0);
     }
-  return (0);
-}
-*/
-
-#include "MapManager.hpp"
-
-int		main(void)
-{
-  MapManager	*mManager;
-
-  std::srand(std::time(0));
-  try
-  {
-    mManager = new MapManager("dist/bin/map.cfg");
-    mManager->computeAbstractTree();
-    mManager->dumpASTContent();
-  }
-  catch (IndieException &e)
-  {
-    std::cerr << "Error: " << e.what() << std::endl;
-  }
   return (0);
 }

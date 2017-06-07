@@ -75,41 +75,55 @@ void	MapManager::computeAbstractTree(void)
   }
 }
 
-/**
- * [DEBUG] Quick dump of the AST content
- */
-void	MapManager::dumpASTContent(void) const
+void	MapManager::ObjASTNodeToGameObj(RenderManager &rManager, t_ast_node *object)
 {
-  std::cout << "**** DUMP - AST ****" << std::endl;
-  for (auto it_section = this->_tree->children->begin(); it_section != this->_tree->children->end(); ++it_section)
+  Position		pos;
+  Position		scale;
+  std::string		texture;
+  std::string		name;
+  std::string		ObjectType;
+
+  if (object == nullptr)
+    throw IndieException("Cannot null ast node");
+  for (auto it_objField = object->children->begin(); it_objField != object->children->end(); ++it_objField)
   {
-    std::cout << "> SECTION : " << (*it_section)->value << std::endl;
-    for (auto it_data = (*it_section)->children->begin(); it_data != (*it_section)->children->end(); ++it_data)
-    {
-      std::cout << "\t> DATA LEXEME=\"" << (*it_data)->lexeme << "\"";
-      std::cout << " VALUE=\"" << (*it_data)->value << "\"" << std::endl;
-      for (auto it_obj = (*it_data)->children->begin(); it_obj != (*it_data)->children->end(); ++it_obj)
-	std::cout << "\t\t> OBJ_FIELD " << (*it_obj)->value << std::endl;
-    }
+    if ((*it_objField)->type == ASTNodeType::NAME)
+      name = (*it_objField)->value;
+    else if ((*it_objField)->type == ASTNodeType::TYPE)
+      ObjectType = (*it_objField)->value;
+    else if ((*it_objField)->type == ASTNodeType::POSITION)
+      pos.stringToPosition((*it_objField)->value);
+    else if ((*it_objField)->type == ASTNodeType::SCALE)
+      scale.stringToPosition((*it_objField)->value);
+    else if ((*it_objField)->type == ASTNodeType::TEXTURE)
+      texture = (*it_objField)->value;
+    else
+      throw IndieException("Invalid AST data found");
+    (void)name;
   }
-  std::cout << "*********************" << std::endl;
+  rManager.createGameObject(ObjectType, pos, scale, texture);
 }
 
 /**
  * Compute a map from the datas store in the _ast
  */
-void	MapManager::generateMap(void)
+void	MapManager::generateMap(RenderManager &rManager)
 {
-
-}
-
-/**
- * Permit to get the generated map
- * @return map
- */
-std::vector<GameObject>	MapManager::getGeneratedMap(void) const
-{
-  return (this->_map);
+  if (!this->_tree)
+    throw IndieException("The AST has not been computed");
+  for (auto it_section = this->_tree->children->begin(); it_section != this->_tree->children->end(); ++it_section)
+  {
+    if ((*it_section)->value == "OBJECTS")
+    {
+      for (auto it_object = (*it_section)->children->begin(); it_object != (*it_section)->children->end(); ++it_object)
+	this->ObjASTNodeToGameObj(rManager, *it_object);
+    }
+    if ((*it_section)->value == "OPTIONS")
+    {
+      for (auto it_object = (*it_section)->children->begin(); it_object != (*it_section)->children->end(); ++it_object)
+	this->_options[(*it_object)->lexeme] = (*it_object)->value;
+    }
+  }
 }
 
 /**
@@ -169,7 +183,7 @@ t_ast_node	*MapManager::addSectionASTNode(const std::string line)
   section_node = new t_ast_node(new std::vector<struct s_ast_node*>);
   section_node->type = ASTNodeType::SECTION;
   section_node->value = this->getSectionName(line);
-  section_node->lexeme = "section";
+  section_node->lexeme = "SECTION";
   this->_tree->children->push_back(section_node);
   return (section_node);
 }
@@ -276,4 +290,11 @@ void		MapManager::addObjectASTNode(t_ast_node *section, const std::string line)
   this->addObjectFieldASTNode(object, line, ObjectField::SCALE, ASTNodeType::SCALE);
   this->addObjectFieldASTNode(object, line, ObjectField::TEXTURE, ASTNodeType::TEXTURE);
   section->children->push_back(object);
+}
+
+std::string	MapManager::getOption(const std::string &label)
+{
+  if (this->_options.find(label) == this->_options.end())
+    return ("");
+  return (this->_options[label]);
 }

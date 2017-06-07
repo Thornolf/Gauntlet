@@ -22,7 +22,11 @@ RenderManager::RenderManager()
   this->_factory["GOLD"] = std::bind(&RenderManager::createGoldObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 }
 
-RenderManager::~RenderManager() {}
+RenderManager::~RenderManager()
+{
+  for (auto it = this->_entities.begin(); it != this->_entities.end(); ++it)
+    delete *it;
+}
 
 /*****************************************************************************/
 
@@ -33,10 +37,14 @@ RenderManager::~RenderManager() {}
 GameObject	*RenderManager::createGameObject(const std::string &type, const Position &pos, const Position &scale, const std::string &texture)
 {
   static int	i = 1;
+  GameObject	*gObj;
 
-  return (this->_factory[type](i++, pos, scale, texture));
+  if (this->_factory.find(type) == this->_factory.end())
+    throw IndieException("Cannot generate the GameObject from type \"" + type + "\"");
+  gObj = this->_factory[type](i++, pos, scale, texture);
+  this->_entities.push_back(gObj);
+  return (gObj);
 }
-
 
 /******************************************************************************
  * Create Unit GameObject

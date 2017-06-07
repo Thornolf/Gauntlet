@@ -62,10 +62,9 @@ public:
   virtual ~MapManager ();
 
   /* Public member functions */
-  void				computeAbstractTree(void);
-  void				generateMap(void);
-  std::vector<GameObject>	getGeneratedMap(void) const;
-  void				dumpASTContent(void) const;
+  void			computeAbstractTree(void);
+  void			generateMap(RenderManager &);
+  std::string		getOption(const std::string &);
 
 private:
   /* Loading */
@@ -85,12 +84,14 @@ private:
   std::string	*getFieldFromObjectDeclarationLine(const std::string &, ObjectField) const;
   std::string	getSectionName(const std::string &) const;
 
+  /* Map Generation */
+  void		ObjASTNodeToGameObj(RenderManager &, t_ast_node *);
+
 private:
-  std::string			_path;
-  std::vector<std::string>	_buffer;
-  std::vector<GameObject>	_map;
-  s_ast_node			*_tree;
-  std::vector<std::string>	_ground_texture;
+  std::string				_path;
+  std::vector<std::string>		_buffer;
+  s_ast_node				*_tree;
+  std::map<std::string, std::string>	_options;
 };
 
 #endif		/* !_MAP_MANAGER_HPP_ */

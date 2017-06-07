@@ -47,6 +47,7 @@ public:
 private:
   /* Private attributs */
   std::map<std::string, std::function<GameObject*(int, const Position &, const Position &, const std::string &)> >	_factory;
+  std::vector<GameObject *>	_entities;
 };
 
 #endif		/* _RENDER_MANAGER__HPP_ */
