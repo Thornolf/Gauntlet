@@ -33,6 +33,7 @@ int		main(void)
 {
   MapManager	*mManager;
 
+  std::srand(std::time(0));
   try
   {
     mManager = new MapManager("dist/bin/map.cfg");

@@ -84,9 +84,9 @@ set(HDRS
         ./include/GameCore.hpp
         ./include/IndieException.hpp
         ./include/GameObject/Character/Character.hpp
-        ./include/foodStack.hpp
-        ./include/goldStack.hpp
-        ./include/Loot.hpp
+        include/GameObject/Loot/foodStack.hpp
+        include/GameObject/Loot/goldStack.hpp
+        include/GameObject/Loot/Loot.hpp
         ./include/GameObject/Character/Npc/Npc.hpp
         ./include/GameObject/Character/Pc/Pc.hpp
         ./include/GameObject/Character/Npc/Zombie.hpp
@@ -108,7 +108,7 @@ set(HDRS
         ./include/Animation.hpp
         include/GameObject/Character/Script.hpp
         include/MapManager.hpp
-        )
+        include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -122,6 +122,7 @@ set(SRCS
         ./src/GameObject/Character/Character.cpp
         ./src/GameObject/Character/Npc/Npc.cpp
         ./src/GameObject/Character/Npc/Zombie.cpp
+        ./src/GameObject/Character/Npc/Boss.cpp
         ./src/GameObject/Character/Npc/Skeleton.cpp
         ./src/GameObject/Character/Pc/Pc.cpp
         ./src/GameObject/GameObject.cpp
@@ -140,7 +141,7 @@ set(SRCS
         ./src/GameObject/Character/Pc/Warrior.cpp
         ./src/GameObject/Character/Pc/Tank.cpp
         ./src/Parsing/MapManager.cpp
-        )
+        src/RenderManager.cpp src/GameObject/Character/Npc/Spawner.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

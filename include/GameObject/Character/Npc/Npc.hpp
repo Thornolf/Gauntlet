@@ -19,7 +19,7 @@ class Npc : public Character
 protected:
   int _id;
 public:
-  Npc(int x, int y, int z);
+  Npc(int x, int y, int z, int id);
   Npc(Npc const &);
   Npc& operator=(Npc const &);
   virtual ~Npc();

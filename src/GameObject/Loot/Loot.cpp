@@ -8,27 +8,25 @@
 ** Last update Tue May 23 16:12:39 2017 Thomas Fossaert
 */
 
-#include "Loot.hpp"
+#include "GameObject/Loot/Loot.hpp"
 
-Loot::Loot(int x, int y, int z) : GameObject(x, y, z)
+Loot::Loot(int x, int y, int z, int id) : GameObject(x, y, z)
 {
+  this->_id = id;
 }
 
 Loot::Loot(Loot const & other) : GameObject(other)
 {
-  (void) other;
+  this->_id = other._id;
 }
 
 Loot& Loot::operator=(Loot const & other)
 {
-  (void) other;
+  this->_id = other._id;
   return *this;
 }
 
-Loot::~Loot()
-{
-
-}
+Loot::~Loot() {}
 
 bool Loot::isTaken(Pc const & other)
 {

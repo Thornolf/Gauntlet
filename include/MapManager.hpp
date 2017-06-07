@@ -21,6 +21,7 @@
 # include	<regex>
 # include	"GameObject/GameObject.hpp"
 # include	"IndieException.hpp"
+# include	"RenderManager.hpp"
 
 enum class	ASTNodeType : int
 {
@@ -42,23 +43,6 @@ typedef enum	ObjectField
   SCALE,
   TEXTURE
 }		ObjectField;
-
-typedef enum	ObjectType
-{
-  WALL = 0,
-  DOOR,
-  ZOMBIE,
-  BOSS,
-  SKELTON,
-  SPAWNER,
-  PLAYER_1,
-  PLAYER_2,
-  PLAYER_3,
-  PLAYER_4,
-  FOOD,
-  GOLD,
-  TRAP
-}		ObjectType;
 
 typedef struct	s_ast_node
 {
