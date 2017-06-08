@@ -106,6 +106,7 @@ set(HDRS
         ./include/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
+				./include/Light/light.hpp
         include/GameObject/Character/Script.hpp
         )
 
@@ -137,7 +138,9 @@ set(SRCS
         ./src/NewMOC.cpp
 	      ./src/Script/Script.cpp
         ./src/GameObject/Character/Pc/Warrior.cpp
-        ./src/GameObject/Character/Pc/Tank.cpp)
+        ./src/GameObject/Character/Pc/Tank.cpp
+				./src/light/Light.cpp
+			)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

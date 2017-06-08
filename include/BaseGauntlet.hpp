@@ -89,6 +89,8 @@ protected:
     OIS::InputManager* mInputManager;
     OIS::Mouse*    mMouse;
     OIS::Keyboard* mKeyboard;
+
+    Ogre::AnimationState* mAnimationState;
 };
 
 #endif		/* !_BASEGAUNTLET__HPP_ */

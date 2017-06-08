@@ -5,11 +5,12 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Thu Jun  8 11:25:15 2017 Thomas Fossaert
+** Last update Thu Jun 08 10:50:38 2017 Robin Grattepanche
 */
 
 #include "GameCore.hpp"
 #include "Position.hpp"
+#include	"Light/light.hpp"
 #include "audio/Music.hpp"
 #include "GameObject/Character/Pc/Pc.hpp"
 
@@ -23,64 +24,72 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-    Zombie *mZob = new Zombie(100, 0, 100, 1);
-    Zombie *mZob2 = new Zombie(400, 0, -100, 2);
-    Zombie *mZob3 = new Zombie(-100, 0, -100, 3);
+  Zombie		*mZob = new Zombie(100, 0, 100, 1);
+  Zombie		*mZob2 = new Zombie(400, 0, -100, 2);
+  Zombie		*mZob3 = new Zombie(-100, 0, -100, 3);
+  Ogre::Entity		*ent;
+  Ogre::Entity		*wall;
+  Ogre::SceneNode	*node;
+
+  mPosition = new Position(100, 0, 100);
+  //mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+  // mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+  light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 200, 0);
+  ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
+  mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
+  mNode->attachObject(mEntity);
+
+  Skeleton *mSkull = new Skeleton(200, 0, 200, 1);
+
+  _entityVector.push_back(mZob);
+  _entityVector.push_back(mZob2);
+  _entityVector.push_back(mZob3);
+
+  //mNode->attachObject(mCamera);
+  wall = mSceneMgr->createEntity("Cube", "cube.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
+  node->attachObject(wall);
+  wall->setMaterialName("Examples/Rocky");
+  node->setScale(15.0f, 7.0f, 0.3f);
+
+  ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 100.0f, 0.0f));
+  node->attachObject(ent);
+  node->setScale(3.0f, 3.0f, 3.0f);
+
+  //mNode->setOrientation(1,1,0,0);
+  mNode->setScale(2,2,2);
+
+  mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
+  mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
+  mZombie->attachObject(mZombieEnt);
+  mZombie->setScale(3.0f, 3.0f, 3.0f);
+  mZombie->setOrientation(1,1,0,0);
 
 
-    Skeleton *mSkull = new Skeleton(200, 0, 200, 1);
+  mSkull->setOgreBase(mSceneMgr);
+  for (auto &it : _entityVector)
+  {
+    it->setOgreBase(mSceneMgr);
+  }
 
-    _entityVector.push_back(mZob);
-    _entityVector.push_back(mZob2);
-    _entityVector.push_back(mZob3);
+  Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+  Ogre::MeshManager::getSingleton().createPlane("ground",
+						Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+						plane, 1500, 1500, 20, 20, true, 1, 20, 20,
+						Ogre::Vector3::UNIT_Z);
+  Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
+  mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
+  groundEntity->setMaterialName("Examples/Rockwall");
 
-    Position *mPosition = new Position(100, 0, -350);
-     mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-     mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
-     mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(0.0f, 0.0f, 25.0f));
+  Script *mScript = new Script();
 
-     //mNode->setOrientation(1,1,0,0);
-     mNode->setScale(2,2,2);
-     mNode->attachObject(mEntity);
-     Ogre::Entity *ent;
-     Ogre::Entity *wall;
-     Ogre::SceneNode *node;
-
-     //mNode->attachObject(mCamera);
-     wall = mSceneMgr->createEntity("Cube", "cube.mesh");
-     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
-     node->attachObject(wall);
-     wall->setMaterialName("Examples/Rocky");
-     node->setScale(15.0f, 7.0f, 0.3f);
-
-     mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
-     mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
-     mZombie->attachObject(mZombieEnt);
-     mZombie->setScale(3.0f, 3.0f, 3.0f);
-     mZombie->setOrientation(1,1,0,0);
-
-
-     mSkull->setOgreBase(mSceneMgr);
-     for (auto &it : _entityVector)
-       {
-         it->setOgreBase(mSceneMgr);
-       }
-
-     Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
-     Ogre::MeshManager::getSingleton().createPlane("ground",
-     Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-     plane, 1500, 1500, 20, 20, true, 1, 20, 20,
-     Ogre::Vector3::UNIT_Z);
-     Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
-     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
-     groundEntity->setMaterialName("Examples/Rockwall");
-     CollisionTools *collision = new CollisionTools();
-     collision->register_entity(mEntity, COLLISION_ACCURATE);
-     collision->register_entity(wall, COLLISION_ACCURATE);
-     collision->register_entity(mZombieEnt, COLLISION_ACCURATE);
-
-     Script *mScript = new Script();
-
+  collision = new CollisionTools();
+  collision->register_entity(mEntity, Collision::COLLISION_BOX);
+  collision->register_entity(wall, Collision::COLLISION_BOX);
+  collision->register_entity(ent, Collision::COLLISION_BOX);
 }
 
 void GameCore::createFrameListener(void)
@@ -127,33 +136,35 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  //SCheckCollisionAnswer collider = collision->check_ray_collision(Ogre::Ray(mNode->getPosition(), Ogre::Vector3(100.0f, 0.0f,  100.0f)), Ogre::SceneManager::ENTITY_TYPE_MASK, nullptr, 100, true);
-  SCheckCollisionAnswer ret = collision->check_ray_collision(mNode->getPosition(), mNode->getPosition() + Ogre::Vector3(0.0f, 0.0f,  -750.0f), 1.0f, 1.0f, Ogre::SceneManager::ENTITY_TYPE_MASK, mEntity, false);
-  if (ret.collided)
-  {
-    dirVec.y += 500;
-  }
+  SCheckCollisionAnswer collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
+								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(50.0f, 50.0f, 50.0f), 50.0f, 50.0f, 1,
+								  mEntity,
+								  false);
 
-  if (mKeyboard->isKeyDown(OIS::KC_K))
-  {
-    dirVec.x -= move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
-  }
-
-  if (mKeyboard->isKeyDown(OIS::KC_M))
-  {
-    dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
-  }
-
+  if (collider.collided)
+    dirVec.z += 2 + move;
   if (mKeyboard->isKeyDown(OIS::KC_O))
   {
-    dirVec.z += move;
+    mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
+    dirVec.z -= move;
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+  }
+  if (mKeyboard->isKeyDown(OIS::KC_K))
+  {
+    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
+    dirVec.z -= move;
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+  }
+  if (mKeyboard->isKeyDown(OIS::KC_M))
+  {
+    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
+    dirVec.z -= move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
 
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
+    mNode->setOrientation(Ogre::Quaternion(0, 0, -1, 0));
     dirVec.z -= move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
@@ -176,4 +187,14 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mAnimationStateZombie->setLoop(true);
   mAnimationStateZombie->setEnabled(true);
   return true;
+  if (mKeyboard->isKeyDown(OIS::KC_J))
+  {
+    Ogre::Vector3 src = mNode->getOrientation() * Ogre::Vector3::UNIT_X;
+    mNode->yaw(Ogre::Degree(0.25));
+  }
+  if (mKeyboard->isKeyDown(OIS::KC_H))
+  {
+    Ogre::Vector3 src = mNode->getOrientation() * Ogre::Vector3::UNIT_X;
+    mNode->yaw(Ogre::Degree(-0.25));
+  }
 }

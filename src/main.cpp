@@ -10,7 +10,7 @@
 
 #include "GameCore.hpp"
 
-int						main()
+int		main()
 {
   try
     {

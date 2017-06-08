@@ -48,6 +48,8 @@ protected:
     Ogre::Vector3 mDirection;              // The direction the object is moving
     Ogre::Vector3 mDestination;            // The destination the object is moving towards
 
+		CollisionTools *collision;
+
     Ogre::AnimationState *mAnimationState; // The current animation state of the object
     Ogre::AnimationState *mAnimationStateZombie; // The current animation state of the object
 
