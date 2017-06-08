@@ -23,12 +23,13 @@
 class Script
 {
 
-    public:
-        Script ();
-        virtual ~Script ();
-        Ogre::Vector3 ZombieScript(Ogre::SceneNode *,Ogre::SceneNode *);
-        Ogre::Vector3 SkeletonScript(Ogre::SceneNode *,Ogre::SceneNode *);
-        void test();
+public:
+  Script ();
+  virtual ~Script ();
+  Ogre::Vector3 ZombieScript(Ogre::SceneNode *,Ogre::SceneNode *);
+  Ogre::Vector3 SkeletonScript(Ogre::SceneNode *,Ogre::SceneNode *);
+  Ogre::Vector3 BossScript(Ogre::SceneNode *,Ogre::SceneNode *);
+  void test();
 };
 
 #endif

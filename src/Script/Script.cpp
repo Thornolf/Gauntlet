@@ -30,11 +30,26 @@ Ogre::Vector3 Script::ZombieScript(Ogre::SceneNode *current, Ogre::SceneNode *ta
     dirVec.z = -75;
   if (current->getPosition().z < target->getPosition().z)
     dirVec.z = 75;
-
   return (dirVec);
 }
 
 Ogre::Vector3 Script::SkeletonScript(Ogre::SceneNode *current, Ogre::SceneNode *target)
+{
+  Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
+
+  if (current->getPosition().x < target->getPosition().x)
+    dirVec.x = 75;
+  if (current->getPosition().x > target->getPosition().x)
+    dirVec.x = -75;
+  if (current->getPosition().z > target->getPosition().z)
+    dirVec.z = -75;
+  if (current->getPosition().z < target->getPosition().z)
+    dirVec.z = 75;
+
+  return (dirVec);
+}
+
+Ogre::Vector3 Script::BossScript(Ogre::SceneNode *current, Ogre::SceneNode *target)
 {
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 

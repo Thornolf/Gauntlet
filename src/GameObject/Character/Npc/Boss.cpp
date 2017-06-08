@@ -10,9 +10,8 @@
 
 #include "GameObject/Character/Npc/Boss.hpp"
 
-Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z)
+Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
-  this->_id = id;
   this->_health = 222;
   this->_attack = 100;
   mPosition = new Position(x, y, z);

@@ -10,9 +10,8 @@
 
 #include "GameObject/Character/Npc/Zombie.hpp"
 
-Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z)
+Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
-  this->_id = id;
   this->_health = 2;
   this->_attack = 1;
   mPosition = new Position(x, y, z);

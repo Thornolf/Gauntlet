@@ -8,11 +8,9 @@
 ** Last update Tue May 23 16:12:46 2017 Thomas Fossaert
 */
 
-#include "goldStack.hpp"
+#include "GameObject/Loot/goldStack.hpp"
 
-goldStack::goldStack(int x, int y, int z) : Loot(x, y, z)
-{
-}
+goldStack::goldStack(int x, int y, int z, int id) : Loot(x, y, z, id) {}
 
 goldStack::goldStack(goldStack const & other) : Loot(other)
 {

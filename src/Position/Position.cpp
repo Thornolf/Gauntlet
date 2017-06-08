@@ -65,7 +65,7 @@ Ogre::Vector3	Position::getVector() const
   return (*_vector);
 }
 
-void	Position::setXposition(int new_pos_x)
+void	Position::setXPosition(int new_pos_x)
 {
   this->_x = new_pos_x;
   this->_vector->x += new_pos_x/*Ogre::Vector3(new_pos_x, 0, 0)*/;
@@ -88,7 +88,23 @@ void	Position::setPosition(int new_x, int new_y, int new_z)
   this->_x = new_x;
   this->_y = new_y;
   this->_z = new_z;
-  setXposition(new_x);
+  setXPosition(new_x);
   setYPosition(new_y);
   setZPosition(new_z);
+}
+
+void		Position::stringToPosition(const std::string &line)
+{
+  std::regex	regex("[0-9]*");
+  std::smatch	match;
+  std::string	buf;
+
+  if (!std::regex_search(line.begin(), line.end(), match, regex) || match.size() != 3)
+    return;
+  buf = match[1];
+  this->setXPosition(std::atoi(buf.c_str()));
+  buf = match[2];
+  this->setYPosition(std::atoi(buf.c_str()));
+  buf = match[3];
+  this->setZPosition(std::atoi(buf.c_str()));
 }

@@ -8,9 +8,9 @@
 ** Last update Tue May 23 16:12:52 2017 Thomas Fossaert
 */
 
-#include "foodStack.hpp"
+#include "GameObject/Loot/foodStack.hpp"
 
-foodStack::foodStack(int x, int y, int z) : Loot(x, y, z)
+foodStack::foodStack(int x, int y, int z, int id) : Loot(x, y, z, id)
 {
 }
 

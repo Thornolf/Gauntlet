@@ -10,9 +10,8 @@
 
 #include "GameObject/Character/Npc/Skeleton.hpp"
 
-Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z)
+Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
-  this->_id = id;
   this->_health = 2;
   this->_attack = 1;
   this->_range = 5;

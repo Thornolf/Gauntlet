@@ -8,10 +8,10 @@
 ** Last update Wed May 31 17:09:34 2017 Thomas Fossaert
 */
 
-#ifndef POSITION_HPP_
-# define POSITION_HPP_
-
-#include <OgreVector3.h>
+#ifndef		_POSITION__HPP_
+# define	_POSITION__HPP_
+# include	<OgreVector3.h>
+# include	<regex>
 
 class Position
 {
@@ -22,20 +22,21 @@ private:
   Ogre::Vector3   *_vector;
 
 public:
-  Position (int, int, int);
+  Position (int = 0, int = 0, int = 0);
   virtual ~Position ();
   Position (const Position&);
   Position &operator=(const Position&);
   bool operator==(const Position &);
 
-  int               getXPosition() const;
-  int               getYPosition() const;
-  int               getZPosition() const;
-  Ogre::Vector3     getVector() const;
-  void              setXposition(int);
-  void              setYPosition(int);
-  void              setZPosition(int);
-  void              setPosition(int, int, int);
+  int		getXPosition() const;
+  int		getYPosition() const;
+  int		getZPosition() const;
+  Ogre::Vector3	getVector() const;
+  void		setXPosition(int);
+  void		setYPosition(int);
+  void		setZPosition(int);
+  void		setPosition(int, int, int);
+  void		stringToPosition(const std::string &);
 };
 
-#endif
+#endif		/* !_POSITION__HPP_! */
