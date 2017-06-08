@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Fri May 26 10:57:04 2017 Thomas Fossaert
+// Last update Thu Jun  8 11:25:15 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -34,26 +34,31 @@ void GameCore::createScene()
     _entityVector.push_back(mZob2);
     _entityVector.push_back(mZob3);
 
-    Position *mPosition = new Position(100, 0, -750);
+    Position *mPosition = new Position(100, 0, -350);
      mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
      mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
      mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(0.0f, 0.0f, 25.0f));
+
+     //mNode->setOrientation(1,1,0,0);
+     mNode->setScale(2,2,2);
      mNode->attachObject(mEntity);
      Ogre::Entity *ent;
      Ogre::Entity *wall;
      Ogre::SceneNode *node;
 
-     mNode->attachObject(mCamera);
+     //mNode->attachObject(mCamera);
      wall = mSceneMgr->createEntity("Cube", "cube.mesh");
      node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
      node->attachObject(wall);
      wall->setMaterialName("Examples/Rocky");
      node->setScale(15.0f, 7.0f, 0.3f);
 
-     mZombieEnt = mSceneMgr->createEntity("Robot", "robot.mesh");
+     mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
      mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
      mZombie->attachObject(mZombieEnt);
      mZombie->setScale(3.0f, 3.0f, 3.0f);
+     mZombie->setOrientation(1,1,0,0);
+
 
      mSkull->setOgreBase(mSceneMgr);
      for (auto &it : _entityVector)
@@ -85,7 +90,7 @@ void GameCore::createFrameListener(void)
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
 
-  mAnimationStateZombie = mZombieEnt->getAnimationState("Walk");
+  mAnimationStateZombie = mZombieEnt->getAnimationState("Run");
   mAnimationStateZombie->setLoop(true);
   mAnimationStateZombie->setEnabled(true);
 }
@@ -112,7 +117,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   if (leftMouseDown)
   {
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Attack2", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Attack1", fe, mEntity);
     if (_entityVector.empty() != true)
     {
       _entityVector.back()->unsetEntity(mSceneMgr);
@@ -161,13 +166,13 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
-  mSceneMgr->getSceneNode("ZombieNode1")->translate(
+  /*mSceneMgr->getSceneNode("ZombieNode1")->translate(
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
+    Ogre::Node::TS_LOCAL)*/
 
   mAnimationState = _animation->loopAnimation(mAnimationState, fe, mEntity);
 
-  mAnimationStateZombie = mZombieEnt->getAnimationState("Walk");
+  mAnimationStateZombie = mZombieEnt->getAnimationState("Run");
   mAnimationStateZombie->setLoop(true);
   mAnimationStateZombie->setEnabled(true);
   return true;

@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon Jun 05 16:12:06 2017 Thomas Fossaert
+** Last update Thu Jun 08 08:57:38 2017 fossae_t
 */
 
 #include "GameObject/Character/Npc/Boss.hpp"
@@ -55,4 +55,9 @@ Ogre::Vector3 Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode 
 void Boss::Animate(const Ogre::FrameEvent& fe)
 {
   mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+}
+
+void Boss::unsetEntity(Ogre::SceneManager *mSceneMgr)
+{
+  mSceneMgr->destroyEntity(mEntity);
 }

@@ -36,11 +36,10 @@ Zombie::~Zombie() {}
 void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   //mEntity = mSceneMgr->createEntity("Zombie", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
-  mEntity = mSceneMgr->createEntity("Zombie" + std::to_string(_id), "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
-
+  mEntity = mSceneMgr->createEntity("Zombie" + std::to_string(_id), "creature_northrendghoul2_northrendghoul2.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(100.0f, 100.0f, 100.0f);
+  mNode->setScale(1.0f, 1.0f, 1.0f);
   mNode->setOrientation(1,1,0,0);
 }
 

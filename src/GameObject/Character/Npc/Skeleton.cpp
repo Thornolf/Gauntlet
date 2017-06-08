@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon Jun 05 16:11:17 2017 Thomas Fossaert
+** Last update Thu Jun 08 08:57:00 2017 fossae_t
 */
 
 #include "GameObject/Character/Npc/Skeleton.hpp"
@@ -55,4 +55,9 @@ Ogre::Vector3 Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneN
 void Skeleton::Animate(const Ogre::FrameEvent& fe)
 {
   mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+}
+
+void Skeleton::unsetEntity(Ogre::SceneManager *mSceneMgr)
+{
+  mSceneMgr->destroyEntity(mEntity);
 }

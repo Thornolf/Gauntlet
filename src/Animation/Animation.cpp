@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:34:40 2017 Thomas Fossaert
-** Last update Thu Jun 01 11:49:51 2017 Pierre
+** Last update Thu Jun 08 15:27:39 2017 Thomas Fossaert
 */
 
 #include "Animation.hpp"
@@ -53,7 +53,7 @@ Ogre::AnimationState *Animation::loopAnimation(Ogre::AnimationState *AnimationSt
 {
   if (AnimationState->getTimePosition() + fe.timeSinceLastFrame > AnimationState->getLength())
   {
-    AnimationState = entity->getAnimationState("Idle1");
+    AnimationState = entity->getAnimationState("Walk");
     AnimationState->setLoop(true);
     AnimationState->setEnabled(true);
   }
