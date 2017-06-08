@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Fri Jun 02 14:16:00 2017 Robin Grattepanche
+** Last update Thu Jun 08 10:50:38 2017 Robin Grattepanche
 */
 
 #include "GameCore.hpp"
@@ -26,7 +26,7 @@ void GameCore::createScene()
 {
   // mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
 	light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 200, 0);
-	ambient->setDiffuseColour(Ogre::ColourValue(0, 0, 1.0));
+	ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
   mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
@@ -41,11 +41,11 @@ void GameCore::createScene()
   wall = mSceneMgr->createEntity("Cube", "cube.mesh");
   node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
   node->attachObject(wall);
-  wall->setMaterialName("Examples/Rocky");
   node->setScale(15.0f, 7.0f, 0.3f);
 
   ent = mSceneMgr->createEntity("Ogre", "ogrehead.mesh");
-  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 30.0f, 0.0f));
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 100.0f, 0.0f));
+	wall->setMaterialName("bow_northrend/bow_northrend");
   node->attachObject(ent);
   node->setScale(3.0f, 3.0f, 3.0f);
 
@@ -60,8 +60,8 @@ void GameCore::createScene()
 
 
   collision = new CollisionTools();
-  collision->register_entity(mEntity, Collision::COLLISION_SPHERE);
-  collision->register_entity(wall, Collision::COLLISION_ACCURATE);
+  collision->register_entity(mEntity, Collision::COLLISION_BOX);
+  collision->register_entity(wall, Collision::COLLISION_BOX);
   collision->register_entity(ent, Collision::COLLISION_BOX);
 }
 
@@ -99,21 +99,19 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
       mAnimationState->setEnabled(true);
       mAnimationState->addTime(fe.timeSinceLastFrame);
       mAnimationState->setLength(2);
-
     }
 
 	Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-	SCheckCollisionAnswer collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(), mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(50.0f, 50.0f, 50.0f), 50.0f, 50.0f, 1, mEntity, true);
+	SCheckCollisionAnswer collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
+																																	mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(50.0f, 50.0f, 50.0f), 50.0f, 50.0f, 1,
+																																	mEntity,
+																																	false);
 
   if (collider.collided)
       dirVec.z += 2 + move;
-  // std::cout << mNode->getOrientation().getYaw() << std::endl;
-  // mEntity->getBoundingBox();
-
   if (mKeyboard->isKeyDown(OIS::KC_O))
     {
-      std::cout << "colllide up" << std::endl;
       mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
       dirVec.z -= move;
       mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
@@ -121,7 +119,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   if (mKeyboard->isKeyDown(OIS::KC_K))
     {
       mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
-      //      std::cout << "colllide left" << std::endl;
       dirVec.z -= move;
       mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
     }
@@ -129,13 +126,11 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     {
       mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
       dirVec.z -= move;
-      //      std::cout << "colllide right" << std::endl;
       mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
     }
 
   if (mKeyboard->isKeyDown(OIS::KC_L))
     {
-      std::cout << "colllide down" << std::endl;
       mNode->setOrientation(Ogre::Quaternion(0, 0, -1, 0));
       dirVec.z -= move;
       mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
@@ -151,10 +146,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
       Ogre::Vector3 src = mNode->getOrientation() * Ogre::Vector3::UNIT_X;
       mNode->yaw(Ogre::Degree(-0.25));
     }
-	    mSceneMgr->getSceneNode("NinjaNode")->translate(
-							      dirVec * fe.timeSinceLastFrame,
-							      Ogre::Node::TS_LOCAL);
- 			mAnimationState = mEntity->getAnimationState("Idle1");
+    mSceneMgr->getSceneNode("NinjaNode")->translate(
+						      dirVec * fe.timeSinceLastFrame,
+						      Ogre::Node::TS_LOCAL);
+		mAnimationState = mEntity->getAnimationState("Idle1");
     mAnimationState->setLoop(true);
     mAnimationState->setEnabled(true);
     return true;
