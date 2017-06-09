@@ -5,21 +5,36 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri May 26 17:40:05 2017 Quentin Baudet
+** Last update Fri Jun 09 12:35:02 2017 Thomas Fossaert
 */
 
 #ifndef _GAMEOBJECT_HPP_
 #define _GAMEOBJECT_HPP_
 
-#include "Position.hpp"
+# include <iostream>
+# include <OgreCamera.h>
+# include <OgreEntity.h>
+# include <OgreLogManager.h>
+# include <OgreRoot.h>
+# include <OgreViewport.h>
+# include <OgreSceneManager.h>
+# include <OgreRenderWindow.h>
+# include <OgreConfigFile.h>
+
+# include "GameObject/Character/Script.hpp"
+# include "Position.hpp"
+# include "Animation.hpp"
 
 class GameObject
 {
 protected:
-  /**_Animation;
-  *_Texture;
-  *_Mesh;*/
-  Position *_position;
+  Ogre::AnimationState	*mAnimationState;
+  Ogre::Entity		      *mEntity;
+  Ogre::SceneNode       *mNode;
+  Script                *mScript;
+  Position              *mPosition;
+  Animation             *mAnimation;
+  std::string           mNodeName;
 
 public:
   GameObject(int, int, int);
@@ -30,6 +45,12 @@ public:
   /* Classes */
   Position* getPosition() const;
   void      hide();
+  const std::string& getNodeName() const;
+
+  virtual void		setOgreBase(Ogre::SceneManager*) {};
+  virtual Ogre::Vector3	launchScript(Ogre::SceneNode *) {};
+  virtual void		Animate(const Ogre::FrameEvent&) {};
+  virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr) {};
 };
 
 #endif

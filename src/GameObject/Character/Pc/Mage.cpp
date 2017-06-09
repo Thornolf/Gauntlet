@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Tue May 30 10:41:19 2017 Pierre
+** Last update Fri Jun 09 12:34:05 2017 Thomas Fossaert
 */
 
 #include "Mage.hpp"
@@ -27,31 +27,6 @@ Mage::Mage& operator=(Mage const &)
 }
 
 Mage::~Mage()
-{
-
-}
-
-void Mage::getDamage()
-{
-
-}
-
-void Mage::attack()
-{
-
-}
-
-bool Mage::isAlive()
-{
-
-}
-
-void Mage::getDistance()
-{
-
-}
-
-size_t Mage::getRange()
 {
 
 }

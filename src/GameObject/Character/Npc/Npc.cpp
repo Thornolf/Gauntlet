@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Thu Jun 08 09:06:48 2017 fossae_t
+** Last update Fri Jun 09 12:14:14 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Npc.hpp"
@@ -31,7 +31,7 @@ Npc::~Npc()
 
 }
 
-void Npc::setOgreBase(Ogre::SceneManager* mSceneMgr)
+/*void Npc::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   (void)mSceneMgr;
 }
@@ -55,3 +55,4 @@ void Npc::unsetEntity(Ogre::SceneManager *mSceneMgr)
   (void)mSceneMgr;
   //mSceneMgr->destroyEntity(mEntity);
 }
+*/
