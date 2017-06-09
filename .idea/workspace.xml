@@ -12,46 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dee5ea21-4013-47a4-bdc7-d54407219a70" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/fellord2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/axe_2h_felfireraid_d_01_green.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/fellord1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/fellord2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/fellordghostfx_loop.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/polearm_2h_fellord_01.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/creature_fellord_fellord.mesh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/creature_fellord_fellord.skeleton" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_0.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_1.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_10.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_2.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_3.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_4.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_5.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_6.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_7.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_8.material" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_9.material" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/Gauntlet_d" afterPath="$PROJECT_DIR$/dist/bin/Gauntlet_d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/map.cfg" afterPath="$PROJECT_DIR$/dist/bin/map.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Animation.hpp" afterPath="$PROJECT_DIR$/include/Animation.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameCore.hpp" afterPath="$PROJECT_DIR$/include/GameCore.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Npc/Npc.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Npc/Npc.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/GameObject.hpp" afterPath="$PROJECT_DIR$/include/GameObject/GameObject.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/RenderManager.hpp" afterPath="$PROJECT_DIR$/include/RenderManager.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ogre.cfg" afterPath="$PROJECT_DIR$/ogre.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Animation/Animation.cpp" afterPath="$PROJECT_DIR$/src/Animation/Animation.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameCore.cpp" afterPath="$PROJECT_DIR$/src/GameCore.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Npc/Npc.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Npc/Npc.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/GameObject.cpp" afterPath="$PROJECT_DIR$/src/GameObject/GameObject.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Loot/Loot.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Loot/Loot.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Loot/foodStack.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Loot/foodStack.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Loot/goldStack.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Loot/goldStack.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Position.hpp" afterPath="$PROJECT_DIR$/include/Position.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Parsing/MapManager.cpp" afterPath="$PROJECT_DIR$/src/Parsing/MapManager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Position/Position.cpp" afterPath="$PROJECT_DIR$/src/Position/Position.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RenderManager.cpp" afterPath="$PROJECT_DIR$/src/RenderManager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Script/Script.cpp" afterPath="$PROJECT_DIR$/src/Script/Script.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -68,18 +35,8 @@
       <file leaf-file-name="GameCore.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="577">
               <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameObject.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameObject/GameObject.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -88,8 +45,58 @@
       <file leaf-file-name="RenderManager.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RenderManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+            <state relative-caret-position="505">
+              <caret line="80" column="32" lean-forward="true" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapManager.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/MapManager.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapManager.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Parsing/MapManager.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1365">
+              <caret line="100" column="8" lean-forward="true" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Position.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Position/Position.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="115" column="11" lean-forward="true" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Position.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/Position.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="41" column="49" lean-forward="true" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeCCompilerId.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.7.1/CompilerIdC/CMakeCCompilerId.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="450" column="34" lean-forward="true" selection-start-line="450" selection-start-column="34" selection-end-line="450" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -98,8 +105,8 @@
       <file leaf-file-name="Zombie.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+            <state relative-caret-position="253">
+              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -108,8 +115,8 @@
       <file leaf-file-name="RenderManager.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/RenderManager.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="53" column="69" lean-forward="false" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
+            <state relative-caret-position="523">
+              <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
               <folding>
                 <element signature="e#300#315#0" expanded="true" />
                 <element signature="e#1932#1956#0" expanded="true" />
@@ -121,8 +128,8 @@
       <file leaf-file-name="map.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/bin/map.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -137,6 +144,25 @@
       <find>wall</find>
       <find>Cube</find>
       <find>mPosition</find>
+      <find>string</find>
+      <find>stringto</find>
+      <find>stringToPosition</find>
+      <find>fre</find>
+      <find>free(</find>
+      <find>f</find>
+      <find>gr</find>
+      <find>g</find>
+      <find>fr</find>
+      <find>free</find>
+      <find>malloc</find>
+      <find>str</find>
+      <find>strd</find>
+      <find>strdu</find>
+      <find>strdup</find>
+      <find>l</find>
+      <find>line_c</find>
+      <find>st</find>
+      <find>DEBUG</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,9 +177,7 @@
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/src/Score/Score.cpp" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/include/Position.hpp" />
         <option value="$PROJECT_DIR$/src/IndieException.cpp" />
-        <option value="$PROJECT_DIR$/src/Position/Position.cpp" />
         <option value="$PROJECT_DIR$/src/Configuration.cpp" />
         <option value="$PROJECT_DIR$/include/Configuration.hpp" />
         <option value="$PROJECT_DIR$/include/Input/Device.hpp" />
@@ -182,15 +206,17 @@
         <option value="$PROJECT_DIR$/src/BaseGauntlet.cpp" />
         <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/include/MapManager.hpp" />
-        <option value="$PROJECT_DIR$/src/Parsing/MapManager.cpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Character/Npc/Zombie.hpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
         <option value="$PROJECT_DIR$/include/GameObject/GameObject.hpp" />
         <option value="$PROJECT_DIR$/src/GameObject/GameObject.cpp" />
         <option value="$PROJECT_DIR$/include/RenderManager.hpp" />
-        <option value="$PROJECT_DIR$/dist/bin/map.cfg" />
         <option value="$PROJECT_DIR$/src/GameCore.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp" />
+        <option value="$PROJECT_DIR$/include/Position.hpp" />
+        <option value="$PROJECT_DIR$/src/Parsing/MapManager.cpp" />
+        <option value="$PROJECT_DIR$/dist/bin/map.cfg" />
+        <option value="$PROJECT_DIR$/src/Position/Position.cpp" />
         <option value="$PROJECT_DIR$/src/RenderManager.cpp" />
       </list>
     </option>
@@ -261,7 +287,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="GameObject" />
+              <option name="myItemId" value="Position" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,37 +305,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="GameObject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Character" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gauntlet" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cpp_indie_studio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameObject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Character" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Npc" />
+              <option name="myItemId" value="Parsing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -737,33 +733,35 @@
       <workItem from="1496401562209" duration="604000" />
       <workItem from="1496932018327" duration="874000" />
       <workItem from="1497005207221" duration="4809000" />
+      <workItem from="1497010516593" duration="289000" />
+      <workItem from="1497012868857" duration="3250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38171000" />
+    <option name="totallyTimeSpent" value="41710000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1920" height="1054" extended-state="7" />
+    <frame x="0" y="26" width="1920" height="1054" extended-state="1" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20405982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31907895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.62938595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27631578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -801,13 +799,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OgreApp.cbp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/IndieException.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -835,13 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Position/Position.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -884,13 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/Position.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1035,27 +1012,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parsing/MapManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/MapManager.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
-          <caret line="56" column="16" lean-forward="false" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/BaseGauntlet.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2268">
           <caret line="84" column="18" lean-forward="false" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,7 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
           <caret line="62" column="34" lean-forward="false" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,7 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
           <caret line="27" column="59" lean-forward="false" selection-start-line="27" selection-start-column="59" selection-end-line="27" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,9 +1037,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1107">
           <caret line="41" column="26" lean-forward="false" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
-          <folding>
-            <element signature="e#323#342#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1089,7 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
           <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1097,7 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
           <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1105,24 +1058,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding>
-            <element signature="e#326#346#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/MapManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameObject/GameObject.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        <state relative-caret-position="307">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-release/CMakeFiles/3.7.1/CompilerIdC/CMakeCCompilerId.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="450" column="34" lean-forward="true" selection-start-line="450" selection-start-column="34" selection-end-line="450" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/RenderManager.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="53" column="69" lean-forward="false" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
+        <state relative-caret-position="523">
+          <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
           <folding>
             <element signature="e#300#315#0" expanded="true" />
             <element signature="e#1932#1956#0" expanded="true" />
@@ -1130,34 +1096,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/Position.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="41" column="49" lean-forward="true" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Parsing/MapManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="100" column="8" lean-forward="true" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dist/bin/map.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="162">
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="577">
           <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp">
+    <entry file="file://$PROJECT_DIR$/src/Position/Position.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        <state relative-caret-position="199">
+          <caret line="115" column="11" lean-forward="true" selection-start-line="115" selection-start-column="11" selection-end-line="115" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RenderManager.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+        <state relative-caret-position="505">
+          <caret line="80" column="32" lean-forward="true" selection-start-line="80" selection-start-column="32" selection-end-line="80" selection-end-column="32" />
           <folding />
         </state>
       </provider>

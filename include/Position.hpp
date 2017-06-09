@@ -37,6 +37,9 @@ public:
   void		setZPosition(int);
   void		setPosition(int, int, int);
   void		stringToPosition(const std::string &);
+
+private:
+  bool		stringIsNumber(char *line) const;
 };
 
 #endif		/* !_POSITION__HPP_! */

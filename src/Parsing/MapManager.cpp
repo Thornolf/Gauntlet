@@ -83,6 +83,7 @@ void	MapManager::ObjASTNodeToGameObj(RenderManager &rManager, t_ast_node *object
   std::string		name;
   std::string		ObjectType;
 
+  std::cout << "DEBUG - " << "OBJASTNODETOGAMEOBJ START" << std::endl;
   if (object == nullptr)
     throw IndieException("Cannot null ast node");
   for (auto it_objField = object->children->begin(); it_objField != object->children->end(); ++it_objField)

@@ -79,7 +79,6 @@ GameObject	*RenderManager::createZombieObject(int id, const Position &position, 
 GameObject	*RenderManager::createSpawnerObject(int id, const Position &position, const Position &, const std::string &)
 {
   return (new Spawner(position.getXPosition(), position.getYPosition(), position.getZPosition(), id));
-  return (nullptr);
 }
 
 GameObject	*RenderManager::createFoodObject(int id, const Position &position, const Position &, const std::string &)

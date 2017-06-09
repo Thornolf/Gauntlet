@@ -93,18 +93,35 @@ void	Position::setPosition(int new_x, int new_y, int new_z)
   setZPosition(new_z);
 }
 
+bool		Position::stringIsNumber(char *line) const
+{
+  int		i = -1;
+
+  while (line[++i])
+  {
+    if (line[i] < '0' || line[i] > '9')
+      return (false);
+  }
+  return (true);
+}
+
 void		Position::stringToPosition(const std::string &line)
 {
-  std::regex	regex("[0-9]*");
-  std::smatch	match;
-  std::string	buf;
+  char		*part;
+  char		*line_c = new char[line.length() + 1];
 
-  if (!std::regex_search(line.begin(), line.end(), match, regex) || match.size() != 3)
+  std::strcpy(line_c, line.c_str());
+  part = std::strtok(line_c, ",");
+  if (!part || !stringIsNumber(part))
     return;
-  buf = match[1];
-  this->setXPosition(std::atoi(buf.c_str()));
-  buf = match[2];
-  this->setYPosition(std::atoi(buf.c_str()));
-  buf = match[3];
-  this->setZPosition(std::atoi(buf.c_str()));
+  this->setXPosition(std::atoi(part));
+  part = std::strtok(NULL, ",");
+  if (!part || !stringIsNumber(part))
+    return;
+  this->setYPosition(std::atoi(part));
+  part = std::strtok(NULL, ",");
+  if (!part || !stringIsNumber(part))
+    return;
+  this->setZPosition(std::atoi(part));
+  delete[] line_c;
 }
