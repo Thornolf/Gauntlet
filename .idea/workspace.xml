@@ -12,14 +12,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dee5ea21-4013-47a4-bdc7-d54407219a70" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/fellord2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/axe_2h_felfireraid_d_01_green.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/fellord1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/fellord2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/fellordghostfx_loop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/polearm_2h_fellord_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/creature_fellord_fellord.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/creature_fellord_fellord.skeleton" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_1.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_10.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_2.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_3.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_4.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_5.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_6.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_7.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_8.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/creature_fellord_fellord_9.material" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/Gauntlet_d" afterPath="$PROJECT_DIR$/dist/bin/Gauntlet_d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gauntlet.cbp" afterPath="$PROJECT_DIR$/Gauntlet.cbp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/map.cfg" afterPath="$PROJECT_DIR$/dist/bin/map.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Animation.hpp" afterPath="$PROJECT_DIR$/include/Animation.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameCore.hpp" afterPath="$PROJECT_DIR$/include/GameCore.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Npc/Zombie.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Npc/Zombie.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Npc/Npc.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Npc/Npc.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/GameObject.hpp" afterPath="$PROJECT_DIR$/include/GameObject/GameObject.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/RenderManager.hpp" afterPath="$PROJECT_DIR$/include/RenderManager.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ogre.cfg" afterPath="$PROJECT_DIR$/ogre.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Animation/Animation.cpp" afterPath="$PROJECT_DIR$/src/Animation/Animation.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameCore.cpp" afterPath="$PROJECT_DIR$/src/GameCore.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Npc/Npc.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Npc/Npc.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/GameObject.cpp" afterPath="$PROJECT_DIR$/src/GameObject/GameObject.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Loot/Loot.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Loot/Loot.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Loot/foodStack.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Loot/foodStack.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Loot/goldStack.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Loot/goldStack.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RenderManager.cpp" afterPath="$PROJECT_DIR$/src/RenderManager.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Script/Script.cpp" afterPath="$PROJECT_DIR$/src/Script/Script.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -33,11 +65,41 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameCore.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameCore.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+            <state relative-caret-position="108">
+              <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameObject.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameObject/GameObject.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RenderManager.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/RenderManager.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Zombie.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -46,24 +108,22 @@
       <file leaf-file-name="RenderManager.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/RenderManager.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+            <state relative-caret-position="228">
+              <caret line="53" column="69" lean-forward="false" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
               <folding>
                 <element signature="e#300#315#0" expanded="true" />
-                <element signature="e#1932#1953#0" expanded="true" />
+                <element signature="e#1932#1956#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RenderManager.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RenderManager.cpp">
+      <file leaf-file-name="map.cfg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/bin/map.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="100" column="53" lean-forward="true" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
-              <folding>
-                <element signature="e#4172#4195#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="108">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/Configuration.cpp" />
         <option value="$PROJECT_DIR$/include/Configuration.hpp" />
         <option value="$PROJECT_DIR$/include/Input/Device.hpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/GameObject.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/include/GameObject.hpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Character.cpp" />
@@ -111,7 +170,6 @@
         <option value="$PROJECT_DIR$/include/Skeleton.hpp" />
         <option value="$PROJECT_DIR$/include/Character.hpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Npc/Skeleton.cpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Melee.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Npc/Boss.cpp" />
@@ -127,8 +185,12 @@
         <option value="$PROJECT_DIR$/src/Parsing/MapManager.cpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Character/Npc/Zombie.hpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
-        <option value="$PROJECT_DIR$/src/GameCore.cpp" />
+        <option value="$PROJECT_DIR$/include/GameObject/GameObject.hpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/GameObject.cpp" />
         <option value="$PROJECT_DIR$/include/RenderManager.hpp" />
+        <option value="$PROJECT_DIR$/dist/bin/map.cfg" />
+        <option value="$PROJECT_DIR$/src/GameCore.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp" />
         <option value="$PROJECT_DIR$/src/RenderManager.cpp" />
       </list>
     </option>
@@ -182,6 +244,72 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GameObject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GameObject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Character" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GameObject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Character" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Npc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,6 +452,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="audio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -576,15 +736,15 @@
       <workItem from="1496399210522" duration="602000" />
       <workItem from="1496401562209" duration="604000" />
       <workItem from="1496932018327" duration="874000" />
-      <workItem from="1497005207221" duration="704000" />
+      <workItem from="1497005207221" duration="4809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34066000" />
+    <option name="totallyTimeSpent" value="38171000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1920" height="1054" extended-state="0" />
+    <frame x="0" y="26" width="1920" height="1054" extended-state="7" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20405982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -593,7 +753,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33004385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.62938595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -641,13 +801,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cmake_install.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OgreApp.cbp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -706,24 +859,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/GameObject.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="35" column="32" lean-forward="false" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="135" column="46" lean-forward="false" selection-start-line="135" selection-start-column="46" selection-end-line="135" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/GameObject/GameObject.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -774,13 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-661">
           <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -969,31 +1101,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/RenderManager.hpp">
+    <entry file="file://$PROJECT_DIR$/include/GameObject/GameObject.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="48" column="56" lean-forward="false" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="56" />
+        <state relative-caret-position="298">
+          <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
           <folding>
-            <element signature="e#300#315#0" expanded="true" />
-            <element signature="e#1932#1953#0" expanded="true" />
+            <element signature="e#326#346#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RenderManager.cpp">
+    <entry file="file://$PROJECT_DIR$/src/GameObject/GameObject.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="100" column="53" lean-forward="true" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
+        <state relative-caret-position="405">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/RenderManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="53" column="69" lean-forward="false" selection-start-line="53" selection-start-column="69" selection-end-line="53" selection-end-column="69" />
           <folding>
-            <element signature="e#4172#4195#0" expanded="true" />
+            <element signature="e#300#315#0" expanded="true" />
+            <element signature="e#1932#1956#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/bin/map.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+        <state relative-caret-position="108">
+          <caret line="38" column="83" lean-forward="false" selection-start-line="38" selection-start-column="83" selection-end-line="38" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RenderManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
           <folding />
         </state>
       </provider>

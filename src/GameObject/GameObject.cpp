@@ -5,24 +5,24 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 09:53:00 2017 Quentin Baudet
+** Last update Fri Jun 09 12:32:08 2017 Thomas Fossaert
 */
 
 #include "GameObject/GameObject.hpp"
 
 GameObject::GameObject(int x, int y, int z)
 {
-  _position = new Position(x, y, z);
+  mPosition = new Position(x, y, z);
 }
 
 GameObject::GameObject(GameObject const & other)
 {
-  _position = other._position;
+  mPosition = other.mPosition;
 }
 
 GameObject& GameObject::operator=(GameObject const & other)
 {
-  _position = other._position;
+  mPosition = other.mPosition;
   return *this;
 }
 
@@ -30,8 +30,12 @@ GameObject::~GameObject() {}
 
 Position*	GameObject::getPosition() const
 {
-  return (this->_position);
+  return (this->mPosition);
 }
 
 void	GameObject::hide(void) {}
 
+const std::string& GameObject::getNodeName() const
+{
+  return (mNodeName);
+}

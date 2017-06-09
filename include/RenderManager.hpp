@@ -48,8 +48,11 @@ public:
   /* _entities utils */
   std::vector<GameObject *>	&getEntitiesVector(void);
 
-  template <class UnaryFunction>
-  void		forEachEntity(UnaryFunction f);
+  template <typename UnaryFunction>
+  void		forEachEntity(UnaryFunction f)
+  {
+    std::for_each(this->_entities.begin(), this->_entities.end(), f);
+  }
 
 private:
   /* Private attributs */

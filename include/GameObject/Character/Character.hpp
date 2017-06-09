@@ -5,26 +5,13 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon Jun 05 14:35:41 2017 Thomas Fossaert
+** Last update Fri Jun 09 12:07:50 2017 Thomas Fossaert
 */
 
 #ifndef _CHARACTER_HPP_
-#define _CHARACTER_HPP_
+# define _CHARACTER_HPP_
 
-#include <iostream>
-# include <OgreCamera.h>
-# include <OgreEntity.h>
-# include <OgreLogManager.h>
-# include <OgreRoot.h>
-# include <OgreViewport.h>
-# include <OgreSceneManager.h>
-# include <OgreRenderWindow.h>
-# include <OgreConfigFile.h>
-
-# include "GameObject/Character/Script.hpp"
-# include "Position.hpp"
-# include "Animation.hpp"
-#include "GameObject/GameObject.hpp"
+# include "GameObject/GameObject.hpp"
 
 class Character : public GameObject
 {
@@ -34,14 +21,6 @@ class Character : public GameObject
   int		_cooldown;
   int		_speed;
   int		_range;
-
-  Ogre::AnimationState	*mAnimationState;
-  Ogre::Entity		 *mEntity;
-  Ogre::SceneNode       *mNode;
-  Script                *mScript;
-  Position              *mPosition;
-  Animation             *mAnimation;
-  std::string           mNodeName;
 
 public:
   Character(int x, int y, int z);

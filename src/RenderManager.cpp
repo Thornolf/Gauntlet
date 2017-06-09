@@ -42,7 +42,8 @@ GameObject	*RenderManager::createGameObject(const std::string &type, const Posit
   if (this->_factory.find(type) == this->_factory.end())
     throw IndieException("Cannot generate the GameObject from type \"" + type + "\"");
   gObj = this->_factory[type](i++, pos, scale, texture);
-  this->_entities.push_back(gObj);
+  if (gObj)
+    this->_entities.push_back(gObj);
   return (gObj);
 }
 
@@ -95,10 +96,4 @@ GameObject	*RenderManager::createGoldObject(int id, const Position &position, co
 std::vector<GameObject *>	&RenderManager::getEntitiesVector(void)
 {
   return (this->_entities);
-}
-
-template< class UnaryFunction >
-void	RenderManager::forEachEntity(UnaryFunction f)
-{
-  std::for_each(this->_entities.begin(), this->_entities.end(), f);
 }

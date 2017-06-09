@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Wed May 31 11:05:28 2017 Quentin Baudet
+** Last update Fri Jun 09 12:18:26 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -25,7 +25,7 @@ Tank	&Tank::operator=(Tank const & other)
   this->_range = other._range;
   this->_speed = other._speed;
   this->_cooldown = other._cooldown;
-  this->_position = other._position;
+  this->mPosition = other.mPosition;
   return (*this);
 }
 

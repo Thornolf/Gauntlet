@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:34:40 2017 Thomas Fossaert
-** Last update Thu Jun 08 15:27:39 2017 Thomas Fossaert
+** Last update Fri Jun 09 08:54:29 2017 Thomas Fossaert
 */
 
 #include "Animation.hpp"
@@ -49,11 +49,11 @@ Ogre::AnimationState *Animation::simpleAnimation(Ogre::AnimationState *Animation
   return (AnimationState);
 }
 
-Ogre::AnimationState *Animation::loopAnimation(Ogre::AnimationState *AnimationState, const Ogre::FrameEvent& fe, Ogre::Entity *entity)
+Ogre::AnimationState *Animation::loopAnimation(Ogre::AnimationState *AnimationState, const std::string & anim, const Ogre::FrameEvent& fe, Ogre::Entity *entity)
 {
   if (AnimationState->getTimePosition() + fe.timeSinceLastFrame > AnimationState->getLength())
   {
-    AnimationState = entity->getAnimationState("Walk");
+    AnimationState = entity->getAnimationState(anim);
     AnimationState->setLoop(true);
     AnimationState->setEnabled(true);
   }

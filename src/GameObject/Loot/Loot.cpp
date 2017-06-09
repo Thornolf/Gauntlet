@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Tue May 23 16:12:39 2017 Thomas Fossaert
+** Last update Fri Jun 09 12:12:13 2017 Thomas Fossaert
 */
 
 #include "GameObject/Loot/Loot.hpp"
@@ -30,7 +30,7 @@ Loot::~Loot() {}
 
 bool Loot::isTaken(Pc const & other)
 {
-  if (this->_position == other.getPosition())
+  if (this->mPosition == other.getPosition())
     return (true);
   return (false);
 }

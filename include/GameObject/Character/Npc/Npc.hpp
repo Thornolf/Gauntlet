@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 08 16:09:28 2017 Thomas Fossaert
+** Last update Fri Jun 09 12:08:31 2017 Thomas Fossaert
 */
 
 #ifndef _NPC_HPP_
@@ -24,10 +24,10 @@ public:
   Npc& operator=(Npc const &);
   virtual ~Npc();
 
-  virtual void		setOgreBase(Ogre::SceneManager*);
+  /*virtual void		setOgreBase(Ogre::SceneManager*);
   virtual Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
   virtual void		Animate(const Ogre::FrameEvent&);
-  virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr);
+  virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr);*/
 };
 
 #endif
