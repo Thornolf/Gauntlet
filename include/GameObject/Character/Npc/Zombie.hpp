@@ -25,7 +25,7 @@ public:
   void		setOgreBase(Ogre::SceneManager*);
   Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
   void		Animate(const Ogre::FrameEvent&);
-  void    unsetEntity(Ogre::SceneManager *mSceneMgr);
+  void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 
 };
 

@@ -11,6 +11,7 @@
 #ifndef		_RENDER_MANAGER__HPP_
 # define	_RENDER_MANAGER__HPP_
 # include	<map>
+# include	<algorithm>
 # include	<string>
 # include	<functional>
 # include	"GameObject/GameObject.hpp"
@@ -43,6 +44,12 @@ public:
   GameObject	*createSpawnerObject(int, const Position &, const Position &, const std::string &);
   GameObject	*createFoodObject(int, const Position &, const Position &, const std::string &);
   GameObject	*createGoldObject(int, const Position &, const Position &, const std::string &);
+
+  /* _entities utils */
+  std::vector<GameObject *>	&getEntitiesVector(void);
+
+  template <class UnaryFunction>
+  void		forEachEntity(UnaryFunction f);
 
 private:
   /* Private attributs */

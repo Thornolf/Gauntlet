@@ -90,3 +90,15 @@ GameObject	*RenderManager::createGoldObject(int id, const Position &position, co
 {
   return (new goldStack(position.getXPosition(), position.getYPosition(), position.getZPosition(), id));
 }
+
+/* Entities utils */
+std::vector<GameObject *>	&RenderManager::getEntitiesVector(void)
+{
+  return (this->_entities);
+}
+
+template< class UnaryFunction >
+void	RenderManager::forEachEntity(UnaryFunction f)
+{
+  std::for_each(this->_entities.begin(), this->_entities.end(), f);
+}

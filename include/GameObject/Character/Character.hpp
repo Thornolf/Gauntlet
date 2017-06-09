@@ -36,7 +36,7 @@ class Character : public GameObject
   int		_range;
 
   Ogre::AnimationState	*mAnimationState;
-  Ogre::Entity		      *mEntity;
+  Ogre::Entity		 *mEntity;
   Ogre::SceneNode       *mNode;
   Script                *mScript;
   Position              *mPosition;

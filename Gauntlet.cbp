@@ -194,6 +194,9 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Input/eventType.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Light/light.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/MapManager.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
@@ -315,6 +318,9 @@
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/audio/SoundSystem.cpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/light/Light.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/main.cpp">
