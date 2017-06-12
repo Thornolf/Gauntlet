@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Tue May 23 15:03:24 2017 Thomas Fossaert
+** Last update Mon Jun 12 11:23:03 2017 Thomas Fossaert
 */
 
 #ifndef _GOLDSTACK_HPP_
@@ -23,6 +23,10 @@ public:
 
   /* Classes */
 
+  void		setOgreBase(Ogre::SceneManager*);
+  void		Animate(const Ogre::FrameEvent&);
+  void		unsetEntity(Ogre::SceneManager *mSceneMgr);
+  
   void increaseScore();
   virtual bool isTaken(Pc const &);
 };

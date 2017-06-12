@@ -27,6 +27,7 @@ This source file is part of the
 #include "GameObject/Character/Script.hpp"
 #include "GameObject/Character/Npc/Zombie.hpp"
 #include "GameObject/Character/Npc/Skeleton.hpp"
+#include "GameObject/Doodad/Doodad.hpp"
 #include "MapManager.hpp"
 #include "RenderManager.hpp"
 

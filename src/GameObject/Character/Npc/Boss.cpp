@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Sat Jun 10 15:59:51 2017 Thomas Fossaert
+** Last update Mon Jun 12 13:35:03 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Boss.hpp"
@@ -35,11 +35,11 @@ Boss::~Boss() {}
 void Boss::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   //mEntity = mSceneMgr->createEntity("Boss", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
-  mEntity = mSceneMgr->createEntity("Boss" + std::to_string(_id), "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
+  mEntity = mSceneMgr->createEntity("Boss" + std::to_string(_id), "creature_northrendfleshgiant_northrendfleshgiant.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(100.0f, 100.0f, 100.0f);
+  mNode->setScale(1.0f, 1.0f, 1.0f);
   mNode->setOrientation(1,1,0,0);
 }
 

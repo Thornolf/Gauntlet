@@ -5,12 +5,16 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 09 12:12:20 2017 Thomas Fossaert
+// Last update Mon Jun 12 13:11:26 2017 Thomas Fossaert
 */
 
 #include "GameObject/Loot/goldStack.hpp"
 
-goldStack::goldStack(int x, int y, int z, int id) : Loot(x, y, z, id) {}
+goldStack::goldStack(int x, int y, int z, int id) : Loot(x, y, z, id)
+{
+  mPosition = new Position(x, y, z);
+  mNodeName = "goldStackNode" + std::to_string(id);
+}
 
 goldStack::goldStack(goldStack const & other) : Loot(other)
 {
@@ -26,6 +30,27 @@ goldStack& goldStack::operator=(goldStack const & other)
 goldStack::~goldStack()
 {
 
+}
+
+void goldStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
+{
+
+  mEntity = mSceneMgr->createEntity("goldStack" + std::to_string(_id), "world_azeroth_stranglethorn_passivedoodads_trolldungeonsacks_tr.mesh");
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
+  mNode->attachObject(mEntity);
+  mNode->setScale(40.0f, 40.0f, 40.0f);
+  mNode->setOrientation(1,1,0,0);
+}
+
+
+void goldStack::Animate(const Ogre::FrameEvent& fe)
+{
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+}
+
+void goldStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
+{
+  mSceneMgr->destroyEntity(mEntity);
 }
 
 bool goldStack::isTaken(Pc const & other)
