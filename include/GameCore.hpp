@@ -44,8 +44,6 @@ protected:
     virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
 
-    std::vector<Zombie*> _entityVector;
-
     Ogre::Real mDistance;                  // The distance the object has left to travel
     Ogre::Vector3 mDirection;              // The direction the object is moving
     Ogre::Vector3 mDestination;            // The destination the object is moving towards
@@ -62,13 +60,12 @@ protected:
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
     Ogre::SceneNode *mZombie;                // The -SceneNode that the Entity is attached to
 
-    std::deque<Ogre::Vector3> mWalkList;   // The list of points we are walking to
 
     Script *mScript;
     Position *mPosition;
     Zombie *mZob;
-
-    Ogre::Real mWalkSpeed;                 // The speed at which the object is moving
+    MapManager *map;
+    RenderManager render;;
 };
 
 #endif // #ifndef __GameCore_h_

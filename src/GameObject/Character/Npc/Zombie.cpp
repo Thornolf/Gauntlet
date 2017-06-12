@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Thu Jun  1 11:29:39 2017 Guillaume CAUCHOIS
+// Last update Sat Jun 10 15:13:35 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Zombie.hpp"
@@ -38,21 +38,24 @@ void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("Zombie" + std::to_string(_id), "creature_northrendghoul2_northrendghoul2.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(1.0f, 1.0f, 1.0f);
+  mNode->setScale(1.7f, 1.7f, 1.7f);
   mNode->setOrientation(1,1,0,0);
 }
 
-Ogre::Vector3 Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target)
+void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
 {
-  Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
-  nextMove = mScript->ZombieScript(mSceneMgr->getSceneNode("ZombieNode1"), target);
-  //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
-  return (nextMove);
+  mSceneMgr->getSceneNode(mNodeName)->translate(
+    mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);
+  if (mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) == Ogre::Vector3::ZERO)
+    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
+  else
+    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
 }
 
 void Zombie::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
 }
 
 void Zombie::unsetEntity(Ogre::SceneManager *mSceneMgr)

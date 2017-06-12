@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 08 08:59:00 2017 fossae_t
+** Last update Fri Jun 09 17:29:48 2017 Thomas Fossaert
 */
 
 #ifndef _Skeleton_HPP_
@@ -23,7 +23,7 @@ public:
   ~Skeleton();
 
   void		setOgreBase(Ogre::SceneManager*);
-  Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
+  void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&);
   void		Animate(const Ogre::FrameEvent&);
   void    unsetEntity(Ogre::SceneManager *mSceneMgr);
 };

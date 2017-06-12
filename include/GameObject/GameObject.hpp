@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 09 12:35:02 2017 Thomas Fossaert
+** Last update Fri Jun 09 17:30:58 2017 Thomas Fossaert
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -49,7 +49,7 @@ public:
 
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
-  virtual Ogre::Vector3	launchScript(Ogre::SceneNode *) {};
+  virtual void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
   virtual void		Animate(const Ogre::FrameEvent&) {};
   virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr) {};
 };
