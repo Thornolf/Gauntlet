@@ -22,6 +22,11 @@ public:
   Mage& operator=(Mage const &);
   virtual ~Mage();
 
+    /* Virtual methods */
+    void		setOgreBase(Ogre::SceneManager*);
+  void		Animate(const Ogre::FrameEvent&);
+  void		unsetEntity(Ogre::SceneManager *mSceneMgr);
+
   /* Classes */
 
   virtual void getDamage();

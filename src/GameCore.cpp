@@ -25,6 +25,7 @@ GameCore::~GameCore()
 void GameCore::createScene()
 {
   GameObject		*mZob = new Zombie(100, 0, 100, 100);
+  GameObject		*mTank = new Tank("noob", 500, 0, 500);
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
   Ogre::Entity		*ent;
@@ -50,6 +51,7 @@ void GameCore::createScene()
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
 
+  mTank->setOgreBase(mSceneMgr);
   Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);

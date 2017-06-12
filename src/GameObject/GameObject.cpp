@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 09 12:32:08 2017 Thomas Fossaert
+** Last update Mon Jun 12 09:50:53 2017 Thomas Fossaert
 */
 
 #include "GameObject/GameObject.hpp"
@@ -38,4 +38,9 @@ void	GameObject::hide(void) {}
 const std::string& GameObject::getNodeName() const
 {
   return (mNodeName);
+}
+
+Ogre::Entity* GameObject::getEntity() const
+{
+  return (mEntity);
 }
