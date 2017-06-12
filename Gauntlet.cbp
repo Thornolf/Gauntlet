@@ -161,10 +161,25 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Npc/Zombie.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Pc/Pc.hpp">
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Pc/Archer.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Pc/Mage.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Pc/Melee.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Pc/Ranged.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Pc/Tank.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Character/Script.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/Doodad/Doodad.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/GameObject/GameObject.hpp">
@@ -200,16 +215,10 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/MapManager.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Melee.hpp">
-			<Option target="Gauntlet"/>
-		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/NewMOC.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Position.hpp">
-			<Option target="Gauntlet"/>
-		</Unit>
-		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Ranged.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/RenderManager.hpp">
@@ -257,6 +266,12 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/Character/Npc/Zombie.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/Character/Pc/Archer.cpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/Character/Pc/Mage.cpp">
+			<Option target="Gauntlet"/>
+		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/Character/Pc/Melee.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
@@ -270,6 +285,9 @@
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/Character/Pc/Warrior.cpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/Doodad/Doodad.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/GameObject/GameObject.cpp">

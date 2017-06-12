@@ -8,8 +8,8 @@
 ** Last update Fri Jun 09 12:07:50 2017 Thomas Fossaert
 */
 
-#ifndef _CHARACTER_HPP_
-# define _CHARACTER_HPP_
+#ifndef		_CHARACTER_HPP_
+# define	_CHARACTER_HPP_
 
 # include "GameObject/GameObject.hpp"
 
@@ -28,13 +28,11 @@ public:
   Character& operator=(Character const &);
   virtual ~Character();
 
-  /* Classes */
-
-  void takeDamage(int dmg);
-  void attack(Character *target);
-  bool isAlive();
-  void getDistance();
-  int getRange();
+  void		takeDamage(int dmg);
+  void		attack(Character *target);
+  bool		isAlive() const;
+  void		getDistance() const;
+  int		getRange(void) const;
 
   /*virtual void		setOgreBase(Ogre::SceneManager*);
   virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);

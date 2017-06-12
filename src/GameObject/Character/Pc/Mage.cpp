@@ -12,9 +12,9 @@
 
 Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
-  this->_health = 80;
-  this->_attack = 175;
-  mPosition = new Position(x, y, z);
+  this->_health		= 80;
+  this->_attack		= 175;
+  mPosition		= new Position(x, y, z);
 }
 
 Mage::Mage(Mage const & other) : Ranged(other) {}
@@ -52,5 +52,5 @@ void Mage::Animate(const Ogre::FrameEvent& fe)
 
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
-  mSceneMgr->destroyEntity(mEntity);
+  mSceneMgr->destroyEntity(this->mEntity);
 }

@@ -8,8 +8,8 @@
 ** Last update Fri May 26 17:40:22 2017 Adrien Warin
 */
 
-#ifndef _WARRIOR_HPP_
-#define _WARRIOR_HPP_
+#ifndef		_WARRIOR__HPP_
+#define		_WARRIOR__HPP_
 
 #include <iostream>
 #include "Melee.hpp"
@@ -23,4 +23,4 @@ public:
   virtual ~Warrior();
 };
 
-#endif
+#endif		/* !_WARRIOR__HPP_ */

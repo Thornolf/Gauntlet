@@ -8,7 +8,7 @@
 ** Last update Wed May 31 11:04:25 2017 Quentin Baudet
 */
 
-#include "Ranged.hpp"
+#include "GameObject/Character/Pc/Ranged.hpp"
 
 Ranged::Ranged (const std::string &name, int newX, int newY, int newZ) : Pc(name, newX, newY, newZ) {}
 

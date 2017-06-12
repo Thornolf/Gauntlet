@@ -88,14 +88,16 @@ set(HDRS
         include/GameObject/Loot/goldStack.hpp
         include/GameObject/Loot/Loot.hpp
         ./include/GameObject/Character/Npc/Npc.hpp
-        ./include/GameObject/Character/Pc/Pc.hpp
+        ./include/GameObject/Character/Pc/Mage.hpp
+        ./include/GameObject/Character/Pc/Archer.hpp
+        ./include/GameObject/Character/Pc/Tank.hpp
         ./include/GameObject/Character/Npc/Zombie.hpp
         ./include/GameObject/Character/Npc/Skeleton.hpp
         ./include/GameObject/GameObject.hpp
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
-        ./include/Ranged.hpp
+        include/GameObject/Character/Pc/Ranged.hpp
         ./include/audio/IAudio.hpp
         ./include/audio/Music.hpp
         ./include/audio/SoundSystem.hpp
@@ -103,14 +105,14 @@ set(HDRS
         ./include/Input/DeviceManager.hpp
         ./include/Input/ParserInputFile.hpp
         ./include/Input/eventType.hpp
-        ./include/Melee.hpp
+        include/GameObject/Character/Pc/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
-				./include/Light/light.hpp
+        ./include/Light/light.hpp
         include/GameObject/Character/Script.hpp
         include/MapManager.hpp
         include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp
-      include/GameObject/Doodad/Doodad.hpp)
+        include/GameObject/Doodad/Doodad.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -127,6 +129,10 @@ set(SRCS
         ./src/GameObject/Character/Npc/Boss.cpp
         ./src/GameObject/Character/Npc/Skeleton.cpp
         ./src/GameObject/Character/Pc/Pc.cpp
+        ./src/GameObject/Character/Pc/Archer.cpp
+        ./src/GameObject/Character/Pc/Warrior.cpp
+        ./src/GameObject/Character/Pc/Mage.cpp
+        ./src/GameObject/Character/Pc/Tank.cpp
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp
         ./src/Input/Device.cpp
@@ -142,10 +148,11 @@ set(SRCS
         ./src/Script/Script.cpp
         ./src/GameObject/Character/Pc/Warrior.cpp
         ./src/GameObject/Character/Pc/Tank.cpp
-				./src/light/Light.cpp
+        ./src/light/Light.cpp
         ./src/Parsing/MapManager.cpp
-        src/RenderManager.cpp src/GameObject/Character/Npc/Spawner.cpp
-      ./src/GameObject/Doodad/Doodad.cpp)
+        ./src/RenderManager.cpp
+        ./src/GameObject/Character/Npc/Spawner.cpp
+        ./src/GameObject/Doodad/Doodad.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

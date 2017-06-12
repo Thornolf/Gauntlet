@@ -62,9 +62,9 @@ public:
   virtual ~MapManager ();
 
   /* Public member functions */
-  void			computeAbstractTree(void);
-  void			generateMap(RenderManager &);
-  std::string		getOption(const std::string &);
+  void		computeAbstractTree(void);
+  void		generateMap(RenderManager &);
+  std::string	getOption(const std::string &);
 
 private:
   /* Loading */

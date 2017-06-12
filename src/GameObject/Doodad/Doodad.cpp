@@ -10,7 +10,7 @@
 
 #include "GameObject/Doodad/Doodad.hpp"
 
-Doodad::Doodad(int x, int y, int z, int id, int Sx, int Sy, int Sz, const std::string & deco) : GameObject(x, y, z)
+Doodad::Doodad(int x, int y, int z, int id, int Sx, int Sy, int Sz, const std::string &deco) : GameObject(x, y, z)
 {
   this->_id = id;
   this->_Sx = Sx;
@@ -34,14 +34,14 @@ Doodad& Doodad::operator=(Doodad const & other)
 
 Doodad::~Doodad() {}
 
-void Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
+void	Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   mEntity = mSceneMgr->createEntity("Doodad" + std::to_string(_id), _deco);
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(this->_Sx, this->_Sy, this->_Sz);
-  mNode->setOrientation(0,0,0,0);
+  mNode->setOrientation(0, 0, 0, 0);
   if (_deco == "cube.mesh")
     mEntity->setMaterialName("Examples/Rocky");
 }

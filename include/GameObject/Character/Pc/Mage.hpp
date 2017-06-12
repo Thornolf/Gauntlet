@@ -1,25 +1,26 @@
 /*
-** Mage.hpp for cpp_indie_studio in /home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Pc
+** Mage.hpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/include
 **
-** Made by Quentin Baudet
-** Login   <baudet_q@epitech.net>
+** Made by Pierre
+** Login   <pierre@epitech.net>
 **
-** Started on  Mon Jun 12 11:08:04 2017 Quentin Baudet
-** Last update Mon Jun 12 11:10:06 2017 Quentin Baudet
+** Started on  Tue May 30 10:26:19 2017 Pierre
+** Last update Tue May 30 10:39:47 2017 Pierre
 */
 
-#ifndef _MAGE_HPP_
-#define _MAGE_HPP_
+#ifndef		_MAGE__HPP_
+# define	_MAGE__HPP_
 
-#include <iostream>
-#include "Ranged.hpp"
+# include	<iostream>
+# include	"Pc.hpp"
+# include	"GameObject/Character/Pc/Ranged.hpp"
 
 class Mage : public Ranged
 {
 public:
-  Mage(const std::string &, int, int, int);
+  Mage(const std::string &, int x, int y, int z);
   Mage(Mage const &);
-  Mage&		operator=(Mage const &);
+  Mage& operator=(Mage const &);
   virtual ~Mage();
 
   void		setOgreBase(Ogre::SceneManager*);
@@ -27,4 +28,4 @@ public:
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 };
 
-#endif
+#endif		/* !_MAGE__HPP_ */
