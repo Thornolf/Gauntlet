@@ -13,7 +13,7 @@
 
 # define	REGEX_SECTION	"[\\[].*[\\]]"
 # define	REGEX_PARAM	"^[A-Z_]*[ \\t]*[A-Za-z0-9_\\/\\-.]*$"
-# define	REGEX_OBJECT	"^[ \t]*[A-Za-z0-9]*[ \t]*[A-Za-z0-9]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[A-Za-z0-9/.]*$"
+# define	REGEX_OBJECT	"^[ \t]*[A-Za-z0-9]*[ \t]*[A-Za-z0-9]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[A-Za-z0-9/._]*$"
 
 # include	<string>
 # include	<vector>
