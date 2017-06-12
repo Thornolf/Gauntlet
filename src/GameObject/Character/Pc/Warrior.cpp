@@ -8,7 +8,7 @@
 ** Last update Fri May 26 17:51:01 2017 Adrien Warin
 */
 
-#include "Warrior.hpp"
+#include "GameObject/Character/Pc/Warrior.hpp"
 
 Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {

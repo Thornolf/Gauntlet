@@ -8,7 +8,7 @@
 ** Last update Fri Jun 09 12:34:05 2017 Thomas Fossaert
 */
 
-#include "Mage.hpp"
+#include "GameObject/Character/Pc/Mage.hpp"
 
 Mage::Mage(int x, int y, int z) : Ranged(x, y, z)
 {

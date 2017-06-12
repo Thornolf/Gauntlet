@@ -29,12 +29,12 @@ class GameObject
 {
 protected:
   Ogre::AnimationState	*mAnimationState;
-  Ogre::Entity		      *mEntity;
-  Ogre::SceneNode       *mNode;
-  Script                *mScript;
-  Position              *mPosition;
-  Animation             *mAnimation;
-  std::string           mNodeName;
+  Ogre::Entity		*mEntity;
+  Ogre::SceneNode	*mNode;
+  Script		*mScript;
+  Position		*mPosition;
+  Animation		*mAnimation;
+  std::string		mNodeName;
 
 public:
   GameObject(int, int, int);

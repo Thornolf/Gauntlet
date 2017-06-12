@@ -8,8 +8,8 @@
 ** Last update Fri Jun 09 12:07:50 2017 Thomas Fossaert
 */
 
-#ifndef _CHARACTER_HPP_
-# define _CHARACTER_HPP_
+#ifndef		_CHARACTER_HPP_
+# define	_CHARACTER_HPP_
 
 # include "GameObject/GameObject.hpp"
 

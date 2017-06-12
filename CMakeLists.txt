@@ -103,14 +103,14 @@ set(HDRS
         ./include/Input/DeviceManager.hpp
         ./include/Input/ParserInputFile.hpp
         ./include/Input/eventType.hpp
-        ./include/Melee.hpp
+        include/GameObject/Character/Pc/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
-				./include/Light/light.hpp
+        ./include/Light/light.hpp
         include/GameObject/Character/Script.hpp
         include/MapManager.hpp
         include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp
-      include/GameObject/Doodad/Doodad.hpp)
+        include/GameObject/Doodad/Doodad.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -142,10 +142,11 @@ set(SRCS
         ./src/Script/Script.cpp
         ./src/GameObject/Character/Pc/Warrior.cpp
         ./src/GameObject/Character/Pc/Tank.cpp
-				./src/light/Light.cpp
+        ./src/light/Light.cpp
         ./src/Parsing/MapManager.cpp
-        src/RenderManager.cpp src/GameObject/Character/Npc/Spawner.cpp
-      ./src/GameObject/Doodad/Doodad.cpp)
+        ./src/RenderManager.cpp
+        ./src/GameObject/Character/Npc/Spawner.cpp
+        ./src/GameObject/Doodad/Doodad.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
