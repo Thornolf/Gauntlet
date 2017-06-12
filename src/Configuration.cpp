@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Mon May 22 13:58:14 2017 Guillaume CAUCHOIS
-** Last update Mon May 22 13:58:14 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 09 16:09:21 2017 Adrien Warin
 */
 
 #include "Configuration.hpp"
@@ -28,4 +28,9 @@ std::vector<Pc>	Configuration::getPlayers(void) const
 void	Configuration::setPlayers(std::vector<Pc> players)
 {
   this->_players = players;
+}
+
+void          Configuration::addScorePoint(int nbPoint)
+{
+    this->_score += nbPoint;
 }

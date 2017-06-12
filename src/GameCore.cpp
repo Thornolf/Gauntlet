@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Fri Jun  9 11:33:21 2017 Thomas Fossaert
+// Last update Mon Jun 12 09:21:21 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -24,16 +24,14 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  GameObject		*mZob = new Zombie(100, 0, 100, 1);
+  GameObject		*mZob = new Zombie(100, 0, 100, 100);
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
   Ogre::Entity		*ent;
   Ogre::Entity		*wall;
   Ogre::SceneNode	*node;
 
-  MapManager *map = new MapManager("dist/bin/map.cfg");
-  RenderManager render;;
-  //map->loadFromFile();
+  map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
   map->generateMap(render);
   render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
@@ -43,14 +41,16 @@ void GameCore::createScene()
   // mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 0, 0);
   ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
-  mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+  mEntity = mSceneMgr->createEntity("Ninja", "character_human_female_humanfemale_hd.mesh");
+
+  Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_sword_2h_artifactashbringer_d_01.mesh");
+  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
   mNode->attachObject(mEntity);
+  mNode->setScale(2,2,2);
 
-  Skeleton *mSkull = new Skeleton(200, 0, 200, 1);
-
-  //_entityVector.push_back(mZob);
+  Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);
   wall = mSceneMgr->createEntity("Cube", "cube.mesh");
@@ -59,13 +59,7 @@ void GameCore::createScene()
   wall->setMaterialName("Examples/Rocky");
   node->setScale(15.0f, 7.0f, 0.3f);
 
-  ent = mSceneMgr->createEntity("Ogre", "creature_fellord_fellord.mesh");
-  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("OgreMesh", Ogre::Vector3(0.0f, 100.0f, 0.0f));
-  node->attachObject(ent);
-  node->setScale(1.0f, 1.0f, 1.0f);
-  node->setOrientation(1,1,0,0);
-
-  //mNode->setOrientation(1,1,0,0);
+  mNode->setOrientation(1,1,0,0);
 //  mNode->setScale(2,2,2);
 
   mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
@@ -76,15 +70,11 @@ void GameCore::createScene()
 
 
   mSkull->setOgreBase(mSceneMgr);
-  for (auto &it : _entityVector)
-  {
-    it->setOgreBase(mSceneMgr);
-  }
 
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
 						Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-						plane, 15000, 15000, 150, 150, true, 1, 20, 20,
+						plane, 1500, 1500, 15, 15, true, 1, 20, 20,
 						Ogre::Vector3::UNIT_Z);
   Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
   mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
@@ -103,13 +93,13 @@ void GameCore::createScene()
 void GameCore::createFrameListener(void)
 {
   BaseGauntlet::createFrameListener();
-  mAnimationState = mEntity->getAnimationState("Idle1");
+  mAnimationState = mEntity->getAnimationState("character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
 
-  mAnimationStateZombie = mZombieEnt->getAnimationState("Run");
+  /*mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
   mAnimationStateZombie->setLoop(true);
-  mAnimationStateZombie->setEnabled(true);
+  mAnimationStateZombie->setEnabled(true);*/
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -133,14 +123,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
 
   if (leftMouseDown)
-  {
     mAnimationState = _animation->loopAnimation(mAnimationState, "Attack1", fe, mEntity);
-    if (_entityVector.empty() != true)
-    {
-      _entityVector.back()->unsetEntity(mSceneMgr);
-      _entityVector.pop_back();
-    }
-  }
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
@@ -160,50 +143,50 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   {
     mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
     dirVec.z -= move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_M))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
     dirVec.z -= move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_K))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
     dirVec.z -= move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]", fe, mEntity);
   }
 
   else if (mKeyboard->isKeyDown(OIS::KC_O))
   {
     mNode->setOrientation(Ogre::Quaternion(0, 0, -1, 0));
     dirVec.z -= move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]", fe, mEntity);
   }
 
   mSceneMgr->getSceneNode("NinjaNode")->translate(
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
-  if (Zcollider.collided)
-  {
-    mSceneMgr->getSceneNode("RobotNode")->translate(
-      mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
-      Ogre::Node::TS_LOCAL);
-  }
+  mSceneMgr->getSceneNode("RobotNode")->translate(
+    mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);
 
-  /*mSceneMgr->getSceneNode("ZombieNode1")->translate(
+  /*mSceneMgr->getSceneNode("ZombieNode100")->translate(
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/
 
-  mAnimationState = _animation->loopAnimation(mAnimationState, "Idle1", fe, mEntity);
+  mAnimationState = _animation->loopAnimation(mAnimationState, "character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]", fe, mEntity);
 
-  mAnimationStateZombie = mZombieEnt->getAnimationState("Run");
+  render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
+  // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
+
+  mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
   mAnimationStateZombie->setLoop(true);
   mAnimationStateZombie->setEnabled(true);
   return true;
-  if (mKeyboard->isKeyDown(OIS::KC_J))
+  /*if (mKeyboard->isKeyDown(OIS::KC_J))
   {
     Ogre::Vector3 src = mNode->getOrientation() * Ogre::Vector3::UNIT_X;
     mNode->yaw(Ogre::Degree(0.25));
@@ -212,5 +195,5 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   {
     Ogre::Vector3 src = mNode->getOrientation() * Ogre::Vector3::UNIT_X;
     mNode->yaw(Ogre::Degree(-0.25));
-  }
+  }*/
 }

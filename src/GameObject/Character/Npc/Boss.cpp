@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Thu Jun 08 08:57:38 2017 fossae_t
+** Last update Sat Jun 10 15:59:51 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Boss.hpp"
@@ -35,7 +35,7 @@ Boss::~Boss() {}
 void Boss::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   //mEntity = mSceneMgr->createEntity("Boss", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
-  mEntity = mSceneMgr->createEntity("Boss", "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
+  mEntity = mSceneMgr->createEntity("Boss" + std::to_string(_id), "creature_northrendghoul2_northrendghoul2.m2_Geoset_000.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
@@ -43,12 +43,12 @@ void Boss::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setOrientation(1,1,0,0);
 }
 
-Ogre::Vector3 Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target)
+void Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
 {
-  Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
-  nextMove = mScript->BossScript(mSceneMgr->getSceneNode("BossNode1"), target);
+  mSceneMgr->getSceneNode(mNodeName)->translate(
+    mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);
   //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
-  return (nextMove);
 }
 
 void Boss::Animate(const Ogre::FrameEvent& fe)

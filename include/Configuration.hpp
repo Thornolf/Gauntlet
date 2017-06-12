@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Mon May 22 13:07:27 2017 Guillaume CAUCHOIS
-** Last update Mon May 22 13:07:27 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 09 16:08:39 2017 Adrien Warin
 */
 
 #ifndef		_CONFIGURATION__HPP_
@@ -23,10 +23,11 @@ public:
   /* Member functions */
   std::vector<Pc>	getPlayers(void) const;
   void			setPlayers(std::vector<Pc>);
+  void          addScorePoint(int nbPoint);
 
 private:
   std::vector<Pc>	_players;
-
+  int               _score;
 };
 
 #endif		/* _CONFIGURATION__HPP_ */

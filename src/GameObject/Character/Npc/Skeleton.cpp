@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Thu Jun 08 08:57:00 2017 fossae_t
+** Last update Fri Jun 09 17:32:01 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Skeleton.hpp"
@@ -35,7 +35,7 @@ Skeleton::~Skeleton() {}
 
 void Skeleton::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
-  mEntity = mSceneMgr->createEntity("Skeleton", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
+  mEntity = mSceneMgr->createEntity("Skeleton" + std::to_string(_id), "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
@@ -43,12 +43,12 @@ void Skeleton::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setOrientation(1,1,0,0);
 }
 
-Ogre::Vector3 Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target)
+void Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
 {
-  Ogre::Vector3 nextMove = Ogre::Vector3::ZERO;
-  nextMove = mScript->SkeletonScript(mSceneMgr->getSceneNode("SkeletonNode1"), target);
+  mSceneMgr->getSceneNode(mNodeName)->translate(
+    mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);
   //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
-  return (nextMove);
 }
 
 void Skeleton::Animate(const Ogre::FrameEvent& fe)

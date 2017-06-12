@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:24:56 2017 Adrien Warin
-** Last update Fri Jun 09 10:20:27 2017 Thomas Fossaert
+** Last update Sat Jun 10 14:56:33 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Script.hpp"
@@ -20,16 +20,23 @@ Script::~Script ()
 
 Ogre::Vector3 Script::ZombieScript(Ogre::SceneNode *current, Ogre::SceneNode *target)
 {
+  int aggroX = 0;
+  int aggroZ = 0;
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  if (current->getPosition().x < target->getPosition().x)
-    dirVec.x = 75;
-  if (current->getPosition().x > target->getPosition().x)
-    dirVec.x = -75;
-  if (current->getPosition().y > target->getPosition().y)
-    dirVec.y = -75;
-  if (current->getPosition().y < target->getPosition().y)
-    dirVec.y = 75;
+  aggroX = std::abs(current->getPosition().x - target->getPosition().x);
+  aggroZ = std::abs(current->getPosition().z - target->getPosition().z);
+  if (aggroX < 75 || aggroZ < 75)
+    {
+      if (current->getPosition().x < target->getPosition().x)
+        dirVec.x = 75;
+      if (current->getPosition().x > target->getPosition().x)
+        dirVec.x = -75;
+      if (current->getPosition().z > target->getPosition().z)
+        dirVec.y = -75;
+      if (current->getPosition().z < target->getPosition().z)
+        dirVec.y = 75;
+    }
   return (dirVec);
 }
 

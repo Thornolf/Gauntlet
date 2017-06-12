@@ -23,7 +23,7 @@ public:
 
   /* Member functions */
   void		setOgreBase(Ogre::SceneManager*);
-  Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
+  void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&);
   void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 

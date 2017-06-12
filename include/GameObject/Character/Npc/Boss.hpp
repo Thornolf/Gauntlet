@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 08 08:59:08 2017 fossae_t
+** Last update Fri Jun 09 17:30:05 2017 Thomas Fossaert
 */
 
 #ifndef _Boss_HPP_
@@ -25,7 +25,7 @@ public:
   /* Classes */
 
   void		setOgreBase(Ogre::SceneManager*);
-  Ogre::Vector3	launchScript(Ogre::SceneManager*, Ogre::SceneNode *);
+  void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&);
   void		Animate(const Ogre::FrameEvent&);
   void    unsetEntity(Ogre::SceneManager *mSceneMgr);
 };
