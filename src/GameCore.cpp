@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Mon Jun 12 14:17:29 2017 Thomas Fossaert
+** Last update Mon Jun 12 18:22:45 2017 Robin Grattepanche
 */
 
 #include "GameCore.hpp"
@@ -63,7 +63,7 @@ void GameCore::createScene()
   wall->setMaterialName("Examples/Rocky");
   node->setScale(15.0f, 7.0f, 0.3f);
 
-  mNode->setOrientation(1,1,0,0);
+  mNode->setOrientation(1,0,0,0);
 //  mNode->setScale(2,2,2);
 
   mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
@@ -121,7 +121,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
   static bool mouseDownLastFrame = false;
   static Ogre::Real toggleTimer = 0.0;
-  static Ogre::Real rotate = .13;
+  static Ogre::Real rotate = .05;
   static Ogre::Real move = 150;
 
   bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
@@ -142,40 +142,47 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
                 								  mEntity,
                 								  false);
   if (collider.collided)
-    dirVec.z += 2 + move;
+    dirVec.x -= 2 + move;
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
-    mNode->setOrientation(Ogre::Quaternion(1, 1, 1.3, 0));
-    dirVec.y -= move;
+    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
+    dirVec.x += move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_M))
   {
-    mNode->setOrientation(Ogre::Quaternion(-1.7, 0.7, -1.7, 0));
-    dirVec.y -= move;
+    mNode->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
+    dirVec.x += move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_K))
   {
-    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
-    dirVec.z -= move;
+    mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
+    dirVec.x += move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
 
   else if (mKeyboard->isKeyDown(OIS::KC_O))
   {
-    mNode->setOrientation(Ogre::Quaternion(0, 0, -1, -1));
-    dirVec.z -= move;
+    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
+    dirVec.x += move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
+
+	if (mKeyboard->isKeyDown(OIS::KC_J))
+	{
+		mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Radian(rotate),
+			Ogre::Node::TS_LOCAL);
+		std::cout << mSceneMgr->getSceneNode("NinjaNode")->getOrientation() << std::endl;
+	}
 
   mSceneMgr->getSceneNode("NinjaNode")->translate(
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
-  mSceneMgr->getSceneNode("RobotNode")->translate(
-    mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
+  // mSceneMgr->getSceneNode("RobotNode")->translate(
+    // mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
+    // Ogre::Node::TS_LOCAL);
 
   /*mSceneMgr->getSceneNode("ZombieNode100")->translate(
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
