@@ -97,9 +97,11 @@ bool		Position::stringIsNumber(char *line) const
 {
   int		i = -1;
 
+  if (line[0] == '-')
+    i = 0;
   while (line[++i])
   {
-    if (line[i] < '0' || line[i] > '9')
+    if (i != 0 && line[i] < '0' || line[i] > '9')
       return (false);
   }
   return (true);

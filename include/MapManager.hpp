@@ -1,11 +1,11 @@
 /*
-** MapManager.hpp for cpp_indie_studio
+** MapManager.hpp for Gauntlet
 **
-** Made by Quentin Baudet
-** Login   <baudet_q@epitech.net>
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
 **
-** Started on  Wed May 31 15:49:11 2017 Quentin Baudet
-** Last update Wed May 31 16:24:21 2017 Quentin Baudet
+** Started on  Mon Jun 12 07:19:22 2017 Guillaume CAUCHOIS
+** Last update Mon Jun 12 07:19:22 2017 Guillaume CAUCHOIS
 */
 
 #ifndef		_MAP_MANAGER_HPP_
@@ -13,7 +13,7 @@
 
 # define	REGEX_SECTION	"[\\[].*[\\]]"
 # define	REGEX_PARAM	"^[A-Z_]*[ \\t]*[A-Za-z0-9_\\/\\-.]*$"
-# define	REGEX_OBJECT	"^[ \t]*[A-Za-z0-9]*[ \t]*[A-Za-z0-9]*[ \t]*[0-9]*[,][0-9]*[,][0-9]*[ \t]*[0-9]*[,][0-9]*[,][0-9]*[ \t]*[A-Za-z0-9/.]*$"
+# define	REGEX_OBJECT	"^[ \t]*[A-Za-z0-9]*[ \t]*[A-Za-z0-9]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[A-Za-z0-9/.]*$"
 
 # include	<string>
 # include	<vector>

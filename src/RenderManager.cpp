@@ -13,13 +13,13 @@
 /*****************************************************************************/
 RenderManager::RenderManager()
 {
-  this->_factory["DOODAD"] = std::bind(&RenderManager::createDoodadObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-  this->_factory["BOSS"] = std::bind(&RenderManager::createBossObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-  this->_factory["SKELETON"] = std::bind(&RenderManager::createSkeletonObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-  this->_factory["ZOMBIE"] = std::bind(&RenderManager::createZombieObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-  this->_factory["SPAWNER"] = std::bind(&RenderManager::createSpawnerObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-  this->_factory["FOOD"] = std::bind(&RenderManager::createFoodObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
-  this->_factory["GOLD"] = std::bind(&RenderManager::createGoldObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+//  this->_factory["DOODAD"]	= std::bind(&RenderManager::createDoodadObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+  this->_factory["BOSS"]	= std::bind(&RenderManager::createBossObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+  this->_factory["SKELETON"]	= std::bind(&RenderManager::createSkeletonObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+  this->_factory["ZOMBIE"]	= std::bind(&RenderManager::createZombieObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+  this->_factory["SPAWNER"]	= std::bind(&RenderManager::createSpawnerObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+  this->_factory["FOOD"]	= std::bind(&RenderManager::createFoodObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
+  this->_factory["GOLD"]	= std::bind(&RenderManager::createGoldObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4);
 }
 
 RenderManager::~RenderManager()
