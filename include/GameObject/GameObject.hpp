@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 09 17:30:58 2017 Thomas Fossaert
+** Last update Mon Jun 12 09:50:42 2017 Thomas Fossaert
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -46,10 +46,10 @@ public:
   Position* getPosition() const;
   void      hide();
   const std::string& getNodeName() const;
-
+  Ogre::Entity* getEntity() const;
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
-  virtual void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
+  virtual void	  launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
   virtual void		Animate(const Ogre::FrameEvent&) {};
   virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr) {};
 };
