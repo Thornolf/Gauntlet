@@ -34,7 +34,7 @@ Doodad& Doodad::operator=(Doodad const & other)
 
 Doodad::~Doodad() {}
 
-void Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
+void	Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   mEntity = mSceneMgr->createEntity("Doodad" + std::to_string(_id), _deco);
 

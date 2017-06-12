@@ -50,14 +50,14 @@ void Character::attack(Character *target)
   target->takeDamage(this->_attack);
 }
 
-bool Character::isAlive()
+bool Character::isAlive() const
 {
   return ((this->_health > 0));
 }
 
-void Character::getDistance() {}
+void Character::getDistance() const {}
 
-int Character::getRange()
+int Character::getRange() const
 {
   return (this->_range);
 }

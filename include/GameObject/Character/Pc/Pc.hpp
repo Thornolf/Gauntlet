@@ -24,12 +24,13 @@ public:
   virtual ~Pc();
 
   void			setDevice(Device *);
+  void			setName(const std::string &);
   Device		*getDevice(void) const;
   const std::string	&getName(void) const;
 
 private:
-  Device		*_device;
-  const std::string	_name;
+  Device	*_device;
+  std::string	_name;
 };
 
 #endif

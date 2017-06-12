@@ -28,13 +28,11 @@ public:
   Character& operator=(Character const &);
   virtual ~Character();
 
-  /* Classes */
-
-  void takeDamage(int dmg);
-  void attack(Character *target);
-  bool isAlive();
-  void getDistance();
-  int getRange();
+  void		takeDamage(int dmg);
+  void		attack(Character *target);
+  bool		isAlive() const;
+  void		getDistance() const;
+  int		getRange(void) const;
 
   /*virtual void		setOgreBase(Ogre::SceneManager*);
   virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);

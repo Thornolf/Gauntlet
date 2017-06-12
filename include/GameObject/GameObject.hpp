@@ -49,9 +49,9 @@ public:
   Ogre::Entity* getEntity() const;
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
-  virtual void	  launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
+  virtual void		launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
   virtual void		Animate(const Ogre::FrameEvent&) {};
-  virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr) {};
+  virtual void		unsetEntity(Ogre::SceneManager *mSceneMgr) {};
 };
 
 #endif

@@ -8,32 +8,24 @@
 ** Last update Tue May 30 10:39:47 2017 Pierre
 */
 
-#ifndef _MAGE_HPP_
-#define _MAGE_HPP_
+#ifndef		_MAGE__HPP_
+# define	_MAGE__HPP_
 
-#include <iostream>
-#include "Pc.hpp"
+# include	<iostream>
+# include	"Pc.hpp"
+# include	"GameObject/Character/Pc/Ranged.hpp"
 
 class Mage : public Ranged
 {
 public:
-  Mage(int x, int y, int z);
+  Mage(const std::string &, int x, int y, int z);
   Mage(Mage const &);
   Mage& operator=(Mage const &);
   virtual ~Mage();
 
-    /* Virtual methods */
-    void		setOgreBase(Ogre::SceneManager*);
+  void		setOgreBase(Ogre::SceneManager*);
   void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
-
-  /* Classes */
-
-  virtual void getDamage();
-  virtual void attack();
-  virtual bool isAlive();
-  virtual void getDistance();
-  virtual size_t getRange();
 };
 
-#endif
+#endif		/* !_MAGE__HPP_ */

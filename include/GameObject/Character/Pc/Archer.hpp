@@ -11,8 +11,8 @@
 #ifndef _ARCHER_HPP_
 #define _ARCHER_HPP_
 
-#include <iostream>
-#include "Ranged.hpp"
+# include <iostream>
+# include "Ranged.hpp"
 
 class Archer : public Ranged
 {

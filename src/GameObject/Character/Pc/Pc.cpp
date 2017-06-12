@@ -40,6 +40,11 @@ void	Pc::setDevice(Device *dev)
   this->_device = dev;
 }
 
+void	Pc::setName(const std::string &name)
+{
+  this->_name = name;
+}
+
 Device	*Pc::getDevice(void) const
 {
   return (this->_device);

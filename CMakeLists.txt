@@ -97,7 +97,7 @@ set(HDRS
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
-        ./include/Ranged.hpp
+        include/GameObject/Character/Pc/Ranged.hpp
         ./include/audio/IAudio.hpp
         ./include/audio/Music.hpp
         ./include/audio/SoundSystem.hpp
