@@ -88,7 +88,9 @@ set(HDRS
         include/GameObject/Loot/goldStack.hpp
         include/GameObject/Loot/Loot.hpp
         ./include/GameObject/Character/Npc/Npc.hpp
-        ./include/GameObject/Character/Pc/Pc.hpp
+        ./include/GameObject/Character/Pc/Mage.hpp
+        ./include/GameObject/Character/Pc/Archer.hpp
+        ./include/GameObject/Character/Pc/Tank.hpp
         ./include/GameObject/Character/Npc/Zombie.hpp
         ./include/GameObject/Character/Npc/Skeleton.hpp
         ./include/GameObject/GameObject.hpp
@@ -127,6 +129,10 @@ set(SRCS
         ./src/GameObject/Character/Npc/Boss.cpp
         ./src/GameObject/Character/Npc/Skeleton.cpp
         ./src/GameObject/Character/Pc/Pc.cpp
+        ./src/GameObject/Character/Pc/Archer.cpp
+        ./src/GameObject/Character/Pc/Warrior.cpp
+        ./src/GameObject/Character/Pc/Mage.cpp
+        ./src/GameObject/Character/Pc/Tank.cpp
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp
         ./src/Input/Device.cpp
@@ -140,8 +146,6 @@ set(SRCS
         ./src/Input/ParserInputFile.cpp
         ./src/NewMOC.cpp
         ./src/Script/Script.cpp
-        ./src/GameObject/Character/Pc/Warrior.cpp
-        ./src/GameObject/Character/Pc/Tank.cpp
 				./src/light/Light.cpp
         ./src/Parsing/MapManager.cpp
         src/RenderManager.cpp src/GameObject/Character/Npc/Spawner.cpp
