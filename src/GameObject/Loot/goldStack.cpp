@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Mon Jun 12 13:11:26 2017 Thomas Fossaert
+// Last update Mon Jun 12 14:25:33 2017 Thomas Fossaert
 */
 
 #include "GameObject/Loot/goldStack.hpp"
@@ -38,7 +38,7 @@ void goldStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("goldStack" + std::to_string(_id), "world_azeroth_stranglethorn_passivedoodads_trolldungeonsacks_tr.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(40.0f, 40.0f, 40.0f);
+  mNode->setScale(80.0f, 80.0f, 80.0f);
   mNode->setOrientation(1,1,0,0);
 }
 

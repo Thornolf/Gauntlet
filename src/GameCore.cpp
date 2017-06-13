@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Mon Jun 12 14:17:29 2017 Thomas Fossaert
+// Last update Mon Jun 12 16:54:55 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -26,7 +26,6 @@ void GameCore::createScene()
 {
   GameObject		*mZob = new Zombie(100, 0, 100, 100);
   GameObject		*mTank = new Tank("noob", 500, 0, 500);
-  GameObject    *mGold = new goldStack(300, 0, 100, 1);
 
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
@@ -41,9 +40,9 @@ void GameCore::createScene()
 
   mPosition = new Position(100, 0, -750);
   //mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
-  // mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-  light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 0, 0);
-  ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
+   mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+  //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
+  //ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
   mEntity = mSceneMgr->createEntity("Ninja", "character_human_female_humanfemale_hd.mesh");
 
   Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_sword_2h_artifactashbringer_d_01.mesh");
@@ -53,7 +52,6 @@ void GameCore::createScene()
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
   mTank->setOgreBase(mSceneMgr);
-  mGold->setOgreBase(mSceneMgr);
   Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);
@@ -78,7 +76,7 @@ void GameCore::createScene()
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
 						Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-						plane, 1500, 1500, 15, 15, true, 1, 20, 20,
+						plane, 10000, 1500, 1, 1, true, 1, 40, 5,
 						Ogre::Vector3::UNIT_Z);
   Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
   mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
@@ -87,11 +85,10 @@ void GameCore::createScene()
   Script *mScript = new Script();
 
   collision = new CollisionTools();
-  collision->register_entity(mEntity, Collision::COLLISION_BOX);
-  collision->register_entity(wall, Collision::COLLISION_BOX);
-  //collision->register_entity(ent, Collision::COLLISION_BOX);
-  collision->register_entity(mZombieEnt, Collision::COLLISION_BOX);
-
+  //collision->register_entity(mEntity, Collision::COLLISION_BOX);
+  //collision->register_entity(wall, Collision::COLLISION_BOX);
+  //collision->register_entity(mZombieEnt, Collision::COLLISION_BOX);
+  render.forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
 }
 
 void GameCore::createFrameListener(void)
@@ -145,13 +142,13 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     dirVec.z += 2 + move;
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
-    mNode->setOrientation(Ogre::Quaternion(1, 1, 1.3, 0));
+    mNode->setOrientation(Ogre::Quaternion(1, 1, 0, 0));
     dirVec.y -= move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_M))
   {
-    mNode->setOrientation(Ogre::Quaternion(-1.7, 0.7, -1.7, 0));
+    mNode->setOrientation(Ogre::Quaternion(-0.7, 0.7, -0.7, 0));
     dirVec.y -= move;
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
   }
