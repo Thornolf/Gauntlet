@@ -40,11 +40,11 @@ public:
   std::map<eventType, OIS::KeyCode>	getBinding(void) const;
 
 private:
-  ParserInputFile			*_parser;
-  const std::string			_name;
-  OIS::Object				*_device;
-  Pc					*_player;
-  std::map<eventType, OIS::KeyCode>	_binding;
+  ParserInputFile					*_parser;
+  const std::string					_name;
+  OIS::Object						*_device;
+  Pc							*_player;
+  std::map<eventType, OIS::KeyCode>			_binding;
 };
 
 #endif		/* !_DEVICE__HPP_ */

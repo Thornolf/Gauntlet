@@ -9,10 +9,15 @@
 */
 
 #include "GameObject/Character/Pc/Pc.hpp"
+#include "Input/Device.hpp"
 
 Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name(name)
 {
   this->_device = nullptr;
+  this->_event[eventType::MOVE_UP] = std::bind(&Pc::moveUp, this);
+  this->_event[eventType::MOVE_DOWN] = std::bind(&Pc::moveDown, this);
+  this->_event[eventType::MOVE_LEFT] = std::bind(&Pc::moveLeft, this);
+  this->_event[eventType::MOVE_RIGHT] = std::bind(&Pc::moveRight, this);
 }
 
 Pc::Pc(Pc const & other) : Character(other)
@@ -53,4 +58,24 @@ Device	*Pc::getDevice(void) const
 const std::string	&Pc::getName(void) const
 {
   return (this->_name);
+}
+
+void		Pc::moveUp(void)
+{
+  std::cout << "Player is moving up" << std::endl;
+}
+
+void		Pc::moveDown(void)
+{
+  std::cout << "Player is moving down" << std::endl;
+}
+
+void		Pc::moveLeft(void)
+{
+  std::cout << "Player is moving left" << std::endl;
+}
+
+void		Pc::moveRight(void)
+{
+  std::cout << "Player is moving right" << std::endl;
 }
