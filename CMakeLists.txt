@@ -84,9 +84,9 @@ set(HDRS
         ./include/GameCore.hpp
         ./include/IndieException.hpp
         ./include/GameObject/Character/Character.hpp
-        include/GameObject/Loot/foodStack.hpp
-        include/GameObject/Loot/goldStack.hpp
-        include/GameObject/Loot/Loot.hpp
+        ./include/GameObject/Loot/foodStack.hpp
+        ./include/GameObject/Loot/goldStack.hpp
+        ./include/GameObject/Loot/Loot.hpp
         ./include/GameObject/Character/Npc/Npc.hpp
         ./include/GameObject/Character/Pc/Mage.hpp
         ./include/GameObject/Character/Pc/Archer.hpp
@@ -97,7 +97,7 @@ set(HDRS
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
-        include/GameObject/Character/Pc/Ranged.hpp
+        ./include/GameObject/Character/Pc/Ranged.hpp
         ./include/audio/IAudio.hpp
         ./include/audio/Music.hpp
         ./include/audio/SoundSystem.hpp
@@ -105,14 +105,14 @@ set(HDRS
         ./include/Input/DeviceManager.hpp
         ./include/Input/ParserInputFile.hpp
         ./include/Input/eventType.hpp
-        include/GameObject/Character/Pc/Melee.hpp
+        ./include/GameObject/Character/Pc/Melee.hpp
         ./include/NewMOC.hpp
         ./include/Animation.hpp
         ./include/Light/light.hpp
-        include/GameObject/Character/Script.hpp
-        include/MapManager.hpp
-        include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp
-        include/GameObject/Doodad/Doodad.hpp)
+        ./include/GameObject/Character/Script.hpp
+        ./include/MapManager.hpp
+        ./include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp
+        ./include/GameObject/Doodad/Doodad.hpp)
 
 set(SRCS
         ./src/main.cpp
@@ -158,6 +158,7 @@ include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}
         ${OGRE_SAMPLES_INCLUDEPATH}
         ${OGRE_Overlay_INCLUDE_DIRS}
+        ${CEGUI_INCLUDE_DIRS}
         )
 
 SET_SOURCE_FILES_PROPERTIES(${SRCS} PROPERTIES COMPILE_FLAGS -W -Wall -Wextra)
@@ -166,6 +167,14 @@ add_executable(Gauntlet WIN32 ${HDRS} ${SRCS})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
+# CEGUI
+#set(CMAKE_MODULE_PATH ".;${CMAKE_MODULE_PATH}")
+#find_package(CEGUI REQUIRED)
+#if(NOT CEGUI_FOUND)
+#    message(SEND_ERROR "Failed to find CEGUI.")
+#endif()
+
+# SFML
 find_package(SFML 2 REQUIRED network audio graphics window system)
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
@@ -174,7 +183,7 @@ endif()
 
 set_target_properties(Gauntlet PROPERTIES DEBUG_POSTFIX _d)
 
-target_link_libraries(Gauntlet ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES})
+target_link_libraries(Gauntlet ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES} ${CEGUI_LIBRARIES} ${CEGUI_OgreRenderer_LIBRARIES})
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
@@ -214,8 +223,6 @@ if(WIN32)
             CONFIGURATIONS Debug
             )
 
-    # NOTE: for the 1.7.1 sdk the OIS dll is called OIS.dll instead of libOIS.dll
-    # so you'll have to change that to make it work with 1.7.1
     install(FILES ${OGRE_PLUGIN_DIR_REL}/OgreMain.dll
             ${OGRE_PLUGIN_DIR_REL}/RenderSystem_Direct3D9.dll
             ${OGRE_PLUGIN_DIR_REL}/RenderSystem_GL.dll
@@ -232,8 +239,6 @@ if(WIN32)
             CONFIGURATIONS Debug
             )
 
-    # as of sdk 1.7.2 we need to copy the boost dll's as well
-    # because they're not linked statically (it worked with 1.7.1 though)
     install(FILES ${Boost_DATE_TIME_LIBRARY_RELEASE}
             ${Boost_THREAD_LIBRARY_RELEASE}
             DESTINATION bin
