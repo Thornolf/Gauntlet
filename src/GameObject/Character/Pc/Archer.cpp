@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Mon Jun 12 11:23:52 2017 Quentin Baudet
+** Last update Tue Jun 13 13:13:47 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Archer.hpp"
@@ -34,14 +34,13 @@ Archer::~Archer() {}
 
 void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
-  Ogre::Entity *weapon = mSceneMgr->createEntity("WEAPONARCHER.mesh");
+  Ogre::Entity *weapon = mSceneMgr->createEntity("character_troll_male_trollmale_hd.mesh");
 
-  mEntity = mSceneMgr->createEntity("Archer", "MESHARCHER.mesh");
+  mEntity = mSceneMgr->createEntity("Archer", "character_troll_male_trollmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-  mNode->setOrientation(1,1,0,0);
-  this->mEntity->attachObjectToBone("BONES/ARCHER", weapon, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
 }
 
 

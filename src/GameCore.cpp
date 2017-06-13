@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Mon Jun 12 16:54:55 2017 Thomas Fossaert
+// Last update Tue Jun 13 13:37:55 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -25,7 +25,11 @@ GameCore::~GameCore()
 void GameCore::createScene()
 {
   GameObject		*mZob = new Zombie(100, 0, 100, 100);
-  GameObject		*mTank = new Tank("noob", 500, 0, 500);
+  mTank = new Tank("noob", 500, 0, 500);
+  mMage = new Mage("mage", 200, 0, 500);
+  mHunt = new Archer("hunt", -100, 0, 500);
+  mWarr = new Warrior("Warr", -400, 0, 500);
+
 
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
@@ -43,15 +47,19 @@ void GameCore::createScene()
    mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
   //ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
-  mEntity = mSceneMgr->createEntity("Ninja", "character_human_female_humanfemale_hd.mesh");
+  mEntity = mSceneMgr->createEntity("Ninja", "character_human_male_humanmale_hd.mesh");
 
-  Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_sword_2h_artifactashbringer_d_01.mesh");
-  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  Ogre::Entity *weapon = mSceneMgr->createEntity("character_human_female_humanfemale_hd.mesh");
+  // this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
   mTank->setOgreBase(mSceneMgr);
+  mMage->setOgreBase(mSceneMgr);
+  mHunt->setOgreBase(mSceneMgr);
+  mWarr->setOgreBase(mSceneMgr);
+
   Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);
@@ -98,6 +106,7 @@ void GameCore::createFrameListener(void)
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
 
+
   /*mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
   mAnimationStateZombie->setLoop(true);
   mAnimationStateZombie->setEnabled(true);*/
@@ -129,7 +138,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
   SCheckCollisionAnswer collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
-								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(50.0f, 50.0f, 50.0f), 50.0f, 50.0f, 1,
+								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 								  mEntity,
 								  false);
 
@@ -138,6 +147,11 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
                 			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
                 								  mEntity,
                 								  false);
+  mTank->Animate(fe);
+  mWarr->Animate(fe);
+  mHunt->Animate(fe);
+  mMage->Animate(fe);
+
   if (collider.collided)
     dirVec.x -= 2 + move;
   if (mKeyboard->isKeyDown(OIS::KC_L))

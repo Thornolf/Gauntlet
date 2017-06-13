@@ -39,7 +39,6 @@ void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(1.7f, 1.7f, 1.7f);
-  mNode->setOrientation(1,1,0,0);
 }
 
 void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
