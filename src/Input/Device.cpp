@@ -5,14 +5,14 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed May 31 09:02:12 2017 Guillaume CAUCHOIS
-** Last update Wed May 31 09:02:12 2017 Guillaume CAUCHOIS
+** Last update Tue Jun 13 15:20:32 2017 Thomas Fossaert
 */
 
 #include "Input/ParserInputFile.hpp"
 #include "Input/Device.hpp"
 #include "GameObject/Character/Pc/Pc.hpp"
 
-Device::Device(const std::string &name, DeviceManager *manager, OIS::Type &typeDev, Pc *player) :
+Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *player) :
   _name(name)
 {
   this->_parser = new ParserInputFile;

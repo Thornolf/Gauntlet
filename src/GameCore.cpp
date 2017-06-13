@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Tue Jun 13 13:37:55 2017 Thomas Fossaert
+// Last update Tue Jun 13 14:30:12 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -24,13 +24,22 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  GameObject		*mZob = new Zombie(100, 0, 100, 100);
+  //DeviceManager *mDeviceManager = new DeviceManager(mWindow);
   mTank = new Tank("noob", 500, 0, 500);
+  //Device        *mTankDevice = new Device(static_cast<Pc*>(mTank)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mTank));
   mMage = new Mage("mage", 200, 0, 500);
+  //Device        *mMageDevice = new Device(static_cast<Pc*>(mMage)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mMage));
   mHunt = new Archer("hunt", -100, 0, 500);
+  //Device        *mHuntDevice = new Device(static_cast<Pc*>(mHunt)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mHunt));
   mWarr = new Warrior("Warr", -400, 0, 500);
+  //Device        *mWarrDevice = new Device(static_cast<Pc*>(mWarr)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mWarr));
 
+  GameObject		*mZob = new Zombie(100, 0, 100, 100);
 
+/*  static_cast<Pc *>(mTank)->setDevice(mTankDevice);
+  static_cast<Pc *>(mMage)->setDevice(mMageDevice);
+  static_cast<Pc *>(mHunt)->setDevice(mHuntDevice);
+  static_cast<Pc *>(mWarr)->setDevice(mWarrDevice); */
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
   Ogre::Entity		*ent;
@@ -102,7 +111,7 @@ void GameCore::createScene()
 void GameCore::createFrameListener(void)
 {
   BaseGauntlet::createFrameListener();
-  mAnimationState = mEntity->getAnimationState("Walk");
+  mAnimationState = mEntity->getAnimationState("Run");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
 
@@ -128,7 +137,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static bool mouseDownLastFrame = false;
   static Ogre::Real toggleTimer = 0.0;
   static Ogre::Real rotate = .05;
-  static Ogre::Real move = 150;
+  static Ogre::Real move = 350;
 
   bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
 
@@ -158,27 +167,29 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_M))
   {
     mNode->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_K))
   {
     mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
 
   else if (mKeyboard->isKeyDown(OIS::KC_O))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
+  else
+     mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
 
 	if (mKeyboard->isKeyDown(OIS::KC_J))
 	{
@@ -199,7 +210,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/
 
-  mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
+  // mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
 
   render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
   // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});

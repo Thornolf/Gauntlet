@@ -30,6 +30,7 @@ This source file is part of the
 #include "GameObject/Doodad/Doodad.hpp"
 #include "MapManager.hpp"
 #include "RenderManager.hpp"
+#include "Input/Device.hpp"
 
 class GameCore : public BaseGauntlet
 {

@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Tue Jun 13 13:44:57 2017 Thomas Fossaert
+// Last update Tue Jun 13 14:15:24 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Skeleton.hpp"
@@ -41,7 +41,7 @@ void Skeleton::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(1.7f, 1.7f, 1.7f);
-  this->mEntity->attachObjectToBone("character/scourge/male/scourgemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/scourge/male/scourgemale_hd_bone_147", weapon, Ogre::Quaternion(1,1,0,0));
 }
 
 void Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)

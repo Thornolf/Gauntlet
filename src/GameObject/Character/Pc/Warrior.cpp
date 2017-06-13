@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-** Last update Tue Jun 13 13:11:18 2017 Thomas Fossaert
+// Last update Tue Jun 13 14:18:32 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -40,13 +40,13 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("WarriorNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_106", weapon, Ogre::Quaternion(1,0,0,0));
 }
 
 
 void Warrior::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
 }
 
 void Warrior::unsetEntity(Ogre::SceneManager *mSceneMgr)

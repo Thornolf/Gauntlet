@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Tue Jun 13 13:13:47 2017 Thomas Fossaert
+// Last update Tue Jun 13 14:21:44 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Archer.hpp"
@@ -34,19 +34,19 @@ Archer::~Archer() {}
 
 void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
-  Ogre::Entity *weapon = mSceneMgr->createEntity("character_troll_male_trollmale_hd.mesh");
+  Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_bow_1h_northrend_c_01.mesh");
 
   mEntity = mSceneMgr->createEntity("Archer", "character_troll_male_trollmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
 }
 
 
 void Archer::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
 }
 
 void Archer::unsetEntity(Ogre::SceneManager *mSceneMgr)

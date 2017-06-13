@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Tue Jun 13 13:07:52 2017 Thomas Fossaert
+// Last update Tue Jun 13 14:25:23 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
@@ -40,13 +40,13 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-  this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_115", weapon, Ogre::Quaternion(1,0,0,0));
 }
 
 
 void Mage::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
 }
 
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)

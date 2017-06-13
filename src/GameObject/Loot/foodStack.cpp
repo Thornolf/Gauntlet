@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Tue Jun 13 08:43:40 2017 Thomas Fossaert
+** Last update Tue Jun 13 14:07:01 2017 Thomas Fossaert
 */
 
 #include "GameObject/Loot/foodStack.hpp"
@@ -35,7 +35,7 @@ foodStack::~foodStack()
 void foodStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
 
-  mEntity = mSceneMgr->createEntity("foodStack" + std::to_string(_id), "world_azeroth_stranglethorn_passivedoodads_trolldungeonsacks_tr.mesh");
+  mEntity = mSceneMgr->createEntity("foodStack" + std::to_string(_id), "world_expansion04_doodads_pandaren_pa_food_bakedwildfowl_01.m2_.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(80.0f, 80.0f, 80.0f);
