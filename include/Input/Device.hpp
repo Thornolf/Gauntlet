@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed May 31 08:55:51 2017 Guillaume CAUCHOIS
-** Last update Wed May 31 08:55:51 2017 Guillaume CAUCHOIS
+** Last update Tue Jun 13 15:20:34 2017 Thomas Fossaert
 */
 
 #ifndef		_DEVICE__HPP_
@@ -28,7 +28,7 @@ class Device
 {
 public:
   /* Canonical functions */
-  Device(const std::string &name, DeviceManager *manager, OIS::Type &typeDev, Pc *vendor);
+  Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor);
   virtual ~Device();
   Device	&operator=(const Device &);
 

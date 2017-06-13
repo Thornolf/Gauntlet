@@ -62,6 +62,11 @@ protected:
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
     Ogre::SceneNode *mZombie;                // The -SceneNode that the Entity is attached to
 
+    GameObject		*mTank;
+    GameObject		*mWarr;
+    GameObject		*mHunt;
+    GameObject		*mMage;
+
 
     Script *mScript;
     Position *mPosition;
