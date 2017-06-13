@@ -82,8 +82,8 @@ void	MapManager::ObjASTNodeToGameObj(RenderManager &rManager, t_ast_node *object
   std::string		texture;
   std::string		name;
   std::string		ObjectType;
+  Ogre::Quaternion	orientation;
 
-  std::cout << "DEBUG - " << "OBJASTNODETOGAMEOBJ START" << std::endl;
   if (object == nullptr)
     throw IndieException("Cannot null ast node");
   for (auto it_objField = object->children->begin(); it_objField != object->children->end(); ++it_objField)
@@ -96,13 +96,57 @@ void	MapManager::ObjASTNodeToGameObj(RenderManager &rManager, t_ast_node *object
       pos.stringToPosition((*it_objField)->value);
     else if ((*it_objField)->type == ASTNodeType::SCALE)
       scale.stringToPosition((*it_objField)->value);
+    else if ((*it_objField)->type == ASTNodeType::ORIENTATION)
+      orientation = stringToOgreQuaternion((*it_objField)->value);
     else if ((*it_objField)->type == ASTNodeType::TEXTURE)
       texture = (*it_objField)->value;
     else
       throw IndieException("Invalid AST data found");
     (void)name;
   }
-  rManager.createGameObject(ObjectType, pos, scale, texture);
+  std::cout << "DEBUG - ORIENTATION :" << orientation.w << " " << orientation.x << " " << orientation.y << " " << orientation.z << std::endl;
+  rManager.createGameObject(ObjectType, pos, scale, orientation, texture);
+}
+
+bool		MapManager::stringIsNumber(char *line) const
+{
+  int		i = -1;
+
+  if (line[0] == '-')
+    i = 0;
+  while (line[++i])
+  {
+    if (i != 0 && line[i] < '0' || line[i] > '9')
+      return (false);
+  }
+  return (true);
+}
+
+Ogre::Quaternion	MapManager::stringToOgreQuaternion(const std::string &line) const
+{
+  char		*part;
+  char		*line_c = new char[line.length() + 1];
+  double	w, x, y, z;
+
+  std::strcpy(line_c, line.c_str());
+  part = std::strtok(line_c, ",");
+  if (!part || !stringIsNumber(part))
+    return Ogre::Quaternion(0, 0, 0, 0);
+  w = std::atof(part);
+  part = std::strtok(NULL, ",");
+  if (!part || !stringIsNumber(part))
+    return Ogre::Quaternion(0, 0, 0, 0);
+  x = std::atof(part);
+  part = std::strtok(NULL, ",");
+  if (!part || !stringIsNumber(part))
+    return Ogre::Quaternion(0, 0, 0, 0);
+  y = std::atof(part);
+  part = std::strtok(NULL, ",");
+  if (!part || !stringIsNumber(part))
+    return Ogre::Quaternion(0, 0, 0, 0);
+  z = std::atof(part);
+  delete[] line_c;
+  return (Ogre::Quaternion(Ogre::Real(w), Ogre::Real(x), Ogre::Real(y), Ogre::Real(z)));
 }
 
 /**
@@ -288,6 +332,7 @@ void		MapManager::addObjectASTNode(t_ast_node *section, const std::string line)
   this->addObjectFieldASTNode(object, line, ObjectField::TYPE, ASTNodeType::TYPE);
   this->addObjectFieldASTNode(object, line, ObjectField::NAME, ASTNodeType::NAME);
   this->addObjectFieldASTNode(object, line, ObjectField::POSITION, ASTNodeType::POSITION);
+  this->addObjectFieldASTNode(object, line, ObjectField::ORIENTATION, ASTNodeType::ORIENTATION);
   this->addObjectFieldASTNode(object, line, ObjectField::SCALE, ASTNodeType::SCALE);
   this->addObjectFieldASTNode(object, line, ObjectField::TEXTURE, ASTNodeType::TEXTURE);
   section->children->push_back(object);

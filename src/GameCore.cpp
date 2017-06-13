@@ -27,6 +27,8 @@ void GameCore::createScene()
   GameObject		*mZob = new Zombie(100, 0, 100, 100);
   GameObject		*mTank = new Tank("noob", 500, 0, 500);
 
+  DeviceManager		*mDevManager = new DeviceManager(mWindow);
+  Device		*mTankDevice = new Device("", mDevManager, OIS::Type::OISKeyboard)
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
   Ogre::Entity		*ent;

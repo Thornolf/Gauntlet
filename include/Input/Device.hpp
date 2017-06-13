@@ -35,8 +35,8 @@ public:
   void		capture(void) const;
   void		keyPressed(const OIS::KeyEvent&);
   void		keyReleased(const OIS::KeyEvent&);
-  void		editBinding(const eventType &, const OIS::KeyCode &);
-  void		dumpBinding(void) const;
+  void					editBinding(const eventType &, const OIS::KeyCode &);
+  void						dumpBinding(void) const;
   std::map<eventType, OIS::KeyCode>	getBinding(void) const;
 
 private:
