@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Mon Jun 12 09:09:21 2017 Thomas Fossaert
+// Last update Mon Jun 12 16:07:51 2017 Thomas Fossaert
 */
 
 #include "GameObject/Doodad/Doodad.hpp"
@@ -41,7 +41,7 @@ void	Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(this->_Sx, this->_Sy, this->_Sz);
-  mNode->setOrientation(0, 0, 0, 0);
+  mNode->setOrientation(1, 1, 0, 0);
   if (_deco == "cube.mesh")
     mEntity->setMaterialName("Examples/Rocky");
 }
