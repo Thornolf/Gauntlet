@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
-** Last update Tue Jun 13 23:04:13 2017 Robin Grattepanche
+** Last update Wed Jun 14 14:34:16 2017 Robin Grattepanche
 */
 
 #include "BaseGauntlet.hpp"
@@ -110,15 +110,15 @@ void BaseGauntlet::createFrameListener(void)
 	inputContext.mMouse = mMouse;
 	inputContext.mKeyboard = mKeyboard;
     mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-		OgreBites::Button *b = mTrayMgr->createButton(OgreBites::TL_CENTER, "MyButton", "Click Salope !");
-		if(b->getState() == OgreBites::BS_OVER)
-		{
-			// OgreFramework::getSingletonPtr()->m_pLog->logMessage("Clicke ME pressed");
-			std::cout << "*************************\n\n\n\nclicked\n\n\n\n\n\n******************" << std::endl;
-		}
+		OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_CENTER, "EnterBtn", "Enter GameState", 250);
+		if(button->getName() == "ExitBtn")
+				std::cout << "************\n\n\n\n\n\n\n\n\nexit***********" << std::endl;
+    else if(button->getName() == "EnterBtn")
+        std::cout << "************\n\n\n\n\n\n\n\n\nenter***********" << std::endl;
+		// 	std::cout << "*************************\n\n\n\nclicked\n\n\n\n\n\n******************" << std::endl;
+		// }
     // mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
 		// mTrayMgr->showAll();
-		// mTrayMgr->moveWidgetToTray("MyButton", OgreBites::TL_TOP);
     // mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
     mTrayMgr->showCursor();
 

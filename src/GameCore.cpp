@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed Jun 14 13:13:06 2017 Robin Grattepanche
+** Last update Wed Jun 14 13:49:14 2017 Robin Grattepanche
 */
 
 #include <SFML/Graphics.hpp>
@@ -57,16 +57,17 @@ void GameCore::createScene()
   render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
 
   mPosition = new Position(100, 0, -750);
-  //mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
-   mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-  //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
-  //ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+	//mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
   mEntity = mSceneMgr->createEntity("Ninja", "character_human_male_humanmale_hd.mesh");
 
   Ogre::Entity *weapon = mSceneMgr->createEntity("character_human_female_humanfemale_hd.mesh");
   // this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
+	// light *ambient = new light(mSceneMgr, mNode, "ambient", Ogre::Light::LT_SPOTLIGHT, 0, 100, 0);
+	// ambient->setDiffuseColour(Ogre::ColourValue(1.0, 0.0, 0.0));
+	// ambient->setDirection(Ogre::Vector3(0, -1, 0));
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
   mTank->setOgreBase(mSceneMgr);

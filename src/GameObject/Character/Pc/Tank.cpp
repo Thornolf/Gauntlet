@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Wed Jun 14 13:12:32 2017 Robin Grattepanche
+** Last update Wed Jun 14 13:17:13 2017 Robin Grattepanche
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -41,10 +41,6 @@ void Tank::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-<<<<<<< HEAD
-  // mNode->setOrientation(1,1,0,0);
-=======
->>>>>>> f56336ba8f20571407a081ce84cf531ba07543f3
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
    this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_55", shield, Ogre::Quaternion(1,0,0,0));
 }
