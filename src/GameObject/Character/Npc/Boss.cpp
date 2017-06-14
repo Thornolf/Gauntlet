@@ -20,6 +20,7 @@ Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_currentAnimation = this->_animations[IDLE];
 }
 
 Boss::Boss(Boss const & other) : Npc(other)

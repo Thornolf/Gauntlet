@@ -45,7 +45,7 @@ void goldStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void goldStack::Animate(const Ogre::FrameEvent& fe)
 {
-  
+
 }
 
 void goldStack::unsetEntity(Ogre::SceneManager *mSceneMgr)

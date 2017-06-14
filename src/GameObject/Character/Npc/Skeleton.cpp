@@ -20,6 +20,7 @@ Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z, id)
   mNodeName = "SkeletonNode" + std::to_string(id);
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_currentAnimation = this->_animations[IDLE];
 }
 
 Skeleton::Skeleton(Skeleton const & other) : Npc(other)
