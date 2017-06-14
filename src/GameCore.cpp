@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed Jun 14 12:48:08 2017 Thomas Fossaert
+** Last update Wed Jun 14 14:52:30 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -132,6 +132,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   if (collider.collided)
     dirVec.x -= 20 + move;
+  else
+  {
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
@@ -159,7 +161,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   }
   else
      mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
-
+   }
 	if (mKeyboard->isKeyDown(OIS::KC_J))
 	{
 		mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Radian(rotate),
