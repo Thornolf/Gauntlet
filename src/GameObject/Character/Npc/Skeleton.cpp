@@ -55,6 +55,11 @@ void Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *targ
     mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
 }
 
+void Skeleton::initScript(CollisionTools* tool)
+{
+  mScript->setCollision(tool, mEntity);
+}
+
 void Skeleton::Animate(const Ogre::FrameEvent& fe)
 {
   mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);

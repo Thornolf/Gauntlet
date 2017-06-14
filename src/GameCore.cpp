@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Tue Jun 13 14:30:12 2017 Thomas Fossaert
+// Last update Wed Jun 14 12:48:08 2017 Thomas Fossaert
 */
 
 #include "GameCore.hpp"
@@ -51,7 +51,7 @@ void GameCore::createScene()
   map->generateMap(render);
   render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
 
-  mPosition = new Position(100, 0, -750);
+  mPosition = new Position(100, 0, -450);
   //mEntity = mSceneMgr->createEntity("Ninja", "ninja.mesh");
    mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
@@ -85,8 +85,6 @@ void GameCore::createScene()
   mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
   mZombie->attachObject(mZombieEnt);
   mZombie->setScale(1.5f, 1.5f, 1.5f);
-  mZombie->setOrientation(1,1,0,0);
-
 
   mSkull->setOgreBase(mSceneMgr);
 
@@ -99,13 +97,13 @@ void GameCore::createScene()
   mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
   groundEntity->setMaterialName("Examples/Rockwall");
 
-  Script *mScript = new Script();
-
   collision = new CollisionTools();
   //collision->register_entity(mEntity, Collision::COLLISION_BOX);
   //collision->register_entity(wall, Collision::COLLISION_BOX);
   //collision->register_entity(mZombieEnt, Collision::COLLISION_BOX);
   render.forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
+  render.forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
+  Script *mScript = new Script();
 }
 
 void GameCore::createFrameListener(void)
@@ -154,7 +152,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   SCheckCollisionAnswer Zcollider = collision->check_ray_collision(mSceneMgr->getSceneNode("RobotNode")->getPosition(),
                 			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
-                								  mEntity,
+                								  mZombieEnt,
                 								  false);
   mTank->Animate(fe);
   mWarr->Animate(fe);
@@ -162,7 +160,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mMage->Animate(fe);
 
   if (collider.collided)
-    dirVec.x -= 2 + move;
+    dirVec.x -= 20 + move;
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
@@ -202,10 +200,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
-  // mSceneMgr->getSceneNode("RobotNode")->translate(
-    // mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
-    // Ogre::Node::TS_LOCAL);
-
+  //mSceneMgr->getSceneNode("RobotNode")->translate(mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
   /*mSceneMgr->getSceneNode("ZombieNode100")->translate(
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/

@@ -43,13 +43,22 @@ void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
 {
-  mSceneMgr->getSceneNode(mNodeName)->translate(
-    mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
-  if (mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) == Ogre::Vector3::ZERO)
+  Ogre::Vector3 move = mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target);
+
+  if (move == Ogre::Vector3::ZERO)
     mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
+  else if (move.x == 1)
+    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Attack", fe, mEntity);
   else
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+    {
+      mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+    }
+}
+
+void Zombie::initScript(CollisionTools* tool)
+{
+  mScript->setCollision(tool, mEntity);
 }
 
 void Zombie::Animate(const Ogre::FrameEvent& fe)
