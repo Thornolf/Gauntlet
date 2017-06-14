@@ -12,27 +12,33 @@
 #include "Input/Device.hpp"
 #include "GameObject/Character/Pc/Pc.hpp"
 
-Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *player) :
+Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Configuration *config) :
   _name(name)
 {
   this->_parser = new ParserInputFile;
-  this->_device = manager->createObject(typeDev);
-  this->_player = player;
-  this->_binding = this->_parser->getArrayBindingFromFile(this->_name + ".cnf");
+  this->_config = config;
+  try
+  {
+    this->_device = manager->createObject(typeDev);
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << e.what() << std::endl;
+  }
+  this->_binding = this->_parser->getArrayBindingFromFile(this->_name + ".cnf", this->_config->getPlayers());
 }
 
 Device::~Device()
 {
   if (this->_device != nullptr)
     delete this->_device;
-  this->_parser->saveBindingInFile(this->_binding, this->_name + ".cnf");
+  this->_parser->saveBindingInFile(this->_binding, this->_name + ".cnf", this->_config->getPlayers());
   delete this->_parser;
 }
 
 Device	&Device::operator=(const Device &obj)
 {
   this->_device = obj._device;
-  this->_player = obj._player;
   return (*this);
 }
 
@@ -49,16 +55,18 @@ void	Device::capture(void) const
  */
 void	Device::keyPressed(const OIS::KeyEvent& ke)
 {
-  for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
+  for (auto itBinding = this->_binding.begin(); itBinding != this->_binding.end(); ++itBinding)
   {
-    if (it->second == ke.key)
+    OIS::KeyCode	key = itBinding->first;
+    Pc			*player = itBinding->second.first;
+    eventType		event = itBinding->second.second;
+
+    for (auto itEvent = player->_event.begin(); itEvent != player->_event.end(); ++itEvent)
     {
-      if (this->_player->_event.find(it->first) == this->_player->_event.end())
-	throw IndieException("Event not implemented");
-      for (auto it_action = this->_player->_event.begin(); it_action != this->_player->_event.end(); ++it_action)
+      if (itEvent->first == event)
       {
-	if (it_action->first == it->first)
-	  (it_action->second)();
+	itEvent->second();
+	return;
       }
     }
   }
@@ -72,19 +80,23 @@ void	Device::keyReleased(const OIS::KeyEvent& ke)
 void		Device::dumpBinding(void) const
 {
   for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
-    std::cout << "EVENT [" << it->first << "]  => KEY [" << it-> second << "]" << std::endl;
+  {
+    std::cout << "KEYBINDING - The key" << it->first << " is assigned to player " << it->second.first->getName();
+    std::cout << " and event " << it->second.second << std::endl;
+  }
 }
 
-void		Device::editBinding(const eventType &event, const OIS::KeyCode &key)
+void		Device::editBinding(const eventType &event, Pc *player, const OIS::KeyCode &key)
 {
-  std::map<eventType, OIS::KeyCode>::iterator	it;
-
-  if ((it = this->_binding.find(event)) == this->_binding.end())
-    throw IndieException("Event not exist");
-  it->second = key;
+  for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
+  {
+    if (it->second.second == event && it->second.first == player)
+      this->_binding.erase(it);
+  }
+  this->_binding.insert(std::make_pair(key, std::make_pair(player, event)));
 }
 
-std::map<eventType, OIS::KeyCode>	Device::getBinding(void) const
+std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	Device::getBinding(void) const
 {
   return (this->_binding);
 }

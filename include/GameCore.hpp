@@ -1,36 +1,29 @@
 /*
------------------------------------------------------------------------------
-Filename:    GameCore.h
------------------------------------------------------------------------------
-
-This source file is part of the
-   ___                 __    __ _ _    _
-  /___\__ _ _ __ ___  / / /\ \ (_) | _(_)
- //  // _` | '__/ _ \ \ \/  \/ / | |/ / |
-/ \_// (_| | | |  __/  \  /\  /| |   <| |
-\___/ \__, |_|  \___|   \/  \/ |_|_|\_\_|
-      |___/
-      Tutorial Framework
-      http://www.ogre3d.org/tikiwiki/
-----------------------------------------------------------------------------
+** GameCore.hpp for Gauntlet
+**
+** Made by Guillaume CAUCHOIS
+** Login   <guillaume.cauchois@epitech.eu>
+**
+** Started on  Wed Jun 14 11:07:10 2017 Guillaume CAUCHOIS
+** Last update Wed Jun 14 11:07:10 2017 Guillaume CAUCHOIS
 */
-#ifndef __GameCore_h_
-#define __GameCore_h_
 
-#include <Terrain/OgreTerrain.h>
-#include <Terrain/OgreTerrainGroup.h>
-#include <vector>
+#ifndef		_GAME_CORE__HPP_
+#define		_GAME_CORE__HPP_
 
-#include "BaseGauntlet.hpp"
-#include "Position.hpp"
-#include "Animation.hpp"
-#include "GameObject/Character/Script.hpp"
-#include "GameObject/Character/Npc/Zombie.hpp"
-#include "GameObject/Character/Npc/Skeleton.hpp"
-#include "GameObject/Doodad/Doodad.hpp"
-#include "MapManager.hpp"
-#include "RenderManager.hpp"
-#include "Input/Device.hpp"
+# include <Terrain/OgreTerrain.h>
+# include <Terrain/OgreTerrainGroup.h>
+# include <vector>
+# include "BaseGauntlet.hpp"
+# include "Position.hpp"
+# include "Animation.hpp"
+# include "GameObject/Character/Script.hpp"
+# include "GameObject/Character/Npc/Zombie.hpp"
+# include "GameObject/Character/Npc/Skeleton.hpp"
+# include "GameObject/Doodad/Doodad.hpp"
+# include "MapManager.hpp"
+# include "RenderManager.hpp"
+# include "Input/Device.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -38,41 +31,26 @@ public:
   GameCore();
   virtual ~GameCore();
 protected:
-    virtual void createScene(void);
-    virtual void createFrameListener(void);
+  virtual void createScene(void);
+  virtual void createFrameListener(void);
+  virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
+  virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
-    virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
-    //virtual bool nextLocation(void);
-    virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
+  /* Définitif */
+  Configuration		_config;
+  RenderManager		_render;
 
-
-    Ogre::Real mDistance;                  // The distance the object has left to travel
-    Ogre::Vector3 mDirection;              // The direction the object is moving
-    Ogre::Vector3 mDestination;            // The destination the object is moving towards
-
-		CollisionTools *collision;
-
-    Ogre::AnimationState *mAnimationState; // The current animation state of the object
-    Ogre::AnimationState *mAnimationStateZombie; // The current animation state of the object
-
-    Ogre::Entity *mEntity;                 // The Entity we are animating
-    Ogre::Entity *mZombieEnt;                 // The Entity we are animating
-
-    Animation *_animation;
-    Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
-    Ogre::SceneNode *mZombie;                // The -SceneNode that the Entity is attached to
-
-    GameObject		*mTank;
-    GameObject		*mWarr;
-    GameObject		*mHunt;
-    GameObject		*mMage;
-
-
-    Script *mScript;
-    Position *mPosition;
-    Zombie *mZob;
-    MapManager *map;
-    RenderManager render;;
+  /* Temporaire */
+  CollisionTools	*collision;
+  Ogre::AnimationState	*mAnimationState;
+  Ogre::AnimationState	*mAnimationStateZombie;
+  Ogre::Entity		*mEntity;
+  Ogre::Entity		*mZombieEnt;
+  Animation		*_animation;
+  Ogre::SceneNode	*mNode;
+  Ogre::SceneNode	*mZombie;
+  Position		*mPosition;
+  MapManager		*map;
 };
 
-#endif // #ifndef __GameCore_h_
+#endif			/* !_GAME_CORE__HPP_! */

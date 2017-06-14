@@ -36,7 +36,6 @@ public:
   void		moveRight(void);
 
 private:
-  Device						*_device;
   std::string						_name;
 public:
   std::map<eventType, std::function<void(void)> >	_event;
