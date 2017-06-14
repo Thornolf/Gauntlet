@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed Jun 14 15:54:00 2017 Thomas Fossaert
+// Last update Wed Jun 14 17:16:30 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -52,7 +52,7 @@ void GameCore::createScene()
    mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
   //ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
-  mEntity = mSceneMgr->createEntity("Ninja", "character_human_male_humanmale_hd.mesh");
+  mEntity = mSceneMgr->createEntity("Ninja", "character_orc_male_orcmale_hd.mesh");
 
   Ogre::Entity *weapon = mSceneMgr->createEntity("character_human_female_humanfemale_hd.mesh");
 
@@ -123,7 +123,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static Ogre::Real	move = 350;
 
   if (mMouse->getMouseState().buttonDown(OIS::MB_Left))
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Special", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Death", fe, mEntity);
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
   SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
