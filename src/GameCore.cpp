@@ -24,15 +24,15 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  GameObject		*mZob = new Zombie(100, 0, 100, 100);
-  GameObject		*mTank = new Tank("noob", 500, 0, 500);
+  //GameObject		*mZob = new Zombie(100, 0, 100, 100);
+  //GameObject		*mTank = new Tank("noob", 500, 0, 500);
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
   Ogre::Entity		*ent;
   Ogre::Entity		*wall;
   Ogre::SceneNode	*node;
 
-  map = new MapManager("dist/bin/map.cfg");
+  map = new MapManager("dist/bin/map0.cfg");
   map->computeAbstractTree();
   map->generateMap(render);
   render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
@@ -51,8 +51,8 @@ void GameCore::createScene()
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
 
-  mTank->setOgreBase(mSceneMgr);
-  Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
+  //mTank->setOgreBase(mSceneMgr);
+  //Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);
   wall = mSceneMgr->createEntity("Cube", "cube.mesh");
@@ -71,7 +71,7 @@ void GameCore::createScene()
   mZombie->setOrientation(1,1,0,0);
 
 
-  mSkull->setOgreBase(mSceneMgr);
+  //mSkull->setOgreBase(mSceneMgr);
 
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
@@ -171,9 +171,9 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
-  mSceneMgr->getSceneNode("RobotNode")->translate(
+  /*mSceneMgr->getSceneNode("RobotNode")->translate(
     mScript->ZombieScript(mZombie, mNode) * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
+    Ogre::Node::TS_LOCAL);*/
 
   /*mSceneMgr->getSceneNode("ZombieNode100")->translate(
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
@@ -182,7 +182,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mAnimationState = _animation->loopAnimation(mAnimationState, "character/human/female/humanfemale_hd_bone_0|Walk [1]|Walk [1]", fe, mEntity);
 
   render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
-  // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
+  //render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
 
   mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
   mAnimationStateZombie->setLoop(true);

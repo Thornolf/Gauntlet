@@ -61,3 +61,16 @@ int Character::getRange()
 {
   return (this->_range);
 }
+
+void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
+{
+  if (this->_currentAnimation && (!this->_currentAnimation->isLooping() ||
+				  this->_currentAnimation->hasEnded()))
+    {
+      this->_animations[state]->launch(fe, this->mEntity);
+      this->_state = state;
+      this->_currentAnimation->disable();
+      this->_currentAnimation = this->_animations[state];
+      this->_currentAnimation->enable();
+    }
+}

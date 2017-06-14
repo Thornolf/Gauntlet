@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 09 12:07:50 2017 Thomas Fossaert
+** Last update Wed Jun 14 14:20:54 2017 Pierre
 */
 
 #ifndef _CHARACTER_HPP_
@@ -15,18 +15,30 @@
 
 class Character : public GameObject
 {
-  protected:
-  int		_health;
-  int		_attack;
-  int		_cooldown;
-  int		_speed;
-  int		_range;
-
 public:
   Character(int x, int y, int z);
   Character(Character const &);
   Character& operator=(Character const &);
   virtual ~Character();
+
+protected:
+  enum State
+  {
+    IDLE,
+    STAND,
+    WALK,
+    ATTACK,
+    DIE
+  };
+
+  int		_health;
+  int		_attack;
+  int		_cooldown;
+  int		_speed;
+  int		_range;
+  State	_state;
+  std::map<State, Animation*>	_animations;
+  Animation* _currentAnimation;
 
   /* Classes */
 
@@ -35,6 +47,7 @@ public:
   bool isAlive();
   void getDistance();
   int getRange();
+  void launchAnimation(const Ogre::FrameEvent& fe, State state);
 
   /*virtual void		setOgreBase(Ogre::SceneManager*);
   virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);
