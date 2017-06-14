@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Jun 14 11:07:10 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 11:07:10 2017 Guillaume CAUCHOIS
+** Last update Wed Jun 14 15:26:30 2017 Robin Grattepanche
 */
 
 #ifndef		_GAME_CORE__HPP_
