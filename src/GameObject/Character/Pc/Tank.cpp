@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Wed Jun 14 15:22:16 2017 Robin Grattepanche
+** Last update Wed Jun 14 17:05:42 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -15,6 +15,8 @@ Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
   this->_health = 150;
   this->_attack = 50;
   mPosition = new Position(x, y, z);
+  this->_animations[IDLE] = new Animation("Stand", false);
+  this->_currentAnimation = this->_animations[IDLE];
 }
 
 Tank::Tank(Tank const & other) : Melee(other) {}
@@ -56,7 +58,8 @@ void Tank::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void Tank::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+  this->launchAnimation(fe, IDLE);
+  mAnimationState = this->_currentAnimation->getAnimationState();
 }
 
 void Tank::unsetEntity(Ogre::SceneManager *mSceneMgr)

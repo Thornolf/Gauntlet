@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Wed May 24 10:47:47 2017 Pierre
-** Last update Wed May 24 14:02:08 2017 Pierre
+** Last update Wed Jun 14 16:19:17 2017 Pierre
 */
 
 #include "audio/Music.hpp"
@@ -13,6 +13,7 @@
 Music::Music()
 {
   _music.setRelativeToListener(false);
+  _music.setVolume(100);
 }
 
 Music::~Music()
@@ -22,8 +23,16 @@ Music::~Music()
 
 void Music::loadAudio(std::string const& filename)
 {
-  if (!_music.openFromFile(filename))
-    return ;
+  try
+  {
+    if (!_music.openFromFile(filename))
+      throw "Bad audio path\n";
+  }
+  catch (const char * Msg)
+  {
+    std::cerr << Msg;
+    exit(84);
+  }
 }
 
 void Music::playAudio()

@@ -5,12 +5,13 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Mon May 22 10:47:19 2017 Pierre
-** Last update Wed May 24 11:01:23 2017 Pierre
+** Last update Wed Jun 14 16:16:32 2017 Pierre
 */
 
 #ifndef   AUDIO_HPP_
 # define  AUDIO_HPP_
 
+#include <iostream>
 #include <SFML/Audio.hpp>
 
 class IAudio

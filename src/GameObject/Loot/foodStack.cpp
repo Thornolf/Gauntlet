@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Tue Jun 13 14:07:01 2017 Thomas Fossaert
+** Last update Wed Jun 14 17:01:01 2017 Pierre
 */
 
 #include "GameObject/Loot/foodStack.hpp"
@@ -45,7 +45,7 @@ void foodStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void foodStack::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+  
 }
 
 void foodStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
