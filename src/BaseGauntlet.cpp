@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 15:26:01 2017 Robin Grattepanche
+** Last update Wed Jun 14 15:31:12 2017 Robin Grattepanche
 */
 
 #include "BaseGauntlet.hpp"
@@ -110,7 +110,7 @@ void BaseGauntlet::createFrameListener(void)
 	inputContext.mMouse = mMouse;
 	inputContext.mKeyboard = mKeyboard;
     mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-		OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_CENTER, "EnterBtn", "Enter GameState", 250);
+		OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_TOPLEFT, "EnterBtn", "Enter GameState", 250);
 		if(button->getName() == "ExitBtn")
 				std::cout << "************\n\n\n\n\n\n\n\n\nexit***********" << std::endl;
     else if(button->getName() == "EnterBtn")
@@ -141,56 +141,6 @@ void BaseGauntlet::createFrameListener(void)
     mDetailsPanel->setParamValue(10, "Solid");
     mDetailsPanel->hide();
     mRoot->addFrameListener(this);
-  // Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
-  // OIS::ParamList pl;
-  // size_t windowHnd = 0;
-  // std::ostringstream windowHndStr;
-	//
-  // mWindow->getCustomAttribute("WINDOW", &windowHnd);
-  // windowHndStr << windowHnd;
-  // pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
-	//
-  // mInputManager = OIS::InputManager::createInputSystem( pl );
-	//
-  // mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
-  // mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, true ));
-	//
-  // mMouse->setEventCallback(this);
-  // mKeyboard->setEventCallback(this);
-	//
-  // //Set initial mouse clipping size
-  // windowResized(mWindow);
-	//
-  // //Register as a Window listener
-  // Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
-	//
-  // OgreBites::InputContext inputContext;
-  // inputContext.mMouse = mMouse;
-  // inputContext.mKeyboard = mKeyboard;
-  // mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-  // mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-  // mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
-  // mTrayMgr->hideCursor();
-	//
-  // // create a params panel for displaying sample details
-  // Ogre::StringVector items;
-  // items.push_back("cam.pX");
-  // items.push_back("cam.pY");
-  // items.push_back("cam.pZ");
-  // items.push_back("");
-  // items.push_back("cam.oW");
-  // items.push_back("cam.oX");
-  // items.push_back("cam.oY");
-  // items.push_back("cam.oZ");
-  // items.push_back("");
-  // items.push_back("Filtering");
-  // items.push_back("Poly Mode");
-	//
-  // mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
-  // mDetailsPanel->setParamValue(9, "Bilinear");
-  // mDetailsPanel->setParamValue(10, "Solid");
-  // mDetailsPanel->hide();
-  // mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::destroyScene(void)
@@ -298,19 +248,11 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
   if(mShutDown)
     return false;
 
-<<<<<<< HEAD
     //Need to capture/update each device
     mKeyboard->capture();
     mMouse->capture();
 		mTrayMgr->refreshCursor();
     mTrayMgr->frameRenderingQueued(evt);
-=======
-  //Need to capture/update each device
-  mKeyboard->capture();
-  mMouse->capture();
-
-  mTrayMgr->frameRenderingQueued(evt);
->>>>>>> 0c867ae6c6dd5e25968202f659539752bc66bd41
 
   if (!mTrayMgr->isDialogVisible())
   {
