@@ -20,6 +20,8 @@ This source file is part of the
 #include <Terrain/OgreTerrain.h>
 #include <Terrain/OgreTerrainGroup.h>
 #include <vector>
+#include <SdkTrays.h>
+#include <SdkCameraMan.h>
 
 #include "BaseGauntlet.hpp"
 #include "Position.hpp"

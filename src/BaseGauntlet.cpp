@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
-** Last update Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
+** Last update Tue Jun 13 23:04:13 2017 Robin Grattepanche
 */
 
 #include "BaseGauntlet.hpp"
@@ -110,9 +110,17 @@ void BaseGauntlet::createFrameListener(void)
 	inputContext.mMouse = mMouse;
 	inputContext.mKeyboard = mKeyboard;
     mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-    mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-    mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
-    mTrayMgr->hideCursor();
+		OgreBites::Button *b = mTrayMgr->createButton(OgreBites::TL_CENTER, "MyButton", "Click Salope !");
+		if(b->getState() == OgreBites::BS_OVER)
+		{
+			// OgreFramework::getSingletonPtr()->m_pLog->logMessage("Clicke ME pressed");
+			std::cout << "*************************\n\n\n\nclicked\n\n\n\n\n\n******************" << std::endl;
+		}
+    // mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+		// mTrayMgr->showAll();
+		// mTrayMgr->moveWidgetToTray("MyButton", OgreBites::TL_TOP);
+    // mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
+    mTrayMgr->showCursor();
 
     // create a params panel for displaying sample details
     Ogre::StringVector items;
@@ -245,7 +253,7 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
     //Need to capture/update each device
     mKeyboard->capture();
     mMouse->capture();
-
+		mTrayMgr->refreshCursor();
     mTrayMgr->frameRenderingQueued(evt);
 
     if (!mTrayMgr->isDialogVisible())

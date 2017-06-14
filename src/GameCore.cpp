@@ -5,8 +5,13 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Mon Jun 12 16:54:55 2017 Thomas Fossaert
+** Last update Tue Jun 13 21:00:51 2017 Robin Grattepanche
 */
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Audio.hpp>
 
 #include "GameCore.hpp"
 #include "Position.hpp"
@@ -63,6 +68,7 @@ void GameCore::createScene()
 
   mNode->setOrientation(1,0,0,0);
 //  mNode->setScale(2,2,2);
+
 
   mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
   mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
@@ -121,10 +127,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static Ogre::Real rotate = .05;
   static Ogre::Real move = 150;
 
-  bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
+  // bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
 
-  if (leftMouseDown)
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Special", fe, mEntity);
+  // if (leftMouseDown)
+    // mAnimationState = _animation->simpleAnimation(mAnimationState, "Special", fe, mEntity);
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
@@ -132,7 +138,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(50.0f, 50.0f, 50.0f), 50.0f, 50.0f, 1,
 								  mEntity,
 								  false);
-
 
   SCheckCollisionAnswer Zcollider = collision->check_ray_collision(mSceneMgr->getSceneNode("RobotNode")->getPosition(),
                 			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
