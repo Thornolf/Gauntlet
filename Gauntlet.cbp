@@ -218,6 +218,9 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/NewMOC.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Particle.hpp">
+			<Option target="Gauntlet"/>
+		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Position.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
@@ -318,6 +321,9 @@
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Parsing/MapManager.cpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Particle/Particle.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Position/Position.cpp">

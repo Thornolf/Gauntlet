@@ -35,12 +35,21 @@ Archer::~Archer() {}
 void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_bow_1h_northrend_c_01.mesh");
+  Ogre::Entity *lshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_lshoulder_mail_raidhunter_p_01.mesh");
+  Ogre::Entity *rshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_rshoulder_mail_raidhunter_p_01.mesh");
+  Ogre::Entity *helm = mSceneMgr->createEntity("item_objectcomponents_head_helm_eyepatch_a_01_trm.mesh");
+  Ogre::Entity *quiver = mSceneMgr->createEntity("item_objectcomponents_quiver_quiver_vrykulhunter_b_01.mesh");
+
 
   mEntity = mSceneMgr->createEntity("Archer", "character_troll_male_trollmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_31", lshoulder, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_32", rshoulder, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_44", helm, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_2", quiver, Ogre::Quaternion(1,0,0,0));
 }
 
 

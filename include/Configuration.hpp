@@ -10,7 +10,7 @@
 
 #ifndef		_CONFIGURATION__HPP_
 # define	_CONFIGURATION__HPP_
-# include        "GameObject/Character/Pc/Pc.hpp"
+# include	"GameObject/Character/Pc/Pc.hpp"
 
 class Configuration
 {
@@ -21,13 +21,19 @@ public:
   Configuration		&operator=(const Configuration &);
 
   /* Member functions */
-  std::vector<Pc>	getPlayers(void) const;
-  void			setPlayers(std::vector<Pc>);
-  void          addScorePoint(int nbPoint);
+  std::vector<Pc*>	getPlayers(void) const;
+  void			setPlayers(std::vector<Pc*>);
+  void			addScorePoint(int nbPoint);
+
+  template <typename UnaryFunction>
+  void			forEachPlayer(UnaryFunction f)
+  {
+    std::for_each(this->_players.begin(), this->_players.end(), f);
+  }
 
 private:
-  std::vector<Pc>	_players;
-  int               _score;
+  std::vector<Pc*>	_players;
+  int			_score;
 };
 
 #endif		/* _CONFIGURATION__HPP_ */

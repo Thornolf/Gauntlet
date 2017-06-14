@@ -45,20 +45,20 @@ public:
   virtual ~RenderManager();
 
   /* Public member functions */
-  GameObject	*createGameObject(const std::string &, const Position &pos, const Position &scale, const std::string &texture);
+  GameObject	*createGameObject(const std::string &, const Position &pos, const Position &scale, const Ogre::Quaternion &orientation, const std::string &texture);
 
   /* GameObject unit Factory */
-  GameObject	*createDoodadObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createZombieObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createBossObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createSkeletonObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createSpawnerObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createFoodObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createGoldObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createWarriorObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createMageObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createArcherObject(int, const Position &, const Position &, const std::string &);
-  GameObject	*createTankObject(int, const Position &, const Position &, const std::string &);
+  GameObject	*createDoodadObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createZombieObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createBossObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createSkeletonObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createSpawnerObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createFoodObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createGoldObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createWarriorObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createMageObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createArcherObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createTankObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
 
   /* _entities utils */
   std::vector<GameObject *>	&getEntitiesVector(void);
@@ -71,8 +71,12 @@ public:
 
 private:
   /* Private attributs */
-  std::map<std::string, std::function<GameObject*(int, const Position &, const Position &, const std::string &)> >	_factory;
-  std::vector<GameObject *>	_entities;
+  std::map<std::string, std::function<GameObject*(int,
+						  const Position &,
+						  const Position &,
+						  const Ogre::Quaternion &,
+						  const std::string &)> >	_factory;
+  std::vector<GameObject *>							_entities;
 };
 
 #endif		/* _RENDER_MANAGER__HPP_ */

@@ -20,6 +20,7 @@
 # include	"IndieException.hpp"
 # include	"Input/ParserInputFile.hpp"
 # include	"Input/eventType.hpp"
+# include	"Configuration.hpp"
 
 
 class Pc;
@@ -28,23 +29,23 @@ class Device
 {
 public:
   /* Canonical functions */
-  Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *vendor);
+  Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Configuration *);
   virtual ~Device();
   Device	&operator=(const Device &);
 
-  void		capture(void) const;
-  void		keyPressed(const OIS::KeyEvent&);
-  void		keyReleased(const OIS::KeyEvent&);
-  void		editBinding(const eventType &, const OIS::KeyCode &);
-  void		dumpBinding(void) const;
-  std::map<eventType, OIS::KeyCode>	getBinding(void) const;
+  void							capture(void) const;
+  void							keyPressed(const OIS::KeyEvent&);
+  void							keyReleased(const OIS::KeyEvent&);
+  void							editBinding(const eventType &, Pc*, const OIS::KeyCode &);
+  void							dumpBinding(void) const;
+  std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	getBinding(void) const;
 
 private:
   ParserInputFile					*_parser;
   const std::string					_name;
   OIS::Object						*_device;
-  Pc							*_player;
-  std::map<eventType, OIS::KeyCode>			_binding;
+  std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	_binding;
+  Configuration						*_config;
 };
 
 #endif		/* !_DEVICE__HPP_ */

@@ -13,7 +13,6 @@
 
 Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name(name)
 {
-  this->_device = nullptr;
   this->_event[eventType::MOVE_UP] = std::bind(&Pc::moveUp, this);
   this->_event[eventType::MOVE_DOWN] = std::bind(&Pc::moveDown, this);
   this->_event[eventType::MOVE_LEFT] = std::bind(&Pc::moveLeft, this);
@@ -22,8 +21,6 @@ Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name
 
 Pc::Pc(Pc const & other) : Character(other)
 {
-  if (this->_device != nullptr)
-    delete this->_device;
 }
 
 Pc& Pc::operator=(Pc const & other)
@@ -34,25 +31,11 @@ Pc& Pc::operator=(Pc const & other)
 
 Pc::~Pc()
 {
-  if (this->_device != nullptr)
-  {
-    delete this->_device;
-  }
-}
-
-void	Pc::setDevice(Device *dev)
-{
-  this->_device = dev;
 }
 
 void	Pc::setName(const std::string &name)
 {
   this->_name = name;
-}
-
-Device	*Pc::getDevice(void) const
-{
-  return (this->_device);
 }
 
 const std::string	&Pc::getName(void) const

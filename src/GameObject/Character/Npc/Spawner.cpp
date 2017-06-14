@@ -14,23 +14,26 @@ Spawner::Spawner(int posX, int posY, int posZ, int id) : Npc(posX, posY, posZ, i
 
 Spawner::Spawner(const Spawner &obj) : Npc(obj) {}
 
-Spawner& Spawner::operator=(const Spawner &obj) {}
+Spawner& Spawner::operator=(const Spawner &obj)
+{
+  return (*this);
+}
 
 Spawner::~Spawner() {}
 
 void		Spawner::makeSpawnZombie(RenderManager &rManager) const
 {
-  rManager.createGameObject("ZOMBIE", *this->getPosition(), Position(0, 0, 0), "");
+  rManager.createGameObject("ZOMBIE", *this->getPosition(), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0),"");
 }
 
 void		Spawner::makeSpawnSkeleton(RenderManager &rManager) const
 {
-  rManager.createGameObject("SKELTON", *this->getPosition(), Position(0, 0, 0), "");
+  rManager.createGameObject("SKELTON", *this->getPosition(), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), "");
 }
 
 void		Spawner::makeSpawnBoss(RenderManager &rManager) const
 {
-  rManager.createGameObject("BOSS", *this->getPosition(), Position(0, 0, 0), "");
+  rManager.createGameObject("BOSS", *this->getPosition(), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), "");
 }
 
 void		Spawner::makeSpawnRandomEntity(RenderManager &rManager) const
