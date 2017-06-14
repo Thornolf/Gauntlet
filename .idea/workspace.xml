@@ -12,21 +12,179 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dee5ea21-4013-47a4-bdc7-d54407219a70" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/bin/Gauntlet" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/IndieSound.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/AlliFlag_justice_keep_flag03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/AlliFlag_justice_keep_flag05.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/AlliFlag_old_strat_banner06.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Armor_7ne_blackrook_armorstand01b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Barrel_g_barrel01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/BlePile_6og_ogre_haypile_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/BookShelf_jlo_scholme_bookshelf.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/BookShelf_jlo_scholme_skull.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Chair_darkironmetalrock01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Flag_saurok_banner_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Key_6hu_barracks_prisonextras1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Paint1_silverpinepainting.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Paint2_worgenpainting_03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/ScholoFlag_jlo_scholme_tapestryrunes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/ScholoFlag_scholomancecandleskull01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton2_ballandchain2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton2_darkyellowbone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton2_darkyellowskeletalhand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton_ballandchain2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton_darkyellowbone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton_darkyellowskeletalhand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Skeleton_darkyellowskull01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Table2_dwarventablesornate01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Table_fleshgolemskin2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Table_fleshgolemskin_operated_on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Table_undead_operating_table.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/Torch_torch2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/WeaponRack_7af_paladin_weaponrack01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/WeaponRack_7af_paladin_weaponrack02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/WeaponRack_7af_paladin_weapons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/WeaponRack_t_weaponracks-halfspec.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/WoodPile_lumberpile01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/genericglow64.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/helm_eyepatch_a_01skull.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/helm_plate_pvpwarrior_d_01blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/helm_robe_pvpalliance_c_01redgreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/helm_robe_raidmage_e_01orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/plate_paladinclass_d_01.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/quiver_vrykulhunter_b_01_plum.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/shoulder_mail_raidhunter_p_01_horde.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/shoulder_plate_pvpwarrior_d_01blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/textures/shoulder_robe_raidmage_e_01orange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_head_helm_eyepatch_a_01_trm.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_head_helm_plate_pvpwarrior_d_01_orm.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_head_helm_robe_pvpalliance_c_01_huf.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_head_helm_robe_raidmage_e_01_hum.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_quiver_quiver_vrykulhunter_b_01.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_lshoulder_mail_raidhunter_p_01.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_lshoulder_mail_raidhunter_p_01.skeleton" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_lshoulder_plate_pvpwarrior_d.000.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_lshoulder_robe_raidmage_e_01.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_rshoulder_mail_raidhunter_p_01.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_rshoulder_plate_pvpwarrior_d_01.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_rshoulder_robe_raidmage_e_01.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_expansion04_doodads_saurok_saurok_hangingbanner_01.m2_Geo.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_expansion05_doodads_human_doodads_6hu_barracks_keyring01..mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_expansion05_doodads_ogre_6og_ogre_haypile_03.m2_Geoset_00.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_generic_dwarf_passive_doodads_tables_dwarventableorna.000.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_generic_human_passive_doodads_artwork_stormwindpainti.000.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_generic_human_passive_doodads_artwork_stormwindpainting05.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_generic_passivedoodads_lights_torch_out.m2_Geoset_000.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_generic_passivedoodads_skeletons_chainedskeleton01.m2_Geo.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_goober_g_barrel.m2_Geoset_000.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_lordaeron_scholomance_passivedoodads_tapestries_scholme_t.mesh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/AmbianceDeadMine.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/ETC.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/NaxxRamas/Naxxramas1_Plague.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/NaxxRamas/Naxxramas_2_Kelthusad.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/NaxxRamas/Naxxramas_3_Abomination.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/musicgame/NaxxRamas/Naxxramas_4_Wyrm.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/AttackSound/AttackBowSound.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/AttackSound/PaladinSwordAttack.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/AttackSound/SwordFleshHit.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/AttackSound/SwordFleshHit2.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/AttackSound/castFireball.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Goul/GoulaAggro.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Goul/GouleAttack.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Goul/GouleTakeDamages.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Goul/GuleDeath.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Human/HumanAttack.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Human/HumanDeath.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Human/HumanMaleAggro.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Human/HumanTakeDamage.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Orc/OrcDeath.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Orc/OrcGreeting.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Orc/OrcTakeDamage.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/PowerUpSound/FoodSound.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/PowerUpSound/GoldSOund.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Troll/TrollAttack.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Troll/TrollDeath.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Troll/TrollTakeDamage.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Vyrgul/VyrgulAttack.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Vyrgul/VyrgulDeath.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Vyrgul/VyrgulTakeDamage.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Woman/WomanAttack.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Woman/WomanDeath.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/soundeffect/Woman/WomanTakeDamage.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_eyepatch_a_01_trm_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_plate_pvpwarrior_d_01_orm_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_plate_pvpwarrior_d_01_orm_1.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_plate_pvpwarrior_d_01_orm_2.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_robe_pvpalliance_c_01_huf_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_robe_pvpalliance_c_01_huf_1.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_head_helm_robe_raidmage_e_01_hum_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_quiver_quiver_vrykulhunter_b_01_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_lshoulder_mail_raidhunter_p_01_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_lshoulder_mail_raidhunter_p_01_1.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_lshoulder_plate_pvpwarrior_d.001.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_lshoulder_plate_pvpwarrior_d.002.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_lshoulder_robe_raidmage_e_01_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_lshoulder_robe_raidmage_e_01_1.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_rshoulder_mail_raidhunter_p_01_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_rshoulder_plate_pvpwarrior_d.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_rshoulder_plate_pvpwarrior_d_01_.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_rshoulder_robe_raidmage_e_01_0.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_rshoulder_robe_raidmage_e_01_1.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_shoulder_plate_paladinclass_.001.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_shoulder_plate_paladinclass_.002.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion02_doodads_generic_human_hu_justice_flags_01.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion02_doodads_generic_human_hu_justice_flags_01.m2_.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion03_doodads_worgen_paintings_worgen_painting_03.m.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion04_doodads_saurok_saurok_hangingbanner_01.m2_Geo.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion05_doodads_human_doodads_6hu_barracks_keyring01..material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion05_doodads_ogre_6og_ogre_haypile_03.m2_Geoset_00.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion06_doodads_artifact_7af_paladin_weaponrack02.m2_.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_expansion06_doodads_nightelf_7ne_blackrook_armorstand01_d.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_darkirondwarf_passive_doodads_chairs_darkironchai.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_dwarf_passive_doodads_tables_dwarventableorna.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_dwarf_passive_doodads_tables_dwarventableorna.001.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_human_passive_doodads_artwork_stormwindpainti.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_human_passive_doodads_artwork_stormwindpainting05.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_human_passive_doodads_lumberpiles_deadminelumberp.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_passivedoodads_lights_torch_out.m2_Geoset_000.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_passivedoodads_lights_torch_out.m2_Geoset_000_Dbl.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_passivedoodads_skeletons_chainedskeleton01.m2_Geo.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_passivedoodads_skeletons_chainedskeleton06.m2_Geo.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_generic_undead_passive_doodads_undeadtoolstable_undead_to.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_goober_g_barrel.m2_Geoset_000_Dbl.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_lordaeron_scholomance_passivedoodads_bookshelves_scho.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_lordaeron_scholomance_passivedoodads_bookshelves_scholme_.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/world_lordaeron_scholomance_passivedoodads_tapestries_scholme_t.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/models/world_generic_passivedoodads_lights_torch_out.m2_Geoset_000.000.material" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/media/particle/Examples.particle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/include/Particle.hpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Particle/Particle.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/Gauntlet_d" afterPath="$PROJECT_DIR$/dist/bin/Gauntlet_d" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_shoulder_plate_paladinclass_.000.mesh" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_shoulder_plate_paladinclass_.000.mesh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_shoulder_plate_paladinclass_d_01.mesh" afterPath="$PROJECT_DIR$/dist/media/models/item_objectcomponents_shoulder_shoulder_plate_paladinclass_d_01.mesh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gauntlet.cbp" afterPath="$PROJECT_DIR$/Gauntlet.cbp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/map.cfg" afterPath="$PROJECT_DIR$/dist/bin/map.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Configuration.hpp" afterPath="$PROJECT_DIR$/include/Configuration.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameCore.hpp" afterPath="$PROJECT_DIR$/include/GameCore.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Input/Device.hpp" afterPath="$PROJECT_DIR$/include/Input/Device.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Input/DeviceManager.hpp" afterPath="$PROJECT_DIR$/include/Input/DeviceManager.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/Input/ParserInputFile.hpp" afterPath="$PROJECT_DIR$/include/Input/ParserInputFile.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BaseGauntlet.cpp" afterPath="$PROJECT_DIR$/src/BaseGauntlet.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Configuration.cpp" afterPath="$PROJECT_DIR$/src/Configuration.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_shoulder_plate_paladinclass_.000.material" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_shoulder_plate_paladinclass_.000.material" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_shoulder_plate_paladinclass_d_01.material" afterPath="$PROJECT_DIR$/dist/media/materials/scripts/item_objectcomponents_shoulder_shoulder_plate_paladinclass_d_01.material" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Npc/Boss.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Npc/Boss.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Npc/Skeleton.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Npc/Skeleton.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Npc/Zombie.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Npc/Zombie.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Script.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Script.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/GameObject.hpp" afterPath="$PROJECT_DIR$/include/GameObject/GameObject.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameCore.cpp" afterPath="$PROJECT_DIR$/src/GameCore.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Input/Device.cpp" afterPath="$PROJECT_DIR$/src/Input/Device.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Input/DeviceManager.cpp" afterPath="$PROJECT_DIR$/src/Input/DeviceManager.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Input/ParserInputFile.cpp" afterPath="$PROJECT_DIR$/src/Input/ParserInputFile.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Npc/Boss.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Npc/Boss.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Npc/Skeleton.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Npc/Skeleton.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Npc/Zombie.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Script/Script.cpp" afterPath="$PROJECT_DIR$/src/Script/Script.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -43,11 +201,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Device.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Device.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Input/Device.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="432">
+              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
               <folding>
                 <element signature="e#227#263#0" expanded="true" />
               </folding>
@@ -68,9 +226,11 @@
       <file leaf-file-name="GameCore.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/GameCore.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-594">
-              <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-              <folding />
+            <state relative-caret-position="405">
+              <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+              <folding>
+                <element signature="e#286#319#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,14 +257,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameCore.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameCore.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1134">
-              <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+            <state relative-caret-position="281">
+              <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
               <folding>
-                <marker date="1497441013804" expanded="true" signature="7508:8238" ph="{...}" />
+                <marker date="1497443033999" expanded="true" signature="6549:6884" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Doodad.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameObject/Doodad/Doodad.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,9 +283,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>I</find>
-      <find>Invl</find>
-      <find>Invlid</find>
       <find>Invli</find>
       <find>Inv</find>
       <find>Inva</find>
@@ -143,6 +310,9 @@
       <find>processUnbufferedInput</find>
       <find>idx</find>
       <find>forEach</find>
+      <find>0,0,0,0</find>
+      <find>1,0,0,0</find>
+      <find>DOODAD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,7 +354,6 @@
         <option value="$PROJECT_DIR$/include/RenderManager.hpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Npc/Spawner.cpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Doodad/Doodad.hpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/Doodad/Doodad.cpp" />
         <option value="$PROJECT_DIR$/src/RenderManager.cpp" />
         <option value="$PROJECT_DIR$/include/MapManager.hpp" />
         <option value="$PROJECT_DIR$/src/Parsing/MapManager.cpp" />
@@ -201,6 +370,7 @@
         <option value="$PROJECT_DIR$/include/GameCore.hpp" />
         <option value="$PROJECT_DIR$/include/Configuration.hpp" />
         <option value="$PROJECT_DIR$/src/GameCore.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Doodad/Doodad.cpp" />
         <option value="$PROJECT_DIR$/dist/bin/map.cfg" />
       </list>
     </option>
@@ -813,12 +983,12 @@
       <workItem from="1497251708092" duration="14792000" />
       <workItem from="1497273046090" duration="15900000" />
       <workItem from="1497340971001" duration="21171000" />
-      <workItem from="1497428046209" duration="11909000" />
+      <workItem from="1497428046209" duration="13813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107089000" />
+    <option name="totallyTimeSpent" value="108993000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -840,7 +1010,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4375" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4375" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1088,17 +1258,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/Doodad/Doodad.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/GameObject/Doodad/Doodad.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+          <folding>
+            <element signature="e#314#333#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1220,14 +1386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/GameCore.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-594">
-          <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -1236,30 +1394,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
+    <entry file="file://$PROJECT_DIR$/src/Input/Device.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+        <state relative-caret-position="432">
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
           <folding>
-            <marker date="1497441013804" expanded="true" signature="7508:8238" ph="{...}" />
+            <element signature="e#227#263#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/GameCore.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#286#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Doodad/Doodad.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/bin/map.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="76" lean-forward="true" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+        <state relative-caret-position="297">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Input/Device.cpp">
+    <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="281">
+          <caret line="40" column="43" lean-forward="true" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
           <folding>
-            <element signature="e#227#263#0" expanded="true" />
+            <marker date="1497443033999" expanded="true" signature="6549:6884" ph="{...}" />
           </folding>
         </state>
       </provider>

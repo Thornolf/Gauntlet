@@ -35,12 +35,19 @@ Warrior::~Warrior() {}
 void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_sword_2h_zulaman_d_01.mesh");
+  Ogre::Entity *helm = mSceneMgr->createEntity("item_objectcomponents_head_helm_plate_pvpwarrior_d_01_orm.mesh");
+  Ogre::Entity *lshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_lshoulder_plate_pvpwarrior_d.000.mesh");
+  Ogre::Entity *rshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_rshoulder_plate_pvpwarrior_d_01.mesh");
 
   mEntity = mSceneMgr->createEntity("Warrior", "character_orc_male_orcmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("WarriorNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_106", weapon, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_52", helm, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_29", lshoulder, Ogre::Quaternion(1,0,0,0));
+
 }
 
 
