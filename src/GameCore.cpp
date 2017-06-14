@@ -5,8 +5,13 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed Jun 14 14:52:30 2017 Thomas Fossaert
+** Last update Wed Jun 14 15:54:00 2017 Thomas Fossaert
 */
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Audio.hpp>
 
 #include "GameCore.hpp"
 
@@ -52,6 +57,9 @@ void GameCore::createScene()
   Ogre::Entity *weapon = mSceneMgr->createEntity("character_human_female_humanfemale_hd.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
+	// light *ambient = new light(mSceneMgr, mNode, "ambient", Ogre::Light::LT_SPOTLIGHT, 0, 100, 0);
+	// ambient->setDiffuseColour(Ogre::ColourValue(1.0, 0.0, 0.0));
+	// ambient->setDirection(Ogre::Vector3(0, -1, 0));
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
 
@@ -65,6 +73,7 @@ void GameCore::createScene()
   node->setScale(15.0f, 7.0f, 0.3f);
 
   mNode->setOrientation(1,0,0,0);
+
 
   mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
   mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
@@ -122,8 +131,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 								  mEntity,
 								  false);
 
-
-  SCheckCollisionAnswer	Zcollider = collision->check_ray_collision(mSceneMgr->getSceneNode("RobotNode")->getPosition(),
+  SCheckCollisionAnswer Zcollider = collision->check_ray_collision(mSceneMgr->getSceneNode("RobotNode")->getPosition(),
                 			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
                 								  mZombieEnt,
                 								  false);

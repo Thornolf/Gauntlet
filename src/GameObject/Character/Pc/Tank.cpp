@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-// Last update Wed Jun 14 14:06:28 2017 Thomas Fossaert
+** Last update Wed Jun 14 15:22:16 2017 Robin Grattepanche
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"

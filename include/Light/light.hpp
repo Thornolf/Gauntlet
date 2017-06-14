@@ -5,7 +5,7 @@
 ** Login   <gratte_r@epitech.net>
 **
 ** Started on  Thu Jun 01 22:22:39 2017 Robin Grattepanche
-** Last update Fri Jun 02 14:08:52 2017 Robin Grattepanche
+** Last update Wed Jun 14 13:27:01 2017 Robin Grattepanche
 */
 
 #ifndef 			_LIGHT_HPP
@@ -36,7 +36,7 @@ class light
 			Ogre::Vector3						_direction;
 
 		public:
-			light (Ogre::SceneManager *, std::string, Ogre::Light::LightTypes, int, int, int);
+			light (Ogre::SceneManager *, Ogre::SceneNode *, std::string, Ogre::Light::LightTypes, int, int, int);
 			virtual ~light ();
 			// light(const light &, std::string);
 			// light	&operator=(const light &, std::string);
