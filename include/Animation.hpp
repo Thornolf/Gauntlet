@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:29:30 2017 Thomas Fossaert
-** Last update Wed Jun 14 14:23:43 2017 Pierre
+** Last update Wed Jun 14 14:36:53 2017 Pierre
 */
 
 #ifndef _ANIMATION_HPP_
@@ -22,10 +22,9 @@ private:
   double _dist;
   double _speed;
   double _castingTime;
-
+  Ogre::AnimationState *_animationState;
 
 public:
-  Ogre::AnimationState *_animationState;
   Animation(std::string const&, bool, double speed = 1.0, double dist = 0.0, double castingTime = 0.5);
   Animation(Animation const &);
   Animation& operator=(Animation const &);

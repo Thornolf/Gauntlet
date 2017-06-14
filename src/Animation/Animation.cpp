@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:34:40 2017 Thomas Fossaert
-** Last update Wed Jun 14 14:23:37 2017 Pierre
+** Last update Wed Jun 14 14:45:26 2017 Pierre
 */
 
 #include "Animation.hpp"
