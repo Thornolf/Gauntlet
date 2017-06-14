@@ -18,9 +18,9 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
   mScript = new Script();
   mNodeName = "ZombieNode" + std::to_string(id);
   this->_animations[IDLE] = new Animation("Stand", false);
-  this->_animations[WALK] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
-  this->_currentAnimation = this->_animations[WALK];
+  this->_currentAnimation = this->_animations[RUN];
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
@@ -64,7 +64,6 @@ void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target
     {
       this->launchAnimation(fe, WALK);
       mAnimationState = this->_currentAnimation->getAnimationState();
-      //mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
       mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
     }
 }
@@ -76,8 +75,7 @@ void Zombie::initScript(CollisionTools* tool)
 
 void Zombie::Animate(const Ogre::FrameEvent& fe)
 {
-  //this->launchAnimation(WALK);
-  //mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+
 }
 
 void Zombie::unsetEntity(Ogre::SceneManager *mSceneMgr)

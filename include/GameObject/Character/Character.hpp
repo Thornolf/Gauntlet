@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed Jun 14 16:34:58 2017 Pierre
+** Last update Wed Jun 14 16:46:35 2017 Pierre
 */
 
 #ifndef		_CHARACTER_HPP_
@@ -26,6 +26,7 @@ protected:
   {
     IDLE,
     STAND,
+    RUN,
     WALK,
     ATTACK,
     DIE

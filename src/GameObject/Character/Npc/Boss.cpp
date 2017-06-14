@@ -17,6 +17,9 @@ Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "BossNode" + std::to_string(id);
+  this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
 }
 
 Boss::Boss(Boss const & other) : Npc(other)
@@ -46,12 +49,19 @@ void Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, 
   Ogre::Vector3 move = mScript->BossScript(mSceneMgr->getSceneNode(mNodeName), target);
 
   if (move == Ogre::Vector3::ZERO)
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
+  {
+    this->launchAnimation(fe, IDLE);
+    mAnimationState = this->_currentAnimation->getAnimationState();
+  }
   else if (move.x == 1)
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Attack", fe, mEntity);
+  {
+    this->launchAnimation(fe, ATTACK);
+    mAnimationState = this->_currentAnimation->getAnimationState();
+  }
   else
     {
-      mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+      this->launchAnimation(fe, RUN);
+      mAnimationState = this->_currentAnimation->getAnimationState();
       mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
     }
 }
@@ -63,7 +73,8 @@ void Boss::initScript(CollisionTools* tool)
 
 void Boss::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+  this->launchAnimation(fe, IDLE);
+  mAnimationState = this->_currentAnimation->getAnimationState();
 }
 
 void Boss::unsetEntity(Ogre::SceneManager *mSceneMgr)

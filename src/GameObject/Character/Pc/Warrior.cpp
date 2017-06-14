@@ -15,6 +15,7 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_health = 120;
   this->_attack = 100;
   mPosition		= new Position(x, y, z);
+  this->_animations[IDLE] = new Animation("Stand", false);
 }
 
 Warrior::Warrior(Warrior const & other) : Melee(other) {}
@@ -50,10 +51,10 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 }
 
-
 void Warrior::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
+  this->launchAnimation(fe, IDLE);
+  mAnimationState = this->_currentAnimation->getAnimationState();
 }
 
 void Warrior::unsetEntity(Ogre::SceneManager *mSceneMgr)
