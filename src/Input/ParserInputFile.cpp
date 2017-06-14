@@ -14,16 +14,25 @@ ParserInputFile::ParserInputFile() {}
 
 ParserInputFile::~ParserInputFile() {}
 
-void		ParserInputFile::saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data, const std::string &path)
+void		ParserInputFile::saveBindingInFile(const std::map<OIS::KeyCode, std::pair<Pc *, eventType> > &data, const std::string &path, const std::vector<Pc *> playerList)
 {
   std::ofstream	save_file(path, std::ios::out | std::ios::trunc);
+  int		idPlayer = 0;
+  int		posPlayerList;
 
   this->_binding = data;
   if (save_file)
   {
     for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
     {
-      save_file << it->first << "=" << it->second << std::endl;
+      posPlayerList = 0;
+      for (auto itPlayerList = playerList.begin(); itPlayerList != playerList.end(); ++itPlayerList)
+      {
+	if ((*itPlayerList) == it->second.first)
+	  idPlayer = posPlayerList;
+	posPlayerList++;
+      }
+      save_file << it->first << " " << idPlayer << " " << it->second.second << std::endl;
     }
     save_file.close();
   }
@@ -31,7 +40,7 @@ void		ParserInputFile::saveBindingInFile(const std::map<eventType, OIS::KeyCode>
     throw IndieException("Cannot save the binding configuration");
 }
 
-std::map<eventType, OIS::KeyCode>	ParserInputFile::getArrayBindingFromFile(const std::string &path)
+std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	ParserInputFile::getArrayBindingFromFile(const std::string &path, std::vector<Pc*> playerList)
 {
   std::ifstream				*file;
   std::stringstream			ss;
@@ -44,7 +53,7 @@ std::map<eventType, OIS::KeyCode>	ParserInputFile::getArrayBindingFromFile(const
     while (file->getline(tmp, 256))
     {
       ss << tmp;
-      this->addLineSaveToScores(ss.str());
+      this->addLineSaveToBinding(ss.str(), playerList);
       ss.str("");
       ss.clear();
     }
@@ -57,26 +66,62 @@ std::map<eventType, OIS::KeyCode>	ParserInputFile::getArrayBindingFromFile(const
   return (this->_binding);
 }
 
-void	ParserInputFile::addLineSaveToScores(const std::string &line)
+void		ParserInputFile::addLineSaveToBinding(const std::string &line, std::vector<Pc*> playerList)
 {
-  eventType	idx;
-  OIS::KeyCode	value;
+  eventType	event;
+  OIS::KeyCode	key;
   unsigned long	pos;
+  unsigned int	playerId;
+  unsigned int	posPlayerList;
+  Pc		*player = nullptr;
+  std::string	buffer;
 
-  if ((pos = line.find("=")) == std::string::npos)
+  buffer = line;
+  /* get KeyCode */
+  if ((pos = buffer.find(" \t")) == std::string::npos)
     return;
   try
   {
-    idx = static_cast<eventType>(std::stoi(line.substr(0, pos)));
-    if (idx < EVENT_TYPE_MIN || idx > EVENT_TYPE_MAX)
-      throw IndieException("Invalid binding configuration for idx = " + idx);
-    value = static_cast<OIS::KeyCode>(std::stoi(line.substr(pos + 1)));
-    if (value < OIS::KC_UNASSIGNED || value > OIS::KC_MEDIASELECT)
-      throw IndieException("Invalid binding configuration for value = " + value);
+    key = static_cast<OIS::KeyCode>(std::stoi(line.substr(0, pos)));
+    if (key < OIS::KC_UNASSIGNED || key > OIS::KC_MEDIASELECT)
+      throw IndieException("Invalid binding configuration");
   }
-  catch (std::exception e)
+  catch (std::exception &e)
   {
     throw IndieException(e.what());
   }
-  this->_binding[idx] = value;
+  /* get Pc */
+  if ((pos = buffer.find(" \t")) == std::string::npos)
+    return;
+  try
+  {
+    if ((pos = buffer.find(" \t")) == std::string::npos)
+      return;
+    playerId = std::stoi(buffer.substr(0, pos));
+    buffer = std::stoi(buffer.substr(pos + 1));
+    if (playerId > playerList.size())
+      throw IndieException("ID Player not set in the configuration but provided in BindingMapFile");
+    posPlayerList = 0;
+    for (auto it = playerList.begin(); it != playerList.end(); ++it)
+    {
+      if (posPlayerList == playerId)
+	player = (*it);
+      posPlayerList++;
+    }
+  }
+  catch (std::exception &e)
+  {
+    throw IndieException(e.what());
+  }
+  /* get eventType */
+  try
+  {
+    event = static_cast<eventType>(std::stoi(buffer));
+    buffer = std::stoi(buffer.substr(pos + 1));
+  }
+  catch (std::exception &e)
+  {
+    throw IndieException(e.what());
+  }
+  this->_binding.insert(std::make_pair(key, std::make_pair(player, event)));
 }

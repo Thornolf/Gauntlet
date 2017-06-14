@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Mon Jun 12 09:50:42 2017 Thomas Fossaert
+** Last update Wed Jun 14 11:44:35 2017 Thomas Fossaert
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -29,12 +29,12 @@ class GameObject
 {
 protected:
   Ogre::AnimationState	*mAnimationState;
-  Ogre::Entity		      *mEntity;
-  Ogre::SceneNode       *mNode;
-  Script                *mScript;
-  Position              *mPosition;
-  Animation             *mAnimation;
-  std::string           mNodeName;
+  Ogre::Entity		*mEntity;
+  Ogre::SceneNode	*mNode;
+  Script		*mScript;
+  Position		*mPosition;
+  Animation		*mAnimation;
+  std::string		mNodeName;
 
 public:
   GameObject(int, int, int);
@@ -49,9 +49,11 @@ public:
   Ogre::Entity* getEntity() const;
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
-  virtual void	  launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
+  virtual void		launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
   virtual void		Animate(const Ogre::FrameEvent&) {};
-  virtual void    unsetEntity(Ogre::SceneManager *mSceneMgr) {};
+  virtual void		unsetEntity(Ogre::SceneManager *mSceneMgr) {};
+  virtual void    initScript(CollisionTools* tool) {};
+
 };
 
 #endif

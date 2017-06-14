@@ -23,10 +23,10 @@ public:
 
   /* Member functions */
   void		setOgreBase(Ogre::SceneManager*);
-  void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&);
+  void	  launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&);
   void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
-
+  void    initScript(CollisionTools* tool);
 };
 
 #endif		/* _ZOMBIE__HPP_ */

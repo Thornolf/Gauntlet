@@ -17,13 +17,14 @@
 class Doodad : public GameObject
 {
 private:
-  int   _id;
-  int   _Sx;
-  int   _Sy;
-  int   _Sz;
-  std::string _deco;
+  int			_id;
+  int			_Sx;
+  int			_Sy;
+  int			_Sz;
+  Ogre::Quaternion	_orientation;
+  std::string		_deco;
 public:
-  Doodad(int x, int y, int z, int id, int Sx, int Sy, int Sz, const std::string & deco);
+  Doodad(int, int, int, int, int, int, int, const Ogre::Quaternion &, const std::string &);
   Doodad(Doodad const &);
   Doodad& operator=(Doodad const &);
   ~Doodad();

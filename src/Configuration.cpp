@@ -20,17 +20,17 @@ Configuration	&Configuration::operator=(const Configuration &obj)
   return (*this);
 }
 
-std::vector<Pc>	Configuration::getPlayers(void) const
+std::vector<Pc*>	Configuration::getPlayers(void) const
 {
   return (this->_players);
 }
 
-void	Configuration::setPlayers(std::vector<Pc> players)
+void	Configuration::setPlayers(std::vector<Pc*> players)
 {
   this->_players = players;
 }
 
-void          Configuration::addScorePoint(int nbPoint)
+void	Configuration::addScorePoint(int nbPoint)
 {
     this->_score += nbPoint;
 }

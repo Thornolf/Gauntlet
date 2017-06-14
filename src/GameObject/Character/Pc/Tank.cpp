@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Mon Jun 12 09:40:51 2017 Thomas Fossaert
+** Last update Wed Jun 14 15:22:16 2017 Robin Grattepanche
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -35,13 +35,22 @@ Tank::~Tank() {}
 void Tank::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
   Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_sword_2h_artifactashbringer_d_01.mesh");
+  Ogre::Entity *shield = mSceneMgr->createEntity("item_objectcomponents_shield_shield_1h_alliance_d_01.mesh");
+  Ogre::Entity *helm = mSceneMgr->createEntity("item_objectcomponents_head_helm_robe_pvpalliance_c_01_huf.mesh");
+  Ogre::Entity *rshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_shoulder_plate_paladinclass_.000.mesh");
+  Ogre::Entity *lshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_shoulder_plate_paladinclass_d_01.mesh");
+
 
   mEntity = mSceneMgr->createEntity("Tank", "character_human_female_humanfemale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-  mNode->setOrientation(1,1,0,0);
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_55", shield, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_96", helm, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_42", rshoulder, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_41", lshoulder, Ogre::Quaternion(1,1,0,0));
+
 }
 
 

@@ -12,8 +12,10 @@
 # define	_PC_HPP_
 # include	<iostream>
 # include	<string>
-# include        "GameObject/Character/Character.hpp"
-# include	"Input/Device.hpp"
+# include	"GameObject/Character/Character.hpp"
+# include	"Input/eventType.hpp"
+
+class Device;
 
 class Pc : public Character
 {
@@ -24,12 +26,19 @@ public:
   virtual ~Pc();
 
   void			setDevice(Device *);
+  void			setName(const std::string &);
   Device		*getDevice(void) const;
   const std::string	&getName(void) const;
 
+  void		moveUp(void);
+  void		moveDown(void);
+  void		moveLeft(void);
+  void		moveRight(void);
+
 private:
-  Device		*_device;
-  const std::string	_name;
+  std::string						_name;
+public:
+  std::map<eventType, std::function<void(void)> >	_event;
 };
 
 #endif

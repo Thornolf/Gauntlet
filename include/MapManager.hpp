@@ -13,7 +13,7 @@
 
 # define	REGEX_SECTION	"[\\[].*[\\]]"
 # define	REGEX_PARAM	"^[A-Z_]*[ \\t]*[A-Za-z0-9_\\/\\-.]*$"
-# define	REGEX_OBJECT	"^[ \t]*[A-Za-z0-9]*[ \t]*[A-Za-z0-9]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[A-Za-z0-9/.]*$"
+# define	REGEX_OBJECT	"^[ \t]*[A-Za-z0-9]*[ \t]*[A-Za-z0-9]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[0-9-]*[,][0-9-]*[,][0-9-]*[ \t]*[0-9-.]*[,][0-9-.]*[,][0-9-.]*[,][0-9-.]*[ \t]*[A-Za-z0-9/._]*$"
 
 # include	<string>
 # include	<vector>
@@ -32,6 +32,7 @@ enum class	ASTNodeType : int
   NAME,
   POSITION,
   SCALE,
+  ORIENTATION,
   TEXTURE
 };
 
@@ -41,6 +42,7 @@ typedef enum	ObjectField
   NAME,
   POSITION,
   SCALE,
+  ORIENTATION,
   TEXTURE
 }		ObjectField;
 
@@ -62,9 +64,9 @@ public:
   virtual ~MapManager ();
 
   /* Public member functions */
-  void			computeAbstractTree(void);
-  void			generateMap(RenderManager &);
-  std::string		getOption(const std::string &);
+  void		computeAbstractTree(void);
+  void		generateMap(RenderManager &);
+  std::string	getOption(const std::string &);
 
 private:
   /* Loading */
@@ -81,8 +83,10 @@ private:
   void		addObjectFieldASTNode(t_ast_node *, const std::string &, ObjectField, ASTNodeType) const;
 
   /* Get Data from Line _buffer */
-  std::string	*getFieldFromObjectDeclarationLine(const std::string &, ObjectField) const;
-  std::string	getSectionName(const std::string &) const;
+  std::string		*getFieldFromObjectDeclarationLine(const std::string &, ObjectField) const;
+  std::string		getSectionName(const std::string &) const;
+  Ogre::Quaternion	stringToOgreQuaternion(const std::string &) const;
+  bool			stringIsNumber(char *line) const;
 
   /* Map Generation */
   void		ObjASTNodeToGameObj(RenderManager &, t_ast_node *);

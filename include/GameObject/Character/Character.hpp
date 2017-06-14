@@ -5,11 +5,11 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed Jun 14 14:20:54 2017 Pierre
+** Last update Wed Jun 14 16:34:58 2017 Pierre
 */
 
-#ifndef _CHARACTER_HPP_
-# define _CHARACTER_HPP_
+#ifndef		_CHARACTER_HPP_
+# define	_CHARACTER_HPP_
 
 # include "GameObject/GameObject.hpp"
 
@@ -42,12 +42,12 @@ protected:
 
   /* Classes */
 
-  void takeDamage(int dmg);
-  void attack(Character *target);
-  bool isAlive();
-  void getDistance();
-  int getRange();
   void launchAnimation(const Ogre::FrameEvent& fe, State state);
+  void		takeDamage(int dmg);
+  void		attack(Character *target);
+  bool		isAlive() const;
+  void		getDistance() const;
+  int		getRange(void) const;
 
   /*virtual void		setOgreBase(Ogre::SceneManager*);
   virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);

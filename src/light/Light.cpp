@@ -5,12 +5,12 @@
 ** Login   <gratte_r@epitech.net>
 **
 ** Started on  Thu Jun 01 22:22:37 2017 Robin Grattepanche
-** Last update Fri Jun 02 14:10:13 2017 Robin Grattepanche
+** Last update Wed Jun 14 13:25:27 2017 Robin Grattepanche
 */
 
 #include			"Light/light.hpp"
 
-light::light(Ogre::SceneManager *scene, std::string name, Ogre::Light::LightTypes type, int x, int y, int z)
+light::light(Ogre::SceneManager *scene, Ogre::SceneNode *node, std::string name, Ogre::Light::LightTypes type, int x, int y, int z)
 {
 	this->_name = name;
 	this->_scene = scene;
@@ -21,6 +21,7 @@ light::light(Ogre::SceneManager *scene, std::string name, Ogre::Light::LightType
 	this->_direction = Ogre::Vector3(0, -1, 0);
 
 	this->_light = this->_scene->createLight(name);
+	node->attachObject(this->_light);
 	this->_light->setType(type);
 	this->_light->setDiffuseColour(this->_diffColour);
 	this->_light->setSpecularColour(this->_specColour);

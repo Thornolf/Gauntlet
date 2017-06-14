@@ -17,6 +17,7 @@
 # include	<sstream>
 # include	<fstream>
 # include	<OIS.h>
+# include	"GameObject/Character/Pc/Pc.hpp"
 # include	"Input/eventType.hpp"
 # include	"IndieException.hpp"
 
@@ -28,12 +29,12 @@ public:
   ~ParserInputFile();
 
   /* Public member functions */
-  std::map<eventType, OIS::KeyCode>	getArrayBindingFromFile(const std::string &);
-  void					saveBindingInFile(const std::map<eventType, OIS::KeyCode> &data, const std::string &path);
+  std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	getArrayBindingFromFile(const std::string &, std::vector<Pc*> playerList);
+  void							saveBindingInFile(const std::map<OIS::KeyCode, std::pair<Pc *, eventType> > &data, const std::string &path, const std::vector<Pc *> playerList);
 private:
-  void		addLineSaveToScores(const std::string &line);
+  void		addLineSaveToBinding(const std::string &line, std::vector<Pc*> playerList);
 
-  std::map<eventType, OIS::KeyCode>	_binding;
+  std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	_binding;
 };
 
 #endif		/* !_PARSER_INPUT_FILE__HPP_! */

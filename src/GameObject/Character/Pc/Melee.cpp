@@ -8,7 +8,7 @@
 ** Last update Fri May 26 16:40:51 2017 Adrien Warin
 */
 
-#include "Melee.hpp"
+#include "GameObject/Character/Pc/Melee.hpp"
 
 Melee::Melee (const std::string &name, int x, int y, int z) : Pc(name, x, y, z)
 {

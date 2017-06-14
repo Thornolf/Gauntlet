@@ -5,13 +5,15 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 09 12:12:29 2017 Thomas Fossaert
+** Last update Tue Jun 13 14:07:01 2017 Thomas Fossaert
 */
 
 #include "GameObject/Loot/foodStack.hpp"
 
 foodStack::foodStack(int x, int y, int z, int id) : Loot(x, y, z, id)
 {
+  mPosition = new Position(x, y, z);
+  mNodeName = "goldStackNode" + std::to_string(id);
 }
 
 foodStack::foodStack(foodStack const & other) : Loot(other)
@@ -28,6 +30,27 @@ foodStack& foodStack::operator=(foodStack const & other)
 foodStack::~foodStack()
 {
 
+}
+
+void foodStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
+{
+
+  mEntity = mSceneMgr->createEntity("foodStack" + std::to_string(_id), "world_expansion04_doodads_pandaren_pa_food_bakedwildfowl_01.m2_.mesh");
+  mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
+  mNode->attachObject(mEntity);
+  mNode->setScale(80.0f, 80.0f, 80.0f);
+  mNode->setOrientation(1,1,0,0);
+}
+
+
+void foodStack::Animate(const Ogre::FrameEvent& fe)
+{
+  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+}
+
+void foodStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
+{
+  mSceneMgr->destroyEntity(mEntity);
 }
 
 bool foodStack::isTaken(Pc const & other)
