@@ -17,6 +17,10 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "ZombieNode" + std::to_string(id);
+  this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_currentAnimation = this->_animations[RUN];
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
@@ -43,15 +47,23 @@ void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
 {
+  /*mSceneMgr->getSceneNode(mNodeName)->translate(
+    mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
+    Ogre::Node::TS_LOCAL);*/
   Ogre::Vector3 move = mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target);
 
-  if (move == Ogre::Vector3::ZERO)
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
-  else if (move.x == 1)
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Attack", fe, mEntity);
+  if (move == Ogre::Vector3::ZERO){
+    this->launchAnimation(fe, IDLE);
+    mAnimationState = this->_currentAnimation->getAnimationState();
+  }
+  else if (move.x == 1){
+    this->launchAnimation(fe, ATTACK);
+    mAnimationState = this->_currentAnimation->getAnimationState();
+  }
   else
     {
-      mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+      this->launchAnimation(fe, WALK);
+      mAnimationState = this->_currentAnimation->getAnimationState();
       mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
     }
 }
@@ -63,7 +75,7 @@ void Zombie::initScript(CollisionTools* tool)
 
 void Zombie::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+
 }
 
 void Zombie::unsetEntity(Ogre::SceneManager *mSceneMgr)

@@ -18,6 +18,9 @@ Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z, id)
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "SkeletonNode" + std::to_string(id);
+  this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_currentAnimation = this->_animations[IDLE];
 }
 
 Skeleton::Skeleton(Skeleton const & other) : Npc(other)
@@ -49,10 +52,14 @@ void Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *targ
   mSceneMgr->getSceneNode(mNodeName)->translate(
     mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
-  if (mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) == Ogre::Vector3::ZERO)
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
-  else
-    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+  if (mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) == Ogre::Vector3::ZERO){
+    this->launchAnimation(fe, IDLE);
+    mAnimationState = this->_currentAnimation->getAnimationState();
+  }
+  else{
+    this->launchAnimation(fe, RUN);
+    mAnimationState = this->_currentAnimation->getAnimationState();
+  }
 }
 
 void Skeleton::initScript(CollisionTools* tool)
@@ -62,7 +69,8 @@ void Skeleton::initScript(CollisionTools* tool)
 
 void Skeleton::Animate(const Ogre::FrameEvent& fe)
 {
-  mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+  this->launchAnimation(fe, IDLE);
+  mAnimationState = this->_currentAnimation->getAnimationState();
 }
 
 void Skeleton::unsetEntity(Ogre::SceneManager *mSceneMgr)

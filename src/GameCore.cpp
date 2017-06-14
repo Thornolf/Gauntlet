@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed Jun 14 15:54:00 2017 Thomas Fossaert
+** Last update Wed Jun 14 17:00:09 2017 Pierre
 */
 
 #include <SFML/Graphics.hpp>
@@ -80,7 +80,7 @@ void GameCore::createScene()
   mZombie->attachObject(mZombieEnt);
   mZombie->setScale(1.5f, 1.5f, 1.5f);
 
-  mSkull->setOgreBase(mSceneMgr);
+  //mSkull->setOgreBase(mSceneMgr);
 
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
@@ -180,6 +180,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mSceneMgr->getSceneNode("NinjaNode")->translate(
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
+
 
   this->_render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
   // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
