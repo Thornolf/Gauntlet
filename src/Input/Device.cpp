@@ -5,26 +5,27 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed May 31 09:02:12 2017 Guillaume CAUCHOIS
-** Last update Wed May 31 09:02:12 2017 Guillaume CAUCHOIS
+** Last update Tue Jun 13 15:20:32 2017 Thomas Fossaert
 */
 
 #include "Input/ParserInputFile.hpp"
 #include "Input/Device.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
-Device::Device(const std::string &name, DeviceManager *manager, OIS::Type &typeDev, Pc *player) :
+Device::Device(const std::string &name, DeviceManager *manager, OIS::Type typeDev, Pc *player) :
   _name(name)
 {
   this->_parser = new ParserInputFile;
   this->_device = manager->createObject(typeDev);
   this->_player = player;
-  this->_binding = this->_parser->getArrayBindingFromFile("./save/device/" + this->_name + ".gnt_dev");
+  this->_binding = this->_parser->getArrayBindingFromFile(this->_name + ".cnf");
 }
 
 Device::~Device()
 {
   if (this->_device != nullptr)
     delete this->_device;
-  this->_parser->saveBindingInFile(this->_binding, "./save/device/" + this->_name + ".gnt_dev");
+  this->_parser->saveBindingInFile(this->_binding, this->_name + ".cnf");
   delete this->_parser;
 }
 
@@ -40,38 +41,32 @@ void	Device::capture(void) const
   this->_device->capture();
 }
 
+/**
+ * Cette fonction prend un paramètre un KeyEvent contenant une clé qui a été préssé
+ * Pour cela elle vient vérifié dans un tableau de binding quelle action il faut
+ * executé en fonction de la touche pressée
+ * @param ke
+ */
 void	Device::keyPressed(const OIS::KeyEvent& ke)
 {
-  switch (ke.key)
+  for (auto it = this->_binding.begin(); it != this->_binding.end(); ++it)
   {
-    case OIS::KC_UP:
-      break;
-    case OIS::KC_DOWN:
-      break;
-    case OIS::KC_LEFT:
-      break;
-    case OIS::KC_RIGHT:
-      break;
-    default:
-      break;
+    if (it->second == ke.key)
+    {
+      if (this->_player->_event.find(it->first) == this->_player->_event.end())
+	throw IndieException("Event not implemented");
+      for (auto it_action = this->_player->_event.begin(); it_action != this->_player->_event.end(); ++it_action)
+      {
+	if (it_action->first == it->first)
+	  (it_action->second)();
+      }
+    }
   }
 }
 
 void	Device::keyReleased(const OIS::KeyEvent& ke)
 {
-  switch (ke.key)
-  {
-    case OIS::KC_UP:
-      break;
-    case OIS::KC_DOWN:
-      break;
-    case OIS::KC_LEFT:
-      break;
-    case OIS::KC_RIGHT:
-      break;
-    default:
-      break;
-  }
+
 }
 
 void		Device::dumpBinding(void) const

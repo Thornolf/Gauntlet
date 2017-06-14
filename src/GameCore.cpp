@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Tue Jun 13 21:00:51 2017 Robin Grattepanche
+** Last update Wed Jun 14 13:13:06 2017 Robin Grattepanche
 */
 
 #include <SFML/Graphics.hpp>
@@ -29,9 +29,22 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  GameObject		*mZob = new Zombie(100, 0, 100, 100);
-  GameObject		*mTank = new Tank("noob", 500, 0, 500);
+  //DeviceManager *mDeviceManager = new DeviceManager(mWindow);
+  mTank = new Tank("noob", 500, 0, 500);
+  //Device        *mTankDevice = new Device(static_cast<Pc*>(mTank)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mTank));
+  mMage = new Mage("mage", 200, 0, 500);
+  //Device        *mMageDevice = new Device(static_cast<Pc*>(mMage)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mMage));
+  mHunt = new Archer("hunt", -100, 0, 500);
+  //Device        *mHuntDevice = new Device(static_cast<Pc*>(mHunt)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mHunt));
+  mWarr = new Warrior("Warr", -400, 0, 500);
+  //Device        *mWarrDevice = new Device(static_cast<Pc*>(mWarr)->getName(), mDeviceManager, OIS::Type::OISKeyboard, static_cast<Pc*>(mWarr));
 
+  GameObject		*mZob = new Zombie(100, 0, 100, 100);
+
+/*  static_cast<Pc *>(mTank)->setDevice(mTankDevice);
+  static_cast<Pc *>(mMage)->setDevice(mMageDevice);
+  static_cast<Pc *>(mHunt)->setDevice(mHuntDevice);
+  static_cast<Pc *>(mWarr)->setDevice(mWarrDevice); */
   //GameObject		*mZob2 = new Zombie(-100, 0, -100, 1);
 
   Ogre::Entity		*ent;
@@ -48,15 +61,19 @@ void GameCore::createScene()
    mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
   //ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
-  mEntity = mSceneMgr->createEntity("Ninja", "character_human_female_humanfemale_hd.mesh");
+  mEntity = mSceneMgr->createEntity("Ninja", "character_human_male_humanmale_hd.mesh");
 
-  Ogre::Entity *weapon = mSceneMgr->createEntity("item_objectcomponents_weapon_sword_2h_artifactashbringer_d_01.mesh");
-  this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
+  Ogre::Entity *weapon = mSceneMgr->createEntity("character_human_female_humanfemale_hd.mesh");
+  // this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_117", weapon, Ogre::Quaternion(1,1,0,0));
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
   mTank->setOgreBase(mSceneMgr);
+  mMage->setOgreBase(mSceneMgr);
+  mHunt->setOgreBase(mSceneMgr);
+  mWarr->setOgreBase(mSceneMgr);
+
   Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);
@@ -100,9 +117,10 @@ void GameCore::createScene()
 void GameCore::createFrameListener(void)
 {
   BaseGauntlet::createFrameListener();
-  mAnimationState = mEntity->getAnimationState("Walk");
+  mAnimationState = mEntity->getAnimationState("Run");
   mAnimationState->setLoop(true);
   mAnimationState->setEnabled(true);
+
 
   /*mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
   mAnimationStateZombie->setLoop(true);
@@ -125,7 +143,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static bool mouseDownLastFrame = false;
   static Ogre::Real toggleTimer = 0.0;
   static Ogre::Real rotate = .05;
-  static Ogre::Real move = 150;
+  static Ogre::Real move = 350;
 
   // bool leftMouseDown = mMouse->getMouseState().buttonDown(OIS::MB_Left);
 
@@ -135,7 +153,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
   SCheckCollisionAnswer collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
-								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(50.0f, 50.0f, 50.0f), 50.0f, 50.0f, 1,
+								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 								  mEntity,
 								  false);
 
@@ -143,33 +161,40 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
                 			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
                 								  mEntity,
                 								  false);
+  mTank->Animate(fe);
+  mWarr->Animate(fe);
+  mHunt->Animate(fe);
+  mMage->Animate(fe);
+
   if (collider.collided)
     dirVec.x -= 2 + move;
   if (mKeyboard->isKeyDown(OIS::KC_L))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_M))
   {
     mNode->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
   else if (mKeyboard->isKeyDown(OIS::KC_K))
   {
     mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
 
   else if (mKeyboard->isKeyDown(OIS::KC_O))
   {
     mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
     dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Walk", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
   }
+  else
+     mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
 
 	if (mKeyboard->isKeyDown(OIS::KC_J))
 	{
@@ -190,7 +215,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mZob->launchScript(mSceneMgr, mNode) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/
 
-  mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
+  // mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
 
   render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
   // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});

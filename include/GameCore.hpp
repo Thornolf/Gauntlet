@@ -32,6 +32,7 @@ This source file is part of the
 #include "GameObject/Doodad/Doodad.hpp"
 #include "MapManager.hpp"
 #include "RenderManager.hpp"
+#include "Input/Device.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -62,6 +63,11 @@ protected:
     Animation *_animation;
     Ogre::SceneNode *mNode;                // The -SceneNode that the Entity is attached to
     Ogre::SceneNode *mZombie;                // The -SceneNode that the Entity is attached to
+
+    GameObject		*mTank;
+    GameObject		*mWarr;
+    GameObject		*mHunt;
+    GameObject		*mMage;
 
 
     Script *mScript;

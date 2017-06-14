@@ -41,7 +41,6 @@ void	Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(this->_Sx, this->_Sy, this->_Sz);
-  mNode->setOrientation(1, 1, 0, 0);
   if (_deco == "cube.mesh")
     mEntity->setMaterialName("Examples/Rocky");
 }

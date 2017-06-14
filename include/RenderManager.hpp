@@ -14,6 +14,8 @@
 # include	<algorithm>
 # include	<string>
 # include	<functional>
+# include	"IndieException.hpp"
+
 
 /* GameObject / Character */
 # include	"GameObject/GameObject.hpp"

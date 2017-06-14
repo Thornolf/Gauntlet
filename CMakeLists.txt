@@ -97,6 +97,7 @@ set(HDRS
         ./include/Position.hpp
         ./include/Score/Score.hpp
         ./include/Configuration.hpp
+        ./include/Particle.hpp
         include/GameObject/Character/Pc/Ranged.hpp
         ./include/audio/IAudio.hpp
         ./include/audio/Music.hpp
@@ -152,7 +153,8 @@ set(SRCS
         ./src/Parsing/MapManager.cpp
         ./src/RenderManager.cpp
         ./src/GameObject/Character/Npc/Spawner.cpp
-        ./src/GameObject/Doodad/Doodad.cpp)
+        ./src/GameObject/Doodad/Doodad.cpp
+        ./src/Particle/Particle.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

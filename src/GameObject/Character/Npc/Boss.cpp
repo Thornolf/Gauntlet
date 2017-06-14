@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon Jun 12 13:35:03 2017 Thomas Fossaert
+// Last update Tue Jun 13 12:58:46 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Boss.hpp"
@@ -34,13 +34,11 @@ Boss::~Boss() {}
 
 void Boss::setOgreBase(Ogre::SceneManager* mSceneMgr)
 {
-  //mEntity = mSceneMgr->createEntity("Boss", "character_scourge_male_scourgemale_hd.m2_Geoset_000-Main.mesh");
-  mEntity = mSceneMgr->createEntity("Boss" + std::to_string(_id), "creature_northrendfleshgiant_northrendfleshgiant.mesh");
+  mEntity = mSceneMgr->createEntity("Boss" + std::to_string(_id), "creature_zombiefiedvrykul_zombiefiedvrykul.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mNodeName, mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(1.0f, 1.0f, 1.0f);
-  mNode->setOrientation(1,1,0,0);
+  mNode->setScale(1.5f, 1.5f, 1.5f);
 }
 
 void Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
@@ -48,7 +46,10 @@ void Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, 
   mSceneMgr->getSceneNode(mNodeName)->translate(
     mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
-  //mPosition->setPosition(nextMove.x, nextMove.y, nextMove.z);
+  if (mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) == Ogre::Vector3::ZERO)
+    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Stand", fe, mEntity);
+  else
+    mAnimationState = mAnimation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
 }
 
 void Boss::Animate(const Ogre::FrameEvent& fe)
