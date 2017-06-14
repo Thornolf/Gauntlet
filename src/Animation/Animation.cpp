@@ -22,13 +22,13 @@ Animation::Animation(std::string const& name, bool looping, double speed, double
 
 Animation::Animation(Animation const & other)
 {
-    (void) other;
+  (void) other;
 }
 
 Animation& Animation::operator=(Animation const & other)
 {
-    (void) other;
-    return(*this);
+  (void) other;
+  return(*this);
 }
 
 Animation::~Animation ()
@@ -49,12 +49,12 @@ bool	Animation::isLooping() const
 void	Animation::addTime(float t)
 {
   if (this->_animationState && this->_speed > 0.000001)
-    {
-      if (this->_dist > 0.000001)
-	     this->_animationState->addTime(t * this->_animationState->getLength() / (this->_dist / this->_speed));
-      else
-	     this->_animationState->addTime(t * this->_animationState->getLength() / this->_speed);
-    }
+  {
+    if (this->_dist > 0.000001)
+      this->_animationState->addTime(t * this->_animationState->getLength() / (this->_dist / this->_speed));
+    else
+      this->_animationState->addTime(t * this->_animationState->getLength() / this->_speed);
+  }
 }
 
 bool	Animation::hasEnded() const
