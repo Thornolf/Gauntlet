@@ -49,6 +49,7 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
   if (!processUnbufferedInput(fe))
     return false;
+  /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
   return ret;
 }
 
@@ -59,7 +60,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
-  mConfig->forEachPlayer([&](Pc *player){
+  mConfig->forEachPlayer([&](Pc *player) {
     SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
 									   player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 									   player->getEntity(),
@@ -84,9 +85,9 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
-    OIS::KeyCode	key = itBinding->first;
-    Pc			*player = itBinding->second.first;
-    eventType		event = itBinding->second.second;
+    OIS::KeyCode	key	= itBinding->first;
+    Pc			*player	= itBinding->second.first;
+    eventType		event	= itBinding->second.second;
 
     if (mKeyboard->isKeyDown(key))
     {

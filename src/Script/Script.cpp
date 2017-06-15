@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:24:56 2017 Adrien Warin
-// Last update Wed Jun 14 20:26:36 2017 Thomas Fossaert
+// Last update Thu Jun 15 14:20:22 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Script.hpp"
@@ -52,13 +52,14 @@ Ogre::Vector3 Script::ZombieScript(GameObject *current, GameObject *target)
      else if (aggroX < 775 && aggroZ < 775)
       {
          if (current->getSceneNode()->getPosition().x < collider.position.x)
-          dirVec.x = -30;
-         if (current->getSceneNode()->getPosition().x > collider.position.x)
-          dirVec.x = 30;
-         if (current->getSceneNode()->getPosition().z > collider.position.z)
-          dirVec.z = 30;
-         if (current->getSceneNode()->getPosition().z < collider.position.x)
-          dirVec.z = -30;
+          dirVec.x = -530;
+         else if (current->getSceneNode()->getPosition().x > collider.position.x)
+          dirVec.x = 530;
+         else if (current->getSceneNode()->getPosition().z > collider.position.z)
+          dirVec.z = 530;
+         else if (current->getSceneNode()->getPosition().z < collider.position.z)
+          dirVec.z = -530;
+	 dirVec.x +=2;
       }
   }
   return (dirVec);
@@ -114,13 +115,14 @@ Ogre::Vector3 Script::BossScript(GameObject *current, GameObject *target)
      else if (aggroX < 775 && aggroZ < 775)
       {
          if (current->getSceneNode()->getPosition().x < collider.position.x)
-          dirVec.x = -30;
-         if (current->getSceneNode()->getPosition().x > collider.position.x)
-          dirVec.x = 30;
-         if (current->getSceneNode()->getPosition().z > collider.position.z)
-          dirVec.z = 30;
-         if (current->getSceneNode()->getPosition().z < collider.position.z)
-          dirVec.z = -30;
+          dirVec.x = -530;
+         else if (current->getSceneNode()->getPosition().x > collider.position.x)
+          dirVec.x = 530;
+         else if (current->getSceneNode()->getPosition().z > collider.position.z)
+          dirVec.z = 530;
+         else if (current->getSceneNode()->getPosition().z < collider.position.z)
+          dirVec.z = -530;
+	dirVec.x +=2;
       }
   }
   return (dirVec);

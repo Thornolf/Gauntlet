@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Thu Jun  1 11:30:22 2017 Guillaume CAUCHOIS
+// Last update Thu Jun 15 14:30:04 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -73,4 +73,11 @@ void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
       this->_currentAnimation = this->_animations[state];
       this->_currentAnimation->enable();
     }
+}
+
+void Character::gainHealth(int value)
+{
+  this->_health += value;
+  if (this->_health > 300)
+    this->_health = 300;
 }

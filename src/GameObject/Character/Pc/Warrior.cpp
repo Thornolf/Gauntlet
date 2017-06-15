@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-// Last update Thu Jun 15 10:22:21 2017 Thomas Fossaert
+** Last update Thu Jun 15 15:23:22 2017 Adrien Warin
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -46,10 +46,10 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("Warrior", "character_orc_male_orcmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("WarriorNode", mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(2.0f, 2.0f, 2.0f);
+  //mNode->setScale(2.0f, 2.0f, 2.0f);
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_106", weapon, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_52", helm, Ogre::Quaternion(1,0,0,0));
-  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,-0.5,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_29", lshoulder, Ogre::Quaternion(1,0,0,0));
 
 }

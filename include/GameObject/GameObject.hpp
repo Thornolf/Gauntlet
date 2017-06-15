@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 15 10:42:43 2017 Thomas Fossaert
+** Last update Thu Jun 15 13:04:02 2017 Thomas Fossaert
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -53,6 +53,7 @@ public:
   const std::string& getNodeName() const;
   Ogre::Entity* getEntity() const;
   Ogre::SceneNode* getSceneNode() const;
+  void destroySpecificEntity(Ogre::SceneManager *, Ogre::Entity *);
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
   virtual void		launchScript(Ogre::SceneManager*, GameObject *, const Ogre::FrameEvent&) {};

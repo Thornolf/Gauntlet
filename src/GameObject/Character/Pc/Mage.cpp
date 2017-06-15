@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-// Last update Wed Jun 14 14:09:27 2017 Thomas Fossaert
+// Last update Thu Jun 15 10:29:28 2017 Adrien Warin
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
@@ -45,10 +45,10 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("Mage", "character_human_male_humanmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageNode", mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(2.0f, 2.0f, 2.0f);
+ mNode->setScale(2.0f, 2.0f, 2.0f);
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_115", weapon, Ogre::Quaternion(1,0,0,0));
-  this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_33", lshoulder, Ogre::Quaternion(1,1,0,0));
-  this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_32", rshoulder, Ogre::Quaternion(1,1,0,0));
+  this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_33", lshoulder, Ogre::Quaternion(0,0,1,0));
+  this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_32", rshoulder, Ogre::Quaternion(0,0,1,0));
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_93", helm, Ogre::Quaternion(1,0,0,0));
 }
 
