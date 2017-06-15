@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Wed Jun 14 17:05:42 2017 Pierre
+** Last update Thu Jun 15 12:30:15 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -14,6 +14,7 @@ Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
   this->_health = 150;
   this->_attack = 50;
+  this->_score = 0;
   mPosition = new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_currentAnimation = this->_animations[IDLE];

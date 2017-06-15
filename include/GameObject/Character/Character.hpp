@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed Jun 14 16:46:35 2017 Pierre
+** Last update Thu Jun 15 14:31:35 2017 Thomas Fossaert
 */
 
 #ifndef		_CHARACTER_HPP_
@@ -20,6 +20,9 @@ public:
   Character(Character const &);
   Character& operator=(Character const &);
   virtual ~Character();
+
+  void  setScore(int);
+  void  gainHealth(int);
 
 protected:
   enum State
@@ -37,6 +40,7 @@ protected:
   int		_cooldown;
   int		_speed;
   int		_range;
+  int   _score;
   State	_state;
   std::map<State, Animation*>	_animations;
   Animation* _currentAnimation;

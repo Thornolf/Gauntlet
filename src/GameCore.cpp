@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Thu Jun 15 10:16:47 2017 Thomas Fossaert
+// Last update Thu Jun 15 14:43:56 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -51,17 +51,10 @@ void GameCore::createScene()
    mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   warrior->setOgreBase(mSceneMgr);
 
-  //mNode->attachObject(mCamera);
-
-  mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
-  mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
-  mZombie->attachObject(mZombieEnt);
-  mZombie->setScale(1.5f, 1.5f, 1.5f);
-
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
 						Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-						plane, 10000, 1500, 1, 1, true, 1, 40, 5,
+						plane, 10000, 10000, 1, 1, true, 1, 40, 40,
 						Ogre::Vector3::UNIT_Z);
   Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
   mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
@@ -87,61 +80,72 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
   if (!processUnbufferedInput(fe))
     return false;
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
-    mAnimationStateZombie->addTime(fe.timeSinceLastFrame);
   return ret;
 }
 
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
-  static bool		mouseDownLastFrame = false;
   static Ogre::Real	toggleTimer = 0.0;
   static Ogre::Real	rotate = .05;
   static Ogre::Real	move = 350;
-
-  if (mMouse->getMouseState().buttonDown(OIS::MB_Left))
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Death", fe, mEntity);
-
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
+  Ogre::Vector3 CameraVec = Ogre::Vector3::ZERO;
+
   SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("WarriorNode")->getPosition(),
 								  mSceneMgr->getSceneNode("WarriorNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 								  mEntity,
 								  false);
 
-  SCheckCollisionAnswer Zcollider = collision->check_ray_collision(mSceneMgr->getSceneNode("RobotNode")->getPosition(),
-                			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
-                								  mZombieEnt,
-                								  false);
-
   this->_config.forEachPlayer([&](Pc *player){player->Animate(fe);});
 
   if (collider.collided)
-    dirVec.x -= 20 + move;
+    {
+      dirVec.x -= 20 + move;
+      if (!collider.entity->getName().compare(0,9, "goldStack"))
+        {
+          collision->remove_entity(collider.entity);
+          mSceneMgr->destroyEntity(collider.entity);
+	  static_cast<Character*>(warrior)->setScore(100);
+        }
+      else if (!collider.entity->getName().compare(0,9, "foodStack"))
+         {
+           collision->remove_entity(collider.entity);
+           mSceneMgr->destroyEntity(collider.entity);
+           static_cast<Character*>(warrior)->gainHealth(50);
+         }
+    }
   else
   {
-  if (mKeyboard->isKeyDown(OIS::KC_L))
-  {
-    warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
-    dirVec.x += move;
-    warrior->Animate(fe);
-  }
-  else if (mKeyboard->isKeyDown(OIS::KC_M))
-  {
-    warrior->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
-    dirVec.x += move;
-    warrior->Animate(fe);
-  }
-  else if (mKeyboard->isKeyDown(OIS::KC_K))
-  {
-    warrior->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
-    dirVec.x += move;
-    warrior->Animate(fe);
-  }
-  else if (mKeyboard->isKeyDown(OIS::KC_O))
-  {
-    warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
-    dirVec.x += move;
-    warrior->Animate(fe);
-  }
+    if (mKeyboard->isKeyDown(OIS::KC_L))
+    {
+      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
+      dirVec.x += move;
+      warrior->Animate(fe);
+      CameraVec.z -= 1;
+    }
+    else if (mKeyboard->isKeyDown(OIS::KC_M))
+    {
+      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
+      dirVec.x += move;
+      warrior->Animate(fe);
+      CameraVec.x -= 1;
+    }
+    else if (mKeyboard->isKeyDown(OIS::KC_K))
+    {
+      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
+      dirVec.x += move;
+      warrior->Animate(fe);
+      CameraVec.x += 1;
+
+    }
+    else if (mKeyboard->isKeyDown(OIS::KC_O))
+    {
+      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
+      dirVec.x += move;
+      warrior->Animate(fe);
+      CameraVec.z += 1;
+    }
+    mCamera->move(CameraVec);
   /*else if (mKeyboard->isKeyDown(OIS::KC_I))
   {
     warrior->launchAnimation(fe, ATTACK);
@@ -152,12 +156,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
-
   this->_render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, warrior, fe);});
   // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
 
-  mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
-  mAnimationStateZombie->setLoop(true);
-  mAnimationStateZombie->setEnabled(true);
   return true;
 }
