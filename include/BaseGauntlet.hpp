@@ -99,7 +99,7 @@ protected:
   Ogre::AnimationState*		mAnimationState;
 
   // Collision
-  CollisionTools*		collision;
+  CollisionTools		*collision;
 };
 
 #endif		/* !_BASEGAUNTLET__HPP_ */

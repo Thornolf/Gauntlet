@@ -10,27 +10,33 @@
 
 #include "Configuration.hpp"
 
-Configuration::Configuration() {}
+Configuration::Configuration()
+{
+  this->_score = 0;
+}
 
 Configuration::~Configuration() {}
 
 Configuration	&Configuration::operator=(const Configuration &obj)
 {
+  this->_score = obj._score;
   this->_players = obj._players;
   return (*this);
 }
 
-std::vector<Pc*>	Configuration::getPlayers(void) const
+const std::vector<Pc*>	&Configuration::getPlayers(void) const
 {
   return (this->_players);
 }
 
-void	Configuration::setPlayers(std::vector<Pc*> players)
+void	Configuration::addPlayer(Pc* player)
 {
-  this->_players = players;
+  std::cout << "DEBUG - SIZE BEFORE : " << this->_players.size() << std::endl;
+  this->_players.push_back(player);
+  std::cout << "DEBUG - SIZE AFTER : " << this->_players.size() << std::endl;
 }
 
 void	Configuration::addScorePoint(int nbPoint)
 {
-    this->_score += nbPoint;
+  this->_score += nbPoint;
 }

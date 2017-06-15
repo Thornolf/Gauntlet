@@ -48,6 +48,8 @@ GameObject	*RenderManager::createGameObject(const std::string &type, const Posit
   gObj = this->_factory[type](i++, pos, scale, orientation, texture);
   if (gObj)
     this->_entities.push_back(gObj);
+  else
+    throw IndieException("Cannot generate the GameObject");
   return (gObj);
 }
 
@@ -97,24 +99,24 @@ GameObject	*RenderManager::createGoldObject(int id, const Position &position, co
 
 GameObject	*RenderManager::createWarriorObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
 {
-  return (new Warrior("", position.getXPosition(), position.getYPosition(), position.getZPosition()));
+  return (new Warrior("Warrior", position.getXPosition(), position.getYPosition(), position.getZPosition()));
 }
 
 GameObject	*RenderManager::createMageObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
 {
-  return (new Mage("", position.getXPosition(), position.getYPosition(), position.getZPosition()));
+  return (new Mage("Mage", position.getXPosition(), position.getYPosition(), position.getZPosition()));
 
 }
 
 GameObject	*RenderManager::createArcherObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
 {
-  return (new Archer("", position.getXPosition(), position.getYPosition(), position.getZPosition()));
+  return (new Archer("Archer", position.getXPosition(), position.getYPosition(), position.getZPosition()));
 
 }
 
 GameObject	*RenderManager::createTankObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
 {
-  return (new Tank("", position.getXPosition(), position.getYPosition(), position.getZPosition()));
+  return (new Tank("Tank", position.getXPosition(), position.getYPosition(), position.getZPosition()));
 }
 
 /* Entities utils */

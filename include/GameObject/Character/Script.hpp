@@ -20,8 +20,8 @@
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 
-#include "GameObject/GameObject.hpp"
 #include "NewMOC.hpp"
+#include "GameObject/GameObject.hpp"
 
 using namespace Collision;
 

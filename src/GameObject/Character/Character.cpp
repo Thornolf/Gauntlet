@@ -14,7 +14,7 @@ Character::Character(int x, int y, int z) : GameObject(x, y, z)
 {
   this->_health = 100;
   this->_cooldown = 100;
-  this->_speed = 100;
+  this->_speed = 350;
   /* this->_script = nullptr */
   this->_range = 1;
 }

@@ -21,14 +21,15 @@ public:
   Configuration		&operator=(const Configuration &);
 
   /* Member functions */
-  std::vector<Pc*>	getPlayers(void) const;
-  void			setPlayers(std::vector<Pc*>);
+  const std::vector<Pc*>	&getPlayers(void) const;
+  void			addPlayer(Pc*);
   void			addScorePoint(int nbPoint);
 
   template <typename UnaryFunction>
   void			forEachPlayer(UnaryFunction f)
   {
-    std::for_each(this->_players.begin(), this->_players.end(), f);
+    if (!this->_players.empty())
+      std::for_each(this->_players.begin(), this->_players.end(), f);
   }
 
 private:

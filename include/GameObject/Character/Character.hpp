@@ -33,12 +33,12 @@ protected:
     DIE
   };
 
-  int		_health;
-  int		_attack;
-  int		_cooldown;
-  int		_speed;
-  int		_range;
-  State	_state;
+  int				_health;
+  int				_attack;
+  int				_cooldown;
+  int				_speed;
+  int				_range;
+  State				_state;
   std::map<State, Animation*>	_animations;
   Animation*			_currentAnimation;
 

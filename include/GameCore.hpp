@@ -30,12 +30,9 @@ public:
   virtual ~GameCore();
 protected:
   virtual void createScene(void);
-  virtual void createFrameListener(void);
   virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
   virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
-  /* Temporaire */
-  CollisionTools	*collision;
   Ogre::AnimationState	*mAnimationState;
   Ogre::AnimationState	*mAnimationStateZombie;
   Ogre::Entity		*mEntity;
@@ -45,7 +42,7 @@ protected:
   Ogre::SceneNode	*mZombie;
   Position		*mPosition;
   MapManager		*map;
-  GameObject *warrior;
+  GameObject		*warrior;
 };
 
 #endif			/* !_GAME_CORE__HPP_! */

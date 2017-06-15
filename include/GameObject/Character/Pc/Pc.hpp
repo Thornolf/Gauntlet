@@ -29,16 +29,17 @@ public:
   void			setName(const std::string &);
   Device		*getDevice(void) const;
   const std::string	&getName(void) const;
+  int			getSpeed(void) const;
 
-  void		moveUp(void);
-  void		moveDown(void);
-  void		moveLeft(void);
-  void		moveRight(void);
+  void		moveDown(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
+  void		moveUp(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
+  void		moveLeft(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
+  void		moveRight(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
 
 private:
   std::string						_name;
 public:
-  std::map<eventType, std::function<void(void)> >	_event;
+  std::map<eventType, std::function<void(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &)> >	_event;
 };
 
 #endif
