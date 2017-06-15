@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 15:31:12 2017 Robin Grattepanche
+** Last update Wed Jun 14 19:47:52 2017 Robin Grattepanche
 */
 
 #include "BaseGauntlet.hpp"
@@ -68,6 +68,9 @@ void BaseGauntlet::chooseSceneManager(void)
   mOverlaySystem = new Ogre::OverlaySystem();
   mSceneMgr->addRenderQueueListener(mOverlaySystem);
 }
+
+
+
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::createCamera(void)
 {
@@ -110,11 +113,8 @@ void BaseGauntlet::createFrameListener(void)
 	inputContext.mMouse = mMouse;
 	inputContext.mKeyboard = mKeyboard;
     mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-		OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_TOPLEFT, "EnterBtn", "Enter GameState", 250);
-		if(button->getName() == "ExitBtn")
-				std::cout << "************\n\n\n\n\n\n\n\n\nexit***********" << std::endl;
-    else if(button->getName() == "EnterBtn")
-        std::cout << "************\n\n\n\n\n\n\n\n\nenter***********" << std::endl;
+		OgreBites::Button *bent = mTrayMgr->createButton(OgreBites::TL_TOPLEFT, "Test", "Enter", 250);
+		OgreBites::Button *bexit = mTrayMgr->createButton(OgreBites::TL_TOPRIGHT, "Truc", "Exit", 250);
 		// 	std::cout << "*************************\n\n\n\nclicked\n\n\n\n\n\n******************" << std::endl;
 		// }
     // mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
@@ -142,6 +142,18 @@ void BaseGauntlet::createFrameListener(void)
     mDetailsPanel->hide();
     mRoot->addFrameListener(this);
 }
+
+//------------------------------------------------------------------------------------
+
+void BaseGauntlet::buttonHit(OgreBites::Button *button)
+{
+    if (button->getName() == "Test")
+    	mTrayMgr->moveWidgetToTray("Test", OgreBites::TL_BOTTOMLEFT);
+		if (button->getName() == "Truc")
+			mTrayMgr->moveWidgetToTray("Truc", OgreBites::TL_TOPLEFT);
+}
+
+
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::destroyScene(void)
 {

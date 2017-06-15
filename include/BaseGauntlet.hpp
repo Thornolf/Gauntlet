@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:31:36 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 15:14:53 2017 Robin Grattepanche
+** Last update Wed Jun 14 19:47:53 2017 Robin Grattepanche
 */
 
 #ifndef __BASEGAUNTLET__HPP_
@@ -62,6 +62,9 @@ protected:
     virtual bool mouseMoved( const OIS::MouseEvent &arg );
     virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
     virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+
+		void buttonHit(OgreBites::Button *button);
+
 
     // Ogre::WindowEventListener
     //Adjust mouse clipping area
