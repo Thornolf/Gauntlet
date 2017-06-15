@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Wed Jun 14 17:00:09 2017 Pierre
+// Last update Thu Jun 15 10:16:47 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -25,8 +25,7 @@ GameCore::~GameCore()
 
 void GameCore::createScene()
 {
-  Ogre::Entity		*wall;
-  Ogre::SceneNode	*node;
+  warrior = new Warrior("Warrrrrior", 100, 0, 25);
 
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
@@ -51,21 +50,11 @@ void GameCore::createScene()
   Skeleton *mSkull = new Skeleton(200, 0, 200, 50);
 
   //mNode->attachObject(mCamera);
-  wall = mSceneMgr->createEntity("Cube", "cube.mesh");
-  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode", Ogre::Vector3(0.0f, 50.0f,  750.0f));
-  node->attachObject(wall);
-  wall->setMaterialName("Examples/Rocky");
-  node->setScale(15.0f, 7.0f, 0.3f);
-
-  mNode->setOrientation(1,0,0,0);
-
 
   mZombieEnt = mSceneMgr->createEntity("Robot", "creature_northrendghoul2_northrendghoul2.mesh");
   mZombie = mSceneMgr->getRootSceneNode()->createChildSceneNode("RobotNode", mPosition->getVector());
   mZombie->attachObject(mZombieEnt);
   mZombie->setScale(1.5f, 1.5f, 1.5f);
-
-  //mSkull->setOgreBase(mSceneMgr);
 
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
@@ -84,9 +73,9 @@ void GameCore::createScene()
 void GameCore::createFrameListener(void)
 {
   BaseGauntlet::createFrameListener();
-  mAnimationState = mEntity->getAnimationState("Run");
+  /*mAnimationState = mEntity->getAnimationState("Run");
   mAnimationState->setLoop(true);
-  mAnimationState->setEnabled(true);
+  mAnimationState->setEnabled(true);*/
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -95,8 +84,8 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
   if (!processUnbufferedInput(fe))
     return false;
-  mAnimationState->addTime(fe.timeSinceLastFrame);
-  mAnimationStateZombie->addTime(fe.timeSinceLastFrame);
+  /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
+    mAnimationStateZombie->addTime(fe.timeSinceLastFrame);
   return ret;
 }
 
@@ -108,7 +97,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static Ogre::Real	move = 350;
 
   if (mMouse->getMouseState().buttonDown(OIS::MB_Left))
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Special", fe, mEntity);
+    mAnimationState = _animation->simpleAnimation(mAnimationState, "Death", fe, mEntity);
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
   SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
