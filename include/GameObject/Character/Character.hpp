@@ -12,6 +12,7 @@
 # define	_CHARACTER_HPP_
 
 # include "GameObject/GameObject.hpp"
+# include "Animation.hpp"
 
 class Character : public GameObject
 {
@@ -39,20 +40,14 @@ protected:
   int		_range;
   State	_state;
   std::map<State, Animation*>	_animations;
-  Animation* _currentAnimation;
-
-  /* Classes */
+  Animation*			_currentAnimation;
 
   void launchAnimation(const Ogre::FrameEvent& fe, State state);
-  void		takeDamage(int dmg);
-  void		attack(Character *target);
-  bool		isAlive() const;
-  void		getDistance() const;
-  int		getRange(void) const;
-
-  /*virtual void		setOgreBase(Ogre::SceneManager*);
-  virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);
-  virtual void		Animate(const Ogre::FrameEvent&);*/
+  void	takeDamage(int dmg);
+  void	attack(Character *target);
+  bool	isAlive() const;
+  void	getDistance() const;
+  int	getRange(void) const;
 };
 
 #endif

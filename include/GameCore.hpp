@@ -22,8 +22,6 @@
 # include "GameObject/Character/Npc/Skeleton.hpp"
 # include "GameObject/Doodad/Doodad.hpp"
 # include "MapManager.hpp"
-# include "RenderManager.hpp"
-# include "Input/Device.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -35,10 +33,6 @@ protected:
   virtual void createFrameListener(void);
   virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
   virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
-
-  /* Définitif */
-  Configuration		_config;
-  RenderManager		_render;
 
   /* Temporaire */
   CollisionTools	*collision;

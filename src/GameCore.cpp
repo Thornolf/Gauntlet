@@ -15,23 +15,8 @@
 
 #include "GameCore.hpp"
 
-GameCore::GameCore()
+GameCore::GameCore() : BaseGauntlet()
 {
-  /* Configuration initialisation */
-  Configuration		*mConfig = new Configuration();
-  std::vector<Pc*>	players;
-  Pc			*unitPlayer;
-
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("TANK", Position(500, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("MAGE", Position(200, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("ARCHER", Position(-100, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("WARRIOR", Position(-400, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  mConfig->setPlayers(players);
-  /* Configuration END initialisation */
 }
 
 GameCore::~GameCore()
@@ -45,11 +30,11 @@ void GameCore::createScene()
 
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
-  map->generateMap(_render);
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
+  map->generateMap(*this->mRenderManager);
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
 
   mPosition = new Position(100, 0, -450);
-   mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
   //light *ambient = new light(mSceneMgr, "ambient", Ogre::Light::LT_DIRECTIONAL, 0, 50, 0);
   //ambient->setDiffuseColour(Ogre::ColourValue(1.0, 1.0, 1.0));
   mEntity = mSceneMgr->createEntity("Ninja", "character_human_male_humanmale_hd.mesh");
@@ -57,9 +42,9 @@ void GameCore::createScene()
   Ogre::Entity *weapon = mSceneMgr->createEntity("character_human_female_humanfemale_hd.mesh");
 
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode", Ogre::Vector3(100.0f, 0.0f, 25.0f));
-	// light *ambient = new light(mSceneMgr, mNode, "ambient", Ogre::Light::LT_SPOTLIGHT, 0, 100, 0);
-	// ambient->setDiffuseColour(Ogre::ColourValue(1.0, 0.0, 0.0));
-	// ambient->setDirection(Ogre::Vector3(0, -1, 0));
+  // light *ambient = new light(mSceneMgr, mNode, "ambient", Ogre::Light::LT_SPOTLIGHT, 0, 100, 0);
+  // ambient->setDiffuseColour(Ogre::ColourValue(1.0, 0.0, 0.0));
+  // ambient->setDirection(Ogre::Vector3(0, -1, 0));
   mNode->attachObject(mEntity);
   mNode->setScale(2,2,2);
 
@@ -92,8 +77,8 @@ void GameCore::createScene()
   groundEntity->setMaterialName("Examples/Rockwall");
 
   collision = new CollisionTools();
-  this->_render.forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
 }
 
 void GameCore::createFrameListener(void)
@@ -127,62 +112,62 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
   SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("NinjaNode")->getPosition(),
-								  mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-								  mEntity,
-								  false);
+									 mSceneMgr->getSceneNode("NinjaNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+									 mEntity,
+									 false);
 
   SCheckCollisionAnswer Zcollider = collision->check_ray_collision(mSceneMgr->getSceneNode("RobotNode")->getPosition(),
-                			           mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
-                								  mZombieEnt,
-                								  false);
+								   mSceneMgr->getSceneNode("RobotNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 70.0f, 70.0f, 1,
+								   mZombieEnt,
+								   false);
 
-  this->_config.forEachPlayer([&](Pc *player){player->Animate(fe);});
+  this->mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
   if (collider.collided)
     dirVec.x -= 20 + move;
   else
   {
-  if (mKeyboard->isKeyDown(OIS::KC_L))
-  {
-    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
-    dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
-  }
-  else if (mKeyboard->isKeyDown(OIS::KC_M))
-  {
-    mNode->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
-    dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
-  }
-  else if (mKeyboard->isKeyDown(OIS::KC_K))
-  {
-    mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
-    dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
-  }
+    if (mKeyboard->isKeyDown(OIS::KC_L))
+    {
+      mNode->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
+      dirVec.x += move;
+      mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+    }
+    else if (mKeyboard->isKeyDown(OIS::KC_M))
+    {
+      mNode->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
+      dirVec.x += move;
+      mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+    }
+    else if (mKeyboard->isKeyDown(OIS::KC_K))
+    {
+      mNode->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
+      dirVec.x += move;
+      mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+    }
 
-  else if (mKeyboard->isKeyDown(OIS::KC_O))
-  {
-    mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
-    dirVec.x += move;
-    mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+    else if (mKeyboard->isKeyDown(OIS::KC_O))
+    {
+      mNode->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
+      dirVec.x += move;
+      mAnimationState = _animation->simpleAnimation(mAnimationState, "Run", fe, mEntity);
+    }
+    else
+      mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
   }
-  else
-     mAnimationState = _animation->loopAnimation(mAnimationState, "Stand", fe, mEntity);
-   }
-	if (mKeyboard->isKeyDown(OIS::KC_J))
-	{
-		mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Radian(rotate),
-			Ogre::Node::TS_LOCAL);
-		std::cout << mSceneMgr->getSceneNode("NinjaNode")->getOrientation() << std::endl;
-	}
+  if (mKeyboard->isKeyDown(OIS::KC_J))
+  {
+    mSceneMgr->getSceneNode("NinjaNode")->yaw(Ogre::Radian(rotate),
+					      Ogre::Node::TS_LOCAL);
+    std::cout << mSceneMgr->getSceneNode("NinjaNode")->getOrientation() << std::endl;
+  }
 
   mSceneMgr->getSceneNode("NinjaNode")->translate(
     dirVec * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);
 
 
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mNode, fe);});
   // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
 
   mAnimationStateZombie = mZombieEnt->getAnimationState("Stand");
