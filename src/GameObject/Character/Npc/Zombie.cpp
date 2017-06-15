@@ -62,7 +62,7 @@ void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target
   }
   else
     {
-      this->launchAnimation(fe, WALK);
+      this->launchAnimation(fe, RUN);
       mAnimationState = this->_currentAnimation->getAnimationState();
       mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
     }
