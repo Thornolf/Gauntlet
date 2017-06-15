@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:24:56 2017 Adrien Warin
-// Last update Wed Jun 14 17:28:34 2017 Thomas Fossaert
+// Last update Thu Jun 15 14:20:22 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Script.hpp"
@@ -18,30 +18,30 @@ Script::~Script ()
 {
 }
 
-Ogre::Vector3 Script::ZombieScript(Ogre::SceneNode *current, Ogre::SceneNode *target)
+Ogre::Vector3 Script::ZombieScript(GameObject *current, GameObject *target)
 {
   int aggroX = 0;
   int aggroZ = 0;
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
-  SCheckCollisionAnswer collider = _collision->check_ray_collision(current->getPosition(),
-                     current->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+  SCheckCollisionAnswer collider = _collision->check_ray_collision(current->getSceneNode()->getPosition(),
+                     current->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
                      _entity, false);
 
-  aggroX = std::abs(current->getPosition().x - target->getPosition().x);
-  aggroZ = std::abs(current->getPosition().z - target->getPosition().z);
+  aggroX = std::abs(current->getSceneNode()->getPosition().x - target->getSceneNode()->getPosition().x);
+  aggroZ = std::abs(current->getSceneNode()->getPosition().z - target->getSceneNode()->getPosition().z);
   if (!collider.collided)
     {
         if (aggroX < 175 && aggroZ < 175)
          dirVec.x = 1;
        else if (aggroX < 775 && aggroZ < 775)
         {
-           if (current->getPosition().x < target->getPosition().x)
+           if (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x)
             dirVec.x = 123;
-           else if (current->getPosition().x > target->getPosition().x)
+           else if (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x)
             dirVec.x = -123;
-           if (current->getPosition().z > target->getPosition().z)
+           if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
             dirVec.z = -123;
-           else if (current->getPosition().z < target->getPosition().z)
+           else if (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z)
             dirVec.z = 123;
         }
     }
@@ -51,59 +51,60 @@ Ogre::Vector3 Script::ZombieScript(Ogre::SceneNode *current, Ogre::SceneNode *ta
        dirVec.x = 1;
      else if (aggroX < 775 && aggroZ < 775)
       {
-         if (current->getPosition().x < collider.position.x)
-          dirVec.x = -30;
-         else if (current->getPosition().x > target->getPosition().x)
-          dirVec.x = 30;
-         if (current->getPosition().z > target->getPosition().z)
-          dirVec.z = 30;
-         else if (current->getPosition().z < target->getPosition().z)
-          dirVec.z = -30;
+         if (current->getSceneNode()->getPosition().x < collider.position.x)
+          dirVec.x = -530;
+         else if (current->getSceneNode()->getPosition().x > collider.position.x)
+          dirVec.x = 530;
+         else if (current->getSceneNode()->getPosition().z > collider.position.z)
+          dirVec.z = 530;
+         else if (current->getSceneNode()->getPosition().z < collider.position.z)
+          dirVec.z = -530;
+	 dirVec.x +=2;
       }
   }
   return (dirVec);
 }
 
-Ogre::Vector3 Script::SkeletonScript(Ogre::SceneNode *current, Ogre::SceneNode *target)
+Ogre::Vector3 Script::SkeletonScript(GameObject *current, GameObject *target)
 {
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  if (current->getPosition().x < target->getPosition().x)
+  if (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x)
     dirVec.x = 75;
-  if (current->getPosition().x > target->getPosition().x)
+  if (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x)
     dirVec.x = -75;
-  if (current->getPosition().z > target->getPosition().z)
+  if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
     dirVec.z = -75;
-  if (current->getPosition().z < target->getPosition().z)
+  if (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z)
     dirVec.z = 75;
 
   return (dirVec);
 }
 
-Ogre::Vector3 Script::BossScript(Ogre::SceneNode *current, Ogre::SceneNode *target)
+Ogre::Vector3 Script::BossScript(GameObject *current, GameObject *target)
 {
   int aggroX = 0;
   int aggroZ = 0;
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
-  SCheckCollisionAnswer collider = _collision->check_ray_collision(current->getPosition(),
-                     current->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+  SCheckCollisionAnswer collider = _collision->check_ray_collision(current->getSceneNode()->getPosition(),
+                     current->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
                      _entity, false);
 
-  aggroX = std::abs(current->getPosition().x - target->getPosition().x);
-  aggroZ = std::abs(current->getPosition().z - target->getPosition().z);
+  aggroX = std::abs(current->getSceneNode()->getPosition().x - target->getSceneNode()->getPosition().x);
+  aggroZ = std::abs(current->getSceneNode()->getPosition().z - target->getSceneNode()->getPosition().z);
   if (!collider.collided)
     {
         if (aggroX < 175 && aggroZ < 175)
 	       dirVec.x = 1;
        else if (aggroX < 775 && aggroZ < 775)
 	      {
-	         if (current->getPosition().x < target->getPosition().x)
+	         if (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x)
 	          dirVec.x = 205;
-	         else if (current->getPosition().x > target->getPosition().x)
+	         if (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x)
 	          dirVec.x = -205;
-	         if (current->getPosition().z > target->getPosition().z)
+	         if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
 	          dirVec.z = -205;
-	         else if (current->getPosition().z < target->getPosition().z)
+	         if (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z)
 	          dirVec.z = 205;
 	      }
     }
@@ -113,14 +114,15 @@ Ogre::Vector3 Script::BossScript(Ogre::SceneNode *current, Ogre::SceneNode *targ
        dirVec.x = 1;
      else if (aggroX < 775 && aggroZ < 775)
       {
-         if (current->getPosition().x < target->getPosition().x)
-          dirVec.x = -30;
-         else if (current->getPosition().x > target->getPosition().x)
-          dirVec.x = 30;
-         if (current->getPosition().z > target->getPosition().z)
-          dirVec.z = 30;
-         else if (current->getPosition().z < target->getPosition().z)
-          dirVec.z = -30;
+         if (current->getSceneNode()->getPosition().x < collider.position.x)
+          dirVec.x = -530;
+         else if (current->getSceneNode()->getPosition().x > collider.position.x)
+          dirVec.x = 530;
+         else if (current->getSceneNode()->getPosition().z > collider.position.z)
+          dirVec.z = 530;
+         else if (current->getSceneNode()->getPosition().z < collider.position.z)
+          dirVec.z = -530;
+	dirVec.x +=2;
       }
   }
   return (dirVec);

@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-// Last update Thu Jun 15 11:31:38 2017 Adrien Warin
+** Last update Thu Jun 15 15:23:22 2017 Adrien Warin
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -14,8 +14,11 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
 {
   this->_health = 120;
   this->_attack = 100;
+  this->_score = 0;
   mPosition		= new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
   this->_currentAnimation = this->_animations[IDLE];
 }
 
@@ -54,7 +57,7 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void Warrior::Animate(const Ogre::FrameEvent& fe)
 {
-  this->launchAnimation(fe, IDLE);
+  this->launchAnimation(fe, RUN);
   mAnimationState = this->_currentAnimation->getAnimationState();
 }
 

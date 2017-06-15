@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Thu Jun  1 11:30:22 2017 Guillaume CAUCHOIS
+// Last update Thu Jun 15 14:30:04 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -15,6 +15,7 @@ Character::Character(int x, int y, int z) : GameObject(x, y, z)
   this->_health = 100;
   this->_cooldown = 100;
   this->_speed = 100;
+  this->_score = 0;
   /* this->_script = nullptr */
   this->_range = 1;
 }
@@ -73,4 +74,16 @@ void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
       this->_currentAnimation = this->_animations[state];
       this->_currentAnimation->enable();
     }
+}
+
+void Character::setScore(int point)
+{
+  this->_score += point;
+}
+
+void Character::gainHealth(int value)
+{
+  this->_health += value;
+  if (this->_health > 300)
+    this->_health = 300;
 }

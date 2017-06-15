@@ -59,3 +59,8 @@ bool goldStack::isTaken(Pc const & other)
     return (true);
   return (false);
 }
+
+void goldStack::increaseScore(Pc *player)
+{
+  player->setScore(100);
+}
