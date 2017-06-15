@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Jun 14 11:07:10 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 15:26:30 2017 Robin Grattepanche
+** Last update Thu Jun 15 10:42:53 2017 Thomas Fossaert
 */
 
 #ifndef		_GAME_CORE__HPP_
@@ -17,13 +17,14 @@
 # include "BaseGauntlet.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"
-# include "GameObject/Character/Script.hpp"
+//# include "GameObject/Character/Script.hpp"
 # include "GameObject/Character/Npc/Zombie.hpp"
 # include "GameObject/Character/Npc/Skeleton.hpp"
 # include "GameObject/Doodad/Doodad.hpp"
 # include "MapManager.hpp"
 # include "RenderManager.hpp"
 # include "Input/Device.hpp"
+# include "GameObject/Character/Character.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -51,6 +52,7 @@ protected:
   Ogre::SceneNode	*mZombie;
   Position		*mPosition;
   MapManager		*map;
+  GameObject *warrior;
 };
 
 #endif			/* !_GAME_CORE__HPP_! */

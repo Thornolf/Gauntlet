@@ -45,9 +45,9 @@ void Boss::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setScale(1.5f, 1.5f, 1.5f);
 }
 
-void Boss::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
+void Boss::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, const Ogre::FrameEvent& fe)
 {
-  Ogre::Vector3 move = mScript->BossScript(mSceneMgr->getSceneNode(mNodeName), target);
+  Ogre::Vector3 move = mScript->BossScript(this, target);
 
   if (move == Ogre::Vector3::ZERO)
   {

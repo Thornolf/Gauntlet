@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:25:19 2017 Adrien Warin
-** Last update Wed Jun 14 11:31:24 2017 Thomas Fossaert
+** Last update Thu Jun 15 09:30:41 2017 Thomas Fossaert
 */
 
 #ifndef SCRIPT_HPP_
@@ -20,9 +20,12 @@
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 
+#include "GameObject/GameObject.hpp"
 #include "NewMOC.hpp"
 
 using namespace Collision;
+
+class GameObject;
 
 class Script
 {
@@ -34,9 +37,9 @@ public:
   Script ();
 
   virtual ~Script ();
-  Ogre::Vector3 ZombieScript(Ogre::SceneNode *,Ogre::SceneNode *);
-  Ogre::Vector3 SkeletonScript(Ogre::SceneNode *,Ogre::SceneNode *);
-  Ogre::Vector3 BossScript(Ogre::SceneNode *,Ogre::SceneNode *);
+  Ogre::Vector3 ZombieScript(GameObject *,GameObject *);
+  Ogre::Vector3 SkeletonScript(GameObject *,GameObject *);
+  Ogre::Vector3 BossScript(GameObject *,GameObject *);
   void setCollision(CollisionTools *collision, Ogre::Entity* ent);
 };
 
