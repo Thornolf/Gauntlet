@@ -32,7 +32,7 @@ material world_expansion05_doodads_human_doodads_6hu_barracks_keyring01.
 
             texture_unit
             {
-                texture Key_6hu_barracks_prisonextras1.png
+                texture GoldStack_goldsword01.png
                 tex_address_mode wrap
                 scale 1.0 1.0
                 colour_op modulate

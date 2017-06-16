@@ -36,6 +36,8 @@ void GameCore::createScene()
   _mmusic.insert(std::make_pair("Wyrm", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_4_Wyrm.ogg", "Wyrm")));
   _msound.insert(std::make_pair("gold", new Sound("dist/media/soundeffect/PowerUpSound/GoldSound.ogg", "gold")));
   _msound.insert(std::make_pair("food", new Sound("dist/media/soundeffect/PowerUpSound/FoodSound.ogg", "food")));
+  _msound.insert(std::make_pair("key", new Sound("dist/media/soundeffect/PowerUpSound/KeySound.ogg", "key"
+    "")));
   auto itm = _mmusic.begin();
   itm->second->playAudio();
   this->setCurrMusicName(itm->second->getCurrentName());
@@ -134,6 +136,18 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 		player->gainHealth(50);
 		_msound["food"]->playAudio();
 		//static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
+		this->mRenderManager->eraseEntities(tmp);
+		collision->remove_entity(collider.entity);
+	      }
+	    }
+	    else if (!collider.entity->getName().compare(0,3, "key"))
+	    {
+	      if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+	      {
+		tmp->unsetEntity(mSceneMgr);
+		_msound["key"]->playAudio();
+		/* Action to set the possession of the key */
+
 		this->mRenderManager->eraseEntities(tmp);
 		collision->remove_entity(collider.entity);
 	      }
