@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Thu Jun 15 10:54:04 2017 Robin Grattepanche
+** Last update Thu Jun 15 10:58:29 2017 Robin Grattepanche
 */
 
 #include <SFML/Graphics.hpp>
@@ -98,13 +98,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static Ogre::Real	rotate = .05;
   static Ogre::Real	move = 350;
 
-<<<<<<< HEAD
-  // if (mMouse->getMouseState().buttonDown(OIS::MB_Left))
-  //   mAnimationState = _animation->simpleAnimation(mAnimationState, "Special", fe, mEntity);
-=======
   if (mMouse->getMouseState().buttonDown(OIS::MB_Left))
     mAnimationState = _animation->simpleAnimation(mAnimationState, "Death", fe, mEntity);
->>>>>>> 6dc1f679cc980788b51e2b231d95ae4dd7df923b
 
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
   SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("WarriorNode")->getPosition(),
