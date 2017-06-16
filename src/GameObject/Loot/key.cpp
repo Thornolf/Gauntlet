@@ -50,7 +50,7 @@ void key::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
   this->_aura = new Particle(std::to_string(_id), "Examples/Key" , mSceneMgr, mNode);
-  this->_aura->destroy();
+  //this->_aura->destroy();
 }
 
 bool key::isTaken(Pc const & other)
