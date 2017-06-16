@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Thu Jun 15 15:23:46 2017 Adrien Warin
+** Last update Thu Jun 15 18:33:08 2017 Adrien Warin
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -52,6 +52,7 @@ void Tank::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_55", shield, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_96", helm, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_42", rshoulder, Ogre::Quaternion(1,0,0,0));
+ this->_aura = new Particle("yellow", "Examples/Aureola" , mSceneMgr, mNode);
 
 }
 

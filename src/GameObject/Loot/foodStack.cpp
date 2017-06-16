@@ -45,7 +45,7 @@ void foodStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void foodStack::Animate(const Ogre::FrameEvent& fe)
 {
-  
+
 }
 
 void foodStack::unsetEntity(Ogre::SceneManager *mSceneMgr)

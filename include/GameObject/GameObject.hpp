@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 15 13:04:02 2017 Thomas Fossaert
+** Last update Thu Jun 15 16:56:57 2017 Adrien Warin
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -24,6 +24,7 @@
 # include "GameObject/Character/Script.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"
+#include "Particle.hpp"
 
 class Script;
 
@@ -37,6 +38,7 @@ protected:
   Position		*mPosition;
   Animation		*mAnimation;
   std::string		mNodeName;
+  Particle *_aura;
 
 public:
   GameObject(int, int, int);

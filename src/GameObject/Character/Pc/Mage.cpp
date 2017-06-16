@@ -42,7 +42,6 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   Ogre::Entity *rshoulder = mSceneMgr->createEntity("item_objectcomponents_shoulder_rshoulder_robe_raidmage_e_01.mesh");
   Ogre::Entity *helm = mSceneMgr->createEntity("item_objectcomponents_head_helm_robe_raidmage_e_01_hum.mesh");
 
-
   mEntity = mSceneMgr->createEntity("Mage", "character_human_male_humanmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageNode", mPosition->getVector());
   mNode->attachObject(mEntity);
@@ -51,6 +50,8 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_33", lshoulder, Ogre::Quaternion(0,0,1,0));
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_32", rshoulder, Ogre::Quaternion(0,0,1,0));
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_93", helm, Ogre::Quaternion(1,0,0,0));
+  this->_aura = new Particle("RED", "Examples/AureolaROUGE", mSceneMgr, mNode);
+
 }
 
 

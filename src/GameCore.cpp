@@ -105,7 +105,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
         {
           collision->remove_entity(collider.entity);
           mSceneMgr->destroyEntity(collider.entity);
-	  static_cast<Character*>(warrior)->setScore(100);
+          static_cast<Character*>(warrior)->setScore(100);
+        //  Particle *test = new Particle("test", "Example/getGold", mSceneMgr, collider.entity);
         }
       else if (!collider.entity->getName().compare(0,9, "foodStack"))
          {

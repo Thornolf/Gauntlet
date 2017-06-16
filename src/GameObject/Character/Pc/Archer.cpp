@@ -56,6 +56,8 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_32", rshoulder, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_44", helm, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_2", quiver, Ogre::Quaternion(1,0,0,1));
+  this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
+
 }
 
 
