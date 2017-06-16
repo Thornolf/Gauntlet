@@ -24,7 +24,6 @@ public:
   /* Member functions */
   void		setOgreBase(Ogre::SceneManager*);
   void	  launchScript(Ogre::SceneManager*, GameObject *, const Ogre::FrameEvent&);
-  void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
   void    initScript(CollisionTools* tool);
 };

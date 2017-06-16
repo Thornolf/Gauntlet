@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:25 2017 Adrien Warin
-** Last update Mon Jun 12 09:53:19 2017 Thomas Fossaert
+** Last update Fri Jun 16 14:36:35 2017 Pierre
 */
 
 #ifndef _TANK_HPP_
@@ -23,7 +23,6 @@ public:
   virtual ~Tank();
 
   void		setOgreBase(Ogre::SceneManager*);
-  void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 };
 

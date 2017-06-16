@@ -16,6 +16,9 @@ Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y
   this->_attack = 175;
   mPosition = new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
 }
 
@@ -57,13 +60,6 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_2", quiver, Ogre::Quaternion(1,0,0,1));
   this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
 
-}
-
-
-void Archer::Animate(const Ogre::FrameEvent& fe)
-{
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Archer::unsetEntity(Ogre::SceneManager *mSceneMgr)

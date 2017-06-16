@@ -1,3 +1,5 @@
+#include <OIS.h>
+
 /*
 ** Mage.cpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/src
 **
@@ -5,7 +7,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Fri Jun 16 11:31:47 2017 Pierre
+** Last update Fri Jun 16 14:34:53 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
@@ -16,6 +18,9 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_attack		= 175;
   mPosition		= new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
 }
 
@@ -52,13 +57,6 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_93", helm, Ogre::Quaternion(1,0,0,0));
   this->_aura = new Particle("RED", "Examples/AureolaROUGE", mSceneMgr, mNode);
 
-}
-
-
-void Mage::Animate(const Ogre::FrameEvent& fe)
-{
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)

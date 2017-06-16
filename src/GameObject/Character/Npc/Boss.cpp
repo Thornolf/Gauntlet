@@ -72,12 +72,6 @@ void Boss::initScript(CollisionTools* tool)
   mScript->setCollision(tool, mEntity);
 }
 
-void Boss::Animate(const Ogre::FrameEvent& fe)
-{
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->mAnimation->getAnimationState();
-}
-
 void Boss::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
