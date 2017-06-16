@@ -31,9 +31,7 @@ const std::vector<Pc*>	&Configuration::getPlayers(void) const
 
 void	Configuration::addPlayer(Pc* player)
 {
-  std::cout << "DEBUG - SIZE BEFORE : " << this->_players.size() << std::endl;
   this->_players.push_back(player);
-  std::cout << "DEBUG - SIZE AFTER : " << this->_players.size() << std::endl;
 }
 
 void	Configuration::addScorePoint(int nbPoint)
