@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Jun 07 13:19:02 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 07 13:19:02 2017 Guillaume CAUCHOIS
+** Last update Thu Jun 15 22:06:09 2017 Thomas Fossaert
 */
 
 #ifndef		_RENDER_MANAGER__HPP_
@@ -62,6 +62,8 @@ public:
 
   /* _entities utils */
   std::vector<GameObject *>	&getEntitiesVector(void);
+  GameObject* searchEntities(const std::string &);
+  void eraseEntities(GameObject *);
 
   template <typename UnaryFunction>
   void		forEachEntity(UnaryFunction f)

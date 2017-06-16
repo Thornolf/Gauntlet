@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 11:04:17 2017 Quentin Baudet
+** Last update Fri Jun 16 10:32:23 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Pc.hpp"
@@ -47,7 +47,7 @@ void		Pc::moveUp(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector
 {
   this->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
   dirVec.x += this->_speed;
-  this->Animate(fe);
+  this->launchAnimation(fe, RUN);
 //  camVec.z -= 1;
 }
 
@@ -55,7 +55,7 @@ void		Pc::moveDown(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vect
 {
   this->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
   dirVec.x += this->_speed;
-  this->Animate(fe);
+  this->launchAnimation(fe, RUN);
   //camVec.z -= 1;
 }
 
@@ -63,7 +63,7 @@ void		Pc::moveLeft(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vect
 {
   this->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
   dirVec.x += this->_speed;
-  this->Animate(fe);
+  this->launchAnimation(fe, RUN);
   //.camVec.x += 1;
 }
 
@@ -71,7 +71,7 @@ void		Pc::moveRight(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vec
 {
   this->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
   dirVec.x += this->_speed;
-  this->Animate(fe);
+  this->launchAnimation(fe, RUN);
   // camVec.x += 1;
 }
 
