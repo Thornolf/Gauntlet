@@ -18,6 +18,7 @@
 # include "Position.hpp"
 # include "Animation.hpp"
 # include "Audio/Music.hpp"
+# include "Audio/SoundSystem.hpp"
 //# include "GameObject/Character/Script.hpp"
 # include "GameObject/Character/Npc/Zombie.hpp"
 # include "GameObject/Character/Npc/Skeleton.hpp"
@@ -39,6 +40,7 @@ class GameCore : public BaseGauntlet
     virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
     std::unordered_map<std::string, Music *>	_mmusic;
+    std::unordered_map<std::string, Sound *>	_msound;
     std::string					_currentMusic;
     Ogre::AnimationState			*mAnimationState;
     Ogre::AnimationState			*mAnimationStateZombie;
