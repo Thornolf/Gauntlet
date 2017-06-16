@@ -22,6 +22,9 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_animations[ATTACK]	= new Animation("Spell", false, 1, 0, 0.5);
   this->_animations[DIE]	= new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
+  this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Human/HumanAttack.ogg", "Attack")));
+  this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Human/HumanDeath.ogg", "Death")));
+  this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "Injured")));
 }
 
 Mage::Mage(Mage const & other) : Ranged(other) {}

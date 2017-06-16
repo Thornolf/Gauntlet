@@ -16,34 +16,35 @@
 # define	_CHARACTER_HPP_
 
 # include "GameObject/GameObject.hpp"
+# include "Audio/SoundSystem.hpp"
 # include "Animation.hpp"
 
 class Character : public GameObject
 {
-public:
-  Character(int x, int y, int z);
-  Character(Character const &);
-  Character& operator=(Character const &);
-  virtual ~Character();
+  public:
+    Character(int x, int y, int z);
+    Character(Character const &);
+    Character& operator=(Character const &);
+    virtual ~Character();
 
-  void  setScore(int);
-  void  gainHealth(int);
-  void	Animate(const Ogre::FrameEvent&);
+    void 	gainHealth(int);
+    void	Animate(const Ogre::FrameEvent&);
 
-protected:
+  protected:
 
-  int		_health;
-  int		_attack;
-  int		_cooldown;
-  int		_speed;
-  int		_range;
+    int							_health;
+    int							_attack;
+    int							_cooldown;
+    int							_speed;
+    int							_range;
+    std::unordered_map<std::string, Sound *>		_csound;
 
-  void launchAnimation(const Ogre::FrameEvent& fe, State state);
-  void		takeDamage(int dmg);
-  void		attack(Character *target);
-  bool		isAlive() const;
-  void		getDistance() const;
-  int		getRange(void) const;
+    void		launchAnimation(const Ogre::FrameEvent& fe, State state);
+    void		takeDamage(int dmg);
+    void		attack(Character *target);
+    bool		isAlive() const;
+    void		getDistance() const;
+    int			getRange(void) const;
 };
 
 #endif
