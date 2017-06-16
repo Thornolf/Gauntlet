@@ -17,6 +17,7 @@
 # include "BaseGauntlet.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"
+# include "Audio/Music.hpp"
 //# include "GameObject/Character/Script.hpp"
 # include "GameObject/Character/Npc/Zombie.hpp"
 # include "GameObject/Character/Npc/Skeleton.hpp"
@@ -25,24 +26,30 @@
 
 class GameCore : public BaseGauntlet
 {
-public:
-  GameCore();
-  virtual ~GameCore();
-protected:
-  virtual void createScene(void);
-  virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
-  virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
+  public:
+    GameCore();
+    virtual ~GameCore();
 
-  Ogre::AnimationState	*mAnimationState;
-  Ogre::AnimationState	*mAnimationStateZombie;
-  Ogre::Entity		*mEntity;
-  Ogre::Entity		*mZombieEnt;
-  Animation		*_animation;
-  Ogre::SceneNode	*mNode;
-  Ogre::SceneNode	*mZombie;
-  Position		*mPosition;
-  MapManager		*map;
-  GameObject		*warrior;
+    void		setCurrMusicName(std::string);
+    std::string		getCurrMusicName() const;
+
+  protected:
+    virtual void createScene(void);
+    virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
+    virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
+
+    std::unordered_map<std::string, Music *>	_mmusic;
+    std::string					_currentMusic;
+    Ogre::AnimationState			*mAnimationState;
+    Ogre::AnimationState			*mAnimationStateZombie;
+    Ogre::Entity				*mEntity;
+    Ogre::Entity				*mZombieEnt;
+    Animation					*_animation;
+    Ogre::SceneNode				*mNode;
+    Ogre::SceneNode				*mZombie;
+    Position					*mPosition;
+    MapManager					*map;
+    GameObject					*warrior;
 };
 
 #endif			/* !_GAME_CORE__HPP_! */
