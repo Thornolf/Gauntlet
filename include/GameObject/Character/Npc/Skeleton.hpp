@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 15 08:57:19 2017 Thomas Fossaert
+** Last update Fri Jun 16 14:36:53 2017 Pierre
 */
 
 #ifndef _Skeleton_HPP_
@@ -24,7 +24,6 @@ public:
 
   void		setOgreBase(Ogre::SceneManager*);
   void	launchScript(Ogre::SceneManager*, GameObject *, const Ogre::FrameEvent&);
-  void		Animate(const Ogre::FrameEvent&);
   void    unsetEntity(Ogre::SceneManager *mSceneMgr);
   void    initScript(CollisionTools* tool);
 };

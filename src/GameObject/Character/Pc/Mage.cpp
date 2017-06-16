@@ -7,7 +7,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Fri Jun 16 11:31:47 2017 Pierre
+** Last update Fri Jun 16 14:34:53 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
@@ -57,13 +57,6 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_93", helm, Ogre::Quaternion(1,0,0,0));
   this->_aura = new Particle("RED", "Examples/AureolaROUGE", mSceneMgr, mNode);
 
-}
-
-
-void Mage::Animate(const Ogre::FrameEvent& fe)
-{
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)

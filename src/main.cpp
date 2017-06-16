@@ -5,13 +5,21 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:36:03 2017 Guillaume CAUCHOIS
-** Last update Fri Jun 02 06:36:03 2017 Guillaume CAUCHOIS
+// Last update Fri Jun 16 13:40:05 2017 Robin Grattepanche
 */
-
-#include "GameCore.hpp"
+#include	<SFML/Graphics.hpp>
+#include	<SFML/Window.hpp>
+#include	<SFML/System/Clock.hpp>
+#include 	"GameCore.hpp"
+#include	"Menu/MenuCore.hpp"
 
 int	main()
 {
+  int		check = 0;
+
+  //Menu	*menu = new Menu();
+
+  //menu->menuLoop();
   try
     {
       GameCore		app;

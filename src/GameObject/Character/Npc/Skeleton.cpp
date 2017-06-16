@@ -66,12 +66,6 @@ void Skeleton::initScript(CollisionTools* tool)
   mScript->setCollision(tool, mEntity);
 }
 
-void Skeleton::Animate(const Ogre::FrameEvent& fe)
-{
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->mAnimation->getAnimationState();
-}
-
 void Skeleton::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);

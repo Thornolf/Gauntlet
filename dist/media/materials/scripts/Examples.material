@@ -659,6 +659,19 @@ material Examples/Rocky
 		}
 	}
 }
+material Examples/RockNRoll
+{
+technique
+{
+	pass
+	{
+		texture_unit
+		{
+			texture theotime.ducatez.jpg
+		}
+	}
+}
+}
 material Examples/10PointBlock
 {
 	technique
@@ -1871,16 +1884,16 @@ material Examples/GrassBlades
 
 material Examples/Rockwall
 {
-	technique
+technique
+{
+	pass
 	{
-		pass
+		texture_unit
 		{
-			texture_unit
-			{
-				texture rockwall.tga
-			}
+			texture rockwall.tga
 		}
 	}
+}
 }
 
 material Examples/Aureola

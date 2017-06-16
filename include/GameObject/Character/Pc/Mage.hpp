@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:26:19 2017 Pierre
-** Last update Tue May 30 10:39:47 2017 Pierre
+** Last update Fri Jun 16 14:36:41 2017 Pierre
 */
 
 #ifndef		_MAGE__HPP_
@@ -24,7 +24,6 @@ public:
   virtual ~Mage();
 
   void		setOgreBase(Ogre::SceneManager*);
-  void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 };
 

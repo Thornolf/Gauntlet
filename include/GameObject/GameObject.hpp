@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 16 11:39:56 2017 Pierre
+// Last update Fri Jun 16 14:07:33 2017 Adrien Warin
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -57,7 +57,7 @@ protected:
   bool _isBusy;
   State _busyAnimation;
   Particle *_aura;
-
+  Particle *_unset;
 public:
   GameObject(int, int, int);
   GameObject(GameObject const &);

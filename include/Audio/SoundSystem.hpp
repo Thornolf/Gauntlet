@@ -13,12 +13,12 @@
 
 # include "IAudio.hpp"
 
-class SoundSystem : public IAudio
+class Sound : public IAudio
 {
   public:
-    SoundSystem();
-    SoundSystem(const std::string &, const std::string &);
-    virtual ~SoundSystem();
+    Sound();
+    Sound(const std::string &, const std::string &);
+    virtual ~Sound();
 
     void loadAudio(const std::string & , const std::string &);
     void playAudio();
@@ -29,9 +29,12 @@ class SoundSystem : public IAudio
     std::string getCurrentName() const;
     void setCurrentName(const std::string &);
     void setLoop(bool);
+    void setFilePath(std::string);
+    std::string getFilePath() const ;
 
   private:
     std::string		_currSoundName;
+    std::string		_filePath;
     sf::SoundBuffer	_buffer;
     sf::Sound		_sound;
 };

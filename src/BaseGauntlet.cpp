@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 15:31:12 2017 Robin Grattepanche
+** Last update Fri Jun 16 13:48:13 2017 Robin Grattepanche
 */
 
 #include "BaseGauntlet.hpp"
@@ -71,6 +71,9 @@ void BaseGauntlet::chooseSceneManager(void)
   mOverlaySystem = new Ogre::OverlaySystem();
   mSceneMgr->addRenderQueueListener(mOverlaySystem);
 }
+
+
+
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::createCamera(void)
 {
@@ -130,6 +133,18 @@ void BaseGauntlet::createFrameListener(void)
   mDetailsPanel->hide();
   mRoot->addFrameListener(this);
 }
+
+//------------------------------------------------------------------------------------
+
+void BaseGauntlet::buttonHit(OgreBites::Button *button)
+{
+    if (button->getName() == "Test")
+    	mTrayMgr->moveWidgetToTray("Test", OgreBites::TL_BOTTOMLEFT);
+		if (button->getName() == "Truc")
+			mTrayMgr->moveWidgetToTray("Truc", OgreBites::TL_TOPLEFT);
+}
+
+
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::destroyScene(void)
 {

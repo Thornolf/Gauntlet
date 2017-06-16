@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:39:01 2017 Adrien Warin
-** Last update Thu Jun 15 12:49:34 2017 Pierre
+** Last update Fri Jun 16 14:36:32 2017 Pierre
 */
 
 #ifndef		_WARRIOR__HPP_
@@ -23,7 +23,6 @@ public:
   virtual ~Warrior();
 
   void		setOgreBase(Ogre::SceneManager*);
-  void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
   void attack();
 };
