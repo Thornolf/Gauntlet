@@ -137,7 +137,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
             }
             else
               {
-	           itEvent->second(fe, dirVec, CameraVec);
+	           itEvent->second(fe, dirVec, CameraVec, collision, mSceneMgr);
 	           this->mCamera->move(CameraVec);
            }
 	           player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);

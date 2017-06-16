@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Fri Jun 16 13:15:05 2017 Thomas Fossaert
+** Last update Fri Jun 16 13:49:49 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -67,3 +67,13 @@ void Tank::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
 }
+
+/*void Tank::test()
+{
+  Ogre::Entity *entity;
+  Ogre::SceneNode *node;
+
+  entity = mSceneMgr->createEntity("TankHit" + std::to_string(_id), "cube.mesh");
+  this->mEntity->getOrientation()
+}
+*/
