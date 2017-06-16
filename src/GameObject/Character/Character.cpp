@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 16 11:35:18 2017 Pierre
+** Last update Fri Jun 16 14:34:27 2017 Pierre
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -80,4 +80,10 @@ void Character::gainHealth(int value)
   this->_health += value;
   if (this->_health > 300)
     this->_health = 300;
+}
+
+void Character::Animate(const Ogre::FrameEvent& fe)
+{
+  this->setAnimation(fe, GameObject::IDLE);
+  this->setAnimationState();
 }

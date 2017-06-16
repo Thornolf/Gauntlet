@@ -38,7 +38,6 @@ void key::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->attachObject(mEntity);
   mNode->setScale(280.0f, 280.0f, 280.0f);
   mNode->setOrientation(1,-1,1,1);
-  //this->_aura = new Particle(std::to_string(_id), "Examples/Gold" , mSceneMgr, mNode);
 }
 
 
@@ -50,7 +49,7 @@ void key::Animate(const Ogre::FrameEvent& fe)
 void key::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
-  // this->_aura = new Particle("key" + std::to_string(_id), "Examples/UnsetGold" , mSceneMgr, mNode);
+  this->_aura = new Particle(std::to_string(_id), "Examples/Key" , mSceneMgr, mNode);
   this->_aura->destroy();
 }
 

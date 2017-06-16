@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Jun 12 11:08:04 2017 Quentin Baudet
-** Last update Mon Jun 12 11:19:51 2017 Quentin Baudet
+** Last update Fri Jun 16 14:36:44 2017 Pierre
 */
 
 #ifndef _ARCHER_HPP_
@@ -23,7 +23,6 @@ public:
   virtual ~Archer();
 
   void		setOgreBase(Ogre::SceneManager*);
-  void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 };
 
