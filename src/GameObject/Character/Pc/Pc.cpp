@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed May 31 11:04:17 2017 Quentin Baudet
+** Last update Fri Jun 16 11:37:34 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Pc.hpp"
@@ -13,10 +13,10 @@
 
 Pc::Pc(const std::string &name, int x, int y, int z) : Character(x, y, z), _name(name)
 {
-  this->_event[eventType::MOVE_UP] = std::bind(&Pc::moveUp, this);
-  this->_event[eventType::MOVE_DOWN] = std::bind(&Pc::moveDown, this);
-  this->_event[eventType::MOVE_LEFT] = std::bind(&Pc::moveLeft, this);
-  this->_event[eventType::MOVE_RIGHT] = std::bind(&Pc::moveRight, this);
+  this->_event[eventType::MOVE_UP] = std::bind(&Pc::moveUp, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+  this->_event[eventType::MOVE_LEFT] = std::bind(&Pc::moveLeft, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+  this->_event[eventType::MOVE_DOWN] = std::bind(&Pc::moveDown, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
+  this->_event[eventType::MOVE_RIGHT] = std::bind(&Pc::moveRight, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 }
 
 Pc::Pc(Pc const & other) : Character(other)
@@ -43,22 +43,43 @@ const std::string	&Pc::getName(void) const
   return (this->_name);
 }
 
-void		Pc::moveUp(void)
+void		Pc::moveUp(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec)
 {
-  std::cout << "Player is moving up" << std::endl;
+  this->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
+  dirVec.x += this->_speed;
+  this->setAnimation(fe, GameObject::RUN);
+  this->setAnimationState();
+//  camVec.z -= 1;
 }
 
-void		Pc::moveDown(void)
+void		Pc::moveDown(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec)
 {
-  std::cout << "Player is moving down" << std::endl;
+  this->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
+  dirVec.x += this->_speed;
+  this->setAnimation(fe, GameObject::RUN);
+  this->setAnimationState();
+  //camVec.z -= 1;
 }
 
-void		Pc::moveLeft(void)
+void		Pc::moveLeft(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec)
 {
-  std::cout << "Player is moving left" << std::endl;
+  this->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
+  dirVec.x += this->_speed;
+  this->setAnimation(fe, GameObject::RUN);
+  this->setAnimationState();
+  //.camVec.x += 1;
 }
 
-void		Pc::moveRight(void)
+void		Pc::moveRight(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec)
 {
-  std::cout << "Player is moving right" << std::endl;
+  this->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
+  dirVec.x += this->_speed;
+  this->setAnimation(fe, GameObject::RUN);
+  this->setAnimationState();
+  // camVec.x += 1;
+}
+
+int		Pc::getSpeed(void) const
+{
+  return (this->_speed);
 }

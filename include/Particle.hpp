@@ -5,17 +5,19 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon Jun 12 15:59:00 2017 Adrien Warin
-** Last update Wed Jun 14 11:33:38 2017 Adrien Warin
+** Last update Fri Jun 16 11:12:28 2017 Adrien Warin
 */
 
 #ifndef PARTICLE_HPP_
 # define PARTICLE_HPP_
 
+#include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
 
-#include "GameCore.hpp"
-#include "GameObject/Character/Pc/Pc.hpp"
-#include "GameObject/GameObject.hpp"
+// #include "GameCore.hpp"
+// #include "GameObject/Character/Pc/Pc.hpp"
+
+class GameObject;
 
 class Particle
 {
@@ -30,6 +32,7 @@ class Particle
 
         Ogre::ParticleSystem    *setParticle(Ogre::SceneManager *scene);
         void                    setObjet(Ogre::SceneNode *objet);
+        void                    destroy();
 };
 
 #endif

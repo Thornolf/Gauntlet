@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Thu Jun  1 11:30:22 2017 Guillaume CAUCHOIS
+** Last update Fri Jun 16 11:35:18 2017 Pierre
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -14,7 +14,7 @@ Character::Character(int x, int y, int z) : GameObject(x, y, z)
 {
   this->_health = 100;
   this->_cooldown = 100;
-  this->_speed = 100;
+  this->_speed = 350;
   /* this->_script = nullptr */
   this->_range = 1;
 }
@@ -50,30 +50,6 @@ void Character::attack(Character *target)
   target->takeDamage(this->_attack);
 }
 
-/*void Character::doSomething(const Ogre::FrameEvent& fe, State state)
-{
-  if (state == ATTACK)
-  {
-    if (!this->_isBusy)
-    {
-      this->_isBusy = true;
-      this->launchAnimation(fe, state);
-      return ;
-    }
-  }
-  if (this->_isBusy)
-  {
-    if (this->mAnimationState->getTimePosition() / this->_animations[ATTACK]->getLength() > this->_animations[ATTACK]->getLength())
-    {
-      this->_isBusy = false;
-      this->launchAnimation(fe, state);
-      return ;
-    }
-  }
-  else
-    this->launchAnimation(fe, state);
-}*/
-
 bool Character::isAlive() const
 {
   return ((this->_health > 0));
@@ -84,4 +60,24 @@ void Character::getDistance() const {}
 int Character::getRange() const
 {
   return (this->_range);
+}
+
+void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
+{
+  if (this->mAnimation && (!this->mAnimation->isLooping() ||
+				  this->mAnimation->hasEnded()))
+    {
+      this->_animations[state]->launch(fe, this->mEntity);
+      this->_state = state;
+      this->mAnimation->disable();
+      this->mAnimation = this->_animations[state];
+      this->mAnimation->enable();
+    }
+}
+
+void Character::gainHealth(int value)
+{
+  this->_health += value;
+  if (this->_health > 300)
+    this->_health = 300;
 }

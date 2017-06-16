@@ -111,7 +111,7 @@ particle_system Examples/Aureola
 
 particle_system Examples/AureolaVERT
 {
-    material        Examples/AureolaVERT
+    material        Examples/Aureola
    particle_width  150
    particle_height 150
    cull_each       false
@@ -128,8 +128,8 @@ particle_system Examples/AureolaVERT
        position        0 1 0
        velocity_min  	1
        velocity_max  	1
-       colour_range_start  0.0 0.7 0.0 1.0
-       colour_range_end    0.0 0.7 0.0 1.0
+       colour_range_start  0.0 0.5 0.3 1.0
+       colour_range_end    0.0 0.5 0.3 1.0
        width           1
        height          1
        depth           1
@@ -138,7 +138,7 @@ particle_system Examples/AureolaVERT
 
 particle_system Examples/AureolaBLEU
 {
-    material        Examples/AureolaBLEU
+    material        Examples/Aureola
    particle_width  150
    particle_height 150
    cull_each       false
@@ -165,7 +165,7 @@ particle_system Examples/AureolaBLEU
 
 particle_system Examples/AureolaROUGE
 {
-    material        Examples/AureolaROUGE
+    material        Examples/Aureola
    particle_width  150
    particle_height 150
    cull_each       false
@@ -221,6 +221,169 @@ particle_system Examples/Fire
     {
     force_vector      0 100 0
     force_application add
+    }
+
+    // Fader
+    affector ColourFader
+    {
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+}
+
+particle_system Examples/Gold
+{
+    material        Examples/Flare2
+    particle_width	50
+    particle_height 50
+    cull_each       false
+	cull_each       false
+    quota           5000
+    billboard_type  point
+
+    // Area emitter
+    emitter Box
+    {
+        angle           70
+        emission_rate   200
+        time_to_live    0.5
+        direction       0 1 0
+        velocity    	10
+        colour_range_start  0.9 0.7 0 1
+        colour_range_end    0.9 0.7 0 1
+        width           1
+        height          1
+        depth           1
+    }
+
+    // Make em float upwards
+    affector LinearForce
+    {
+        force_vector      0 100 0
+        force_application add
+    }
+
+    // Fader
+    affector ColourFader
+    {
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+}
+
+particle_system Examples/UnsetGold
+{
+    material        Examples/Flare2
+    particle_width	50
+    particle_height 50
+    cull_each       false
+	cull_each       false
+    quota           5000
+    billboard_type  point
+
+    // Area emitter
+    emitter Box
+    {
+        angle           70
+        emission_rate   200
+        time_to_live    0.5
+        direction       0 1 0
+        velocity    	10
+        colour_range_start  0.0 0.0 0 0
+        colour_range_end    0.0 0.0 0 0
+        width           1
+        height          1
+        depth           1
+    }
+
+    // Make em float upwards
+    affector LinearForce
+    {
+        force_vector      0 100 0
+        force_application add
+    }
+
+    // Fader
+    affector ColourFader
+    {
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+}
+
+particle_system Examples/getGold
+{
+    material        Examples/Flare2
+    particle_width  40
+    particle_height 40
+    cull_each       false
+    quota           10000
+    billboard_type  oriented_self
+
+    // Area emitter
+    emitter Point
+    {
+        angle           90
+        emission_rate   1500
+        time_to_live    0.5
+        duration        0.5
+        direction       0 1 0
+        velocity_min    250
+        velocity_max    300
+        colour_range_start  0.7 0.2 0 1
+        colour_range_end    1 1 0 1
+    }
+
+    // Gravity
+    affector LinearForce
+    {
+        force_vector      0 -100 0
+        force_application add
+    }
+
+    // Fader
+    affector ColourFader
+    {
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+}
+
+particle_system Examples/getFood
+{
+    material        Examples/Flare2
+    particle_width	50
+    particle_height 50
+    cull_each       false
+	cull_each       false
+    quota           5000
+    billboard_type  point
+
+    // Area emitter
+    emitter Box
+    {
+        angle           70
+        emission_rate   250
+        time_to_live    1
+        direction       0 1 0
+        velocity    	30
+        duration        1
+        colour_range_start  0 0.9 0 1
+        colour_range_end    0 0.9 0 1
+        width           60
+        height          60
+        depth           120
+    }
+
+    // Make em float upwards
+    affector LinearForce
+    {
+        force_vector      0 100 0
+        force_application add
     }
 
     // Fader

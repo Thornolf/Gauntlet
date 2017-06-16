@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 16 10:30:14 2017 Pierre
+** Last update Fri Jun 16 11:39:56 2017 Pierre
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -21,9 +21,13 @@
 # include <OgreRenderWindow.h>
 # include <OgreConfigFile.h>
 
+# include "NewMOC.hpp"
 # include "GameObject/Character/Script.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"
+#include "Particle.hpp"
+
+using namespace Collision;
 
 class Script;
 
@@ -52,6 +56,7 @@ protected:
   std::string		mNodeName;
   bool _isBusy;
   State _busyAnimation;
+  Particle *_aura;
 
 public:
   GameObject(int, int, int);
@@ -69,6 +74,7 @@ public:
   void setAnimation(const Ogre::FrameEvent& fe, State state);
   void launchAnimation(const Ogre::FrameEvent& fe, State state);
   bool stillBusy();
+  void destroySpecificEntity(Ogre::SceneManager *, Ogre::Entity *);
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
   virtual void		launchScript(Ogre::SceneManager*, GameObject *, const Ogre::FrameEvent&) {};

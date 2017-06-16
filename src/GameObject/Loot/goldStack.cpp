@@ -29,7 +29,6 @@ goldStack& goldStack::operator=(goldStack const & other)
 
 goldStack::~goldStack()
 {
-
 }
 
 void goldStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
@@ -40,6 +39,7 @@ void goldStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->attachObject(mEntity);
   mNode->setScale(80.0f, 80.0f, 80.0f);
   mNode->setOrientation(1,1,0,0);
+  this->_aura = new Particle(std::to_string(_id), "Examples/Gold" , mSceneMgr, mNode);
 }
 
 
@@ -51,6 +51,8 @@ void goldStack::Animate(const Ogre::FrameEvent& fe)
 void goldStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
+  // this->_aura = new Particle("goldStack" + std::to_string(_id), "Examples/UnsetGold" , mSceneMgr, mNode);
+  this->_aura->destroy();
 }
 
 bool goldStack::isTaken(Pc const & other)
@@ -58,4 +60,9 @@ bool goldStack::isTaken(Pc const & other)
   if (this->mPosition == other.getPosition())
     return (true);
   return (false);
+}
+
+void goldStack::increaseScore(Configuration *config)
+{
+  config->addScorePoint(100);
 }

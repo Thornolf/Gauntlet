@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 09 12:12:13 2017 Thomas Fossaert
+** Last update Thu Jun 15 18:34:30 2017 Adrien Warin
 */
 
 #include "GameObject/Loot/Loot.hpp"

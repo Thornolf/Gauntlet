@@ -104,7 +104,6 @@ void	MapManager::ObjASTNodeToGameObj(RenderManager &rManager, t_ast_node *object
       throw IndieException("Invalid AST data found");
     (void)name;
   }
-  std::cout << "DEBUG - ORIENTATION :" << orientation.w << " " << orientation.x << " " << orientation.y << " " << orientation.z << std::endl;
   rManager.createGameObject(ObjectType, pos, scale, orientation, texture);
 }
 

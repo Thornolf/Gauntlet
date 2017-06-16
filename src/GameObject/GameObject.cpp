@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 16 10:48:35 2017 Pierre
+** Last update Fri Jun 16 11:29:20 2017 Pierre
 */
 
 #include "GameObject/GameObject.hpp"
@@ -101,4 +101,9 @@ void GameObject::launchAnimation(const Ogre::FrameEvent& fe, State state)
       this->mAnimation = this->_animations[state];
       this->mAnimation->enable();
     }
+}
+
+void GameObject::destroySpecificEntity(Ogre::SceneManager *mSceneMgr, Ogre::Entity *ent)
+{
+  mSceneMgr->destroyEntity(ent);
 }

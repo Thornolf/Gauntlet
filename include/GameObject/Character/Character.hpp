@@ -5,13 +5,18 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
+<<<<<<< HEAD
 ** Last update Thu Jun 15 21:12:23 2017 Pierre
+=======
+** Last update Thu Jun 15 14:31:35 2017 Thomas Fossaert
+>>>>>>> c83a29ce18df3011e6f6c2b8b7b129f47f82ed20
 */
 
 #ifndef		_CHARACTER_HPP_
 # define	_CHARACTER_HPP_
 
 # include "GameObject/GameObject.hpp"
+# include "Animation.hpp"
 
 class Character : public GameObject
 {
@@ -21,6 +26,9 @@ public:
   Character& operator=(Character const &);
   virtual ~Character();
 
+  void  setScore(int);
+  void  gainHealth(int);
+
 protected:
 
   int		_health;
@@ -29,17 +37,12 @@ protected:
   int		_speed;
   int		_range;
 
-  /* Classes */
-
+  void launchAnimation(const Ogre::FrameEvent& fe, State state);
   void		takeDamage(int dmg);
   void		attack(Character *target);
   bool		isAlive() const;
   void		getDistance() const;
   int		getRange(void) const;
-
-  /*virtual void		setOgreBase(Ogre::SceneManager*);
-  virtual Ogre::Vector3	launchScript(Ogre::SceneNode *);
-  virtual void		Animate(const Ogre::FrameEvent&);*/
 };
 
 #endif

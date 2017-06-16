@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-// Last update Thu Jun 15 10:22:21 2017 Thomas Fossaert
+** Last update Fri Jun 16 11:30:20 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -50,8 +50,9 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setScale(2.0f, 2.0f, 2.0f);
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_106", weapon, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_52", helm, Ogre::Quaternion(1,0,0,0));
-  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,0,0,0));
+  this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,-0.5,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_29", lshoulder, Ogre::Quaternion(1,0,0,0));
+  this->_aura = new Particle("VERT", "Examples/AureolaVERT", mSceneMgr, mNode);
 }
 
 void Warrior::Animate(const Ogre::FrameEvent& fe)
