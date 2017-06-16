@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-** Last update Fri Jun 16 11:00:48 2017 Adrien Warin
+** Last update Fri Jun 16 11:30:20 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -18,7 +18,8 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
-  this->_currentAnimation = this->_animations[IDLE];
+  this->_animations[DIE] = new Animation("Death", true, 2);
+  this->mAnimation = this->_animations[IDLE];
 }
 
 Warrior::Warrior(Warrior const & other) : Melee(other) {}
@@ -52,16 +53,20 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,-0.5,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_29", lshoulder, Ogre::Quaternion(1,0,0,0));
   this->_aura = new Particle("VERT", "Examples/AureolaVERT", mSceneMgr, mNode);
-
 }
 
 void Warrior::Animate(const Ogre::FrameEvent& fe)
 {
   this->launchAnimation(fe, RUN);
-  mAnimationState = this->_currentAnimation->getAnimationState();
+  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Warrior::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
+}
+
+void Warrior::attack()
+{
+
 }

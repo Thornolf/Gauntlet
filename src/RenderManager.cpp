@@ -20,6 +20,7 @@ RenderManager::RenderManager()
   this->_factory["SPAWNER"]	= std::bind(&RenderManager::createSpawnerObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["FOOD"]	= std::bind(&RenderManager::createFoodObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["GOLD"]	= std::bind(&RenderManager::createGoldObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
+  this->_factory["KEY"]	= std::bind(&RenderManager::createKeyObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["MAGE"]	= std::bind(&RenderManager::createMageObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["WARRIOR"]	= std::bind(&RenderManager::createWarriorObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["TANK"]	= std::bind(&RenderManager::createTankObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
@@ -96,6 +97,10 @@ GameObject	*RenderManager::createGoldObject(int id, const Position &position, co
   return (new goldStack(position.getXPosition(), position.getYPosition(), position.getZPosition(), id));
 }
 
+GameObject	*RenderManager::createKeyObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
+{
+  return (new key(position.getXPosition(), position.getYPosition(), position.getZPosition(), id));
+}
 
 GameObject	*RenderManager::createWarriorObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
 {

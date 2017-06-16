@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 16 13:25:00 2017 Adrien Warin
+// Last update Fri Jun 16 14:07:33 2017 Adrien Warin
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -33,14 +33,29 @@ class Script;
 
 class GameObject
 {
+public:
+  enum State
+  {
+    IDLE,
+    STAND,
+    RUN,
+    WALK,
+    ATTACK,
+    DIE
+  };
+
 protected:
   Ogre::AnimationState	*mAnimationState;
+  State _state;
+  Animation		*mAnimation;
   Ogre::Entity		*mEntity;
   Ogre::SceneNode	*mNode;
   Script		*mScript;
   Position		*mPosition;
-  Animation		*mAnimation;
+  std::map<State, Animation*>	_animations;
   std::string		mNodeName;
+  bool _isBusy;
+  State _busyAnimation;
   Particle *_aura;
   Particle *_unset;
 public:
@@ -55,6 +70,10 @@ public:
   const std::string& getNodeName() const;
   Ogre::Entity* getEntity() const;
   Ogre::SceneNode* getSceneNode() const;
+  void setAnimationState();
+  void setAnimation(const Ogre::FrameEvent& fe, State state);
+  void launchAnimation(const Ogre::FrameEvent& fe, State state);
+  bool stillBusy();
   void destroySpecificEntity(Ogre::SceneManager *, Ogre::Entity *);
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};

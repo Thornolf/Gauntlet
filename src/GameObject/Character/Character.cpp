@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Thu Jun 15 14:30:04 2017 Thomas Fossaert
+** Last update Fri Jun 16 11:35:18 2017 Pierre
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -64,14 +64,14 @@ int Character::getRange() const
 
 void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
 {
-  if (this->_currentAnimation && (!this->_currentAnimation->isLooping() ||
-				  this->_currentAnimation->hasEnded()))
+  if (this->mAnimation && (!this->mAnimation->isLooping() ||
+				  this->mAnimation->hasEnded()))
     {
       this->_animations[state]->launch(fe, this->mEntity);
       this->_state = state;
-      this->_currentAnimation->disable();
-      this->_currentAnimation = this->_animations[state];
-      this->_currentAnimation->enable();
+      this->mAnimation->disable();
+      this->mAnimation = this->_animations[state];
+      this->mAnimation->enable();
     }
 }
 

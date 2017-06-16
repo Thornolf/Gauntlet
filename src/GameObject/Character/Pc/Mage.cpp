@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-// Last update Thu Jun 15 10:29:28 2017 Adrien Warin
+** Last update Fri Jun 16 11:31:47 2017 Pierre
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
@@ -16,7 +16,7 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_attack		= 175;
   mPosition		= new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
-  this->_currentAnimation = this->_animations[IDLE];
+  this->mAnimation = this->_animations[IDLE];
 }
 
 Mage::Mage(Mage const & other) : Ranged(other) {}
@@ -44,7 +44,8 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("Mage", "character_human_male_humanmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageNode", mPosition->getVector());
   mNode->attachObject(mEntity);
- mNode->setScale(2.0f, 2.0f, 2.0f);
+  mNode->setScale(2.0f, 2.0f, 2.0f);
+  mNode->setOrientation(-0.7,0,-0.7,0);
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_115", weapon, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_33", lshoulder, Ogre::Quaternion(0,0,1,0));
   this->mEntity->attachObjectToBone("character/human/male/humanmale_hd_bone_32", rshoulder, Ogre::Quaternion(0,0,1,0));
@@ -57,7 +58,7 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
 void Mage::Animate(const Ogre::FrameEvent& fe)
 {
   this->launchAnimation(fe, IDLE);
-  mAnimationState = this->_currentAnimation->getAnimationState();
+  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)

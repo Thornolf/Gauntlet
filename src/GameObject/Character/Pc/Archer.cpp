@@ -16,7 +16,7 @@ Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y
   this->_attack = 175;
   mPosition = new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
-  this->_currentAnimation = this->_animations[IDLE];
+  this->mAnimation = this->_animations[IDLE];
 }
 
 Archer::Archer(Archer const & other) : Ranged(other) {}
@@ -63,7 +63,7 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
 void Archer::Animate(const Ogre::FrameEvent& fe)
 {
   this->launchAnimation(fe, IDLE);
-  mAnimationState = this->_currentAnimation->getAnimationState();
+  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Archer::unsetEntity(Ogre::SceneManager *mSceneMgr)
