@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Thu Jun 15 20:50:14 2017 Thomas Fossaert
+// Last update Fri Jun 16 10:21:44 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -61,14 +61,14 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
-  mConfig->forEachPlayer([&](Pc *player) {
+  /*mConfig->forEachPlayer([&](Pc *player) {
     SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
 									   player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 									   player->getEntity(),
 									   false);
     if (collider.collided)
     {
-      dirVec.x -= 20 + player->getSpeed();
+      dirVec.x -= 20 - player->getSpeed();
       if (!collider.entity->getName().compare(0,9, "goldStack"))
       {
         if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
@@ -90,8 +90,8 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
          }
        }
     }
-  });
-
+  });*/
+   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
     OIS::KeyCode	key	= itBinding->first;
@@ -104,16 +104,45 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
       {
 	       if (itEvent->first == event)
 	        {
+            SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
+                             player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+                             player->getEntity(),
+                             false);
+
+            if (collider.collided)
+            {
+              dirVec.x -= 20 + player->getSpeed();
+              if (!collider.entity->getName().compare(0,9, "goldStack"))
+              {
+                if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+                {
+                  tmp->unsetEntity(mSceneMgr);
+                  //static_cast<Character*>(warrior)->setScore(100);
+                  this->mRenderManager->eraseEntities(tmp);
+                  collision->remove_entity(collider.entity);
+                }
+              }
+            else if (!collider.entity->getName().compare(0,9, "foodStack"))
+               {
+                 if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+                 {
+                    tmp->unsetEntity(mSceneMgr);
+                    //static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
+                    this->mRenderManager->eraseEntities(tmp);
+                    collision->remove_entity(collider.entity);
+                 }
+               }
+            }
+            else
+              {
 	           itEvent->second(fe, dirVec, CameraVec);
 	           this->mCamera->move(CameraVec);
+           }
 	           player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
 	            return (true);
 	         }
       }
     }
   }
-  /* FOCUS DU TANK*/
-  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
-  /* FOCUS DU TANK*/
   return true;
 }
