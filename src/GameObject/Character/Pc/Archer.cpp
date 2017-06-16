@@ -48,7 +48,6 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
     mNode->setOrientation(-0.7,0,-0.7,0);
-  mNode->setPosition(Ogre::Vector3(0, 0, 0));
 
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_31", lshoulder, Ogre::Quaternion(1,0,0,0));

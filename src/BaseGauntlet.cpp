@@ -32,11 +32,11 @@ BaseGauntlet::BaseGauntlet(void)
   mRenderManager = new RenderManager();
   mConfig = new Configuration();
 
-  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("TANK", Position(500, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
+  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("TANK", Position(-100, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
   mConfig->addPlayer(unitPlayer);
   unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("MAGE", Position(200, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
   mConfig->addPlayer(unitPlayer);
-  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("ARCHER", Position(-100, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
+  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("ARCHER", Position(500, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
   mConfig->addPlayer(unitPlayer);
   unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("WARRIOR", Position(-400, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
   mConfig->addPlayer(unitPlayer);
