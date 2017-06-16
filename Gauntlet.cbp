@@ -8,44 +8,44 @@
 		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\usr\local\lib\OGRE\;CMake Files\..\..\..\..\..\usr\local\lib\OGRE\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/strip">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Gauntlet">
-				<Option output="/home/baudet_q/rendu/CPP/indie2/dist/bin/Gauntlet_d" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2/dist/bin"/>
+				<Option output="/home/baudet_q/rendu/CPP/cpp_indie_studio/dist/bin/Gauntlet_d" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio/dist/bin"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add directory="/home/baudet_q/rendu/CPP/indie2/./include"/>
+					<Add directory="/home/baudet_q/rendu/CPP/cpp_indie_studio/./include"/>
 					<Add directory="/usr/include/OIS"/>
 					<Add directory="/usr/local/include/OGRE"/>
 					<Add directory="/usr/local/include"/>
@@ -59,21 +59,21 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 Gauntlet"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 Gauntlet"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Gauntlet/fast">
-				<Option output="/home/baudet_q/rendu/CPP/indie2/dist/bin/Gauntlet_d" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2/dist/bin"/>
+				<Option output="/home/baudet_q/rendu/CPP/cpp_indie_studio/dist/bin/Gauntlet_d" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio/dist/bin"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DBOOST_ALL_NO_LIB"/>
-					<Add directory="/home/baudet_q/rendu/CPP/indie2/./include"/>
+					<Add directory="/home/baudet_q/rendu/CPP/cpp_indie_studio/./include"/>
 					<Add directory="/usr/include/OIS"/>
 					<Add directory="/usr/local/include/OGRE"/>
 					<Add directory="/usr/local/include"/>
@@ -87,279 +87,279 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 Gauntlet/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 Gauntlet/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="list_install_components">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/local">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install">
-				<Option working_dir="/home/baudet_q/rendu/CPP/indie2"/>
+				<Option working_dir="/home/baudet_q/rendu/CPP/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/indie2/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/baudet_q/rendu/CPP/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Animation.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Animation.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Audio/IAudio.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Audio/IAudio.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Audio/Music.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Audio/Music.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Audio/SoundSystem.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Audio/SoundSystem.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/BaseGauntlet.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/BaseGauntlet.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Configuration.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Configuration.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameCore.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameCore.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Character.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Character.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Npc/Npc.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Npc/Npc.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Npc/Skeleton.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Npc/Skeleton.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Npc/Spawner.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Npc/Spawner.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Npc/Zombie.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Npc/Zombie.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Pc/Archer.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Pc/Archer.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Pc/Mage.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Pc/Mage.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Pc/Melee.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Pc/Melee.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Pc/Ranged.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Pc/Ranged.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Pc/Tank.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Pc/Tank.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Character/Script.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Character/Script.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Doodad/Doodad.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Doodad/Doodad.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/GameObject.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/GameObject.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Loot/Loot.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Loot/Loot.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Loot/foodStack.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Loot/foodStack.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/GameObject/Loot/goldStack.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/GameObject/Loot/goldStack.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/IndieException.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/IndieException.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Input/DeviceManager.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Input/DeviceManager.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Input/ParserInputFile.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Input/ParserInputFile.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Input/eventType.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Input/eventType.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Light/light.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Light/light.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/MapManager.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/MapManager.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/NewMOC.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/NewMOC.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Particle.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Particle.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Position.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Position.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/RenderManager.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/RenderManager.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/include/Score/Score.hpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/include/Score/Score.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Animation/Animation.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Animation/Animation.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Audio/Music.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Audio/Music.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Audio/SoundSystem.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Audio/SoundSystem.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/BaseGauntlet.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/BaseGauntlet.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Configuration.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Configuration.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameCore.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameCore.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Character.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Character.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Npc/Boss.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Npc/Boss.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Npc/Npc.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Npc/Npc.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Npc/Skeleton.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Npc/Skeleton.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Npc/Spawner.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Npc/Spawner.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Npc/Zombie.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Npc/Zombie.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Archer.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Archer.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Mage.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Mage.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Melee.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Melee.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Pc.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Pc.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Ranged.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Ranged.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Tank.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Tank.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Character/Pc/Warrior.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Character/Pc/Warrior.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Doodad/Doodad.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Doodad/Doodad.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/GameObject.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/GameObject.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Loot/Loot.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Loot/Loot.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Loot/foodStack.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Loot/foodStack.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/GameObject/Loot/goldStack.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/GameObject/Loot/goldStack.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/IndieException.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/IndieException.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Input/DeviceManager.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Input/DeviceManager.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Input/ParserInputFile.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Input/ParserInputFile.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/NewMOC.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/NewMOC.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Parsing/MapManager.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Parsing/MapManager.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Particle/Particle.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Particle/Particle.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Position/Position.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Position/Position.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/RenderManager.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/RenderManager.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Score/Score.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Score/Score.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/Script/Script.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/Script/Script.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/light/Light.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/light/Light.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/src/main.cpp">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/src/main.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/CMakeLists.txt">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/../../../../../usr/local/lib/OGRE/cmake/FindOGRE.cmake">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/../../../../../usr/local/lib/OGRE/cmake/FindOGRE.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\OGRE\cmake\"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/../../../../../usr/local/lib/OGRE/cmake/FindPkgMacros.cmake">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/../../../../../usr/local/lib/OGRE/cmake/FindPkgMacros.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\OGRE\cmake\"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/../../../../../usr/local/lib/OGRE/cmake/PreprocessorUtils.cmake">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/../../../../../usr/local/lib/OGRE/cmake/PreprocessorUtils.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\OGRE\cmake\"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/../../../../../usr/local/lib/OGRE/cmake/FindOIS.cmake">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/../../../../../usr/local/lib/OGRE/cmake/FindOIS.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\OGRE\cmake\"/>
 		</Unit>
-		<Unit filename="/home/baudet_q/rendu/CPP/indie2/../../../../../usr/local/lib/OGRE/cmake/FindPkgMacros.cmake">
+		<Unit filename="/home/baudet_q/rendu/CPP/cpp_indie_studio/../../../../../usr/local/lib/OGRE/cmake/FindPkgMacros.cmake">
 			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\local\lib\OGRE\cmake\"/>
 		</Unit>
 	</Project>
