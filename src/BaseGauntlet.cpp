@@ -243,8 +243,6 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
   if(mShutDown)
     return false;
 
-  mKeyboard->capture();
-  mMouse->capture();
   mTrayMgr->refreshCursor();
   mTrayMgr->frameRenderingQueued(evt);
 
