@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed May 31 11:09:05 2017 Quentin Baudet
+** Last update Fri Jun 16 13:33:02 2017 Pierre
 */
 
 #ifndef		_PC_HPP_
@@ -35,6 +35,7 @@ public:
   void		moveUp(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
   void		moveLeft(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
   void		moveRight(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
+  void    moveAttack(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &);
 
 private:
   std::string						_name;

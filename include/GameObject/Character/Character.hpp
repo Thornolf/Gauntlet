@@ -28,6 +28,7 @@ public:
 
   void  setScore(int);
   void  gainHealth(int);
+  void	Animate(const Ogre::FrameEvent&);
 
 protected:
 

@@ -42,12 +42,6 @@ void goldStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->_aura = new Particle(std::to_string(_id), "Examples/Gold" , mSceneMgr, mNode);
 }
 
-
-void goldStack::Animate(const Ogre::FrameEvent& fe)
-{
-
-}
-
 void goldStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);

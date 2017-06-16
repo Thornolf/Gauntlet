@@ -59,13 +59,6 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 }
 
-
-void Archer::Animate(const Ogre::FrameEvent& fe)
-{
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->mAnimation->getAnimationState();
-}
-
 void Archer::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);

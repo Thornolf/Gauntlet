@@ -42,12 +42,6 @@ void foodStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setOrientation(1,0,0,0);
 }
 
-
-void foodStack::Animate(const Ogre::FrameEvent& fe)
-{
-
-}
-
 void foodStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);

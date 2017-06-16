@@ -74,11 +74,6 @@ void Zombie::initScript(CollisionTools* tool)
   mScript->setCollision(tool, mEntity);
 }
 
-void Zombie::Animate(const Ogre::FrameEvent& fe)
-{
-
-}
-
 void Zombie::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
