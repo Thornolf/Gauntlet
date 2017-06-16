@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Fri Jun 16 10:21:44 2017 Thomas Fossaert
+// Last update Fri Jun 16 12:45:16 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -118,7 +118,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
                 if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
                 {
                   tmp->unsetEntity(mSceneMgr);
-                  //static_cast<Character*>(warrior)->setScore(100);
+		  mConfig->addScorePoint(100);
                   this->mRenderManager->eraseEntities(tmp);
                   collision->remove_entity(collider.entity);
                 }
@@ -128,6 +128,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
                  if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
                  {
                     tmp->unsetEntity(mSceneMgr);
+		    player->gainHealth(50);
                     //static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
                     this->mRenderManager->eraseEntities(tmp);
                     collision->remove_entity(collider.entity);
