@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Jun 07 13:36:28 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 07 13:36:28 2017 Guillaume CAUCHOIS
+// Last update Thu Jun 15 20:52:35 2017 Thomas Fossaert
 */
 
 #include "RenderManager.hpp"
@@ -121,4 +121,26 @@ GameObject	*RenderManager::createTankObject(int id, const Position &position, co
 std::vector<GameObject *>	&RenderManager::getEntitiesVector(void)
 {
   return (this->_entities);
+}
+
+GameObject* RenderManager::searchEntities(const std::string & search)
+{
+  for (auto &it :this->_entities)
+    {
+      if (!search.compare(it->getEntity()->getName()))
+        return (it);
+    }
+  return (nullptr);
+}
+
+void RenderManager::eraseEntities(GameObject *obj)
+{
+  int i = 0;
+
+  for (auto &it :this->_entities)
+    {
+      if (it == obj)
+        this->_entities.erase(this->_entities.begin() + i);
+      i++;
+    }
 }

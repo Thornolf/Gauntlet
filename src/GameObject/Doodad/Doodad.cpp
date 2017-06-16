@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Mon Jun 12 16:07:51 2017 Thomas Fossaert
+// Last update Fri Jun 16 09:30:05 2017 Thomas Fossaert
 */
 
 #include "GameObject/Doodad/Doodad.hpp"
@@ -54,5 +54,8 @@ void	Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setScale(this->_Sx, this->_Sy, this->_Sz);
   mNode->setOrientation(this->_orientation);
   if (_deco == "cube.mesh")
-    mEntity->setMaterialName("Examples/Rocky");
+    {
+      mEntity->setMaterialName("Examples/Rocky");
+      mEntity->setMaterialLodBias(46);
+    }
 }

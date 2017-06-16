@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Thu Jun 15 14:43:56 2017 Thomas Fossaert
+// Last update Thu Jun 15 20:50:14 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -90,6 +90,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   static Ogre::Real	move = 350;
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
   Ogre::Vector3 CameraVec = Ogre::Vector3::ZERO;
+  GameObject* tmp;
 
   SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("WarriorNode")->getPosition(),
 								  mSceneMgr->getSceneNode("WarriorNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
@@ -103,15 +104,23 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
       dirVec.x -= 20 + move;
       if (!collider.entity->getName().compare(0,9, "goldStack"))
         {
-          collision->remove_entity(collider.entity);
-          mSceneMgr->destroyEntity(collider.entity);
-	  static_cast<Character*>(warrior)->setScore(100);
+	  if ((tmp = this->_render.searchEntities(collider.entity->getName())))
+            {
+	      tmp->unsetEntity(mSceneMgr);
+	      static_cast<Character*>(warrior)->setScore(100);
+		    this->_render.eraseEntities(tmp);
+		    collision->remove_entity(collider.entity);
+            }
         }
       else if (!collider.entity->getName().compare(0,9, "foodStack"))
          {
-           collision->remove_entity(collider.entity);
-           mSceneMgr->destroyEntity(collider.entity);
-           static_cast<Character*>(warrior)->gainHealth(50);
+           if ((tmp = this->_render.searchEntities(collider.entity->getName())))
+                   {
+       	      tmp->unsetEntity(mSceneMgr);
+       	      static_cast<Character*>(warrior)->gainHealth(50);
+       		    this->_render.eraseEntities(tmp);
+       		    collision->remove_entity(collider.entity);
+                   }
          }
     }
   else
@@ -121,29 +130,28 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
       warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
       dirVec.x += move;
       warrior->Animate(fe);
-      CameraVec.z -= 1;
+      CameraVec.z -= 0.9;
     }
     else if (mKeyboard->isKeyDown(OIS::KC_M))
     {
       warrior->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
       dirVec.x += move;
       warrior->Animate(fe);
-      CameraVec.x -= 1;
+      CameraVec.x -= 0.9;
     }
     else if (mKeyboard->isKeyDown(OIS::KC_K))
     {
       warrior->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
       dirVec.x += move;
       warrior->Animate(fe);
-      CameraVec.x += 1;
-
+      CameraVec.x += 0.9;
     }
     else if (mKeyboard->isKeyDown(OIS::KC_O))
     {
       warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
       dirVec.x += move;
       warrior->Animate(fe);
-      CameraVec.z += 1;
+      CameraVec.z += 0.9;
     }
     mCamera->move(CameraVec);
   /*else if (mKeyboard->isKeyDown(OIS::KC_I))
