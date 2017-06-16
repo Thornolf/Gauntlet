@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:31:36 2017 Guillaume CAUCHOIS
-** Last update Wed Jun 14 15:14:53 2017 Robin Grattepanche
+** Last update Fri Jun 16 13:54:58 2017 Robin Grattepanche
 */
 
 #ifndef		__BASEGAUNTLET__HPP_
@@ -44,7 +44,8 @@ public:
   BaseGauntlet(void);
   virtual ~BaseGauntlet(void);
 
-  virtual void go(void);
+  virtual void	go(void);
+	void					buttonHit(OgreBites::Button *);
 
 protected:
   virtual bool setup();
@@ -52,7 +53,7 @@ protected:
   virtual void chooseSceneManager(void);
   virtual void createCamera(void);
   virtual void createFrameListener(void);
-  virtual void createScene(void) = 0; // Override me!
+  virtual void createScene(void) = 0;
   virtual void destroyScene(void);
   virtual void createViewports(void);
   virtual void setupResources(void);
