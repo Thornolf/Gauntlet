@@ -659,18 +659,32 @@ material Examples/Rocky
 		}
 	}
 }
-material Examples/RockNRoll
+material Examples/Rocka
 {
-technique
-{
-	pass
+	technique
 	{
-		texture_unit
+		pass
 		{
-			texture theotime.ducatez.jpg
-		}
+			texture_unit
+			{
+				texture theotime.ducatez.jpg
+				}
+			}
 	}
 }
+material Examples/Rocki
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture black_wall.jpg
+				scale 0.5 0.5
+			}
+		}
+	}
 }
 material Examples/10PointBlock
 {

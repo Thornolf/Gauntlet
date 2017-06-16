@@ -12,13 +12,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dee5ea21-4013-47a4-bdc7-d54407219a70" name="Default" comment="">
+<<<<<<< Updated upstream
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myKeyboard.cnf" afterPath="$PROJECT_DIR$/myKeyboard.cnf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RenderManager.cpp" afterPath="$PROJECT_DIR$/src/RenderManager.cpp" />
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Goul/GouleTakeDamages.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Human/HumanMaleAggro.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Human/HumanTakeDamage.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Orc/OrcTakeDamage.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Troll/TrollTakeDamage.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Vyrgul/VyrgulTakeDamage.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/media/soundeffect/Woman/WomanTakeDamage.ogg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/bin/Gauntlet_d" afterPath="$PROJECT_DIR$/dist/bin/Gauntlet_d" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gauntlet.cbp" afterPath="$PROJECT_DIR$/Gauntlet.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameCore.hpp" afterPath="$PROJECT_DIR$/include/GameCore.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BaseGauntlet.cpp" afterPath="$PROJECT_DIR$/src/BaseGauntlet.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameCore.cpp" afterPath="$PROJECT_DIR$/src/GameCore.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp" afterPath="$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp" afterPath="$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp" />
+>>>>>>> Stashed changes
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -34,6 +49,7 @@
     <favorites_list name="Gauntlet" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< Updated upstream
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Pc.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp">
@@ -91,6 +107,18 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>line</find>
+=======
+    <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+>>>>>>> Stashed changes
+      <find>part =</find>
+      <find>line_c</find>
+      <find>O</find>
+      <find>Ogre::</find>
+      <find>Ogre::Quater</find>
       <find>Ogre::Quatern</find>
       <find>Ogre::Quaternion::</find>
       <find>Ogre::Quaternion:</find>
@@ -114,13 +142,12 @@
       <find>SoundSystem</find>
       <find>setPathFile</find>
       <find>fileName</find>
+<<<<<<< Updated upstream
       <find>KC_N</find>
-      <find>Cannot gene</find>
-      <find>c</find>
-      <find>cap</find>
-      <find>capture</find>
-      <find>capture(</find>
-      <find>target</find>
+=======
+      <find>Key</find>
+      <find>Human</find>
+>>>>>>> Stashed changes
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,7 +158,6 @@
       <list>
         <option value="$PROJECT_DIR$/include/GameObject/Character/Pc/Warrior.hpp" />
         <option value="$PROJECT_DIR$/include/Mage.hpp" />
-        <option value="$PROJECT_DIR$/include/GameObject/Character/Pc/Archer.hpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Character/Pc/Mage.hpp" />
         <option value="$PROJECT_DIR$/FindCEGUI.cmake" />
         <option value="$PROJECT_DIR$/CEGUIConfig.cmake" />
@@ -156,30 +182,32 @@
         <option value="$PROJECT_DIR$/include/Configuration.hpp" />
         <option value="$PROJECT_DIR$/include/Input/ParserInputFile.hpp" />
         <option value="$PROJECT_DIR$/src/Input/ParserInputFile.cpp" />
-        <option value="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
         <option value="$PROJECT_DIR$/src/Animation/Animation.cpp" />
         <option value="$PROJECT_DIR$/include/Animation.hpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/Character/Character.cpp" />
-        <option value="$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Loot/goldStack.cpp" />
         <option value="$PROJECT_DIR$/include/GameObject/Loot/goldStack.hpp" />
         <option value="$PROJECT_DIR$/src/Audio/SoundSystem.cpp" />
         <option value="$PROJECT_DIR$/src/Audio/Music.cpp" />
         <option value="$PROJECT_DIR$/include/Audio/SoundSystem.hpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Melee.cpp" />
         <option value="$PROJECT_DIR$/src/Script/Script.cpp" />
         <option value="$PROJECT_DIR$/src/RenderManager.cpp" />
         <option value="$PROJECT_DIR$/myKeyboard.cnf" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp" />
         <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
-        <option value="$PROJECT_DIR$/src/BaseGauntlet.cpp" />
-        <option value="$PROJECT_DIR$/src/BaseGauntlet.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/include/GameCore.hpp" />
-        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp" />
+=======
+        <option value="$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp" />
+        <option value="$PROJECT_DIR$/include/GameObject/Character/Pc/Archer.hpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Character.cpp" />
         <option value="$PROJECT_DIR$/src/GameCore.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp" />
+        <option value="$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp" />
+        <option value="$PROJECT_DIR$/include/GameObject/Character/Character.hpp" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -191,9 +219,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="false" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="26" />
     <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -250,7 +277,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Script" />
+              <option name="myItemId" value="GameObject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,6 +296,13 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GameObject" />
+<<<<<<< Updated upstream
+=======
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Character" />
+>>>>>>> Stashed changes
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -283,6 +317,7 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+<<<<<<< Updated upstream
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -291,6 +326,52 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Character" />
+=======
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GameObject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Character" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Audio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="include" />
+>>>>>>> Stashed changes
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -334,7 +415,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< Updated upstream
               <option name="myItemId" value="Animation" />
+=======
+              <option name="myItemId" value="Character" />
+>>>>>>> Stashed changes
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -365,6 +450,34 @@
               <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+<<<<<<< Updated upstream
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+=======
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -380,7 +493,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="particle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gauntlet" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpp_indie_studio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+>>>>>>> Stashed changes
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,7 +786,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155569000" />
+<<<<<<< Updated upstream
+    <option name="totallyTimeSpent" value="148873000" />
+=======
+    <option name="totallyTimeSpent" value="151769000" />
+>>>>>>> Stashed changes
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -666,9 +802,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1920" height="1054" extended-state="6" />
+<<<<<<< Updated upstream
+    <frame x="0" y="26" width="1920" height="1054" extended-state="7" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23237179" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <frame x="0" y="0" width="1920" height="1032" extended-state="7" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.110042736" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> Stashed changes
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31907895" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2774123" sideWeight="0.50641024" order="7" side_tool="true" content_ui="tabs" />
@@ -676,7 +818,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.61513156" sideWeight="0.49358973" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33442983" sideWeight="0.49358973" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26539755" sideWeight="0.4957265" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -735,6 +881,21 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Doodad/Doodad.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="54" column="44" lean-forward="true" selection-start-line="54" selection-start-column="44" selection-end-line="54" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ogre.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/Input/Device.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -756,6 +917,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/Ogre.log" />
     <entry file="file://$PROJECT_DIR$/include/Input/DeviceManager.hpp">
       <provider selected="true" editor-type-id="text-editor">
@@ -842,24 +1005,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Character.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="29" column="3" lean-forward="false" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/Animation.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="335">
           <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Character.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -877,6 +1026,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -885,6 +1035,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/install_manifest.txt" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -935,13 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/install_manifest.txt" />
     <entry file="file://$PROJECT_DIR$/include/Audio/IAudio.hpp">
       <provider selected="true" editor-type-id="text-editor">
@@ -954,7 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,16 +1151,127 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myKeyboard.cnf">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="443">
           <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+=======
+        <state relative-caret-position="1452">
+          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Loot/key.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Pc.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1134">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Melee.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Pc/Mage.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <element signature="e#279#299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Pc/Pc.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Pc/Archer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Mage.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="121" lean-forward="false" selection-start-line="26" selection-start-column="121" selection-end-line="26" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameCore.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="35" column="115" lean-forward="true" selection-start-line="35" selection-start-column="115" selection-end-line="36" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/GameObject/Character/Character.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+          <folding>
+            <element signature="e#442#479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Character.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1869">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Archer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="24" column="105" lean-forward="true" selection-start-line="24" selection-start-column="105" selection-end-line="24" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Tank.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="45" selection-end-line="24" selection-end-column="121" />
+>>>>>>> Stashed changes
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< Updated upstream
     <entry file="file:///usr/include/OIS/OISKeyboard.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="81" column="37" lean-forward="false" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="37" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/GameObject/Character/Pc/Warrior.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="85" lean-forward="false" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>

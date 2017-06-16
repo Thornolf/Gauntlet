@@ -12,9 +12,10 @@
 # define	_PC_HPP_
 # include	<iostream>
 # include	<string>
+# include	<map>
 # include	"GameObject/Character/Character.hpp"
 # include	"Input/eventType.hpp"
-# include "NewMOC.hpp"
+# include	"NewMOC.hpp"
 
 class Device;
 
