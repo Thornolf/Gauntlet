@@ -21,6 +21,24 @@ GameCore::~GameCore() {}
 
 void GameCore::createScene()
 {
+  /* ----------------------------START SET MUSIC ---------------------------*/
+  Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
+
+  backgroundMusic->playAudio();
+  backgroundMusic->setLoop(true);
+  backgroundMusic->setAudioVolume(10.0);
+  _mmusic.insert(std::make_pair("Waluni1", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg", "Waluni1")));
+  _mmusic.insert(std::make_pair("Waluni2", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni2.ogg", "Waluni2")));
+  _mmusic.insert(std::make_pair("Waluni3", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni3.ogg", "Waluni3")));
+  _mmusic.insert(std::make_pair("Plague", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_1_Plague.ogg", "Plague")));
+  _mmusic.insert(std::make_pair("Kelthusad", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_2_Kelthusad.ogg", "Kelthusad")));
+  _mmusic.insert(std::make_pair("Abomination", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_3_Abomination.ogg", "Abomination")));
+  _mmusic.insert(std::make_pair("Wyrm", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_4_Wyrm.ogg", "Wyrm")));
+  auto itm = _mmusic.begin();
+  itm->second->playAudio();
+  this->setCurrMusicName(itm->second->getCurrentName());
+  /* ----------------------------END SET MUSIC ---------------------------*/
+
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
   map->generateMap(*this->mRenderManager);
@@ -46,9 +64,22 @@ void GameCore::createScene()
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
   bool ret = BaseGauntlet::frameRenderingQueued(fe);
+  auto it = _mmusic.find(this->_currentMusic);
+
 
   if (!processUnbufferedInput(fe))
     return false;
+  /* START MUSIC */
+  if (_mmusic[this->_currentMusic]->getStatus() ==  sf::SoundSource::Status::Stopped)
+  {
+    if (it == _mmusic.end())
+      throw IndieException("Music can't be load");
+    if (++it == _mmusic.end())
+      it = _mmusic.begin();
+    this->setCurrMusicName(it->second->getCurrentName());
+    it->second->playAudio();
+  }
+  /* END MUSIC */
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
   return ret;
 }
@@ -116,4 +147,14 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   /* FOCUS DU TANK*/
   return true;
+}
+
+void		GameCore::setCurrMusicName(std::string newCurrName)
+{
+  this->_currentMusic = newCurrName;
+}
+
+std::string	GameCore::getCurrMusicName() const
+{
+  return (this->_currentMusic);
 }
