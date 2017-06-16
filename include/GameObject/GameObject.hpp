@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 15 16:56:57 2017 Adrien Warin
+** Last update Fri Jun 16 13:25:00 2017 Adrien Warin
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -42,7 +42,7 @@ protected:
   Animation		*mAnimation;
   std::string		mNodeName;
   Particle *_aura;
-
+  Particle *_unset;
 public:
   GameObject(int, int, int);
   GameObject(GameObject const &);
