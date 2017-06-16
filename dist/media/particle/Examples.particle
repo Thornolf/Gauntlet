@@ -360,32 +360,33 @@ particle_system Examples/getFood
 particle_system Examples/Key
 {
     material        Examples/Flare2
-    particle_width  50
+    particle_width	50
     particle_height 50
     cull_each       false
-    quota           10000
-    billboard_type  oriented_self
+    cull_each       false
+    quota           5000
+    billboard_type  point
 
     // Area emitter
-    emitter Point
+    emitter Box
     {
         angle           70
-        emission_rate   15000
-        time_to_live    1
-        direction       0 0 1
+        emission_rate   350
+        time_to_live    0.5
+        direction       0 1 0
         velocity    	30
-        duration        1
-        colour_range_start  0 0 0.9 1
-        colour_range_end    0 0 0.9 1
-        width           10
-        height          10
-        depth           50
+        duration        0.5
+        colour_range_start  0 0 0
+        colour_range_end    1 1 1 1
+        width           0.5
+        height          0.5
+        depth           1
     }
 
-    // Gravity
+    // Make em float upwards
     affector LinearForce
     {
-        force_vector      0 -100 0
+        force_vector      0 100 0
         force_application add
     }
 
