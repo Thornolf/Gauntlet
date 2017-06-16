@@ -13,13 +13,13 @@
 Music::Music()
 {
   this->_music.setRelativeToListener(false);
-  this->_music.setVolume(30.0);
+  this->_music.setVolume(10.0);
 }
 
 Music::Music(const std::string & pathFile, const std::string & newCurrMusic)
 {
   this->_music.setRelativeToListener(false);
-  this->_music.setVolume(30.0);
+  this->_music.setVolume(10.0);
   this->loadAudio(pathFile, newCurrMusic);
 }
 

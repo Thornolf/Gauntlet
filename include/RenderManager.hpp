@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Jun 07 13:19:02 2017 Guillaume CAUCHOIS
-** Last update Thu Jun 15 22:06:09 2017 Thomas Fossaert
+** Last update Fri Jun 16 12:51:46 2017 Thomas Fossaert
 */
 
 #ifndef		_RENDER_MANAGER__HPP_
@@ -35,6 +35,7 @@
 /* LOOT */
 # include	"GameObject/Loot/foodStack.hpp"
 # include	"GameObject/Loot/goldStack.hpp"
+# include	"GameObject/Loot/key.hpp"
 # include	"GameObject/Doodad/Doodad.hpp"
 
 class RenderManager
@@ -55,6 +56,7 @@ public:
   GameObject	*createSpawnerObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createFoodObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createGoldObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createKeyObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createWarriorObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createMageObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createArcherObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);

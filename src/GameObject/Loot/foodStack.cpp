@@ -45,6 +45,7 @@ void foodStack::setOgreBase(Ogre::SceneManager* mSceneMgr)
 void foodStack::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
+  this->_unset = new Particle("test" + std::to_string(_id), "Examples/getFood", mSceneMgr, mNode);
 }
 
 bool foodStack::isTaken(Pc const & other)

@@ -31,8 +31,6 @@ if (CMAKE_BUILD_TYPE STREQUAL "")
     set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build, options are: None (CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel." FORCE)
 endif ()
 
-set(CMAKE_DEBUG_POSTFIX "_d")
-
 set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/dist")
 
 find_package(OGRE REQUIRED)
@@ -111,8 +109,12 @@ set(HDRS
         ./include/Light/light.hpp
         include/GameObject/Character/Script.hpp
         include/MapManager.hpp
-        include/RenderManager.hpp include/GameObject/Character/Npc/Spawner.hpp
-        include/GameObject/Doodad/Doodad.hpp)
+        include/GameObject/Doodad/Doodad.hpp
+      	./include/GameObject/Loot/key.hpp
+        include/RenderManager.hpp
+				include/GameObject/Character/Npc/Spawner.hpp
+				include/Menu/MenuCore.hpp
+			)
 
 set(SRCS
         ./src/main.cpp
@@ -152,7 +154,10 @@ set(SRCS
         ./src/RenderManager.cpp
         ./src/GameObject/Character/Npc/Spawner.cpp
         ./src/GameObject/Doodad/Doodad.cpp
-        ./src/Particle/Particle.cpp)
+        ./src/Particle/Particle.cpp
+      ./src/GameObject/Loot/key.cpp
+				./src/MenuCore/MenuCore.cpp
+			)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

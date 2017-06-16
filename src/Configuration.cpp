@@ -36,5 +36,6 @@ void	Configuration::addPlayer(Pc* player)
 
 void	Configuration::addScorePoint(int nbPoint)
 {
+  std::cout << "WINNNING POINT" << '\n';
   this->_score += nbPoint;
 }

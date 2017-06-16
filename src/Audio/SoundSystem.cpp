@@ -1,5 +1,5 @@
 /*
-** SoundSystem.cpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/src/audio
+** Sound.cpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/src/audio
 **
 ** Made by Pierre
 ** Login   <pierre@epitech.net>
@@ -10,63 +10,73 @@
 
 #include "Audio/SoundSystem.hpp"
 
-SoundSystem::SoundSystem()
+Sound::Sound()
 {
 }
 
-SoundSystem::SoundSystem(const std::string & pathFile, const std::string & newCurrSoundName)
+Sound::Sound(const std::string & pathFile, const std::string & newCurrSoundName)
 {
-  this->_sound.setRelativeToListener(false);
+  this->_sound.setRelativeToListener(true);
   this->_sound.setVolume(100.0);
   this->loadAudio(pathFile, newCurrSoundName);
+  this->setCurrentName(newCurrSoundName);
+  this->setFilePath(pathFile);
 }
 
-void SoundSystem::loadAudio(const std::string & fileName, const std::string &  newCurrName)
+void Sound::loadAudio(const std::string & pathFile, const std::string &  newCurrName)
 {
-  this->_buffer = sf::SoundBuffer();
-  this->_buffer.loadFromFile(fileName);
+  this->_buffer.loadFromFile(pathFile);
+  this->_sound.setBuffer(this->_buffer);
   this->setCurrentName(newCurrName);
+  this->setFilePath(pathFile);
 }
 
-void SoundSystem::playAudio()
+void Sound::playAudio()
 {
-  _sound.setVolume(100.0);
-  _sound.setBuffer(_buffer);
+  std::cout << "Sound played : " << this->getCurrentName() << std::endl;
   _sound.play();
 }
 
-void SoundSystem::stopAudio()
+void Sound::stopAudio()
 {
   _sound.stop();
 }
 
-void SoundSystem::setAudioVolume(float newVolume)
+void Sound::setAudioVolume(float newVolume)
 {
   this->_sound.setVolume(newVolume);
 }
 
-float SoundSystem::getAudioVolume() const
+float Sound::getAudioVolume() const
 {
   return (_sound.getVolume());
 }
 
-sf::SoundSource::Status SoundSystem::getStatus() const
+sf::SoundSource::Status Sound::getStatus() const
 {
   return (_sound.getStatus());
 }
 
-std::string SoundSystem::getCurrentName() const
+std::string Sound::getCurrentName() const
 {
   return (this->_currSoundName);
 }
 
-void SoundSystem::setCurrentName(const std::string &newCurrentName)
+void Sound::setCurrentName(const std::string &newCurrentName)
 {
   this->_currSoundName = newCurrentName;
 }
 
-void SoundSystem::setLoop(bool newLoop)
+void Sound::setLoop(bool newLoop)
 {
   this->_sound.setLoop(newLoop);
 }
-SoundSystem::~SoundSystem() {}
+
+void Sound::setFilePath(std::string newFilePath) {
+	this->_filePath  = newFilePath;
+}
+
+std::string Sound::getFilePath() const {
+  	return (this->_filePath);
+}
+Sound::~Sound() {}
