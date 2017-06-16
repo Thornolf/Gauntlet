@@ -15,41 +15,19 @@
 
 #include "GameCore.hpp"
 
-GameCore::GameCore()
-{
-  /* Configuration initialisation */
-  /*Configuration		*mConfig = new Configuration();
-  std::vector<Pc*>	players;
-  Pc			*unitPlayer;
+GameCore::GameCore() {}
 
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("TANK", Position(500, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("MAGE", Position(200, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("ARCHER", Position(-100, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("WARRIOR", Position(-400, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-     players.push_back(unitPlayer);
-  mConfig->setPlayers(players);*/
-  /* Configuration END initialisation */
-}
-
-GameCore::~GameCore()
-{
-}
+GameCore::~GameCore() {}
 
 void GameCore::createScene()
 {
-  warrior = new Warrior("Warrrrrior", 100, 0, 25);
-
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
-  map->generateMap(_render);
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
+  map->generateMap(*this->mRenderManager);
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
 
   mPosition = new Position(100, 0, -450);
-   mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-  warrior->setOgreBase(mSceneMgr);
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
 
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
@@ -61,16 +39,8 @@ void GameCore::createScene()
   groundEntity->setMaterialName("Examples/Rockwall");
 
   collision = new CollisionTools();
-  this->_render.forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
-}
-
-void GameCore::createFrameListener(void)
-{
-  BaseGauntlet::createFrameListener();
-  /*mAnimationState = mEntity->getAnimationState("Run");
-  mAnimationState->setLoop(true);
-  mAnimationState->setEnabled(true);*/
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -85,87 +55,65 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
-  static Ogre::Real	toggleTimer = 0.0;
-  static Ogre::Real	rotate = .05;
-  static Ogre::Real	move = 350;
-  Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
-  Ogre::Vector3 CameraVec = Ogre::Vector3::ZERO;
-  GameObject* tmp;
+  Ogre::Vector3		dirVec = Ogre::Vector3::ZERO;
+  Ogre::Vector3		CameraVec = Ogre::Vector3::ZERO;
+  GameObject      *tmp;
 
-  SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("WarriorNode")->getPosition(),
-								  mSceneMgr->getSceneNode("WarriorNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-								  mEntity,
-								  false);
+  mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
-  this->_config.forEachPlayer([&](Pc *player){player->Animate(fe);});
-
-  if (collider.collided)
+  mConfig->forEachPlayer([&](Pc *player) {
+    SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
+									   player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+									   player->getEntity(),
+									   false);
+    if (collider.collided)
     {
-      dirVec.x -= 20 + move;
+      dirVec.x -= 20 + player->getSpeed();
       if (!collider.entity->getName().compare(0,9, "goldStack"))
+      {
+        if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
         {
-	  if ((tmp = this->_render.searchEntities(collider.entity->getName())))
-            {
-	      tmp->unsetEntity(mSceneMgr);
-	      static_cast<Character*>(warrior)->setScore(100);
-		    this->_render.eraseEntities(tmp);
-		    collision->remove_entity(collider.entity);
-            }
+          tmp->unsetEntity(mSceneMgr);
+          //static_cast<Character*>(warrior)->setScore(100);
+          this->mRenderManager->eraseEntities(tmp);
+          collision->remove_entity(collider.entity);
         }
-      else if (!collider.entity->getName().compare(0,9, "foodStack"))
+      }
+    else if (!collider.entity->getName().compare(0,9, "foodStack"))
+       {
+         if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
          {
-           if ((tmp = this->_render.searchEntities(collider.entity->getName())))
-                   {
-       	      tmp->unsetEntity(mSceneMgr);
-       	      static_cast<Character*>(warrior)->gainHealth(50);
-       		    this->_render.eraseEntities(tmp);
-       		    collision->remove_entity(collider.entity);
-                   }
+            tmp->unsetEntity(mSceneMgr);
+            //static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
+            this->mRenderManager->eraseEntities(tmp);
+            collision->remove_entity(collider.entity);
          }
+       }
     }
-  else
-  {
-    if (mKeyboard->isKeyDown(OIS::KC_L))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.z -= 0.9;
-    }
-    else if (mKeyboard->isKeyDown(OIS::KC_M))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.x -= 0.9;
-    }
-    else if (mKeyboard->isKeyDown(OIS::KC_K))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.x += 0.9;
-    }
-    else if (mKeyboard->isKeyDown(OIS::KC_O))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.z += 0.9;
-    }
-    mCamera->move(CameraVec);
-  /*else if (mKeyboard->isKeyDown(OIS::KC_I))
-  {
-    warrior->launchAnimation(fe, ATTACK);
-    warrior->mAnimationState = warrior->mAnimation->getAnimationState();
-  }*/
- }
-  warrior->getSceneNode()->translate(
-    dirVec * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
+  });
 
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, warrior, fe);});
-  // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
+  for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
+  {
+    OIS::KeyCode	key	= itBinding->first;
+    Pc			*player	= itBinding->second.first;
+    eventType		event	= itBinding->second.second;
 
+    if (mKeyboard->isKeyDown(key))
+    {
+      for (auto itEvent = player->_event.begin(); itEvent != player->_event.end(); ++itEvent)
+      {
+	       if (itEvent->first == event)
+	        {
+	           itEvent->second(fe, dirVec, CameraVec);
+	           this->mCamera->move(CameraVec);
+	           player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+	            return (true);
+	         }
+      }
+    }
+  }
+  /* FOCUS DU TANK*/
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
+  /* FOCUS DU TANK*/
   return true;
 }

@@ -197,9 +197,6 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/IndieException.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Input/Device.hpp">
-			<Option target="Gauntlet"/>
-		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/include/Input/DeviceManager.hpp">
 			<Option target="Gauntlet"/>
 		</Unit>
@@ -306,9 +303,6 @@
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/IndieException.cpp">
-			<Option target="Gauntlet"/>
-		</Unit>
-		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Input/Device.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Input/DeviceManager.cpp">

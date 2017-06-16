@@ -14,7 +14,6 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
 {
   this->_health = 120;
   this->_attack = 100;
-  this->_score = 0;
   mPosition		= new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);

@@ -14,8 +14,7 @@ Character::Character(int x, int y, int z) : GameObject(x, y, z)
 {
   this->_health = 100;
   this->_cooldown = 100;
-  this->_speed = 100;
-  this->_score = 0;
+  this->_speed = 350;
   /* this->_script = nullptr */
   this->_range = 1;
 }
@@ -74,11 +73,6 @@ void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
       this->_currentAnimation = this->_animations[state];
       this->_currentAnimation->enable();
     }
-}
-
-void Character::setScore(int point)
-{
-  this->_score += point;
 }
 
 void Character::gainHealth(int value)

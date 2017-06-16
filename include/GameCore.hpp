@@ -22,9 +22,6 @@
 # include "GameObject/Character/Npc/Skeleton.hpp"
 # include "GameObject/Doodad/Doodad.hpp"
 # include "MapManager.hpp"
-# include "RenderManager.hpp"
-# include "Input/Device.hpp"
-# include "GameObject/Character/Character.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -33,16 +30,9 @@ public:
   virtual ~GameCore();
 protected:
   virtual void createScene(void);
-  virtual void createFrameListener(void);
   virtual bool frameRenderingQueued(const Ogre::FrameEvent &evt);
   virtual bool processUnbufferedInput(const Ogre::FrameEvent& fe);
 
-  /* Définitif */
-  Configuration		_config;
-  RenderManager		_render;
-
-  /* Temporaire */
-  CollisionTools	*collision;
   Ogre::AnimationState	*mAnimationState;
   Ogre::AnimationState	*mAnimationStateZombie;
   Ogre::Entity		*mEntity;
@@ -52,7 +42,7 @@ protected:
   Ogre::SceneNode	*mZombie;
   Position		*mPosition;
   MapManager		*map;
-  GameObject *warrior;
+  GameObject		*warrior;
 };
 
 #endif			/* !_GAME_CORE__HPP_! */

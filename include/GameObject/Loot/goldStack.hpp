@@ -11,7 +11,8 @@
 #ifndef _GOLDSTACK_HPP_
 #define _GOLDSTACK_HPP_
 
-#include "GameObject/Loot/Loot.hpp"
+# include "GameObject/Loot/Loot.hpp"
+# include "Configuration.hpp"
 
 class goldStack : public Loot
 {
@@ -27,7 +28,7 @@ public:
   void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
 
-  void increaseScore(Pc *);
+  void increaseScore(Configuration *);
   virtual bool isTaken(Pc const &);
 };
 

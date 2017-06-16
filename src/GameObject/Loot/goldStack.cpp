@@ -60,7 +60,7 @@ bool goldStack::isTaken(Pc const & other)
   return (false);
 }
 
-void goldStack::increaseScore(Pc *player)
+void goldStack::increaseScore(Configuration *config)
 {
-  player->setScore(100);
+  config->addScorePoint(100);
 }

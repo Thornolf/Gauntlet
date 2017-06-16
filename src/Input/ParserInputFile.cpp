@@ -40,7 +40,7 @@ void		ParserInputFile::saveBindingInFile(const std::map<OIS::KeyCode, std::pair<
     throw IndieException("Cannot save the binding configuration");
 }
 
-std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	ParserInputFile::getArrayBindingFromFile(const std::string &path, std::vector<Pc*> playerList)
+std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	ParserInputFile::getArrayBindingFromFile(const std::string &path, const std::vector<Pc*> &playerList)
 {
   std::ifstream				*file;
   std::stringstream			ss;
@@ -58,70 +58,59 @@ std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	ParserInputFile::getArrayBin
       ss.clear();
     }
   }
-  else
-  {
-    this->_binding.clear();
-    return this->_binding;
-  }
   return (this->_binding);
 }
 
-void		ParserInputFile::addLineSaveToBinding(const std::string &line, std::vector<Pc*> playerList)
+bool		ParserInputFile::stringIsNumber(char *line) const
 {
-  eventType	event;
-  OIS::KeyCode	key;
-  unsigned long	pos;
-  unsigned int	playerId;
-  unsigned int	posPlayerList;
-  Pc		*player = nullptr;
-  std::string	buffer;
+  int		i = -1;
 
-  buffer = line;
-  /* get KeyCode */
-  if ((pos = buffer.find(" \t")) == std::string::npos)
+  while (line[++i])
+  {
+    if (line[i] < '0' || line[i] > '9')
+      return (false);
+  }
+  return (true);
+}
+
+void		ParserInputFile::addLineSaveToBinding(const std::string &line, const std::vector<Pc*> &playerList)
+{
+  OIS::KeyCode	key;
+  eventType	event;
+  int		eventInt;
+  unsigned int	playerId;
+  unsigned int	posPlayer;
+  Pc		*player = nullptr;
+  char		*part;
+  char		*line_c = new char[line.length() + 1];
+  int		keyInt;
+
+  std::strcpy(line_c, line.c_str());
+  if (!(part = std::strtok(line_c, " \t")) || !stringIsNumber(part))
     return;
-  try
-  {
-    key = static_cast<OIS::KeyCode>(std::stoi(line.substr(0, pos)));
-    if (key < OIS::KC_UNASSIGNED || key > OIS::KC_MEDIASELECT)
-      throw IndieException("Invalid binding configuration");
-  }
-  catch (std::exception &e)
-  {
-    throw IndieException(e.what());
-  }
-  /* get Pc */
-  if ((pos = buffer.find(" \t")) == std::string::npos)
+  keyInt = std::atoi(part);
+  if (keyInt < 0 || keyInt > OIS::KeyCode::KC_MEDIASELECT)
     return;
-  try
+  key = static_cast<OIS::KeyCode>(keyInt);
+  if (!(part = std::strtok(NULL, " \t")) || !stringIsNumber(part))
+    return;
+  playerId = static_cast<unsigned int>(std::atoi(part));
+  posPlayer = 0;
+  if (playerId > playerList.size())
+    return;
+  for (auto itPlayer = playerList.begin(); itPlayer != playerList.end(); ++itPlayer)
   {
-    if ((pos = buffer.find(" \t")) == std::string::npos)
-      return;
-    playerId = std::stoi(buffer.substr(0, pos));
-    buffer = std::stoi(buffer.substr(pos + 1));
-    if (playerId > playerList.size())
-      throw IndieException("ID Player not set in the configuration but provided in BindingMapFile");
-    posPlayerList = 0;
-    for (auto it = playerList.begin(); it != playerList.end(); ++it)
-    {
-      if (posPlayerList == playerId)
-	player = (*it);
-      posPlayerList++;
-    }
+    if (posPlayer == playerId)
+      player = *itPlayer;
+    posPlayer++;
   }
-  catch (std::exception &e)
-  {
-    throw IndieException(e.what());
-  }
-  /* get eventType */
-  try
-  {
-    event = static_cast<eventType>(std::stoi(buffer));
-    buffer = std::stoi(buffer.substr(pos + 1));
-  }
-  catch (std::exception &e)
-  {
-    throw IndieException(e.what());
-  }
+  if (!player)
+    return;
+  if (!(part = std::strtok(NULL, " \t")) || !stringIsNumber(part))
+    return;
+  if ((eventInt = std::atoi(part)) < eventType ::EVENT_TYPE_MIN || eventInt > eventType ::EVENT_TYPE_MAX)
+    return;
+  event = static_cast<eventType>(eventInt);
+  delete[] line_c;
   this->_binding.insert(std::make_pair(key, std::make_pair(player, event)));
 }

@@ -8,11 +8,11 @@
 ** Last update Wed Jun 14 14:36:53 2017 Pierre
 */
 
-#ifndef _ANIMATION_HPP_
-#define _ANIMATION_HPP_
+#ifndef		_ANIMATION_HPP_
+# define	_ANIMATION_HPP_
 
-#include <OgreSkeleton.h>
-#include "BaseGauntlet.hpp"
+# include <Ogre.h>
+# include <OgreSkeleton.h>
 
 class Animation
 {
@@ -47,4 +47,4 @@ public:
   Ogre::AnimationState *loopAnimation(Ogre::AnimationState *, const std::string&, const Ogre::FrameEvent&, Ogre::Entity *);
 };
 
-#endif
+#endif		/* !_ANIMATION_HPP_! */

@@ -102,7 +102,6 @@ set(HDRS
         ./include/audio/IAudio.hpp
         ./include/audio/Music.hpp
         ./include/audio/SoundSystem.hpp
-        ./include/Input/Device.hpp
         ./include/Input/DeviceManager.hpp
         ./include/Input/ParserInputFile.hpp
         ./include/Input/eventType.hpp
@@ -136,7 +135,6 @@ set(SRCS
         ./src/GameObject/Character/Pc/Tank.cpp
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp
-        ./src/Input/Device.cpp
         ./src/Score/Score.cpp
         ./src/GameObject/Character/Pc/Melee.cpp
         ./src/Configuration.cpp

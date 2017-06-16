@@ -14,7 +14,6 @@ Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
   this->_health = 150;
   this->_attack = 50;
-  this->_score = 0;
   mPosition = new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_currentAnimation = this->_animations[IDLE];
