@@ -26,7 +26,20 @@ BaseGauntlet::BaseGauntlet(void)
     mMouse(0),
     mKeyboard(0)
 {
+  Pc			*unitPlayer;
+
   collision = new CollisionTools();
+  mRenderManager = new RenderManager();
+  mConfig = new Configuration();
+
+  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("TANK", Position(500, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
+  mConfig->addPlayer(unitPlayer);
+  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("MAGE", Position(200, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
+  mConfig->addPlayer(unitPlayer);
+  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("ARCHER", Position(-100, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
+  mConfig->addPlayer(unitPlayer);
+  unitPlayer = static_cast<Pc*>(mRenderManager->createGameObject("WARRIOR", Position(-400, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
+  mConfig->addPlayer(unitPlayer);
 }
 
 //------------------------------------------------------------------------------------
@@ -35,7 +48,6 @@ BaseGauntlet::~BaseGauntlet(void)
   if (mTrayMgr) delete mTrayMgr;
   if (mCameraMan) delete mCameraMan;
 
-  //Remove ourself as a Window listener
   Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   windowClosed(mWindow);
   delete mRoot;
@@ -44,26 +56,17 @@ BaseGauntlet::~BaseGauntlet(void)
 //-------------------------------------------------------------------------------------
 bool BaseGauntlet::configure(void)
 {
-  // Show the configuration dialog and initialise the system
-  // You can skip this and use root.restoreConfig() to load configuration
-  // settings if you were sure there are valid ones saved in ogre.cfg
   if(mRoot->showConfigDialog())
   {
-    // If returned true, user clicked OK so initialise
-    // Here we choose to let the system create a default rendering window by passing 'true'
-    mWindow = mRoot->initialise(true, "TutorialGameCore Render Window");
-
+    mWindow = mRoot->initialise(true, "Gauntlet");
     return true;
   }
   else
-  {
     return false;
-  }
 }
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::chooseSceneManager(void)
 {
-  // Get the SceneManager, in this case a generic one
   mSceneMgr = mRoot->createSceneManager(Ogre::ST_GENERIC);
   mOverlaySystem = new Ogre::OverlaySystem();
   mSceneMgr->addRenderQueueListener(mOverlaySystem);
@@ -71,11 +74,8 @@ void BaseGauntlet::chooseSceneManager(void)
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::createCamera(void)
 {
-  // Create the camera
   mCamera = mSceneMgr->createCamera("PlayerCam");
-  // Position it at 500 in Z direction
   mCamera->setPosition(Ogre::Vector3(0,1500,-700));
-  // Look back along -Z
   mCamera->lookAt(Ogre::Vector3(0,0,0));
   mCamera->setNearClipDistance(5);
   mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
@@ -83,64 +83,53 @@ void BaseGauntlet::createCamera(void)
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::createFrameListener(void)
 {
-    Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
-    OIS::ParamList pl;
-    size_t windowHnd = 0;
-    std::ostringstream windowHndStr;
+  Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
+  OIS::ParamList	pl;
+  size_t		windowHnd = 0;
+  std::ostringstream	windowHndStr;
 
-    mWindow->getCustomAttribute("WINDOW", &windowHnd);
-    windowHndStr << windowHnd;
-    pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
+  mWindow->getCustomAttribute("WINDOW", &windowHnd);
+  windowHndStr << windowHnd;
+  pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
 
-    mInputManager = OIS::InputManager::createInputSystem( pl );
+  mInputManager = OIS::InputManager::createInputSystem(pl);
+  mInputParser = new ParserInputFile();
+  mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
+  mKeyboardBinding = mInputParser->getArrayBindingFromFile("myKeyboard.cnf", mConfig->getPlayers());
+  std::cout << "DEBUG - ICI " << mKeyboardBinding.size() << std::endl;
+  mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, true ));
 
-    mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
-    mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, true ));
+  mMouse->setEventCallback(this);
+  mKeyboard->setEventCallback(this);
 
-    mMouse->setEventCallback(this);
-    mKeyboard->setEventCallback(this);
+  windowResized(mWindow);
+  Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
-    //Set initial mouse clipping size
-    windowResized(mWindow);
+  OgreBites::InputContext inputContext;
+  inputContext.mMouse = mMouse;
+  inputContext.mKeyboard = mKeyboard;
+  mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
+  OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_TOPLEFT, "EnterBtn", "Enter GameState", 250);
+  mTrayMgr->showCursor();
 
-    //Register as a Window listener
-    Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
+  Ogre::StringVector items;
+  items.push_back("cam.pX");
+  items.push_back("cam.pY");
+  items.push_back("cam.pZ");
+  items.push_back("");
+  items.push_back("cam.oW");
+  items.push_back("cam.oX");
+  items.push_back("cam.oY");
+  items.push_back("cam.oZ");
+  items.push_back("");
+  items.push_back("Filtering");
+  items.push_back("Poly Mode");
 
-	OgreBites::InputContext inputContext;
-	inputContext.mMouse = mMouse;
-	inputContext.mKeyboard = mKeyboard;
-    mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-		OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_TOPLEFT, "EnterBtn", "Enter GameState", 250);
-		if(button->getName() == "ExitBtn")
-				std::cout << "************\n\n\n\n\n\n\n\n\nexit***********" << std::endl;
-    else if(button->getName() == "EnterBtn")
-        std::cout << "************\n\n\n\n\n\n\n\n\nenter***********" << std::endl;
-		// 	std::cout << "*************************\n\n\n\nclicked\n\n\n\n\n\n******************" << std::endl;
-		// }
-    // mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-		// mTrayMgr->showAll();
-    // mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
-    mTrayMgr->showCursor();
-
-    // create a params panel for displaying sample details
-    Ogre::StringVector items;
-    items.push_back("cam.pX");
-    items.push_back("cam.pY");
-    items.push_back("cam.pZ");
-    items.push_back("");
-    items.push_back("cam.oW");
-    items.push_back("cam.oX");
-    items.push_back("cam.oY");
-    items.push_back("cam.oZ");
-    items.push_back("");
-    items.push_back("Filtering");
-    items.push_back("Poly Mode");
-
-    mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
-    mDetailsPanel->setParamValue(9, "Bilinear");
-    mDetailsPanel->setParamValue(10, "Solid");
-    mDetailsPanel->hide();
-    mRoot->addFrameListener(this);
+  mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
+  mDetailsPanel->setParamValue(9, "Bilinear");
+  mDetailsPanel->setParamValue(10, "Solid");
+  mDetailsPanel->hide();
+  mRoot->addFrameListener(this);
 }
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::destroyScene(void)
@@ -149,22 +138,18 @@ void BaseGauntlet::destroyScene(void)
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::createViewports(void)
 {
-  // Create one viewport, entire window
   Ogre::Viewport* vp = mWindow->addViewport(mCamera);
   vp->setBackgroundColour(Ogre::ColourValue(0,0,0));
 
-  // Alter the camera aspect ratio to match the viewport
   mCamera->setAspectRatio(
     Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 }
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::setupResources(void)
 {
-  // Load resource paths from config file
   Ogre::ConfigFile cf;
   cf.load(mResourcesCfg);
 
-  // Go through all sections & settings in the file
   Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();
 
   Ogre::String secName, typeName, archName;
@@ -197,7 +182,7 @@ void BaseGauntlet::go(void)
 {
 #ifdef _DEBUG
   mResourcesCfg = "resources_d.cfg";
-    mPluginsCfg = "plugins_d.cfg";
+  mPluginsCfg = "plugins_d.cfg";
 #else
   mResourcesCfg = "resources.cfg";
   mPluginsCfg = "plugins.cfg";
@@ -224,15 +209,11 @@ bool BaseGauntlet::setup(void)
   createCamera();
   createViewports();
 
-  // Set default mipmap level (NB some APIs ignore this)
   Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-  // Create any resource listeners (for loading screens)
   createResourceListener();
-  // Load resources
   loadResources();
 
-  // Create the scene
   createScene();
 
   createFrameListener();
@@ -248,16 +229,15 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
   if(mShutDown)
     return false;
 
-    //Need to capture/update each device
-    mKeyboard->capture();
-    mMouse->capture();
-		mTrayMgr->refreshCursor();
-    mTrayMgr->frameRenderingQueued(evt);
+  mKeyboard->capture();
+  mMouse->capture();
+  mTrayMgr->refreshCursor();
+  mTrayMgr->frameRenderingQueued(evt);
 
   if (!mTrayMgr->isDialogVisible())
   {
-    mCameraMan->frameRenderingQueued(evt);   // if dialog isn't up, then update the camera
-    if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
+    mCameraMan->frameRenderingQueued(evt);
+    if (mDetailsPanel->isVisible())
     {
       mDetailsPanel->setParamValue(0, Ogre::StringConverter::toString(mCamera->getDerivedPosition().x));
       mDetailsPanel->setParamValue(1, Ogre::StringConverter::toString(mCamera->getDerivedPosition().y));
@@ -274,13 +254,13 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
 //-------------------------------------------------------------------------------------
 bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg )
 {
-  if (mTrayMgr->isDialogVisible()) return true;   // don't process any more keys if dialog is up
+  if (mTrayMgr->isDialogVisible()) return true;
 
-  if (arg.key == OIS::KC_F)   // toggle visibility of advanced frame stats
+  if (arg.key == OIS::KC_F)
   {
     mTrayMgr->toggleAdvancedFrameStats();
   }
-  else if (arg.key == OIS::KC_G)   // toggle visibility of even rarer debugging details
+  else if (arg.key == OIS::KC_G)
   {
     if (mDetailsPanel->getTrayLocation() == OgreBites::TL_NONE)
     {
@@ -293,7 +273,7 @@ bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg )
       mDetailsPanel->hide();
     }
   }
-  else if (arg.key == OIS::KC_T)   // cycle polygon rendering mode
+  else if (arg.key == OIS::KC_T)
   {
     Ogre::String newVal;
     Ogre::TextureFilterOptions tfo;
@@ -349,11 +329,11 @@ bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg )
     mCamera->setPolygonMode(pm);
     mDetailsPanel->setParamValue(10, newVal);
   }
-  else if(arg.key == OIS::KC_F5)   // refresh all textures
+  else if(arg.key == OIS::KC_F5)
   {
     Ogre::TextureManager::getSingleton().reloadAll();
   }
-  else if (arg.key == OIS::KC_SYSRQ)   // take a screenshot
+  else if (arg.key == OIS::KC_SYSRQ)
   {
     mWindow->writeContentsToTimestampedFile("screenshot", ".jpg");
   }
@@ -374,8 +354,6 @@ bool BaseGauntlet::keyReleased( const OIS::KeyEvent &arg )
 
 bool BaseGauntlet::mouseMoved( const OIS::MouseEvent &arg )
 {
-  /*if (mTrayMgr->injectMouseMove(arg)) return true;
-  mCameraMan->injectMouseMove(arg);*/
   return true;
 }
 
@@ -393,7 +371,6 @@ bool BaseGauntlet::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID
   return true;
 }
 
-//Adjust mouse clipping area
 void BaseGauntlet::windowResized(Ogre::RenderWindow* rw)
 {
   unsigned int width, height, depth;
@@ -405,16 +382,14 @@ void BaseGauntlet::windowResized(Ogre::RenderWindow* rw)
   ms.height = height;
 }
 
-//Unattach OIS before window shutdown (very important under Linux)
 void BaseGauntlet::windowClosed(Ogre::RenderWindow* rw)
 {
-  //Only close for window that created OIS (the main window in these demos)
-  if( rw == mWindow )
+  if (rw == mWindow)
   {
-    if( mInputManager )
+    if (mInputManager)
     {
-      mInputManager->destroyInputObject( mMouse );
-      mInputManager->destroyInputObject( mKeyboard );
+      mInputManager->destroyInputObject(mMouse);
+      mInputManager->destroyInputObject(mKeyboard);
 
       OIS::InputManager::destroyInputSystem(mInputManager);
       mInputManager = 0;

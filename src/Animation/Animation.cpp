@@ -8,6 +8,7 @@
 ** Last update Wed Jun 14 14:45:26 2017 Pierre
 */
 
+#include <OgreFrameListener.h>
 #include "Animation.hpp"
 
 Animation::Animation(std::string const& name, bool looping, double speed, double dist, double castingTime)

@@ -8,89 +8,98 @@
 ** Last update Wed Jun 14 15:14:53 2017 Robin Grattepanche
 */
 
-#ifndef __BASEGAUNTLET__HPP_
-#define __BASEGAUNTLET__HPP_
+#ifndef		__BASEGAUNTLET__HPP_
+# define	__BASEGAUNTLET__HPP_
 
-#include <OgreCamera.h>
-#include <OgreEntity.h>
-#include <OgreLogManager.h>
-#include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
-#include <OgreConfigFile.h>
+# include <OgreCamera.h>
+# include <OgreEntity.h>
+# include <OgreLogManager.h>
+# include <OgreRoot.h>
+# include <OgreViewport.h>
+# include <OgreSceneManager.h>
+# include <OgreRenderWindow.h>
+# include <OgreConfigFile.h>
 
-#include <OISEvents.h>
-#include <OISInputManager.h>
-#include <OISKeyboard.h>
-#include <OISMouse.h>
+# include <OISEvents.h>
+# include <OISInputManager.h>
+# include <OISKeyboard.h>
+# include <OISMouse.h>
 
-#include <SdkTrays.h>
-#include <SdkCameraMan.h>
-#include "NewMOC.hpp"
+# include <SdkTrays.h>
+# include <SdkCameraMan.h>
+
+# include "NewMOC.hpp"
+# include "Configuration.hpp"
+# include "Input/ParserInputFile.hpp"
+# include "Input/eventType.hpp"
+# include "Animation.hpp"
+# include "GameObject/Character/Pc/Pc.hpp"
+# include "RenderManager.hpp"
 
 using namespace Collision;
 
 class BaseGauntlet : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
 {
 public:
-    BaseGauntlet(void);
-    virtual ~BaseGauntlet(void);
+  BaseGauntlet(void);
+  virtual ~BaseGauntlet(void);
 
-    virtual void go(void);
+  virtual void go(void);
 
 protected:
-    virtual bool setup();
-    virtual bool configure(void);
-    virtual void chooseSceneManager(void);
-    virtual void createCamera(void);
-    virtual void createFrameListener(void);
-    virtual void createScene(void) = 0; // Override me!
-    virtual void destroyScene(void);
-    virtual void createViewports(void);
-    virtual void setupResources(void);
-    virtual void createResourceListener(void);
-    virtual void loadResources(void);
+  virtual bool setup();
+  virtual bool configure(void);
+  virtual void chooseSceneManager(void);
+  virtual void createCamera(void);
+  virtual void createFrameListener(void);
+  virtual void createScene(void) = 0; // Override me!
+  virtual void destroyScene(void);
+  virtual void createViewports(void);
+  virtual void setupResources(void);
+  virtual void createResourceListener(void);
+  virtual void loadResources(void);
 
-    // Ogre::FrameListener
-    virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+  virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
-    // OIS::KeyListener
-    virtual bool keyPressed( const OIS::KeyEvent &arg );
-    virtual bool keyReleased( const OIS::KeyEvent &arg );
-    // OIS::MouseListener
-    virtual bool mouseMoved( const OIS::MouseEvent &arg );
-    virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
-    virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+  virtual bool keyPressed( const OIS::KeyEvent &arg );
+  virtual bool keyReleased( const OIS::KeyEvent &arg );
+  virtual bool mouseMoved( const OIS::MouseEvent &arg );
+  virtual bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+  virtual bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
 
-    // Ogre::WindowEventListener
-    //Adjust mouse clipping area
-    virtual void windowResized(Ogre::RenderWindow* rw);
-    //Unattach OIS before window shutdown (very important under Linux)
-    virtual void windowClosed(Ogre::RenderWindow* rw);
+  virtual void windowResized(Ogre::RenderWindow* rw);
+  virtual void windowClosed(Ogre::RenderWindow* rw);
 
-    Ogre::Root *mRoot;
-    Ogre::Camera* mCamera;
-    Ogre::SceneManager* mSceneMgr;
-    Ogre::RenderWindow* mWindow;
-    Ogre::String mResourcesCfg;
-    Ogre::String mPluginsCfg;
-	  Ogre::OverlaySystem *mOverlaySystem;
-    CollisionTools* collision;
+  Ogre::Root			*mRoot;
+  Ogre::Camera*			mCamera;
+  Ogre::SceneManager*		mSceneMgr;
+  Ogre::RenderWindow*		mWindow;
+  Ogre::String			mResourcesCfg;
+  Ogre::String			mPluginsCfg;
+  Ogre::OverlaySystem		*mOverlaySystem;
 
-    // OgreBites
-    OgreBites::SdkTrayManager* mTrayMgr;
-    OgreBites::SdkCameraMan* mCameraMan;       // basic camera controller
-    OgreBites::ParamsPanel* mDetailsPanel;     // sample details panel
-    bool mCursorWasVisible;                    // was cursor visible before dialog appeared
-    bool mShutDown;
+  // Configuration
+  Configuration			*mConfig;
+  RenderManager			*mRenderManager;
 
-    //OIS Input devices
-    OIS::InputManager* mInputManager;
-    OIS::Mouse*    mMouse;
-    OIS::Keyboard* mKeyboard;
+  // OgreBites
+  OgreBites::SdkTrayManager*					mTrayMgr;
+  OgreBites::SdkCameraMan*					mCameraMan;
+  OgreBites::ParamsPanel*					mDetailsPanel;
+  bool								mCursorWasVisible;
+  bool								mShutDown;
 
-    Ogre::AnimationState* mAnimationState;
+  //OIS Input devices
+  ParserInputFile						*mInputParser;
+  OIS::InputManager						*mInputManager;
+  OIS::Mouse							*mMouse;
+  OIS::Keyboard*						mKeyboard;
+  std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	mKeyboardBinding;
+
+  Ogre::AnimationState*		mAnimationState;
+
+  // Collision
+  CollisionTools		*collision;
 };
 
 #endif		/* !_BASEGAUNTLET__HPP_ */

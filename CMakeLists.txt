@@ -99,10 +99,9 @@ set(HDRS
         ./include/Configuration.hpp
         ./include/Particle.hpp
         include/GameObject/Character/Pc/Ranged.hpp
-        ./include/audio/IAudio.hpp
-        ./include/audio/Music.hpp
-        ./include/audio/SoundSystem.hpp
-        ./include/Input/Device.hpp
+        include/Audio/IAudio.hpp
+        include/Audio/Music.hpp
+        include/Audio/SoundSystem.hpp
         ./include/Input/DeviceManager.hpp
         ./include/Input/ParserInputFile.hpp
         ./include/Input/eventType.hpp
@@ -136,13 +135,12 @@ set(SRCS
         ./src/GameObject/Character/Pc/Tank.cpp
         ./src/GameObject/GameObject.cpp
         ./src/Position/Position.cpp
-        ./src/Input/Device.cpp
         ./src/Score/Score.cpp
         ./src/GameObject/Character/Pc/Melee.cpp
         ./src/Configuration.cpp
         ./src/GameObject/Character/Pc/Ranged.cpp
-        ./src/audio/SoundSystem.cpp
-        ./src/audio/Music.cpp
+        src/Audio/SoundSystem.cpp
+        src/Audio/Music.cpp
         ./src/Input/DeviceManager.cpp
         ./src/Input/ParserInputFile.cpp
         ./src/NewMOC.cpp

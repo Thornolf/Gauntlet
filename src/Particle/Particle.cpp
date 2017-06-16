@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed Jun 14 10:21:32 2017 Adrien Warin
-** Last update Wed Jun 14 11:33:31 2017 Adrien Warin
+// Last update Fri Jun 16 11:17:43 2017 Adrien Warin
 */
 
 #include "Particle.hpp"
@@ -31,4 +31,9 @@ Ogre::ParticleSystem    *Particle::setParticle(Ogre::SceneManager *scene)
 void                    Particle::setObjet(Ogre::SceneNode *objet)
 {
     objet->attachObject(this->_ps);
+}
+
+void                    Particle::destroy()
+{
+    this->_ps->removeAllEmitters();
 }

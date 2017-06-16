@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Thu Jun 15 14:43:56 2017 Thomas Fossaert
+// Last update Fri Jun 16 10:21:44 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -15,41 +15,37 @@
 
 #include "GameCore.hpp"
 
-GameCore::GameCore()
-{
-  /* Configuration initialisation */
-  /*Configuration		*mConfig = new Configuration();
-  std::vector<Pc*>	players;
-  Pc			*unitPlayer;
+GameCore::GameCore() {}
 
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("TANK", Position(500, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("MAGE", Position(200, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("ARCHER", Position(-100, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-  players.push_back(unitPlayer);
-  unitPlayer = static_cast<Pc*>(_render.createGameObject("WARRIOR", Position(-400, 0, 500), Position(0, 0, 0), Ogre::Quaternion(0, 0, 0, 0), ""));
-     players.push_back(unitPlayer);
-  mConfig->setPlayers(players);*/
-  /* Configuration END initialisation */
-}
-
-GameCore::~GameCore()
-{
-}
+GameCore::~GameCore() {}
 
 void GameCore::createScene()
 {
-  warrior = new Warrior("Warrrrrior", 100, 0, 25);
+  /* ----------------------------START SET MUSIC ---------------------------*/
+  Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
+
+  backgroundMusic->playAudio();
+  backgroundMusic->setLoop(true);
+  backgroundMusic->setAudioVolume(10.0);
+  _mmusic.insert(std::make_pair("Waluni1", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg", "Waluni1")));
+  _mmusic.insert(std::make_pair("Waluni2", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni2.ogg", "Waluni2")));
+  _mmusic.insert(std::make_pair("Waluni3", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni3.ogg", "Waluni3")));
+  _mmusic.insert(std::make_pair("Plague", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_1_Plague.ogg", "Plague")));
+  _mmusic.insert(std::make_pair("Kelthusad", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_2_Kelthusad.ogg", "Kelthusad")));
+  _mmusic.insert(std::make_pair("Abomination", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_3_Abomination.ogg", "Abomination")));
+  _mmusic.insert(std::make_pair("Wyrm", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_4_Wyrm.ogg", "Wyrm")));
+  auto itm = _mmusic.begin();
+  itm->second->playAudio();
+  this->setCurrMusicName(itm->second->getCurrentName());
+  /* ----------------------------END SET MUSIC ---------------------------*/
 
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
-  map->generateMap(_render);
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
+  map->generateMap(*this->mRenderManager);
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setOgreBase(this->mSceneMgr);});
 
   mPosition = new Position(100, 0, -450);
-   mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
-  warrior->setOgreBase(mSceneMgr);
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(1.0f, 1.0f, 1.0f));
 
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
@@ -61,104 +57,103 @@ void GameCore::createScene()
   groundEntity->setMaterialName("Examples/Rockwall");
 
   collision = new CollisionTools();
-  this->_render.forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
-}
-
-void GameCore::createFrameListener(void)
-{
-  BaseGauntlet::createFrameListener();
-  /*mAnimationState = mEntity->getAnimationState("Run");
-  mAnimationState->setLoop(true);
-  mAnimationState->setEnabled(true);*/
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
   bool ret = BaseGauntlet::frameRenderingQueued(fe);
+  auto it = _mmusic.find(this->_currentMusic);
+
 
   if (!processUnbufferedInput(fe))
     return false;
+  /* START MUSIC */
+  if (_mmusic[this->_currentMusic]->getStatus() ==  sf::SoundSource::Status::Stopped)
+  {
+    if (it == _mmusic.end())
+      throw IndieException("Music can't be load");
+    if (++it == _mmusic.end())
+      it = _mmusic.begin();
+    this->setCurrMusicName(it->second->getCurrentName());
+    it->second->playAudio();
+  }
+  /* END MUSIC */
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
   return ret;
 }
 
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
-  static Ogre::Real	toggleTimer = 0.0;
-  static Ogre::Real	rotate = .05;
-  static Ogre::Real	move = 350;
-  Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
-  Ogre::Vector3 CameraVec = Ogre::Vector3::ZERO;
+  Ogre::Vector3		dirVec = Ogre::Vector3::ZERO;
+  Ogre::Vector3		CameraVec = Ogre::Vector3::ZERO;
+  GameObject      *tmp;
 
-  SCheckCollisionAnswer	collider = collision->check_ray_collision(mSceneMgr->getSceneNode("WarriorNode")->getPosition(),
-								  mSceneMgr->getSceneNode("WarriorNode")->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-								  mEntity,
-								  false);
+  mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
-  this->_config.forEachPlayer([&](Pc *player){player->Animate(fe);});
-
-  if (collider.collided)
-    {
-      dirVec.x -= 20 + move;
-      if (!collider.entity->getName().compare(0,9, "goldStack"))
-        {
-          collision->remove_entity(collider.entity);
-          mSceneMgr->destroyEntity(collider.entity);
-          static_cast<Character*>(warrior)->setScore(100);
-        //  Particle *test = new Particle("test", "Example/getGold", mSceneMgr, collider.entity);
-        }
-      else if (!collider.entity->getName().compare(0,9, "foodStack"))
-         {
-           collision->remove_entity(collider.entity);
-           mSceneMgr->destroyEntity(collider.entity);
-           static_cast<Character*>(warrior)->gainHealth(50);
-         }
-    }
-  else
+   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
+  for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
-    if (mKeyboard->isKeyDown(OIS::KC_L))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.z -= 1;
-    }
-    else if (mKeyboard->isKeyDown(OIS::KC_M))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.x -= 1;
-    }
-    else if (mKeyboard->isKeyDown(OIS::KC_K))
-    {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.x += 1;
+    OIS::KeyCode	key	= itBinding->first;
+    Pc			*player	= itBinding->second.first;
+    eventType		event	= itBinding->second.second;
 
-    }
-    else if (mKeyboard->isKeyDown(OIS::KC_O))
+    if (mKeyboard->isKeyDown(key))
     {
-      warrior->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
-      dirVec.x += move;
-      warrior->Animate(fe);
-      CameraVec.z += 1;
+      for (auto itEvent = player->_event.begin(); itEvent != player->_event.end(); ++itEvent)
+      {
+	       if (itEvent->first == event)
+	        {
+            SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
+                             player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+                             player->getEntity(),
+                             false);
+
+            if (collider.collided)
+            {
+              dirVec.x -= 20 + player->getSpeed();
+              if (!collider.entity->getName().compare(0,9, "goldStack"))
+              {
+                if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+                {
+                  tmp->unsetEntity(mSceneMgr);
+                  //static_cast<Character*>(warrior)->setScore(100);
+                  this->mRenderManager->eraseEntities(tmp);
+                  collision->remove_entity(collider.entity);
+                }
+              }
+            else if (!collider.entity->getName().compare(0,9, "foodStack"))
+               {
+                 if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+                 {
+                    tmp->unsetEntity(mSceneMgr);
+                    //static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
+                    this->mRenderManager->eraseEntities(tmp);
+                    collision->remove_entity(collider.entity);
+                 }
+               }
+            }
+            else
+              {
+	           itEvent->second(fe, dirVec, CameraVec);
+	           this->mCamera->move(CameraVec);
+           }
+	           player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+	            return (true);
+	         }
+      }
     }
-    mCamera->move(CameraVec);
-  /*else if (mKeyboard->isKeyDown(OIS::KC_I))
-  {
-    warrior->launchAnimation(fe, ATTACK);
-    warrior->mAnimationState = warrior->mAnimation->getAnimationState();
-  }*/
- }
-  warrior->getSceneNode()->translate(
-    dirVec * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
-
-  this->_render.forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, warrior, fe);});
-  // render.forEachEntity([&](GameObject* gObj){gObj->Animate(fe);});
-
+  }
   return true;
+}
+
+void		GameCore::setCurrMusicName(std::string newCurrName)
+{
+  this->_currentMusic = newCurrName;
+}
+
+std::string	GameCore::getCurrMusicName() const
+{
+  return (this->_currentMusic);
 }

@@ -21,10 +21,13 @@
 # include <OgreRenderWindow.h>
 # include <OgreConfigFile.h>
 
+# include "NewMOC.hpp"
 # include "GameObject/Character/Script.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"
 #include "Particle.hpp"
+
+using namespace Collision;
 
 class Script;
 

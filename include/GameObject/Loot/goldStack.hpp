@@ -5,13 +5,14 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Thu Jun 15 17:13:09 2017 Adrien Warin
+** Last update Fri Jun 16 11:13:07 2017 Adrien Warin
 */
 
 #ifndef _GOLDSTACK_HPP_
 #define _GOLDSTACK_HPP_
 
-#include "GameObject/Loot/Loot.hpp"
+# include "GameObject/Loot/Loot.hpp"
+# include "Configuration.hpp"
 
 class goldStack : public Loot
 {
@@ -26,7 +27,8 @@ public:
   void		setOgreBase(Ogre::SceneManager*);
   void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
-  void increaseScore(Pc *);
+
+  void     increaseScore(Configuration *);
   virtual bool isTaken(Pc const &);
 };
 
