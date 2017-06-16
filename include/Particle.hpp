@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon Jun 12 15:59:00 2017 Adrien Warin
-** Last update Fri Jun 16 11:12:28 2017 Adrien Warin
+** Last update Fri Jun 16 13:49:10 2017 Adrien Warin
 */
 
 #ifndef PARTICLE_HPP_
@@ -13,9 +13,6 @@
 
 #include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
-
-// #include "GameCore.hpp"
-// #include "GameObject/Character/Pc/Pc.hpp"
 
 class GameObject;
 
