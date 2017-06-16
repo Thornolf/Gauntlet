@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:39:01 2017 Adrien Warin
-** Last update Tue Jun 13 12:28:25 2017 Thomas Fossaert
+** Last update Thu Jun 15 12:49:34 2017 Pierre
 */
 
 #ifndef		_WARRIOR__HPP_
@@ -25,6 +25,7 @@ public:
   void		setOgreBase(Ogre::SceneManager*);
   void		Animate(const Ogre::FrameEvent&);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
+  void attack();
 };
 
 #endif		/* !_WARRIOR__HPP_ */

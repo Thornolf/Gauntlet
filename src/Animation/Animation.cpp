@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:34:40 2017 Thomas Fossaert
-** Last update Wed Jun 14 14:45:26 2017 Pierre
+** Last update Thu Jun 15 17:36:08 2017 Pierre
 */
 
 #include "Animation.hpp"
@@ -64,7 +64,9 @@ bool	Animation::hasEnded() const
 
 bool	Animation::isCasted() const
 {
-  return (this->_animationState->getTimePosition() / this->_animationState->getLength() > this->_castingTime);
+  if (this->_animationState)
+    return (this->_animationState->getTimePosition() / this->_animationState->getLength() > this->_castingTime);
+  return false;
 }
 
 void Animation::launch(const Ogre::FrameEvent& fe, Ogre::Entity *entity)

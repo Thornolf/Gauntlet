@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Mon Jun 12 09:50:53 2017 Thomas Fossaert
+** Last update Fri Jun 16 10:48:35 2017 Pierre
 */
 
 #include "GameObject/GameObject.hpp"
@@ -13,6 +13,7 @@
 GameObject::GameObject(int x, int y, int z)
 {
   mPosition = new Position(x, y, z);
+  this->_isBusy = false;
 }
 
 GameObject::GameObject(GameObject const & other)
@@ -43,4 +44,61 @@ const std::string& GameObject::getNodeName() const
 Ogre::Entity* GameObject::getEntity() const
 {
   return (mEntity);
+}
+
+Ogre::SceneNode* GameObject::getSceneNode() const
+{
+  return (mNode);
+}
+
+void GameObject::setAnimationState()
+{
+  this->mAnimationState = this->mAnimation->getAnimationState();
+}
+
+bool GameObject::stillBusy()
+{
+  float len;
+
+  len = this->_animations[this->_busyAnimation]->getAnimationState()->getLength();
+  if (this->_busyAnimation == DIE)
+    len = len / 3;
+  return (this->mAnimationState->getTimePosition() / this->mAnimationState->getLength() > len);
+}
+
+void GameObject::setAnimation(const Ogre::FrameEvent& fe, State state)
+{
+  if (state == ATTACK || state == DIE)
+  {
+    if (!this->_isBusy){
+      this->_isBusy = true;
+      this->_busyAnimation = state;
+    }
+    this->launchAnimation(fe, state);
+  }
+  else if (state != ATTACK && state != DIE && this->_isBusy)
+  {
+    if (stillBusy())
+    {
+      this->_isBusy = false;
+      this->launchAnimation(fe, state);
+      return ;
+    }
+    this->mAnimation->addTime(fe.timeSinceLastFrame);
+  }
+  else{
+    this->launchAnimation(fe, state);
+  }
+}
+
+void GameObject::launchAnimation(const Ogre::FrameEvent& fe, State state)
+{
+  if (this->mAnimation && (!this->mAnimation->isLooping() || this->mAnimation->hasEnded()))
+    {
+      this->_animations[state]->launch(fe, this->mEntity);
+      this->_state = state;
+      this->mAnimation->disable();
+      this->mAnimation = this->_animations[state];
+      this->mAnimation->enable();
+    }
 }

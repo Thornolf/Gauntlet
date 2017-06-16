@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed Jun 14 16:46:35 2017 Pierre
+** Last update Thu Jun 15 21:12:23 2017 Pierre
 */
 
 #ifndef		_CHARACTER_HPP_
@@ -22,28 +22,15 @@ public:
   virtual ~Character();
 
 protected:
-  enum State
-  {
-    IDLE,
-    STAND,
-    RUN,
-    WALK,
-    ATTACK,
-    DIE
-  };
 
   int		_health;
   int		_attack;
   int		_cooldown;
   int		_speed;
   int		_range;
-  State	_state;
-  std::map<State, Animation*>	_animations;
-  Animation* _currentAnimation;
 
   /* Classes */
 
-  void launchAnimation(const Ogre::FrameEvent& fe, State state);
   void		takeDamage(int dmg);
   void		attack(Character *target);
   bool		isAlive() const;

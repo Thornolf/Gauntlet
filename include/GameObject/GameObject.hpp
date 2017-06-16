@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Wed Jun 14 11:44:35 2017 Thomas Fossaert
+** Last update Fri Jun 16 10:30:14 2017 Pierre
 */
 
 #ifndef _GAMEOBJECT_HPP_
@@ -25,16 +25,33 @@
 # include "Position.hpp"
 # include "Animation.hpp"
 
+class Script;
+
 class GameObject
 {
+public:
+  enum State
+  {
+    IDLE,
+    STAND,
+    RUN,
+    WALK,
+    ATTACK,
+    DIE
+  };
+
 protected:
   Ogre::AnimationState	*mAnimationState;
+  State _state;
+  Animation		*mAnimation;
   Ogre::Entity		*mEntity;
   Ogre::SceneNode	*mNode;
   Script		*mScript;
   Position		*mPosition;
-  Animation		*mAnimation;
+  std::map<State, Animation*>	_animations;
   std::string		mNodeName;
+  bool _isBusy;
+  State _busyAnimation;
 
 public:
   GameObject(int, int, int);
@@ -47,9 +64,14 @@ public:
   void      hide();
   const std::string& getNodeName() const;
   Ogre::Entity* getEntity() const;
+  Ogre::SceneNode* getSceneNode() const;
+  void setAnimationState();
+  void setAnimation(const Ogre::FrameEvent& fe, State state);
+  void launchAnimation(const Ogre::FrameEvent& fe, State state);
+  bool stillBusy();
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};
-  virtual void		launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&) {};
+  virtual void		launchScript(Ogre::SceneManager*, GameObject *, const Ogre::FrameEvent&) {};
   virtual void		Animate(const Ogre::FrameEvent&) {};
   virtual void		unsetEntity(Ogre::SceneManager *mSceneMgr) {};
   virtual void    initScript(CollisionTools* tool) {};

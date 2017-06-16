@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-// Last update Tue Jun 13 14:18:32 2017 Thomas Fossaert
+// Last update Thu Jun 15 10:22:21 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -16,7 +16,10 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_attack = 100;
   mPosition		= new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
-  this->_currentAnimation = this->_animations[IDLE];
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
+  this->mAnimation = this->_animations[IDLE];
 }
 
 Warrior::Warrior(Warrior const & other) : Melee(other) {}
@@ -49,16 +52,20 @@ void Warrior::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_52", helm, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_36", rshoulder, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/orc/male/orcmale_hd_bone_29", lshoulder, Ogre::Quaternion(1,0,0,0));
-
 }
 
 void Warrior::Animate(const Ogre::FrameEvent& fe)
 {
-  this->launchAnimation(fe, IDLE);
-  mAnimationState = this->_currentAnimation->getAnimationState();
+  this->launchAnimation(fe, RUN);
+  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Warrior::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
+}
+
+void Warrior::attack()
+{
+
 }

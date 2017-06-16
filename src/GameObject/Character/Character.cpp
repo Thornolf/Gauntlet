@@ -50,6 +50,30 @@ void Character::attack(Character *target)
   target->takeDamage(this->_attack);
 }
 
+/*void Character::doSomething(const Ogre::FrameEvent& fe, State state)
+{
+  if (state == ATTACK)
+  {
+    if (!this->_isBusy)
+    {
+      this->_isBusy = true;
+      this->launchAnimation(fe, state);
+      return ;
+    }
+  }
+  if (this->_isBusy)
+  {
+    if (this->mAnimationState->getTimePosition() / this->_animations[ATTACK]->getLength() > this->_animations[ATTACK]->getLength())
+    {
+      this->_isBusy = false;
+      this->launchAnimation(fe, state);
+      return ;
+    }
+  }
+  else
+    this->launchAnimation(fe, state);
+}*/
+
 bool Character::isAlive() const
 {
   return ((this->_health > 0));
@@ -60,17 +84,4 @@ void Character::getDistance() const {}
 int Character::getRange() const
 {
   return (this->_range);
-}
-
-void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
-{
-  if (this->_currentAnimation && (!this->_currentAnimation->isLooping() ||
-				  this->_currentAnimation->hasEnded()))
-    {
-      this->_animations[state]->launch(fe, this->mEntity);
-      this->_state = state;
-      this->_currentAnimation->disable();
-      this->_currentAnimation = this->_animations[state];
-      this->_currentAnimation->enable();
-    }
 }

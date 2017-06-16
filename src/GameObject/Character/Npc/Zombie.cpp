@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Sat Jun 10 15:13:35 2017 Thomas Fossaert
+// Last update Wed Jun 14 20:23:17 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Zombie.hpp"
@@ -20,7 +20,8 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
-  this->_currentAnimation = this->_animations[RUN];
+  this->_animations[WALK] = new Animation("Walk", false, 1, 0, 0.5);
+  this->mAnimation = this->_animations[RUN];
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
@@ -45,25 +46,25 @@ void Zombie::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setScale(1.7f, 1.7f, 1.7f);
 }
 
-void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, Ogre::SceneNode *target, const Ogre::FrameEvent& fe)
+void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, const Ogre::FrameEvent& fe)
 {
   /*mSceneMgr->getSceneNode(mNodeName)->translate(
     mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target) * fe.timeSinceLastFrame,
     Ogre::Node::TS_LOCAL);*/
-  Ogre::Vector3 move = mScript->ZombieScript(mSceneMgr->getSceneNode(mNodeName), target);
+  Ogre::Vector3 move = mScript->ZombieScript(this, target);
 
   if (move == Ogre::Vector3::ZERO){
     this->launchAnimation(fe, IDLE);
-    mAnimationState = this->_currentAnimation->getAnimationState();
+    mAnimationState = this->mAnimation->getAnimationState();
   }
   else if (move.x == 1){
     this->launchAnimation(fe, ATTACK);
-    mAnimationState = this->_currentAnimation->getAnimationState();
+    mAnimationState = this->mAnimation->getAnimationState();
   }
   else
     {
       this->launchAnimation(fe, RUN);
-      mAnimationState = this->_currentAnimation->getAnimationState();
+      mAnimationState = this->mAnimation->getAnimationState();
       mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
     }
 }

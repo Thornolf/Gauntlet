@@ -16,7 +16,7 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_attack		= 175;
   mPosition		= new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
-  this->_currentAnimation = this->_animations[IDLE];
+  this->mAnimation = this->_animations[IDLE];
 }
 
 Mage::Mage(Mage const & other) : Ranged(other) {}
@@ -57,7 +57,7 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
 void Mage::Animate(const Ogre::FrameEvent& fe)
 {
   this->launchAnimation(fe, IDLE);
-  mAnimationState = this->_currentAnimation->getAnimationState();
+  mAnimationState = this->mAnimation->getAnimationState();
 }
 
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)
