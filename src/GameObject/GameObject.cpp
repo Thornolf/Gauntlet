@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 16 11:29:20 2017 Pierre
+** Last update Fri Jun 16 16:38:24 2017 Pierre
 */
 
 #include "GameObject/GameObject.hpp"
@@ -72,6 +72,7 @@ void GameObject::setAnimation(const Ogre::FrameEvent& fe, State state)
   {
     if (!this->_isBusy){
       this->_isBusy = true;
+      this->mAnimation->_animationState->setTimePosition(0);
       this->_busyAnimation = state;
     }
     this->launchAnimation(fe, state);
@@ -81,6 +82,7 @@ void GameObject::setAnimation(const Ogre::FrameEvent& fe, State state)
     if (stillBusy())
     {
       this->_isBusy = false;
+      this->mAnimation->_animationState->setTimePosition(0);
       this->launchAnimation(fe, state);
       return ;
     }
