@@ -17,12 +17,12 @@
 class Animation
 {
 private:
-  std::string _name;
-  bool _looping;
-  double _dist;
-  double _speed;
-  double _castingTime;
-  Ogre::AnimationState *_animationState;
+  std::string		_name;
+  bool			_looping;
+  double		_dist;
+  double		_speed;
+  double		_castingTime;
+  Ogre::AnimationState	*_animationState;
 
 public:
   Animation(std::string const&, bool, double speed = 1.0, double dist = 0.0, double castingTime = 0.5);

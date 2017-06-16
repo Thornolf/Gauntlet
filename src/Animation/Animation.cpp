@@ -16,8 +16,8 @@ Animation::Animation(std::string const& name, bool looping, double speed, double
   this->_name = name;
   this->_animationState = NULL;
   this->_looping = looping;
-  this->_dist = dist; // Distance à parcourir dans une animation (peut être utile pour plus tard)
-  this->_speed = speed; // Si la distance est 0, est égale à la duree de l'animation, sinon à la vitesse du perso
+  this->_dist = dist;
+  this->_speed = speed;
   this->_castingTime = castingTime;
 }
 

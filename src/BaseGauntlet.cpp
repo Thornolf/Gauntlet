@@ -96,7 +96,6 @@ void BaseGauntlet::createFrameListener(void)
   mInputParser = new ParserInputFile();
   mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
   mKeyboardBinding = mInputParser->getArrayBindingFromFile("myKeyboard.cnf", mConfig->getPlayers());
-  std::cout << "DEBUG - ICI " << mKeyboardBinding.size() << std::endl;
   mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, true ));
 
   mMouse->setEventCallback(this);
