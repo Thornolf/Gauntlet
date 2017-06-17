@@ -17,7 +17,13 @@ Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y
   this->_attack = 175;
   mPosition = new Position(x, y, z);
   this->_animations[IDLE] = new Animation("Stand", false);
+  this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
+  this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Troll/TrollAttack.ogg", "Attack")));
+  this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Troll/TrollDeath.ogg", "Death")));
+  this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Troll/TrollInjured.ogg", "Injured")));
 }
 
 Archer::Archer(Archer const & other) : Ranged(other) {}

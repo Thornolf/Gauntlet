@@ -1,3 +1,4 @@
+// librairie externe -NewMoc
 #include "NewMOC.hpp"
 
    namespace Collision {

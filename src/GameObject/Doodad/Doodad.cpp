@@ -55,7 +55,7 @@ void	Doodad::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setOrientation(this->_orientation);
   if (_deco == "cube.mesh")
     {
-      mEntity->setMaterialName("Examples/Rocky");
+      mEntity->setMaterialName("Examples/Rocki");
       mEntity->setMaterialLodBias(46);
     }
 }

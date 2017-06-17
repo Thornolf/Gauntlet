@@ -9,7 +9,6 @@
 */
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Audio.hpp>
 
@@ -36,6 +35,7 @@ void GameCore::createScene()
   _mmusic.insert(std::make_pair("Wyrm", new Music("dist/media/musicgame/NaxxRamas/Naxxramas_4_Wyrm.ogg", "Wyrm")));
   _msound.insert(std::make_pair("gold", new Sound("dist/media/soundeffect/PowerUpSound/GoldSound.ogg", "gold")));
   _msound.insert(std::make_pair("food", new Sound("dist/media/soundeffect/PowerUpSound/FoodSound.ogg", "food")));
+  _msound.insert(std::make_pair("key", new Sound("dist/media/soundeffect/PowerUpSound/KeySound.ogg", "key")));
   auto itm = _mmusic.begin();
   itm->second->playAudio();
   this->setCurrMusicName(itm->second->getCurrentName());
@@ -65,10 +65,11 @@ void GameCore::createScene()
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
-  bool ret = BaseGauntlet::frameRenderingQueued(fe);
-  auto it = _mmusic.find(this->_currentMusic);
+  bool		ret = BaseGauntlet::frameRenderingQueued(fe);
+  auto		it = _mmusic.find(this->_currentMusic);
 
-
+  mKeyboard->capture();
+  mMouse->capture();
   if (!processUnbufferedInput(fe))
     return false;
   /* START MUSIC */
@@ -88,9 +89,10 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
-  Ogre::Vector3		dirVec = Ogre::Vector3::ZERO;
-  Ogre::Vector3		CameraVec = Ogre::Vector3::ZERO;
-  GameObject      *tmp;
+  Ogre::Vector3			dirVec = Ogre::Vector3::ZERO;
+  Ogre::Vector3			CameraVec = Ogre::Vector3::ZERO;
+  GameObject			*tmp;
+  std::stack<std::thread *>	threadPool;
 
   static bool actionKey = false;
 
@@ -138,6 +140,17 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 		collision->remove_entity(collider.entity);
 	      }
 	    }
+	    else if (!collider.entity->getName().compare(0,3, "key"))
+	    {
+	      if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+	      {
+		tmp->unsetEntity(mSceneMgr);
+		_msound["key"]->playAudio();
+		/* Action to set the possession of the key */
+		this->mRenderManager->eraseEntities(tmp);
+		collision->remove_entity(collider.entity);
+	      }
+	    }
 	  }
 	  else
 	  {
@@ -151,6 +164,14 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     }
   }
   actionKey = false;
+  /*
+  for (;threadPool.size() > 0;)
+  {
+    threadPool.top()->join();
+    delete threadPool.top();
+    threadPool.pop();
+  }
+   */
   return true;
 }
 

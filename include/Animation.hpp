@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:29:30 2017 Thomas Fossaert
-** Last update Wed Jun 14 14:36:53 2017 Pierre
+** Last update Sat Jun 17 11:43:03 2017 Adrien Warin
 */
 
 #ifndef		_ANIMATION_HPP_
@@ -22,13 +22,14 @@ private:
   double		_dist;
   double		_speed;
   double		_castingTime;
-  Ogre::AnimationState	*_animationState;
+
 
 public:
   Animation(std::string const&, bool, double speed = 1.0, double dist = 0.0, double castingTime = 0.5);
   Animation(Animation const &);
   Animation& operator=(Animation const &);
   ~Animation();
+  Ogre::AnimationState	*_animationState;
 
   bool		isLooping() const;
   bool		isCasted() const;
@@ -41,7 +42,7 @@ public:
   bool		hasEnded() const;
   Ogre::AnimationState *getAnimationState() const;
 
-  /* Classes */
+  /* Methodes */
   Ogre::AnimationState *initAnimation(Ogre::AnimationState *AnimationState, const std::string&, Ogre::Entity *entity);
   Ogre::AnimationState *simpleAnimation(Ogre::AnimationState *, const std::string&, const Ogre::FrameEvent&, Ogre::Entity *);
   Ogre::AnimationState *loopAnimation(Ogre::AnimationState *, const std::string&, const Ogre::FrameEvent&, Ogre::Entity *);
