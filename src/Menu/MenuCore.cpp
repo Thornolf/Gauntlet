@@ -146,9 +146,10 @@ void	Menu::displayItems(void)
 
 void	Menu::menuLoop(void)
 {
-  int					nb_frame = 1;
-  std::vector<sf::Sprite>::iterator	it = this->_vecSprite.begin();
+  int		nb_frame = 1;
+  auto		it = this->_vecSprite.begin();
 
+  sf::Mouse::setPosition(sf::Vector2i(0, 0));
   while (this->_window->isOpen())
   {
     sf::Event	event;
