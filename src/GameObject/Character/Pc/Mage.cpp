@@ -15,6 +15,7 @@
 
 Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
+  this->_nbrAttack		= 0;
   this->_health			= 80;
   this->_attack			= 175;
   mPosition			= new Position(x, y, z);
@@ -76,17 +77,18 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
   Ogre::SceneNode *node;
   SCheckCollisionAnswer	collider;
 
-    entity = mSceneMgr->createEntity("MageHit", "cube.mesh");
-    node = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
-    node->attachObject(entity);
-    node->setScale(9,1,0.9);
-    node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
-    collider = collision->check_ray_collision(node->getPosition(),
-                node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
-                entity, true);
-    if (!this->_csound["Weapon"]->getStatus())
-      {
-        this->_csound["Weapon"]->playAudio();
+  entity = mSceneMgr->createEntity("MageHit", "cube.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+  node->attachObject(entity);
+  node->setScale(9,1,0.9);
+  node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
+  collider = collision->check_ray_collision(node->getPosition(),
+					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+					    entity, true);
+  if (!this->_csound["Weapon"]->getStatus())
+  {
+    this->_csound["Weapon"]->playAudio();
+    this->_unset = new Particle("fireballNumber" + std::to_string(this->_nbrAttack), "Examples/Fireball", mSceneMgr, mNode);
     if (collider.collided)
     {
       //if (collider.entity !=)
@@ -108,6 +110,7 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
       }
     }
   }
+  this->_nbrAttack++;
   mSceneMgr->destroySceneNode(node);
   mSceneMgr->destroyEntity(entity);
 }

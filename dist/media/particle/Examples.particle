@@ -412,18 +412,18 @@ particle_system Examples/Fireball
     emitter Point
     {
         angle           1
-        emission_rate   5
+        emission_rate   50
         time_to_live    0.3
-//        duration        0.3
+        duration        0.1
         direction       1 0 0
         position        0 50 0
         velocity_min    2000
         velocity_max    3000
-        colour_range_start  0.8 0.4 0 1
+        colour_range_start  0.9 0.4 0 1
         colour_range_end    0.8 0.4 0 1
         width           60
         height          60
-        depth           120
+        depth           150
     }
 
     // Gravity
