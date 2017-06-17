@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-// Last update Thu Jun 15 11:42:38 2017 Adrien Warin
+// Last update Sat Jun 17 14:58:07 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Archer.hpp"
@@ -85,13 +85,21 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
     node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
     collider = collision->check_ray_collision(node->getPosition(),
                     node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-                    entity, true);
+                    entity, false);
     if (collider.collided)
       {
-        //if (collider.entity !=)
         if ((tmp = render->searchEntities(collider.entity->getName())))
-	      {
-          static_cast<Npc*>(tmp)->takeDamage(4);
+        {
+          if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+          {
+            static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+            if (static_cast<Npc*>(tmp)->isAlive() == false)
+              {
+                static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
+                render->eraseEntities(static_cast<Npc*>(tmp));
+                collision->remove_entity(collider.entity);
+              }
+          }
         }
       }
     mSceneMgr->destroySceneNode(node);

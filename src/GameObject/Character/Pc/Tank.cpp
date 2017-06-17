@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-// Last update Sat Jun 17 11:30:53 2017 Thomas Fossaert
+// Last update Sat Jun 17 15:31:05 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
@@ -78,19 +78,27 @@ void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
     entity = mSceneMgr->createEntity("TankHit", "cube.mesh");
     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
     node->attachObject(entity);
-    node->setScale(1.5,1,1.5);
+    node->setScale(2,1,2);
     node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
     collider = collision->check_ray_collision(node->getPosition(),
                     node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-                    entity, true);
+                    entity, false);
     if (collider.collided)
       {
-        //if (collider.entity !=)
         if ((tmp = render->searchEntities(collider.entity->getName())))
 	      {
-          static_cast<Npc*>(tmp)->takeDamage(4);
+          if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+          {
+            static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+            if (static_cast<Npc*>(tmp)->isAlive() == false)
+              {
+                static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
+          		  render->eraseEntities(static_cast<Npc*>(tmp));
+          		  collision->remove_entity(collider.entity);
+              }
+          }
         }
       }
-    /*mSceneMgr->destroySceneNode(node);
-      mSceneMgr->destroyEntity(entity);*/
+    mSceneMgr->destroySceneNode(node);
+    mSceneMgr->destroyEntity(entity);
 }
