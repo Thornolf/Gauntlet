@@ -10,6 +10,7 @@
 
 #include "GameObject/Character/Pc/Archer.hpp"
 #include "RenderManager.hpp"
+#include <OgreParticleEmitter.h>
 
 Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
@@ -58,12 +59,12 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->setOrientation(-0.7,0,-0.7,0);
   mNode->setPosition(Ogre::Vector3(0, 0, 0));
 
+  this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_31", lshoulder, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_32", rshoulder, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_44", helm, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_2", quiver, Ogre::Quaternion(1,0,0,1));
-  this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
 
 }
 
@@ -90,6 +91,7 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
   if (!this->_csound["Weapon"]->getStatus())
   {
     this->_csound["Weapon"]->playAudio();
+    //this->_unset = new Particle("arrowNumber", "Examples/arrow", mSceneMgr, mNode);
     if (collider.collided)
     {
       //if (collider.entity !=)

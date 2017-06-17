@@ -35,5 +35,15 @@ void                    Particle::setObjet(Ogre::SceneNode *objet)
 
 void                    Particle::destroy()
 {
-    this->_ps->removeAllEmitters();
+  this->_ps->removeAllEmitters();
+}
+
+Ogre::ParticleSystem* 			Particle::getPs() const
+{
+  return (this->_ps);
+}
+
+void 			Particle::clearParticle()
+{
+  this->_ps->clear();
 }
