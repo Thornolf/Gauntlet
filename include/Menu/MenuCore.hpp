@@ -27,6 +27,8 @@ private:
   sf::Sprite						_logo;
   sf::Uint8						_logoAlpha;
   bool							_logoSwitchValue;
+  sf::Sprite						_logoDevTeam;
+  sf::Uint8						_logoDevTeamAlpha;
   sf::Uint8						_backgroundAlpha;
   std::vector<sf::Sprite>				_vecSprite;
   std::vector<MenuItem>					_menuItems;
@@ -49,6 +51,7 @@ public:
   void		menuLoop();
   void		displayItems(void);
   void		showEditor(sf::Sprite &);
+  void		splashScreen(void);
 };
 
 #endif /* !MENU_HPP */

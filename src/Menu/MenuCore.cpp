@@ -103,6 +103,11 @@ void		Menu::animateLogo(void)
   this->_logo.setColor(sf::Color(255, 255, 255, this->_logoAlpha));
 }
 
+void		Menu::splashScreen(void)
+{
+
+}
+
 void	Menu::setBackGround(const std::string &path)
 {
   this->_background = this->setImage(path);

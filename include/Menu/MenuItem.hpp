@@ -16,7 +16,7 @@
 class MenuItem
 {
 public:
-  MenuItem(const std::string, const sf::Vector2f, const sf::Vector2f);
+  MenuItem(const std::string &, const sf::Vector2f &, const sf::Vector2f &);
   virtual ~MenuItem();
   MenuItem(const MenuItem &);
   MenuItem	&operator=(const MenuItem &);
