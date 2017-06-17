@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Sat Jun 17 11:41:39 2017 Adrien Warin
+** Last update Sat Jun 17 17:55:45 2017 Thomas Fossaert
 */
 
 #ifndef _NPC_HPP_
@@ -18,11 +18,15 @@ class Npc : public Character
 {
 protected:
   int _id;
+  bool _hasAttacked;
 public:
   Npc(int x, int y, int z, int id);
   Npc(Npc const &);
   Npc& operator=(Npc const &);
   virtual ~Npc();
+
+  void setAttackStatus(bool stat);
+  bool getAttackStatus() const;
 };
 
 #endif

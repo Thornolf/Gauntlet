@@ -56,7 +56,7 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("Archer", "character_troll_male_trollmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherNode", mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(2.0f, 2.0f, 2.0f);
+  mNode->setScale(1.5f, 1.5f, 1.5f);
   mNode->setOrientation(-0.7,0,-0.7,0);
   mNode->setPosition(Ogre::Vector3(0, 0, 0));
 

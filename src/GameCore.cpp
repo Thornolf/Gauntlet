@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Sat Jun 17 11:34:16 2017 Thomas Fossaert
+// Last update Sat Jun 17 17:35:39 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -92,6 +92,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   Ogre::Vector3			dirVec = Ogre::Vector3::ZERO;
   Ogre::Vector3			CameraVec = Ogre::Vector3::ZERO;
   GameObject			*tmp;
+  static Ogre::Real toggleTimer = 0.0;
   std::stack<std::thread *>	threadPool;
 
   static bool actionKey = false;
@@ -158,12 +159,25 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	    this->mCamera->move(CameraVec);
 	  }
 	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+	  mCamera->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
+    toggleTimer -= fe.timeSinceLastFrame;
+    if (toggleTimer < 0)
+      {
+        toggleTimer = 1.5;
+        this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
+      }
 	  return (true);
 	}
       }
     }
   }
   actionKey = false;
+  toggleTimer -= fe.timeSinceLastFrame;
+  if (toggleTimer < 0)
+    {
+      toggleTimer = 1.5;
+      this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
+    }
   /*
   for (;threadPool.size() > 0;)
   {
