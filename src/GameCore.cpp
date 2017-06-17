@@ -146,7 +146,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	      {
 		tmp->unsetEntity(mSceneMgr);
 		_msound["key"]->playAudio();
-		/* Action to set the possession of the key */
+    mConfig->addKey();
 		this->mRenderManager->eraseEntities(tmp);
 		collision->remove_entity(collider.entity);
 	      }

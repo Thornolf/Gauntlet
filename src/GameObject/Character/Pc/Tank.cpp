@@ -74,15 +74,14 @@ void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
     Ogre::SceneNode *node;
     SCheckCollisionAnswer	collider;
 
-    std::cout << "DEBUG VALKYSTRIKE" << '\n';
     entity = mSceneMgr->createEntity("TankHit", "cube.mesh");
     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
     node->attachObject(entity);
     node->setScale(2,1,2);
     node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
     collider = collision->check_ray_collision(node->getPosition(),
-                    node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-                    entity, false);
+              node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+              entity, true);
     if (collider.collided)
       {
         if ((tmp = render->searchEntities(collider.entity->getName())))

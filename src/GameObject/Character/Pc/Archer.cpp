@@ -84,8 +84,8 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
     node->setScale(9,1,0.9);
     node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
     collider = collision->check_ray_collision(node->getPosition(),
-                    node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
-                    entity, false);
+               node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+               entity, true);
     if (collider.collided)
       {
         if ((tmp = render->searchEntities(collider.entity->getName())))

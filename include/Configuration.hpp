@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Mon May 22 13:07:27 2017 Guillaume CAUCHOIS
-** Last update Fri Jun 09 16:08:39 2017 Adrien Warin
+** Last update Sat Jun 17 16:29:25 2017 Thomas Fossaert
 */
 
 #ifndef		_CONFIGURATION__HPP_
@@ -24,6 +24,7 @@ public:
   const std::vector<Pc*>	&getPlayers(void) const;
   void			addPlayer(Pc*);
   void			addScorePoint(int nbPoint);
+  void      addKey();
 
   template <typename UnaryFunction>
   void			forEachPlayer(UnaryFunction f)
@@ -35,6 +36,7 @@ public:
 private:
   std::vector<Pc*>	_players;
   int			_score;
+  bool    _key;
 };
 
 #endif		/* _CONFIGURATION__HPP_ */

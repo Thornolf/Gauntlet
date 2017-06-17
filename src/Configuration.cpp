@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Mon May 22 13:58:14 2017 Guillaume CAUCHOIS
-** Last update Fri Jun 09 16:09:21 2017 Adrien Warin
+** Last update Sat Jun 17 16:32:22 2017 Thomas Fossaert
 */
 
 #include "Configuration.hpp"
@@ -13,6 +13,7 @@
 Configuration::Configuration()
 {
   this->_score = 0;
+  this->_key = false;
 }
 
 Configuration::~Configuration() {}
@@ -36,6 +37,10 @@ void	Configuration::addPlayer(Pc* player)
 
 void	Configuration::addScorePoint(int nbPoint)
 {
-  std::cout << "WINNNING POINT" << '\n';
   this->_score += nbPoint;
+}
+
+void Configuration::addKey()
+{
+  this->_key = true;
 }
