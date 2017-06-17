@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 16 14:35:39 2017 Pierre
+** Last update Sat Jun 17 11:01:50 2017 Adrien Warin
 */
 
 #ifndef _GOLDSTACK_HPP_
@@ -22,7 +22,7 @@ public:
   goldStack& operator=(goldStack const &);
   ~goldStack();
 
-  /* Classes */
+  /* Methode */
 
   void		setOgreBase(Ogre::SceneManager*);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);

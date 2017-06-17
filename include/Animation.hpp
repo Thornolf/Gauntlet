@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Tue May 30 12:29:30 2017 Thomas Fossaert
-** Last update Fri Jun 16 16:35:15 2017 Pierre
+** Last update Sat Jun 17 11:43:03 2017 Adrien Warin
 */
 
 #ifndef		_ANIMATION_HPP_
@@ -42,7 +42,7 @@ public:
   bool		hasEnded() const;
   Ogre::AnimationState *getAnimationState() const;
 
-  /* Classes */
+  /* Methodes */
   Ogre::AnimationState *initAnimation(Ogre::AnimationState *AnimationState, const std::string&, Ogre::Entity *entity);
   Ogre::AnimationState *simpleAnimation(Ogre::AnimationState *, const std::string&, const Ogre::FrameEvent&, Ogre::Entity *);
   Ogre::AnimationState *loopAnimation(Ogre::AnimationState *, const std::string&, const Ogre::FrameEvent&, Ogre::Entity *);

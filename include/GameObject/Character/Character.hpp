@@ -5,11 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-<<<<<<< HEAD
-** Last update Thu Jun 15 21:12:23 2017 Pierre
-=======
-** Last update Thu Jun 15 14:31:35 2017 Thomas Fossaert
->>>>>>> c83a29ce18df3011e6f6c2b8b7b129f47f82ed20
+** Last update Sat Jun 17 11:06:46 2017 Adrien Warin
 */
 
 #ifndef		_CHARACTER_HPP_
