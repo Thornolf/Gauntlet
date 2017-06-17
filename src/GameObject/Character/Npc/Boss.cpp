@@ -5,21 +5,23 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Tue Jun 13 12:58:46 2017 Thomas Fossaert
+// Last update Sat Jun 17 19:55:52 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Boss.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
   this->_health = 222;
-  this->_attack = 100;
+  this->_attack = 50;
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "BossNode" + std::to_string(id);
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
 }
 
@@ -49,21 +51,27 @@ void Boss::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, const
 {
   Ogre::Vector3 move = mScript->BossScript(this, target);
 
-  if (move == Ogre::Vector3::ZERO)
-  {
-    this->launchAnimation(fe, IDLE);
-    mAnimationState = this->mAnimation->getAnimationState();
+  if (move == Ogre::Vector3::ZERO){
+    this->setAnimation(fe, GameObject::IDLE);
+    this->setAnimationState();
   }
-  else if (move.x == 1)
-  {
-    this->launchAnimation(fe, ATTACK);
-    mAnimationState = this->mAnimation->getAnimationState();
-  }
+  else if (move.x == 1 && this->_hasAttacked == false){
+    this->setAnimation(fe, GameObject::ATTACK);
+    this->setAnimationState();
+    this->setAttackStatus(true);
+    static_cast<Pc*>(target)->takeDamage(this->_attack);
+    if (static_cast<Pc*>(target)->isAlive() == false)
+      {
+        target->setAnimation(fe, GameObject::DIE);
+        target->setAnimationState();
+        std::cerr << "VALKYDEATH" << '\n';
+      }
+    }
   else
     {
-      this->launchAnimation(fe, RUN);
-      mAnimationState = this->mAnimation->getAnimationState();
-      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+      this->setAnimation(fe, GameObject::RUN);
+      this->setAnimationState();
+      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame);
     }
 }
 
