@@ -21,17 +21,6 @@ Animation::Animation(std::string const& name, bool looping, double speed, double
   this->_castingTime = castingTime;
 }
 
-Animation::Animation(Animation const & other)
-{
-  (void) other;
-}
-
-Animation& Animation::operator=(Animation const & other)
-{
-  (void) other;
-  return(*this);
-}
-
 Animation::~Animation ()
 {
 

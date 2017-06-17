@@ -26,6 +26,7 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Human/HumanAttack.ogg", "Attack")));
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Human/HumanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "Injured")));
+  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/castFireball.ogg", "Weapon")));
 }
 
 Mage::Mage(Mage const & other) : Ranged(other) {}
@@ -70,10 +71,10 @@ void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)
 
 void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
 {
-    GameObject *tmp;
-    Ogre::Entity *entity;
-    Ogre::SceneNode *node;
-    SCheckCollisionAnswer	collider;
+  GameObject *tmp;
+  Ogre::Entity *entity;
+  Ogre::SceneNode *node;
+  SCheckCollisionAnswer	collider;
 
     entity = mSceneMgr->createEntity("MageHit", "cube.mesh");
     node = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
@@ -83,22 +84,30 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
     collider = collision->check_ray_collision(node->getPosition(),
                 node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
                 entity, true);
-    if (collider.collided)
+    if (!this->_csound["Weapon"]->getStatus())
       {
-        if ((tmp = render->searchEntities(collider.entity->getName())))
-        {
-          if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
-          {
-            static_cast<Npc*>(tmp)->takeDamage(this->_attack);
-            if (static_cast<Npc*>(tmp)->isAlive() == false)
-              {
-                static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
-                render->eraseEntities(static_cast<Npc*>(tmp));
-                collision->remove_entity(collider.entity);
-              }
-          }
-        }
+        this->_csound["Weapon"]->playAudio();
+    if (collider.collided)
+    {
+      //if (collider.entity !=)
+      if ((tmp = render->searchEntities(collider.entity->getName())))
+      {
+	if ((tmp = render->searchEntities(collider.entity->getName())))
+	{
+	  if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+	  {
+	    static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+	    if (static_cast<Npc*>(tmp)->isAlive() == false)
+	    {
+	      static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
+	      render->eraseEntities(static_cast<Npc*>(tmp));
+	      collision->remove_entity(collider.entity);
+	    }
+	  }
+	}
       }
-    mSceneMgr->destroySceneNode(node);
-    mSceneMgr->destroyEntity(entity);
+    }
+  }
+  mSceneMgr->destroySceneNode(node);
+  mSceneMgr->destroyEntity(entity);
 }
