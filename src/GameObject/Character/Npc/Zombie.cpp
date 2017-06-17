@@ -21,6 +21,7 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
   this->_animations[WALK] = new Animation("Walk", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[RUN];
 }
 
@@ -65,7 +66,7 @@ void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, con
     {
       this->launchAnimation(fe, RUN);
       mAnimationState = this->mAnimation->getAnimationState();
-      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame);
     }
 }
 

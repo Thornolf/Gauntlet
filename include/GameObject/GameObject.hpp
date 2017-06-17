@@ -73,7 +73,7 @@ public:
   void setAnimationState();
   void setAnimation(const Ogre::FrameEvent& fe, State state);
   void launchAnimation(const Ogre::FrameEvent& fe, State state);
-  bool stillBusy();
+  bool isCasted();
   void destroySpecificEntity(Ogre::SceneManager *, Ogre::Entity *);
 
   virtual void		setOgreBase(Ogre::SceneManager*) {};

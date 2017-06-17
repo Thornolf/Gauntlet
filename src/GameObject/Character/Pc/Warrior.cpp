@@ -5,10 +5,11 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-** Last update Fri Jun 16 14:34:38 2017 Pierre
+** Last update Sat Jun 17 14:42:04 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
+#include "RenderManager.hpp"
 
 Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
@@ -60,7 +61,28 @@ void Warrior::unsetEntity(Ogre::SceneManager *mSceneMgr)
   mSceneMgr->destroyEntity(mEntity);
 }
 
-void Warrior::attack()
+void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
 {
+    GameObject *tmp;
+    Ogre::Entity *entity;
+    Ogre::SceneNode *node;
+    SCheckCollisionAnswer	collider;
 
+    entity = mSceneMgr->createEntity("WarriorHit", "cube.mesh");
+    node = mSceneMgr->getRootSceneNode()->createChildSceneNode("WarriorHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+    node->attachObject(entity);
+    node->setScale(1.5,1,1.5);
+    node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
+    collider = collision->check_ray_collision(node->getPosition(),
+                    node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+                    entity, true);
+    if (collider.collided)
+      {
+        if ((tmp = render->searchEntities(collider.entity->getName())))
+	      {
+          static_cast<Npc*>(tmp)->takeDamage(4);
+        }
+      }
+    mSceneMgr->destroySceneNode(node);
+    mSceneMgr->destroyEntity(entity);
 }

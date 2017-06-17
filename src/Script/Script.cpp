@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:24:56 2017 Adrien Warin
-// Last update Thu Jun 15 14:20:22 2017 Thomas Fossaert
+// Last update Sat Jun 17 11:58:46 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Script.hpp"
@@ -36,13 +36,13 @@ Ogre::Vector3 Script::ZombieScript(GameObject *current, GameObject *target)
        else if (aggroX < 775 && aggroZ < 775)
         {
            if (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x)
-            dirVec.x = 123;
+              dirVec.x = 123;
            else if (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x)
             dirVec.x = -123;
-           if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
+           else if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
             dirVec.z = -123;
            else if (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z)
-            dirVec.z = 123;
+              dirVec.z = 123;
         }
     }
   else

@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 16 11:29:20 2017 Pierre
+** Last update Fri Jun 16 16:52:47 2017 Thomas Fossaert
 */
 
 #include "GameObject/GameObject.hpp"
@@ -56,7 +56,7 @@ void GameObject::setAnimationState()
   this->mAnimationState = this->mAnimation->getAnimationState();
 }
 
-bool GameObject::stillBusy()
+bool GameObject::isCasted()
 {
   float len;
 
@@ -78,7 +78,7 @@ void GameObject::setAnimation(const Ogre::FrameEvent& fe, State state)
   }
   else if (state != ATTACK && state != DIE && this->_isBusy)
   {
-    if (stillBusy())
+    if (isCasted())
     {
       this->_isBusy = false;
       this->launchAnimation(fe, state);

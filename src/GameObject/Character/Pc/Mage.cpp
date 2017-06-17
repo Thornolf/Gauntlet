@@ -5,10 +5,11 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-** Last update Fri Jun 16 14:34:53 2017 Pierre
+** Last update Sat Jun 17 14:42:25 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
+#include "RenderManager.hpp"
 
 Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
@@ -57,4 +58,31 @@ void Mage::setOgreBase(Ogre::SceneManager* mSceneMgr)
 void Mage::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(this->mEntity);
+}
+
+void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
+{
+    GameObject *tmp;
+    Ogre::Entity *entity;
+    Ogre::SceneNode *node;
+    SCheckCollisionAnswer	collider;
+
+    entity = mSceneMgr->createEntity("MageHit", "cube.mesh");
+    node = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+    node->attachObject(entity);
+    node->setScale(9,1,0.9);
+    node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
+    collider = collision->check_ray_collision(node->getPosition(),
+                    node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+                    entity, true);
+    if (collider.collided)
+      {
+        //if (collider.entity !=)
+        if ((tmp = render->searchEntities(collider.entity->getName())))
+	      {
+          static_cast<Npc*>(tmp)->takeDamage(4);
+        }
+      }
+    mSceneMgr->destroySceneNode(node);
+    mSceneMgr->destroyEntity(entity);
 }

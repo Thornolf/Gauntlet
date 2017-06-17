@@ -5,7 +5,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:26:19 2017 Pierre
-** Last update Fri Jun 16 14:36:41 2017 Pierre
+** Last update Sat Jun 17 10:55:04 2017 Thomas Fossaert
 */
 
 #ifndef		_MAGE__HPP_
@@ -25,6 +25,7 @@ public:
 
   void		setOgreBase(Ogre::SceneManager*);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
+  void    attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &);
 };
 
 #endif		/* !_MAGE__HPP_ */

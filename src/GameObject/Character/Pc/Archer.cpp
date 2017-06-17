@@ -9,6 +9,7 @@
 */
 
 #include "GameObject/Character/Pc/Archer.hpp"
+#include "RenderManager.hpp"
 
 Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
@@ -62,4 +63,31 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
 void Archer::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
+}
+
+void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
+{
+    GameObject *tmp;
+    Ogre::Entity *entity;
+    Ogre::SceneNode *node;
+    SCheckCollisionAnswer	collider;
+
+    entity = mSceneMgr->createEntity("ArcherHit", "cube.mesh");
+    node = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+    node->attachObject(entity);
+    node->setScale(9,1,0.9);
+    node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
+    collider = collision->check_ray_collision(node->getPosition(),
+                    node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+                    entity, true);
+    if (collider.collided)
+      {
+        //if (collider.entity !=)
+        if ((tmp = render->searchEntities(collider.entity->getName())))
+	      {
+          static_cast<Npc*>(tmp)->takeDamage(4);
+        }
+      }
+    mSceneMgr->destroySceneNode(node);
+    mSceneMgr->destroyEntity(entity);
 }

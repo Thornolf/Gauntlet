@@ -18,6 +18,8 @@
 # include "GameObject/GameObject.hpp"
 # include "Animation.hpp"
 
+class RenderManager;
+
 class Character : public GameObject
 {
 public:
@@ -29,6 +31,9 @@ public:
   void  setScore(int);
   void  gainHealth(int);
   void	Animate(const Ogre::FrameEvent&);
+  void		takeDamage(int dmg);
+  bool		isAlive() const;
+  virtual void		attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &) {};
 
 protected:
 
@@ -39,9 +44,6 @@ protected:
   int		_range;
 
   void launchAnimation(const Ogre::FrameEvent& fe, State state);
-  void		takeDamage(int dmg);
-  void		attack(Character *target);
-  bool		isAlive() const;
   void		getDistance() const;
   int		getRange(void) const;
 };

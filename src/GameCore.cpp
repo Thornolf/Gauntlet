@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Fri Jun 16 13:48:50 2017 Robin Grattepanche
+// Last update Sat Jun 17 11:34:16 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -92,8 +92,9 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   Ogre::Vector3		CameraVec = Ogre::Vector3::ZERO;
   GameObject      *tmp;
 
-  mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
+  static bool actionKey = false;
 
+  mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
@@ -133,7 +134,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 		tmp->unsetEntity(mSceneMgr);
 		player->gainHealth(50);
 		_msound["food"]->playAudio();
-		//static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
 		this->mRenderManager->eraseEntities(tmp);
 		collision->remove_entity(collider.entity);
 	      }
@@ -141,15 +141,16 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  }
 	  else
 	  {
-	    itEvent->second(fe, dirVec, CameraVec, collision, mSceneMgr);
+	    itEvent->second(fe, dirVec, CameraVec, collision, mSceneMgr, mRenderManager, actionKey, player);
 	    this->mCamera->move(CameraVec);
 	  }
-	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 	  return (true);
 	}
       }
     }
   }
+  actionKey = false;
   return true;
 }
 

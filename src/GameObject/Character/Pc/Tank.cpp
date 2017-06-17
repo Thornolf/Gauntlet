@@ -5,10 +5,11 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Fri Jun 16 14:47:32 2017 Pierre
+// Last update Sat Jun 17 11:30:53 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
+#include "RenderManager.hpp"
 
 Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
@@ -63,12 +64,30 @@ void Tank::unsetEntity(Ogre::SceneManager *mSceneMgr)
   mSceneMgr->destroyEntity(mEntity);
 }
 
-/*void Tank::test()
+void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
 {
-  Ogre::Entity *entity;
-  Ogre::SceneNode *node;
+    GameObject *tmp;
+    Ogre::Entity *entity;
+    Ogre::SceneNode *node;
+    SCheckCollisionAnswer	collider;
 
-  entity = mSceneMgr->createEntity("TankHit" + std::to_string(_id), "cube.mesh");
-  this->mEntity->getOrientation()
+    std::cout << "DEBUG VALKYSTRIKE" << '\n';
+    entity = mSceneMgr->createEntity("TankHit", "cube.mesh");
+    node = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+    node->attachObject(entity);
+    node->setScale(1.5,1,1.5);
+    node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
+    collider = collision->check_ray_collision(node->getPosition(),
+                    node->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+                    entity, true);
+    if (collider.collided)
+      {
+        //if (collider.entity !=)
+        if ((tmp = render->searchEntities(collider.entity->getName())))
+	      {
+          static_cast<Npc*>(tmp)->takeDamage(4);
+        }
+      }
+    /*mSceneMgr->destroySceneNode(node);
+      mSceneMgr->destroyEntity(entity);*/
 }
-*/
