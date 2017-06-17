@@ -179,7 +179,7 @@ endif()
 
 set_target_properties(Gauntlet PROPERTIES DEBUG_POSTFIX _d)
 
-target_link_libraries(Gauntlet ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES})
+target_link_libraries(Gauntlet ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
