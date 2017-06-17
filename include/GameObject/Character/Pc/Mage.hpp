@@ -17,15 +17,17 @@
 
 class Mage : public Ranged
 {
-public:
-  Mage(const std::string &, int x, int y, int z);
-  Mage(Mage const &);
-  Mage& operator=(Mage const &);
-  virtual ~Mage();
+  public:
+    Mage(const std::string &, int x, int y, int z);
+    Mage(Mage const &);
+    Mage& operator=(Mage const &);
+    virtual ~Mage();
 
-  void		setOgreBase(Ogre::SceneManager*);
-  void		unsetEntity(Ogre::SceneManager *mSceneMgr);
-  void    attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &);
+    void		setOgreBase(Ogre::SceneManager*);
+    void		unsetEntity(Ogre::SceneManager *mSceneMgr);
+    void    attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &);
+  private:
+    int		_nbrAttack;
 };
 
 #endif		/* !_MAGE__HPP_ */

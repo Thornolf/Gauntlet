@@ -25,6 +25,8 @@ public:
   void		setOgreBase(Ogre::SceneManager*);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
   void    attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &);
+  private:
+    int		_nbrAttack;
 };
 
 #endif

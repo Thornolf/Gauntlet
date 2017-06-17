@@ -39,7 +39,7 @@ Ogre::Vector3 Script::ZombieScript(GameObject *current, GameObject *target)
               dirVec.x = 123;
            else if (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x)
             dirVec.x = -123;
-           else if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
+          if (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z)
             dirVec.z = -123;
            else if (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z)
               dirVec.z = 123;

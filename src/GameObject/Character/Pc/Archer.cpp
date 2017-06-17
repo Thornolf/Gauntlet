@@ -14,6 +14,7 @@
 
 Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
+  this->_nbrAttack = 0;
   this->_health = 80;
   this->_attack = 175;
   mPosition = new Position(x, y, z);
@@ -55,7 +56,7 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mEntity = mSceneMgr->createEntity("Archer", "character_troll_male_trollmale_hd.mesh");
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherNode", mPosition->getVector());
   mNode->attachObject(mEntity);
-  mNode->setScale(2.0f, 2.0f, 2.0f);
+  mNode->setScale(1.5f, 1.5f, 1.5f);
   mNode->setOrientation(-0.7,0,-0.7,0);
   mNode->setPosition(Ogre::Vector3(0, 0, 0));
 
@@ -91,7 +92,7 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
   if (!this->_csound["Weapon"]->getStatus())
   {
     this->_csound["Weapon"]->playAudio();
-    //this->_unset = new Particle("arrowNumber", "Examples/arrow", mSceneMgr, mNode);
+    this->_unset = new Particle("arrowNumber" + std::to_string(this->_nbrAttack), "Examples/arrow", mSceneMgr, mNode);
     if (collider.collided)
     {
       //if (collider.entity !=)
@@ -113,6 +114,7 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
       }
     }
   }
+  this->_nbrAttack++;
   mSceneMgr->destroySceneNode(node);
   mSceneMgr->destroyEntity(entity);
 }
