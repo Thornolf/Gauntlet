@@ -326,7 +326,10 @@
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Input/ParserInputFile.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
-		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/MenuCore/MenuCore.cpp">
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Menu/MenuCore.cpp">
+			<Option target="Gauntlet"/>
+		</Unit>
+		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/Menu/MenuItem.cpp">
 			<Option target="Gauntlet"/>
 		</Unit>
 		<Unit filename="/home/guillobits/workspace/epitech/cpp_indie_studio/src/NewMOC.cpp">
