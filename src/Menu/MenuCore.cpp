@@ -24,8 +24,8 @@ Menu::Menu()
 
   this->setBackGround("dist/media/assetMenu/WallpaperMenu.jpg");
 
-  //this->_vecSprite.push_back(setImage("dist/media/assetMenu/Xperformed.png"));
-  //this->_vecSprite.push_back(setImage("dist/media/assetMenu/pain.png"));
+  this->_vecSprite.push_back(setImage("dist/media/assetMenu/Xperformed.png"));
+  this->_vecSprite.push_back(setImage("dist/media/assetMenu/pain.png"));
 
   this->setLogo("dist/media/assetMenu/logo.png");
 
@@ -125,7 +125,7 @@ void		Menu::animateLogo(void)
 bool		Menu::splashScreen(void)
 {
   static float	scale = 0.0;
-  static double	scaleCursor = 1.0;
+  static float	scaleCursor = 1.0;
   static int	offset = 0;
   float		xCursorPos = this->_cursorDevTeam.getPosition().x;
   float		yCursorPos = this->_cursorDevTeam.getPosition().y;
