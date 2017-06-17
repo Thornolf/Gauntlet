@@ -64,7 +64,7 @@ public:
   GameObject& operator=(GameObject const &);
   virtual ~GameObject();
 
-  /* Classes */
+  /* Methodes */
   Position* getPosition() const;
   void      hide();
   const std::string& getNodeName() const;

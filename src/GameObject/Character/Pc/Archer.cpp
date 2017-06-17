@@ -5,10 +5,12 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-// Last update Thu Jun 15 11:42:38 2017 Adrien Warin
+// Last update Sat Jun 17 14:58:07 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Archer.hpp"
+#include "RenderManager.hpp"
+#include <OgreParticleEmitter.h>
 
 Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
 {
@@ -23,6 +25,7 @@ Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y
   this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Troll/TrollAttack.ogg", "Attack")));
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Troll/TrollDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Troll/TrollInjured.ogg", "Injured")));
+  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/AttackBowSound.ogg", "Weapon")));
 }
 
 Archer::Archer(Archer const & other) : Ranged(other) {}
@@ -53,19 +56,63 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherNode", mPosition->getVector());
   mNode->attachObject(mEntity);
   mNode->setScale(2.0f, 2.0f, 2.0f);
-    mNode->setOrientation(-0.7,0,-0.7,0);
+  mNode->setOrientation(-0.7,0,-0.7,0);
   mNode->setPosition(Ogre::Vector3(0, 0, 0));
 
+  this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_31", lshoulder, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_32", rshoulder, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_44", helm, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_2", quiver, Ogre::Quaternion(1,0,0,1));
-  this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
 
 }
 
 void Archer::unsetEntity(Ogre::SceneManager *mSceneMgr)
 {
   mSceneMgr->destroyEntity(mEntity);
+}
+
+void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
+{
+  GameObject *tmp;
+  Ogre::Entity *entity;
+  Ogre::SceneNode *node;
+  SCheckCollisionAnswer	collider;
+
+  entity = mSceneMgr->createEntity("ArcherHit", "cube.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("ArcherHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+  node->attachObject(entity);
+  node->setScale(9,1,0.9);
+  node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
+  collider = collision->check_ray_collision(node->getPosition(),
+             node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+             entity, true);
+  if (!this->_csound["Weapon"]->getStatus())
+  {
+    this->_csound["Weapon"]->playAudio();
+    //this->_unset = new Particle("arrowNumber", "Examples/arrow", mSceneMgr, mNode);
+    if (collider.collided)
+    {
+      //if (collider.entity !=)
+      if ((tmp = render->searchEntities(collider.entity->getName())))
+      {
+	if ((tmp = render->searchEntities(collider.entity->getName())))
+	{
+	  if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+	  {
+	    static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+	    if (static_cast<Npc*>(tmp)->isAlive() == false)
+	    {
+	      static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
+	      render->eraseEntities(static_cast<Npc*>(tmp));
+	      collision->remove_entity(collider.entity);
+	    }
+	  }
+	}
+      }
+    }
+  }
+  mSceneMgr->destroySceneNode(node);
+  mSceneMgr->destroyEntity(entity);
 }

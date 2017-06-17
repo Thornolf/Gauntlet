@@ -5,11 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-<<<<<<< HEAD
-** Last update Thu Jun 15 21:12:23 2017 Pierre
-=======
-** Last update Thu Jun 15 14:31:35 2017 Thomas Fossaert
->>>>>>> c83a29ce18df3011e6f6c2b8b7b129f47f82ed20
+** Last update Sat Jun 17 14:51:38 2017 Thomas Fossaert
 */
 
 #ifndef		_CHARACTER_HPP_
@@ -19,32 +15,35 @@
 # include "Audio/SoundSystem.hpp"
 # include "Animation.hpp"
 
+class RenderManager;
+
 class Character : public GameObject
 {
-  public:
-    Character(int x, int y, int z);
-    Character(Character const &);
-    Character& operator=(Character const &);
-    virtual ~Character();
+public:
+  Character(int x, int y, int z);
+  Character(Character const &);
+  Character& operator=(Character const &);
+  virtual ~Character();
 
-    void 	gainHealth(int);
-    void	Animate(const Ogre::FrameEvent&);
+  void  setScore(int);
+  void  gainHealth(int);
+  void	Animate(const Ogre::FrameEvent&);
+  void		takeDamage(int dmg);
+  bool		isAlive() const;
+  virtual void		attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &) {};
 
-  protected:
+protected:
 
-    int							_health;
-    int							_attack;
-    int							_cooldown;
-    int							_speed;
-    int							_range;
-    std::unordered_map<std::string, Sound *>		_csound;
+  int		_health;
+  int		_attack;
+  int		_cooldown;
+  int		_speed;
+  int		_range;
+  std::unordered_map<std::string, Sound *>		_csound;
 
-    void		launchAnimation(const Ogre::FrameEvent& fe, State state);
-    void		takeDamage(int dmg);
-    void		attack(Character *target);
-    bool		isAlive() const;
-    void		getDistance() const;
-    int			getRange(void) const;
+  void launchAnimation(const Ogre::FrameEvent& fe, State state);
+  void		getDistance() const;
+  int		getRange(void) const;
 };
 
 #endif

@@ -5,10 +5,11 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-** Last update Fri Jun 16 14:34:38 2017 Pierre
+// Last update Sat Jun 17 14:57:55 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
+#include "RenderManager.hpp"
 
 Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
@@ -23,6 +24,7 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Orc/OrcAttack.ogg", "Attack")));
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Orc/OrcDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Orc/OrcInjured.ogg", "Injured")));
+  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/SwordFleshHit2", "Weapon")));
 }
 
 Warrior::Warrior(Warrior const & other) : Melee(other) {}
@@ -63,7 +65,46 @@ void Warrior::unsetEntity(Ogre::SceneManager *mSceneMgr)
   mSceneMgr->destroyEntity(mEntity);
 }
 
-void Warrior::attack()
+void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
 {
+  GameObject *tmp;
+  Ogre::Entity *entity;
+  Ogre::SceneNode *node;
+  SCheckCollisionAnswer	collider;
 
+  entity = mSceneMgr->createEntity("WarriorHit", "cube.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("WarriorHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
+  node->attachObject(entity);
+  node->setScale(1.5,1,1.5);
+  node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
+  collider = collision->check_ray_collision(node->getPosition(),
+                  node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+                  entity, true);
+  if (!this->_csound["Weapon"]->getStatus())
+  {
+    this->_csound["Weapon"]->playAudio();
+    if (collider.collided)
+    {
+      if ((tmp = render->searchEntities(collider.entity->getName())))
+      {
+	if ((tmp = render->searchEntities(collider.entity->getName())))
+	{
+	  if (!collider.entity->getName().compare(0, 6, "Zombie") ||
+	      !collider.entity->getName().compare(0, 4, "Boss"))
+	  {
+	    static_cast<Npc *>(tmp)->takeDamage(this->_attack);
+	    if (static_cast<Npc *>(tmp)->isAlive() == false)
+	    {
+	      static_cast<Npc *>(tmp)->unsetEntity(mSceneMgr);
+	      render->eraseEntities(static_cast<Npc *>(tmp));
+	      collision->remove_entity(collider.entity);
+	    }
+	  }
+	}
+      }
+
+    }
+  }
+  mSceneMgr->destroySceneNode(node);
+  mSceneMgr->destroyEntity(entity);
 }

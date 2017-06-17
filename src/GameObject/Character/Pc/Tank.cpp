@@ -5,10 +5,11 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Wed May 24 15:37:31 2017 Adrien Warin
-** Last update Fri Jun 16 14:47:32 2017 Pierre
+// Last update Sat Jun 17 15:31:05 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Tank.hpp"
+#include "RenderManager.hpp"
 
 Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
 {
@@ -23,6 +24,7 @@ Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
   this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Woman/WomanAttack.ogg", "Attack")));
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Woman/WomanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Woman/WomanInjured.ogg", "Injured")));
+  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/PaladinSwordAttack.ogg", "Weapon")));
 }
 
 Tank::Tank(Tank const & other) : Melee(other) {}
@@ -57,7 +59,7 @@ void Tank::setOgreBase(Ogre::SceneManager* mSceneMgr)
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_55", shield, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_96", helm, Ogre::Quaternion(1,0,0,0));
   this->mEntity->attachObjectToBone("character/human/female/humanfemale_hd_bone_42", rshoulder, Ogre::Quaternion(1,0,0,0));
- this->_aura = new Particle("yellow", "Examples/Aureola" , mSceneMgr, mNode);
+  this->_aura = new Particle("yellow", "Examples/Aureola" , mSceneMgr, mNode);
 
 }
 
@@ -66,12 +68,47 @@ void Tank::unsetEntity(Ogre::SceneManager *mSceneMgr)
   mSceneMgr->destroyEntity(mEntity);
 }
 
-/*void Tank::test()
+void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, RenderManager* render, const Ogre::FrameEvent &fe)
 {
+  GameObject *tmp;
   Ogre::Entity *entity;
   Ogre::SceneNode *node;
+  SCheckCollisionAnswer collider;
 
-  entity = mSceneMgr->createEntity("TankHit" + std::to_string(_id), "cube.mesh");
-  this->mEntity->getOrientation()
+  entity = mSceneMgr->createEntity("TankHit", "cube.mesh");
+  node = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankHitNode",this->mNode->getPosition(),this->mNode->getOrientation());
+  node->attachObject(entity);
+  node->setScale(2, 1, 2);
+  node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
+  collider = collision->check_ray_collision(node->getPosition(),
+            node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+            entity, true);
+  if (!this->_csound["Weapon"]->getStatus())
+  {
+    this->_csound["Weapon"]->playAudio();
+    if (collider.collided)
+    {
+      //if (collider.entity !=)
+      if ((tmp = render->searchEntities(collider.entity->getName())))
+      {
+	if ((tmp = render->searchEntities(collider.entity->getName())))
+	{
+	  if (!collider.entity->getName().compare(0, 6, "Zombie") ||
+	      !collider.entity->getName().compare(0, 4, "Boss"))
+	  {
+	    static_cast<Npc *>(tmp)->takeDamage(this->_attack);
+	    if (static_cast<Npc *>(tmp)->isAlive() == false)
+	    {
+	      static_cast<Npc *>(tmp)->unsetEntity(mSceneMgr);
+	      render->eraseEntities(static_cast<Npc *>(tmp));
+	      collision->remove_entity(collider.entity);
+	    }
+	  }
+	}
+      }
+
+    }
+  }
+  mSceneMgr->destroySceneNode(node);
+  mSceneMgr->destroyEntity(entity);
 }
-*/

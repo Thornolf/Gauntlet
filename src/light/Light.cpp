@@ -5,7 +5,7 @@
 ** Login   <gratte_r@epitech.net>
 **
 ** Started on  Thu Jun 01 22:22:37 2017 Robin Grattepanche
-** Last update Wed Jun 14 13:25:27 2017 Robin Grattepanche
+** Last update Fri Jun 16 18:17:40 2017 Adrien Warin
 */
 
 #include			"Light/light.hpp"
@@ -33,41 +33,6 @@ light::~light()
 {
 	delete this->_position;
 }
-
-// light::light(const light &obj, std::string name)
-// {
-// 	this->_name = name;
-// 	this->_type = obj._type;
-// 	this->_position = obj._position;
-// 	this->_diffColour = obj._diffColour;
-// 	this->_specColour = obj._specColour;
-// 	this->_direction = obj._direction;
-//
-// 	this->_light = mSceneMgr->createLight(name);
-// 	this->_light->setType(obj._type);
-// 	this->_light->setDiffuseColour(obj._diffColour);
-// 	this->_light->setSpecularColour(obj._specColour);
-// 	this->_light->setPosition(obj._position->getVector());
-// 	this->_light->setDirection(obj._direction);
-// }
-//
-// light &light::operator=(const light &obj, std::string name)
-// {
-// 	this->_name = name;
-// 	this->_type = obj._type;
-// 	this->_position = obj._position;
-// 	this->_diffColour = obj._diffColour;
-// 	this->_specColour = obj._specColour;
-// 	this->_direction = obj._direction;
-//
-// 	this->_light = mSceneMgr->createLight(name);
-// 	this->_light->setType(obj._type);
-// 	this->_light->setDiffuseColour(obj._diffColour);
-// 	this->_light->setSpecularColour(obj._specColour);
-// 	this->_light->setPosition(obj._position->getVector());
-// 	this->_light->setDirection(obj._direction);
-// 	return (*this);
-// }
 
 void			light::setDiffuseColour(Ogre::ColourValue newColour)
 {
