@@ -14,18 +14,15 @@
 
 int	main()
 {
-  /*Menu	*menu = new Menu();
-
-  menu->menuLoop();*/
   try
-    {
-      GameCore		app;
-      app.go();
-    }
-  catch (Ogre::Exception const& e)
-    {
-      std::cerr << e.what() << " from " << e.getSource() << std::endl;
-      return (0);
-    }
+  {
+    Menu	*menu = new Menu();
+    menu->menuLoop();
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << e.what() << std::endl;
+    return (0);
+  }
   return (0);
 }
