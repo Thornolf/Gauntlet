@@ -28,7 +28,7 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Human/HumanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/castFireball.ogg", "Weapon")));
-  //this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
+  this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Mage::Mage(Mage const & other) : Ranged(other) {}
@@ -95,18 +95,15 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
       //if (collider.entity !=)
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
-	if ((tmp = render->searchEntities(collider.entity->getName())))
+	if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
 	{
-	  if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+	  //this->_csound["GouleInjured"]->playAudio();
+	  static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+	  if (static_cast<Npc*>(tmp)->isAlive() == false)
 	  {
-	    //this->_csound["GouleInjured"]->playAudio();
-	    static_cast<Npc*>(tmp)->takeDamage(this->_attack);
-	    if (static_cast<Npc*>(tmp)->isAlive() == false)
-	    {
-	      static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
-	      render->eraseEntities(static_cast<Npc*>(tmp));
-	      collision->remove_entity(collider.entity);
-	    }
+	    static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
+	    render->eraseEntities(static_cast<Npc*>(tmp));
+	    collision->remove_entity(collider.entity);
 	  }
 	}
       }
