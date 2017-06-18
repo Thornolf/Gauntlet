@@ -64,6 +64,7 @@ void	Menu::startGame()
 {
   GameCore	game;
 
+  this->_music.stopAudio();
   this->_window->close();
   try
   {
