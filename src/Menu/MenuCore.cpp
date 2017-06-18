@@ -124,9 +124,14 @@ void		Menu::setLogo(const std::string &path)
 
 void		Menu::animateLogo(void)
 {
-  this->_logoAlpha = (this->_logoSwitchValue) ? this->_logoAlpha + sf::Uint8(1) : this->_logoAlpha - sf::Uint8(1);
-  this->_logoSwitchValue = (this->_logoAlpha == 255) ? false : (this->_logoAlpha == 100) ? true : _logoSwitchValue;
+  static int	nbFrame = 0;
+  if (nbFrame % 3 == 0)
+  {
+    this->_logoAlpha = (this->_logoSwitchValue) ? this->_logoAlpha + sf::Uint8(1) : this->_logoAlpha - sf::Uint8(1);
+  }
+  this->_logoSwitchValue = (this->_logoAlpha == 255) ? false : (this->_logoAlpha == 175) ? true : _logoSwitchValue;
   this->_logo.setColor(sf::Color(255, 255, 255, this->_logoAlpha));
+  nbFrame++;
 }
 
 bool		Menu::splashScreen(void)

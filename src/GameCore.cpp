@@ -19,6 +19,7 @@ GameCore::GameCore()
   this->_lootEvent["gol"]	= std::bind(&GameCore::takeGoldStack, this, std::placeholders::_1, std::placeholders::_2);
   this->_lootEvent["foo"]	= std::bind(&GameCore::takeFoodStack, this, std::placeholders::_1, std::placeholders::_2);
   this->_lootEvent["key"]	= std::bind(&GameCore::takeKey, this, std::placeholders::_1, std::placeholders::_2);
+  this->_lootEvent["Gat"]	= std::bind(&GameCore::takeGate, this, std::placeholders::_1, std::placeholders::_2);
 }
 
 GameCore::~GameCore() {}
@@ -28,7 +29,7 @@ void GameCore::createScene()
   this->_hud = new HUD("HUDpanel");
 
   this->_hud->setupPanel(400, 880, 1120, 186, "Examples/OverlayBottom");
-  this->_hud->setupPanelKey(1521, 880, 186, 186, "Examples/KeyDown");
+  this->_hud->setupPanelKey(1519, 880, 135, 135, "Examples/KeyDown");
   this->_hud->initTextPlayer();
   this->_hud->createPlayers();
   mConfig->forEachPlayer([&](Pc *player){this->_hud->getPlayerHp(player->getHp());});
@@ -148,6 +149,12 @@ void		GameCore::takeFoodStack(SCheckCollisionAnswer &collider, Pc *player)
   }
 }
 
+void		GameCore::takeGate(SCheckCollisionAnswer &, Pc *)
+{
+  if (mConfig->getKey())
+    exit(0);
+}
+
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
   Ogre::Vector3			dirVec = Ogre::Vector3::ZERO;
@@ -161,15 +168,16 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   if (mConfig->getPlayers().empty() == true)
     exit (0);
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mConfig->getClosestPlayer(gObj), fe);});
+
+  mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
+  this->_hud->updateScore(mConfig->getScore());
+  this->_hud->updateKey(mConfig->getKey());
+  this->_hud->showHUD();
   mConfig->forEachPlayer([&](Pc *player){
     if (player->isAlive() == false)
       destroyPlayer(player);
   });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
-  mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
-  this->_hud->updateScore(mConfig->getScore());
-  this->_hud->updateKey(mConfig->getKey());
-  this->_hud->showHUD();
 
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {

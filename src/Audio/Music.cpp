@@ -50,7 +50,6 @@ void Music::playAudio()
     {
       throw IndieException("Bad audio path");
     }
-    std::cout << "Current sound : |" << this->_currMusic << "| " << std::endl;
     this->_music.play();
   }
   catch (std::exception &e)

@@ -35,8 +35,7 @@ public:
 
   void		setCurrMusicName(std::string);
   std::string	getCurrMusicName() const;
-  void          destroyPlayer(Pc *);
-
+  void		destroyPlayer(Pc *);
 
 private:
   void	createScene(void);
@@ -45,6 +44,7 @@ private:
   void	takeFoodStack(SCheckCollisionAnswer &, Pc *);
   void	takeGoldStack(SCheckCollisionAnswer &, Pc *);
   void	takeKey(SCheckCollisionAnswer &, Pc *);
+  void	takeGate(SCheckCollisionAnswer &, Pc *);
 
   std::unordered_map<std::string, std::function<void(SCheckCollisionAnswer &, Pc *)>>	_lootEvent;
   std::unordered_map<std::string, Music *>	_mmusic;
