@@ -46,7 +46,6 @@ void Sound::loadAudio(const std::string & pathFile, const std::string &  newCurr
 
 void Sound::playAudio()
 {
-  std::cout << "Current sound : |" << this->_currSoundName << "| " << std::endl;
   _sound.play();
 }
 

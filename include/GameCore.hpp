@@ -34,15 +34,19 @@ public:
   virtual ~GameCore();
 
   void		setCurrMusicName(std::string);
-  std::string		getCurrMusicName() const;
+  std::string	getCurrMusicName() const;
   void          destroyPlayer(Pc *);
 
 
 private:
-  void createScene(void);
-  bool frameRenderingQueued(const Ogre::FrameEvent &);
-  bool processUnbufferedInput(const Ogre::FrameEvent& );
+  void	createScene(void);
+  bool	frameRenderingQueued(const Ogre::FrameEvent &);
+  bool	processUnbufferedInput(const Ogre::FrameEvent& );
+  void	takeFoodStack(SCheckCollisionAnswer &, Pc *);
+  void	takeGoldStack(SCheckCollisionAnswer &, Pc *);
+  void	takeKey(SCheckCollisionAnswer &, Pc *);
 
+  std::unordered_map<std::string, std::function<void(SCheckCollisionAnswer &, Pc *)>>	_lootEvent;
   std::unordered_map<std::string, Music *>	_mmusic;
   std::unordered_map<std::string, Sound *>	_msound;
   std::string					_currentMusic;
@@ -56,7 +60,7 @@ private:
   Position					*mPosition;
   MapManager					*map;
   GameObject					*warrior;
-    HUD						*_hud;
+  HUD						*_hud;
 };
 
 #endif			/* !_GAME_CORE__HPP_! */

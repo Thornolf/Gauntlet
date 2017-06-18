@@ -23,6 +23,7 @@ class	HUD
   private:
     Ogre::OverlayManager				*_overlayManager;
     Ogre::OverlayContainer				*_panel;
+    Ogre::OverlayContainer				*_panelKey;
     Ogre::Overlay					*_overlay;
     std::vector<Ogre::TextAreaOverlayElement *>		_vecText;
     std::vector<int>					_vecHp;
@@ -36,6 +37,7 @@ class	HUD
     HUD(std::string);
     ~HUD();
     void				setupPanel(int, int, int, int, std::string);
+    void				setupPanelKey(int, int, int, int, std::string);
     void				initTextPlayer();
     void				createPlayers();
     void				getPlayerHp(int);
@@ -43,6 +45,7 @@ class	HUD
     void				initScore(int, int, Ogre::ColourValue);
     void				updateScore(int);
     void				updateLife(int, std::string);
+    void				updateKey(bool);
     void				showHUD();
 };
 
