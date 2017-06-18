@@ -24,7 +24,8 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Orc/OrcAttack.ogg", "Attack")));
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Orc/OrcDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Orc/OrcInjured.ogg", "Injured")));
-  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/SwordFleshHit", "Weapon")));
+  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/SwordFleshHit2.ogg", "Weapon")));
+  //this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Warrior::Warrior(Warrior const & other) : Melee(other) {}
@@ -92,6 +93,7 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
 	  if (!collider.entity->getName().compare(0, 6, "Zombie") ||
 	      !collider.entity->getName().compare(0, 4, "Boss"))
 	  {
+	    //this->_csound["GouleInjured"]->playAudio();
 	    static_cast<Npc *>(tmp)->takeDamage(this->_attack);
 	    if (static_cast<Npc *>(tmp)->isAlive() == false)
 	    {

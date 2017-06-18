@@ -20,12 +20,11 @@ GameCore::~GameCore() {}
 
 void GameCore::createScene()
 {
-  /* ----------------------------START SET MUSIC ---------------------------*/
   Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
 
+  backgroundMusic->setAudioVolume(30.0);
   backgroundMusic->playAudio();
   backgroundMusic->setLoop(true);
-  backgroundMusic->setAudioVolume(10.0);
   _mmusic.insert(std::make_pair("Waluni1", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg", "Waluni1")));
   _mmusic.insert(std::make_pair("Waluni2", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni2.ogg", "Waluni2")));
   _mmusic.insert(std::make_pair("Waluni3", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni3.ogg", "Waluni3")));
@@ -37,9 +36,9 @@ void GameCore::createScene()
   _msound.insert(std::make_pair("food", new Sound("dist/media/soundeffect/PowerUpSound/FoodSound.ogg", "food")));
   _msound.insert(std::make_pair("key", new Sound("dist/media/soundeffect/PowerUpSound/KeySound.ogg", "key")));
   auto itm = _mmusic.begin();
+  itm->second->setAudioVolume(5);
   itm->second->playAudio();
   this->setCurrMusicName(itm->second->getCurrentName());
-  /* ----------------------------END SET MUSIC ---------------------------*/
 
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
@@ -72,7 +71,6 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
   mMouse->capture();
   if (!processUnbufferedInput(fe))
     return false;
-  /* START MUSIC */
   if (_mmusic[this->_currentMusic]->getStatus() ==  sf::SoundSource::Status::Stopped)
   {
     if (it == _mmusic.end())
@@ -80,9 +78,9 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
     if (++it == _mmusic.end())
       it = _mmusic.begin();
     this->setCurrMusicName(it->second->getCurrentName());
+    it->second->setAudioVolume(5);
     it->second->playAudio();
   }
-  /* END MUSIC */
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
   return ret;
 }
