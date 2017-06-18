@@ -77,7 +77,7 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
   node->setScale(2, 1, 2);
   node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
-					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 200.0f, 100.0f, 1,
 					    entity, true);
   if (!this->_csound["Weapon"]->getStatus())
   {
@@ -88,11 +88,11 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
       {
 	if (!collider.entity->getName().compare(0, 6, "Zombie") ||
 	    !collider.entity->getName().compare(0, 4, "Boss") ||
-      !collider.entity->getName().compare(0, 8, "Skeleton"))
+	    !collider.entity->getName().compare(0, 8, "Skeleton"))
 	{
-    this->_csound["GouleInjured"]->setAudioVolume(35);
+	  this->_csound["GouleInjured"]->setAudioVolume(35);
 	  this->_csound["GouleInjured"]->playAudio();
-    static_cast<Npc *>(tmp)->takeDamage(this->_attack);
+	  static_cast<Npc *>(tmp)->takeDamage(this->_attack);
 	  if (static_cast<Npc *>(tmp)->isAlive() == false)
 	  {
 	    static_cast<Npc *>(tmp)->unsetEntity(mSceneMgr);
@@ -101,7 +101,6 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
 	  }
 	}
       }
-
     }
   }
   mSceneMgr->destroySceneNode(node);
