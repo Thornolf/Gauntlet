@@ -97,13 +97,10 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
 	if (!collider.entity->getName().compare(0,6, "Zombie") ||
-  !collider.entity->getName().compare(0,4, "Boss") ||
-  !collider.entity->getName().compare(0, 8, "Skeleton"))
+	    !collider.entity->getName().compare(0,4, "Boss") ||
+	    !collider.entity->getName().compare(0, 8, "Skeleton"))
 	{
 	  static_cast<Npc*>(tmp)->takeDamage(this->_attack);
-
-	  this->_csound["GouleInjured"]->setAudioVolume(35);
-	  this->_csound["GouleInjured"]->playAudio();
 	  if (static_cast<Npc*>(tmp)->isAlive() == false)
 	  {
 	    static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
