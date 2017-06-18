@@ -1,0 +1,7 @@
+MyFont
+{
+    type         truetype
+    source       test.otf
+    size         20
+    resolution   128
+}

@@ -33,6 +33,7 @@ public:
   Device		*getDevice(void) const;
   const std::string	&getName(void) const;
   int			getSpeed(void) const;
+    int 		getHp(void) const;
 
   void		moveDown(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &, CollisionTools*, Ogre::SceneManager*, RenderManager*, bool & actionKey, Pc *);
   void		moveUp(const Ogre::FrameEvent &, Ogre::Vector3 &, Ogre::Vector3 &, CollisionTools*, Ogre::SceneManager*, RenderManager*, bool & actionKey, Pc *);

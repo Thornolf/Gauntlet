@@ -24,6 +24,7 @@ public:
   const std::vector<Pc*>	&getPlayers(void) const;
   void			addPlayer(Pc*);
   void			addScorePoint(int nbPoint);
+    int			getScore(void) const;
   void      addKey();
 
   template <typename UnaryFunction>

@@ -36,6 +36,20 @@ material Examples/OgreLogo
 	}
 }
 
+material Examples/OverlayBottom
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture HUD.png
+            }
+        }
+    }
+}
+
 material Examples/BeachStones
 {
 	technique
@@ -46,7 +60,9 @@ material Examples/BeachStones
 
 			texture_unit
 			{
-				texture BeachStones.jpg
+				texture HUD_bottom.png
+				ambient 0.616687 0.90461 1 0.7
+                diffuse 0.616687 0.90461 1 0.7
 			}
 		}
 	}
