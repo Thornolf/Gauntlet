@@ -527,3 +527,35 @@ particle_system Examples/invisiblearrow
         blue -0.25
     }
  }
+
+ particle_system Examples/Blood
+{
+    material        Examples/Flare2
+    particle_width  150
+    particle_height 150
+    cull_each       false
+    quota           10000
+    billboard_type  oriented_self
+
+    // Area emitter
+    emitter Point
+    {
+        angle           50
+        emission_rate   300
+        time_to_live    0.3
+        //duration        0.3
+        position        0 30 0
+        direction       0 1 0
+        velocity_min    100
+        velocity_max    350
+        colour_range_start  0.2 0 0 1
+        colour_range_end    0.2 0 0 1
+    }
+
+    // Gravity
+    affector LinearForce
+    {
+        force_vector      0 -200 0
+        force_application add
+    }
+}
