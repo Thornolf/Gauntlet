@@ -61,7 +61,7 @@ void GameCore::createScene()
   Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
   Ogre::MeshManager::getSingleton().createPlane("ground",
 						Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-						plane, 10000, 10000, 1, 1, true, 1, 40, 40,
+						plane, 20000, 20000, 1, 1, true, 1, 40, 40,
 						Ogre::Vector3::UNIT_Z);
   Ogre::Entity* groundEntity = mSceneMgr->createEntity("ground");
   mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
@@ -119,7 +119,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
       destroyPlayer(player);
      });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
-  
+
   mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
   this->_hud->updateScore(mConfig->getScore());
   this->_hud->showHUD();
