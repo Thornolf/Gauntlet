@@ -9,8 +9,8 @@
 */
 
 #include <SFML/Graphics.hpp>
-#include <SFML/System/Clock.hpp>
 #include <SFML/Audio.hpp>
+#include <OgreFontManager.h>
 
 #include "GameCore.hpp"
 
@@ -20,6 +20,15 @@ GameCore::~GameCore() {}
 
 void GameCore::createScene()
 {
+  this->_hud = new HUD("HUDpanel");
+
+  this->_hud->setupPanel(400, 880, 1120, 186, "Examples/OverlayBottom");
+  this->_hud->initTextPlayer();
+  this->_hud->createPlayers();
+  mConfig->forEachPlayer([&](Pc *player){this->_hud->getPlayerHp(player->getHp());});
+  this->_hud->initLife();
+  this->_hud->initScore(530, 30, Ogre::ColourValue(0.1, 0.1, 0.1));
+
   /* ----------------------------START SET MUSIC ---------------------------*/
   Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
 
@@ -95,6 +104,12 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   std::stack<std::thread *>	threadPool;
 
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
+
+  mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
+
+  this->_hud->updateScore(mConfig->getScore());
+
+  this->_hud->showHUD();
 
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)

@@ -90,3 +90,8 @@ int		Pc::getSpeed(void) const
 {
   return (this->_speed);
 }
+
+int		Pc::getHp(void) const
+{
+  return (this->_health);
+}

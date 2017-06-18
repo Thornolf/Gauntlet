@@ -107,12 +107,11 @@ void BaseGauntlet::createFrameListener(void)
   windowResized(mWindow);
   Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
-  OgreBites::InputContext inputContext;
-  inputContext.mMouse = mMouse;
-  inputContext.mKeyboard = mKeyboard;
-  mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-  OgreBites::Button *button = mTrayMgr->createButton(OgreBites::TL_TOPLEFT, "EnterBtn", "Enter GameState", 250);
-  mTrayMgr->showCursor();
+OgreBites::InputContext inputContext;
+ inputContext.mMouse = mMouse;
+ inputContext.mKeyboard = mKeyboard;
+ mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
+  mTrayMgr->hideCursor();
 
   Ogre::StringVector items;
   items.push_back("cam.pX");

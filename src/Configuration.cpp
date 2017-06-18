@@ -39,3 +39,8 @@ void	Configuration::addScorePoint(int nbPoint)
   std::cout << "WINNNING POINT" << '\n';
   this->_score += nbPoint;
 }
+
+int	Configuration::getScore() const
+{
+  return (this->_score);
+}
