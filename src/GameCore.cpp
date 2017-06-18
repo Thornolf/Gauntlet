@@ -35,11 +35,9 @@ void GameCore::createScene()
   mConfig->forEachPlayer([&](Pc *player){this->_hud->getPlayerHp(player->getHp());});
   this->_hud->initLife();
   this->_hud->initScore(530, 30, Ogre::ColourValue(0.1, 0.1, 0.1));
-
-  /* ----------------------------START SET MUSIC ---------------------------*/
   Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
 
-  backgroundMusic->setAudioVolume(30.0);
+  backgroundMusic->setAudioVolume(10.0);
   backgroundMusic->playAudio();
   backgroundMusic->setLoop(true);
   _mmusic.insert(std::make_pair("Waluni1", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg", "Waluni1")));
@@ -100,7 +98,7 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
     if (++it == _mmusic.end())
       it = _mmusic.begin();
     this->setCurrMusicName(it->second->getCurrentName());
-    it->second->setAudioVolume(5);
+    it->second->setAudioVolume(15);
     it->second->playAudio();
   }
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
@@ -167,22 +165,18 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   if (mConfig->getPlayers().empty() == true)
     exit (0);
-
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mConfig->getClosestPlayer(gObj), fe);});
+
+  mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
+  this->_hud->updateScore(mConfig->getScore());
+  this->_hud->updateKey(mConfig->getKey());
+  this->_hud->showHUD();
   mConfig->forEachPlayer([&](Pc *player){
     if (player->isAlive() == false)
       destroyPlayer(player);
   });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
-  mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
-  this->_hud->updateScore(mConfig->getScore());
-
-  this->_hud->updateKey(mConfig->getKey());
-
-  this->_hud->showHUD();
-
-  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
     OIS::KeyCode	key	= itBinding->first;

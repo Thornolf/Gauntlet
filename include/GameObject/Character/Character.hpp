@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Sat Jun 17 14:51:38 2017 Thomas Fossaert
+** Last update Sun Jun 18 17:14:48 2017 Thomas Fossaert
 */
 
 #ifndef		_CHARACTER_HPP_
@@ -31,6 +31,7 @@ class Character : public GameObject
     void			takeDamage(int dmg);
     bool			isAlive() const;
     virtual void		attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &) {};
+    int getSpeed() const;
 
   protected:
     int				_health;

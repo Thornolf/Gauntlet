@@ -15,7 +15,7 @@ Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
   this->_health = 222;
   this->_attack = 30;
-  this->_speed = 130;
+  this->_speed = 350;
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "BossNode" + std::to_string(id);

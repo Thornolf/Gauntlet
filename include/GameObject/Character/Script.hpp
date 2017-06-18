@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:25:19 2017 Adrien Warin
-** Last update Sun Jun 18 14:23:28 2017 Thomas Fossaert
+** Last update Sun Jun 18 16:43:26 2017 Thomas Fossaert
 */
 
 #ifndef SCRIPT_HPP_
@@ -44,7 +44,7 @@ public:
 
   Ogre::Vector3 moveX(GameObject *,GameObject *);
   Ogre::Vector3 moveZ(GameObject *,GameObject *);
-
+  void changeOrientation(GameObject *, Ogre::Vector3);
 };
 
 #endif
