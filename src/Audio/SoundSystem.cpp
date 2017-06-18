@@ -33,7 +33,6 @@ void Sound::loadAudio(const std::string & pathFile, const std::string &  newCurr
 
 void Sound::playAudio()
 {
-  std::cout << "Sound played : " << this->getCurrentName() << std::endl;
   _sound.play();
 }
 
