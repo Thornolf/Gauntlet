@@ -77,7 +77,7 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
   node->setScale(2, 1, 2);
   node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
-					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 200.0f, 100.0f, 1,
+					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 200.0f, 50.0f, 1,
 					    entity, true);
   if (!this->_csound["Weapon"]->getStatus())
   {
