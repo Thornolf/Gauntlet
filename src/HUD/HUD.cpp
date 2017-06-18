@@ -15,6 +15,9 @@ HUD::HUD(std::string panelName)
   this->_overlayManager = Ogre::OverlayManager::getSingletonPtr();
   this->_panel = static_cast<Ogre::OverlayContainer*>(this->_overlayManager->createOverlayElement("Panel", panelName));
   this->_panel->setMetricsMode(Ogre::GMM_PIXELS);
+
+  this->_panelKey = static_cast<Ogre::OverlayContainer*>(this->_overlayManager->createOverlayElement("Panel", "panelKey"));
+  this->_panelKey->setMetricsMode(Ogre::GMM_PIXELS);
 }
 
 HUD::~HUD() {}
@@ -24,6 +27,13 @@ void	HUD::setupPanel(int x, int y, int sizeX, int sizeY, std::string path)
   this->_panel->setPosition(x, y);
   this->_panel->setDimensions(sizeX, sizeY);
   this->_panel->setMaterialName(path);
+}
+
+void	HUD::setupPanelKey(int x, int y, int sizeX, int sizeY, std::string path)
+{
+  this->_panelKey->setPosition(x, y);
+  this->_panelKey->setDimensions(sizeX, sizeY);
+  this->_panelKey->setMaterialName(path);
 }
 
 void	HUD::initTextPlayer()
@@ -47,6 +57,7 @@ void	HUD::createPlayers()
 
   this->_overlay = this->_overlayManager->create("Overlay");
   this->_overlay->add2D(this->_panel);
+  this->_overlay->add2D(this->_panelKey);
 
   this->_panel->addChild(this->_vecText[0]);
   this->_panel->addChild(this->_vecText[1]);
@@ -112,6 +123,14 @@ void				HUD::updateLife(int hp, std::string name)
 void				HUD::updateScore(int score)
 {
   this->_panel->getChild("hudScore")->setCaption(std::to_string(score));
+}
+
+void				HUD::updateKey(bool okKey)
+{
+  if (okKey)
+    this->_overlay->getChild("panelKey")->setMaterialName("Examples/KeyUp");
+  else
+    this->_overlay->getChild("panelKey")->setMaterialName("Examples/KeyDown");
 }
 
 void				HUD::getPlayerHp(int hp)

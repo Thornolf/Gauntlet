@@ -49,6 +49,10 @@ void Configuration::addKey()
   this->_key = true;
 }
 
+bool	Configuration::getKey() const
+{
+  return (this->_key);
+}
 Pc*       Configuration::getClosestPlayer(GameObject *current)
 {
   Pc *tmp;
