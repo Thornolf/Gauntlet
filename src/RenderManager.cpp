@@ -25,6 +25,7 @@ RenderManager::RenderManager()
   this->_factory["WARRIOR"]	= std::bind(&RenderManager::createWarriorObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["TANK"]	= std::bind(&RenderManager::createTankObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
   this->_factory["ARCHER"]	= std::bind(&RenderManager::createArcherObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
+  this->_factory["GATE"]	= std::bind(&RenderManager::createGateObject, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4, std::placeholders::_5);
 }
 
 RenderManager::~RenderManager()
@@ -95,6 +96,11 @@ GameObject	*RenderManager::createFoodObject(int id, const Position &position, co
 GameObject	*RenderManager::createGoldObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
 {
   return (new goldStack(position.getXPosition(), position.getYPosition(), position.getZPosition(), id));
+}
+
+GameObject	*RenderManager::createGateObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)
+{
+  return (new gate(position.getXPosition(), position.getYPosition(), position.getZPosition(), id));
 }
 
 GameObject	*RenderManager::createKeyObject(int id, const Position &position, const Position &, const Ogre::Quaternion &, const std::string &)

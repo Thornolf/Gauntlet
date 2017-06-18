@@ -19,6 +19,7 @@
 
 /* GameObject / Character */
 # include	"GameObject/GameObject.hpp"
+# include	"GameObject/Doodad/Gate.hpp"
 # include	"GameObject/Character/Character.hpp"
 /* PC */
 # include	"GameObject/Character/Pc/Pc.hpp"
@@ -56,6 +57,7 @@ public:
   GameObject	*createSpawnerObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createFoodObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createGoldObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
+  GameObject	*createGateObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createKeyObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createWarriorObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);
   GameObject	*createMageObject(int, const Position &, const Position &, const Ogre::Quaternion &, const std::string &);

@@ -23,7 +23,7 @@ void GameCore::createScene()
   this->_hud = new HUD("HUDpanel");
 
   this->_hud->setupPanel(400, 880, 1120, 186, "Examples/OverlayBottom");
-  this->_hud->setupPanelKey(1521, 880, 186, 186, "Examples/KeyDown");
+  this->_hud->setupPanelKey(1519, 880, 135, 135, "Examples/KeyDown");
   this->_hud->initTextPlayer();
   this->_hud->createPlayers();
   mConfig->forEachPlayer([&](Pc *player){this->_hud->getPlayerHp(player->getHp());});
@@ -127,8 +127,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   this->_hud->updateKey(mConfig->getKey());
 
   this->_hud->showHUD();
-  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
-
 
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
@@ -184,6 +182,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 		this->mRenderManager->eraseEntities(tmp);
 		collision->remove_entity(collider.entity);
 	      }
+	    }
+	    else if (!collider.entity->getName().compare(0,4, "Gate") && mConfig->getKey())
+	    {
+	      exit(0);
 	    }
 	  }
 	  else

@@ -113,6 +113,7 @@ set(HDRS
         include/GameObject/Loot/key.hpp
         include/RenderManager.hpp
         include/HUD/HUD.hpp
+        include/GameObject/Doodad/Gate.hpp
 	include/Menu/MenuCore.hpp
 	include/GameObject/Character/Npc/Spawner.hpp)
 	
@@ -158,6 +159,7 @@ set(SRCS
         src/Particle/Particle.cpp
         src/GameObject/Loot/key.cpp
         src/Menu/MenuCore.cpp
+        src/GameObject/Doodad/Gate.cpp
         src/Menu/MenuItem.cpp
 	src/HUD/HUD.cpp)
 
