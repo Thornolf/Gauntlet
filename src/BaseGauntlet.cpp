@@ -238,7 +238,6 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
   if(mWindow->isClosed())
     return false;
-
   if(mShutDown)
     return false;
 
@@ -259,7 +258,6 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
       mDetailsPanel->setParamValue(7, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().z));
     }
   }
-
   return true;
 }
 //-------------------------------------------------------------------------------------
