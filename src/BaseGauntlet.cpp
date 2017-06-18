@@ -261,13 +261,12 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
   return true;
 }
 //-------------------------------------------------------------------------------------
-bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg )
+bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg)
 {
   if (arg.key == OIS::KC_SYSRQ)
     mWindow->writeContentsToTimestampedFile("screenshot", ".jpg");
-  else if (arg.key == OIS::KC_ESCAPE)
+  else if (arg.key == OIS::KC_ESCAPE || arg.key == OIS::KC_LMENU)
     mShutDown = true;
-  // mCameraMan->injectKeyDown(arg);
   return true;
 }
 

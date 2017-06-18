@@ -96,7 +96,6 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
     it->second->setAudioVolume(15);
     it->second->playAudio();
   }
-  /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
   return ret;
 }
 
@@ -158,7 +157,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   static bool actionKey = false;
 
-  if (mConfig->getPlayers().empty() == true)
+  if (mConfig->getPlayers().empty())
     exit (0);
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mConfig->getClosestPlayer(gObj), fe);});
 
@@ -167,7 +166,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   this->_hud->updateKey(mConfig->getKey());
   this->_hud->showHUD();
   mConfig->forEachPlayer([&](Pc *player){
-    if (player->isAlive() == false)
+    if (!player->isAlive())
       destroyPlayer(player);
   });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
@@ -203,10 +202,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  }
 	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 	  mCamera->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
-	  /*mConfig->forEachPlayer([&](Pc *player){
-	    if (player->isAlive() == false)
-	      destroyPlayer(player);
-	  });*/
 	  toggleTimer -= fe.timeSinceLastFrame;
 	  if (toggleTimer < 0)
 	  {
@@ -225,14 +220,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     toggleTimer = 1.5;
     this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
   }
-  /*
-  for (;threadPool.size() > 0;)
-  {
-    threadPool.top()->join();
-    delete threadPool.top();
-    threadPool.pop();
-  }
-   */
   return true;
 }
 
