@@ -19,6 +19,7 @@ GameCore::GameCore()
   this->_lootEvent["gol"]	= std::bind(&GameCore::takeGoldStack, this, std::placeholders::_1, std::placeholders::_2);
   this->_lootEvent["foo"]	= std::bind(&GameCore::takeFoodStack, this, std::placeholders::_1, std::placeholders::_2);
   this->_lootEvent["key"]	= std::bind(&GameCore::takeKey, this, std::placeholders::_1, std::placeholders::_2);
+  this->_lootEvent["Gat"]	= std::bind(&GameCore::takeGate, this, std::placeholders::_1, std::placeholders::_2);
 }
 
 GameCore::~GameCore() {}
@@ -148,6 +149,12 @@ void		GameCore::takeFoodStack(SCheckCollisionAnswer &collider, Pc *player)
   }
 }
 
+void		GameCore::takeGate(SCheckCollisionAnswer &, Pc *)
+{
+  if (mConfig->getKey())
+    exit(0);
+}
+
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
   Ogre::Vector3			dirVec = Ogre::Vector3::ZERO;
@@ -174,10 +181,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   this->_hud->updateKey(mConfig->getKey());
 
   this->_hud->showHUD();
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
@@ -200,49 +203,9 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  {
 	    std::string		substring = collider.entity->getName().substr(0, 3);
 	    dirVec.x -= 20 + player->getSpeed();
-<<<<<<< HEAD
-	    if (!collider.entity->getName().compare(0,9, "goldStack"))
-	    {
-	      if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
-	      {
-		tmp->unsetEntity(mSceneMgr);
-		mConfig->addScorePoint(100);
-		_msound["gold"]->playAudio();
-		this->mRenderManager->eraseEntities(tmp);
-		collision->remove_entity(collider.entity);
-	      }
-	    }
-	    else if (!collider.entity->getName().compare(0,9, "foodStack"))
-	    {
-	      if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
-	      {
-		tmp->unsetEntity(mSceneMgr);
-		player->gainHealth(50);
-		_msound["food"]->playAudio();
-		this->mRenderManager->eraseEntities(tmp);
-		collision->remove_entity(collider.entity);
-	      }
-	    }
-	    else if (!collider.entity->getName().compare(0,3, "key"))
-	    {
-	      if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
-	      {
-		tmp->unsetEntity(mSceneMgr);
-		_msound["key"]->playAudio();
-    mConfig->addKey();
-		this->mRenderManager->eraseEntities(tmp);
-		collision->remove_entity(collider.entity);
-	      }
-	    }
-	    else if (!collider.entity->getName().compare(0,4, "Gate") && mConfig->getKey())
-	    {
-	      exit(0);
-	    }
-=======
 
 	    if (this->_lootEvent.find(substring) != this->_lootEvent.end())
 	      this->_lootEvent[substring](collider, player);
->>>>>>> master
 	  }
 	  else
 	  {
