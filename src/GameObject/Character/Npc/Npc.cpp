@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Wed Jun 14 16:48:14 2017 Pierre
+** Last update Sat Jun 17 17:55:49 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Npc.hpp"
@@ -13,6 +13,7 @@
 Npc::Npc(int x, int y, int z, int id) : Character(x, y, z)
 {
   this->_id = id;
+  this->_hasAttacked = false;
 }
 
 Npc::Npc(Npc const & other) : Character(other)
@@ -29,4 +30,14 @@ Npc& Npc::operator=(Npc const & other)
 Npc::~Npc()
 {
 
+}
+
+void Npc::setAttackStatus(bool stat)
+{
+  this->_hasAttacked = stat;
+}
+
+bool Npc::getAttackStatus() const
+{
+  return (this->_hasAttacked);
 }

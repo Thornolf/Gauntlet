@@ -78,88 +78,87 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 endif()
 
 set(HDRS
-        ./include/BaseGauntlet.hpp
-        ./include/GameCore.hpp
-        ./include/IndieException.hpp
-        ./include/GameObject/Character/Character.hpp
+        include/BaseGauntlet.hpp
+        include/GameCore.hpp
+        include/IndieException.hpp
+        include/GameObject/Character/Character.hpp
         include/GameObject/Loot/foodStack.hpp
         include/GameObject/Loot/goldStack.hpp
         include/GameObject/Loot/Loot.hpp
-        ./include/GameObject/Character/Npc/Npc.hpp
-        ./include/GameObject/Character/Pc/Mage.hpp
-        ./include/GameObject/Character/Pc/Archer.hpp
-        ./include/GameObject/Character/Pc/Tank.hpp
-        ./include/GameObject/Character/Npc/Zombie.hpp
-        ./include/GameObject/Character/Npc/Skeleton.hpp
-        ./include/GameObject/GameObject.hpp
-        ./include/Position.hpp
-        ./include/Score/Score.hpp
-        ./include/Configuration.hpp
-        ./include/Particle.hpp
+        include/GameObject/Character/Npc/Npc.hpp
+        include/GameObject/Character/Pc/Mage.hpp
+        include/GameObject/Character/Pc/Archer.hpp
+        include/GameObject/Character/Pc/Tank.hpp
+        include/GameObject/Character/Npc/Zombie.hpp
+        include/GameObject/Character/Npc/Skeleton.hpp
+        include/GameObject/GameObject.hpp
+        include/Position.hpp
+        include/Score/Score.hpp
+        include/Configuration.hpp
+        include/Particle.hpp
         include/GameObject/Character/Pc/Ranged.hpp
         include/Audio/IAudio.hpp
         include/Audio/Music.hpp
         include/Audio/SoundSystem.hpp
-        ./include/Input/DeviceManager.hpp
-        ./include/Input/ParserInputFile.hpp
-        ./include/Input/eventType.hpp
+        include/Input/DeviceManager.hpp
+        include/Input/ParserInputFile.hpp
+        include/Input/eventType.hpp
         include/GameObject/Character/Pc/Melee.hpp
-        ./include/NewMOC.hpp
-        ./include/Animation.hpp
-        ./include/Light/light.hpp
+        include/NewMOC.hpp
+        include/Animation.hpp
+        include/Light/light.hpp
         include/GameObject/Character/Script.hpp
         include/MapManager.hpp
         include/GameObject/Doodad/Doodad.hpp
-      	./include/GameObject/Loot/key.hpp
+        include/GameObject/Loot/key.hpp
         include/RenderManager.hpp
-				include/GameObject/Character/Npc/Spawner.hpp
-				include/Menu/MenuCore.hpp
         include/HUD/HUD.hpp
-        )
+				include/Menu/MenuCore.hpp
+				include/GameObject/Character/Npc/Spawner.hpp
 
 set(SRCS
-        ./src/main.cpp
-        ./src/Animation/Animation.cpp
-        ./src/IndieException.cpp
-        ./src/BaseGauntlet.cpp
-        ./src/GameCore.cpp
-        ./src/GameObject/Loot/Loot.cpp
-        ./src/GameObject/Loot/goldStack.cpp
-        ./src/GameObject/Loot/foodStack.cpp
-        ./src/GameObject/Character/Character.cpp
-        ./src/GameObject/Character/Npc/Npc.cpp
-        ./src/GameObject/Character/Npc/Zombie.cpp
-        ./src/GameObject/Character/Npc/Boss.cpp
-        ./src/GameObject/Character/Npc/Skeleton.cpp
-        ./src/GameObject/Character/Pc/Pc.cpp
-        ./src/GameObject/Character/Pc/Archer.cpp
-        ./src/GameObject/Character/Pc/Warrior.cpp
-        ./src/GameObject/Character/Pc/Mage.cpp
-        ./src/GameObject/Character/Pc/Tank.cpp
-        ./src/GameObject/GameObject.cpp
-        ./src/Position/Position.cpp
-        ./src/Score/Score.cpp
-        ./src/GameObject/Character/Pc/Melee.cpp
-        ./src/Configuration.cpp
-        ./src/GameObject/Character/Pc/Ranged.cpp
+        src/main.cpp
+        src/Animation/Animation.cpp
+        src/IndieException.cpp
+        src/BaseGauntlet.cpp
+        src/GameCore.cpp
+        src/GameObject/Loot/Loot.cpp
+        src/GameObject/Loot/goldStack.cpp
+        src/GameObject/Loot/foodStack.cpp
+        src/GameObject/Character/Character.cpp
+        src/GameObject/Character/Npc/Npc.cpp
+        src/GameObject/Character/Npc/Zombie.cpp
+        src/GameObject/Character/Npc/Boss.cpp
+        src/GameObject/Character/Npc/Skeleton.cpp
+        src/GameObject/Character/Pc/Pc.cpp
+        src/GameObject/Character/Pc/Archer.cpp
+        src/GameObject/Character/Pc/Warrior.cpp
+        src/GameObject/Character/Pc/Mage.cpp
+        src/GameObject/Character/Pc/Tank.cpp
+        src/GameObject/GameObject.cpp
+        src/Position/Position.cpp
+        src/Score/Score.cpp
+        src/GameObject/Character/Pc/Melee.cpp
+        src/Configuration.cpp
+        src/GameObject/Character/Pc/Ranged.cpp
         src/Audio/SoundSystem.cpp
         src/Audio/Music.cpp
-        ./src/Input/DeviceManager.cpp
-        ./src/Input/ParserInputFile.cpp
-        ./src/NewMOC.cpp
-        ./src/Script/Script.cpp
-        ./src/GameObject/Character/Pc/Warrior.cpp
-        ./src/GameObject/Character/Pc/Tank.cpp
-        ./src/light/Light.cpp
-        ./src/Parsing/MapManager.cpp
-        ./src/RenderManager.cpp
-        ./src/GameObject/Character/Npc/Spawner.cpp
-        ./src/GameObject/Doodad/Doodad.cpp
-        ./src/Particle/Particle.cpp
-      ./src/GameObject/Loot/key.cpp
-				./src/MenuCore/MenuCore.cpp
+        src/Input/DeviceManager.cpp
+        src/Input/ParserInputFile.cpp
+        src/NewMOC.cpp
+        src/Script/Script.cpp
+        src/GameObject/Character/Pc/Warrior.cpp
+        src/GameObject/Character/Pc/Tank.cpp
+        src/light/Light.cpp
+        src/Parsing/MapManager.cpp
+        src/RenderManager.cpp
+        src/GameObject/Character/Npc/Spawner.cpp
+        src/GameObject/Doodad/Doodad.cpp
+        src/Particle/Particle.cpp
+        src/GameObject/Loot/key.cpp
+        src/Menu/MenuCore.cpp
+        src/Menu/MenuItem.cpp)
        src/HUD/HUD.cpp
-        )
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

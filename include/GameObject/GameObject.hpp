@@ -64,7 +64,7 @@ public:
   GameObject& operator=(GameObject const &);
   virtual ~GameObject();
 
-  /* Classes */
+  /* Methodes */
   Position* getPosition() const;
   void      hide();
   const std::string& getNodeName() const;
@@ -81,6 +81,8 @@ public:
   virtual void		Animate(const Ogre::FrameEvent&) {};
   virtual void		unsetEntity(Ogre::SceneManager *mSceneMgr) {};
   virtual void    initScript(CollisionTools* tool) {};
+  virtual void setAttackStatus(bool stat) {};
+  virtual bool getAttackStatus() const {};
 
 };
 

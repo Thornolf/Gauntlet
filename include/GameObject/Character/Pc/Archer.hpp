@@ -5,7 +5,7 @@
 ** Login   <baudet_q@epitech.net>
 **
 ** Started on  Mon Jun 12 11:08:04 2017 Quentin Baudet
-** Last update Fri Jun 16 14:36:44 2017 Pierre
+** Last update Sat Jun 17 10:55:12 2017 Thomas Fossaert
 */
 
 #ifndef _ARCHER_HPP_
@@ -24,6 +24,9 @@ public:
 
   void		setOgreBase(Ogre::SceneManager*);
   void		unsetEntity(Ogre::SceneManager *mSceneMgr);
+  void    attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &);
+  private:
+    int		_nbrAttack;
 };
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Fri Jun 02 06:35:26 2017 Guillaume CAUCHOIS
-** Last update Fri Jun 16 13:48:13 2017 Robin Grattepanche
+// Last update Sat Jun 17 12:03:18 2017 Thomas Fossaert
 */
 
 #include "BaseGauntlet.hpp"

@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-** Last update Fri Jun 16 13:48:50 2017 Robin Grattepanche
+// Last update Sat Jun 17 17:35:39 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -32,9 +32,9 @@ void GameCore::createScene()
   /* ----------------------------START SET MUSIC ---------------------------*/
   Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
 
+  backgroundMusic->setAudioVolume(30.0);
   backgroundMusic->playAudio();
   backgroundMusic->setLoop(true);
-  backgroundMusic->setAudioVolume(10.0);
   _mmusic.insert(std::make_pair("Waluni1", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg", "Waluni1")));
   _mmusic.insert(std::make_pair("Waluni2", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni2.ogg", "Waluni2")));
   _mmusic.insert(std::make_pair("Waluni3", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni3.ogg", "Waluni3")));
@@ -46,9 +46,9 @@ void GameCore::createScene()
   _msound.insert(std::make_pair("food", new Sound("dist/media/soundeffect/PowerUpSound/FoodSound.ogg", "food")));
   _msound.insert(std::make_pair("key", new Sound("dist/media/soundeffect/PowerUpSound/KeySound.ogg", "key")));
   auto itm = _mmusic.begin();
+  itm->second->setAudioVolume(5);
   itm->second->playAudio();
   this->setCurrMusicName(itm->second->getCurrentName());
-  /* ----------------------------END SET MUSIC ---------------------------*/
 
   map = new MapManager("dist/bin/map.cfg");
   map->computeAbstractTree();
@@ -81,7 +81,6 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
   mMouse->capture();
   if (!processUnbufferedInput(fe))
     return false;
-  /* START MUSIC */
   if (_mmusic[this->_currentMusic]->getStatus() ==  sf::SoundSource::Status::Stopped)
   {
     if (it == _mmusic.end())
@@ -89,9 +88,9 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
     if (++it == _mmusic.end())
       it = _mmusic.begin();
     this->setCurrMusicName(it->second->getCurrentName());
+    it->second->setAudioVolume(5);
     it->second->playAudio();
   }
-  /* END MUSIC */
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
   return ret;
 }
@@ -101,7 +100,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   Ogre::Vector3			dirVec = Ogre::Vector3::ZERO;
   Ogre::Vector3			CameraVec = Ogre::Vector3::ZERO;
   GameObject			*tmp;
+  static Ogre::Real toggleTimer = 0.0;
   std::stack<std::thread *>	threadPool;
+
+  static bool actionKey = false;
 
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
@@ -150,7 +152,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 		tmp->unsetEntity(mSceneMgr);
 		player->gainHealth(50);
 		_msound["food"]->playAudio();
-		//static_cast<Character*>(warrior)->gainHealth(50); /!\ Régler le segfault
 		this->mRenderManager->eraseEntities(tmp);
 		collision->remove_entity(collider.entity);
 	      }
@@ -161,7 +162,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	      {
 		tmp->unsetEntity(mSceneMgr);
 		_msound["key"]->playAudio();
-		/* Action to set the possession of the key */
+    mConfig->addKey();
 		this->mRenderManager->eraseEntities(tmp);
 		collision->remove_entity(collider.entity);
 	      }
@@ -169,18 +170,29 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  }
 	  else
 	  {
-	    //std::thread *animThread = new std::thread([&]{
-	      itEvent->second(fe, dirVec, CameraVec, collision, mSceneMgr);
-	      this->mCamera->move(CameraVec);
-	    //});
-	   // threadPool.push(animThread);
+	    itEvent->second(fe, dirVec, CameraVec, collision, mSceneMgr, mRenderManager, actionKey, player);
+	    this->mCamera->move(CameraVec);
 	  }
-	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame,Ogre::Node::TS_LOCAL);
+	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
+	  mCamera->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
+    toggleTimer -= fe.timeSinceLastFrame;
+    if (toggleTimer < 0)
+      {
+        toggleTimer = 1.5;
+        this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
+      }
 	  return (true);
 	}
       }
     }
   }
+  actionKey = false;
+  toggleTimer -= fe.timeSinceLastFrame;
+  if (toggleTimer < 0)
+    {
+      toggleTimer = 1.5;
+      this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
+    }
   /*
   for (;threadPool.size() > 0;)
   {

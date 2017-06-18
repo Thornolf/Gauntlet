@@ -13,23 +13,26 @@
 
 #include <OgreSceneManager.h>
 #include <OgreParticleSystem.h>
+#include <OgreParticleEmitter.h>
 
 class GameObject;
 
 class Particle
 {
-    private:
-        Ogre::ParticleSystem*   _ps;
-        std::string             _name;
-        std::string             _path;
+  private:
+    Ogre::ParticleSystem*   _ps;
+    std::string             _name;
+    std::string             _path;
 
-    public:
-        Particle (std::string name, std::string path, Ogre::SceneManager *scene, Ogre::SceneNode *objet);
-        virtual ~Particle ();
+  public:
+    Particle (std::string name, std::string path, Ogre::SceneManager *scene, Ogre::SceneNode *objet);
+    virtual ~Particle ();
 
-        Ogre::ParticleSystem    *setParticle(Ogre::SceneManager *scene);
-        void                    setObjet(Ogre::SceneNode *objet);
-        void                    destroy();
+    Ogre::ParticleSystem    *setParticle(Ogre::SceneManager *scene);
+    void                    setObjet(Ogre::SceneNode *objet);
+    void                    destroy();
+    Ogre::ParticleSystem* 	getPs() const;
+    void 			clearParticle();
 };
 
 #endif

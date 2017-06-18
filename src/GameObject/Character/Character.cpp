@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Fri Jun 16 14:34:27 2017 Pierre
+** Last update Sat Jun 17 19:53:05 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -42,17 +42,15 @@ Character::~Character() {}
 
 void	Character::takeDamage(int dmg)
 {
+  std::cout << _health << '\n';
   this->_health = (this->_health - dmg < 0) ? 0 : this->_health - dmg;
-}
-
-void Character::attack(Character *target)
-{
-  target->takeDamage(this->_attack);
 }
 
 bool Character::isAlive() const
 {
-  return ((this->_health > 0));
+  if (this->_health > 0)
+    return true;
+  return (false);
 }
 
 void Character::getDistance() const {}

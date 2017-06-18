@@ -5,7 +5,7 @@
 ** Login   <gratte_r@epitech.net>
 **
 ** Started on  Thu Jun 01 22:22:39 2017 Robin Grattepanche
-** Last update Wed Jun 14 13:27:01 2017 Robin Grattepanche
+** Last update Sat Jun 17 11:42:47 2017 Adrien Warin
 */
 
 #ifndef 			_LIGHT_HPP
@@ -38,8 +38,6 @@ class light
 		public:
 			light (Ogre::SceneManager *, Ogre::SceneNode *, std::string, Ogre::Light::LightTypes, int, int, int);
 			virtual ~light ();
-			// light(const light &, std::string);
-			// light	&operator=(const light &, std::string);
 
 			void		setDiffuseColour(Ogre::ColourValue);
 			void		setSpecularColour(Ogre::ColourValue);

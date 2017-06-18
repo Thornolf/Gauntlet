@@ -8,33 +8,53 @@
 // Last update Fri Jun 16 13:34:22 2017 Robin Grattepanche
 */
 
-#include	<SFML/Graphics.hpp>
-#include	<SFML/Window.hpp>
-#include	<SFML/Graphics.hpp>
-#include	<SFML/System/Clock.hpp>
-
-#include	"IndieException.hpp"
-
-#ifndef MENU_HPP
-# define MENU_HPP
+#ifndef		MENU_HPP
+# define	MENU_HPP
+# include <iostream>
+# include <vector>
+# include <functional>
+# include <SFML/Graphics.hpp>
+# include <SFML/System/Clock.hpp>
+# include <SFML/Window.hpp>
+# include "Menu/MenuItem.hpp"
+# include "IndieException.hpp"
+# include "GameCore.hpp"
 
 class Menu {
 private:
-	sf::RenderWindow		*_window;
-	sf::Sprite			_background;
-	std::vector<sf::Sprite>		_vecSprite;
-	sf::Font			_font;
-
+  sf::RenderWindow					*_window;
+  sf::Sprite						_background;
+  sf::Sprite						_logo;
+  sf::Uint8						_logoAlpha;
+  bool							_logoSwitchValue;
+  sf::Sprite						_logoDevTeam;
+  sf::Sprite						_cursorDevTeam;
+  sf::Uint8						_logoDevTeamAlpha;
+  sf::Font						*_font;
+  sf::Text						*_devTeamName;
+  sf::Uint8						_backgroundAlpha;
+  std::vector<sf::Sprite>				_vecSprite;
+  std::vector<MenuItem>					_menuItems;
+  std::map<std::string, std::function<void(void)> >	_menuHubEvent;
 
 public:
-	Menu ();
-	virtual ~Menu ();
-	void									setFont(const std::string &);
-	void									setBackGround(const std::string &);
-	sf::Sprite						setImage(const std::string &);
-	void									menuLoop();
-	void									showEditor(sf::Sprite);
+  Menu ();
+  virtual ~Menu ();
 
+  void		startGame(void);
+  void		quit(void);
+
+  void		setMenuItem(const std::vector<std::string> &);
+  void		itemClicked(sf::Vector2i);
+  void		setLogo(const std::string &);
+  void		animateLogo(void);
+  void		setBackGround(const std::string &);
+  bool		increaseBgAlpha(void);
+  sf::Sprite	setImage(const std::string &);
+  void		menuLoop();
+  void		displayItems(void);
+  void		showEditor(sf::Sprite &);
+  bool		splashScreen(void);
 };
 
 #endif /* !MENU_HPP */

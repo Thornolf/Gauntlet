@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Sat Jun 10 16:22:51 2017 Thomas Fossaert
+** Last update Sat Jun 17 11:42:18 2017 Adrien Warin
 */
 
 #ifndef _Doodad_HPP_
@@ -29,12 +29,9 @@ public:
   Doodad& operator=(Doodad const &);
   ~Doodad();
 
-  /* Classes */
+  /* Methodes */
 
   void		setOgreBase(Ogre::SceneManager*);
-  /*void	launchScript(Ogre::SceneManager*, Ogre::SceneNode *, const Ogre::FrameEvent&);
-  void		Animate(const Ogre::FrameEvent&);
-  void    unsetEntity(Ogre::SceneManager *mSceneMgr);*/
 };
 
 #endif

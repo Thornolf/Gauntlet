@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:31:07 2017 Thomas Fossaert
-** Last update Fri Jun 16 14:36:58 2017 Pierre
+** Last update Sat Jun 17 11:41:51 2017 Adrien Warin
 */
 
 #ifndef _Boss_HPP_
@@ -22,7 +22,7 @@ public:
   Boss& operator=(Boss const &);
   ~Boss();
 
-  /* Classes */
+  /* Methodes */
 
   void		setOgreBase(Ogre::SceneManager*);
   void	launchScript(Ogre::SceneManager*, GameObject *, const Ogre::FrameEvent&);
