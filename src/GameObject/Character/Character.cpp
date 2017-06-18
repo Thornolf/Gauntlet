@@ -43,7 +43,6 @@ Character::~Character() {}
 
 void	Character::takeDamage(int dmg)
 {
-  std::cout << _health << '\n';
   this->_health = (this->_health - dmg < 0) ? 0 : this->_health - dmg;
 }
 

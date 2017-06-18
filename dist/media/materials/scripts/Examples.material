@@ -50,6 +50,34 @@ material Examples/OverlayBottom
     }
 }
 
+material Examples/KeyUp
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture KEY_up.png
+            }
+        }
+    }
+}
+
+material Examples/KeyDown
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture KEY_down.png
+            }
+        }
+    }
+}
+
 material Examples/BeachStones
 {
 	technique

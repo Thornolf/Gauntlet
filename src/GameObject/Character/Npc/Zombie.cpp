@@ -25,6 +25,10 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
   this->_animations[WALK] = new Animation("Walk", false, 1, 0, 0.5);
   this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[RUN];
+  this->_csound.insert(std::make_pair("ArcherInjured", new Sound("dist/media/soundeffect/Troll/TrollInjured.ogg", "ArcherInjured")));
+  this->_csound.insert(std::make_pair("MageInjured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "MageInjured")));
+  this->_csound.insert(std::make_pair("TankInjured", new Sound("dist/media/soundeffect/Woman/WomanInjured.ogg", "TankInjured")));
+  this->_csound.insert(std::make_pair("WarriorInjured", new Sound("dist/media/soundeffect/Orc/OrcInjured.ogg", "WarriorInjured")));
 }
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
@@ -61,7 +65,10 @@ void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, con
     this->setAnimation(fe, GameObject::ATTACK);
     this->setAnimationState();
     this->setAttackStatus(true);
+    this->_csound[static_cast<Pc*>(target)->getName() + "Injured"]->setAudioVolume(30.0);
+    this->_csound[static_cast<Pc*>(target)->getName() + "Injured"]->playAudio();
     static_cast<Pc*>(target)->takeDamage(this->_attack);
+
     if (static_cast<Pc*>(target)->isAlive() == false)
       {
         target->setAnimation(fe, GameObject::DIE);
