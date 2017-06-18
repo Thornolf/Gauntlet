@@ -25,6 +25,7 @@ Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Woman/WomanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Woman/WomanInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/PaladinSwordAttack.ogg", "Weapon")));
+  //this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Tank::Tank(Tank const & other) : Melee(other) {}
@@ -93,6 +94,7 @@ void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
       {
 	if ((tmp = render->searchEntities(collider.entity->getName())))
 	{
+	  this->_csound["GouleInjured"]->playAudio();
 	  if (!collider.entity->getName().compare(0, 6, "Zombie") ||
 	      !collider.entity->getName().compare(0, 4, "Boss"))
 	  {

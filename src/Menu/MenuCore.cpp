@@ -19,12 +19,31 @@ Menu::Menu()
   items.push_back("Scores");
   items.push_back("Parametres");
   items.push_back("Quitter");
+
   this->_window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Gauntlet");
+
   this->setBackGround("dist/media/assetMenu/WallpaperMenu.jpg");
+
   this->_vecSprite.push_back(setImage("dist/media/assetMenu/Xperformed.png"));
   this->_vecSprite.push_back(setImage("dist/media/assetMenu/pain.png"));
+
   this->setLogo("dist/media/assetMenu/logo.png");
+
+  this->_logoDevTeam = this->setImage("dist/media/assetMenu/pascal_logo.jpg");
+  this->_logoDevTeam.setPosition(960 - (this->_logoDevTeam.getTexture()->getSize().x / 2), 150);
+  this->_logoDevTeamAlpha = 0;
+
+  this->_cursorDevTeam		= this->setImage("dist/media/assetMenu/cursor_pascal.png");
+  this->_cursorDevTeam.setPosition(1820, 980);
+
+  this->_font = new sf::Font();
+  this->_font->loadFromFile("dist/media/assetMenu/Augusta.ttf");
+
+  this->_devTeamName = new sf::Text("PASCALIEN STUDIO", *this->_font, 40);
+  this->_devTeamName->setPosition(800, 650);
+
   this->setMenuItem(items);
+
   this->_menuHubEvent["Jouer"] = std::bind(&Menu::startGame, this);
   this->_menuHubEvent["Quitter"] = std::bind(&Menu::quit, this);
 }
@@ -103,9 +122,56 @@ void		Menu::animateLogo(void)
   this->_logo.setColor(sf::Color(255, 255, 255, this->_logoAlpha));
 }
 
-void		Menu::splashScreen(void)
+bool		Menu::splashScreen(void)
 {
+  static float	scale = 0.0;
+  static float	scaleCursor = 1.0;
+  static int	offset = 0;
+  float		xCursorPos = this->_cursorDevTeam.getPosition().x;
+  float		yCursorPos = this->_cursorDevTeam.getPosition().y;
+  static bool		clickAnimateDone = false;
+  static bool		switchCursor = true;
 
+  if (this->_logoDevTeamAlpha == 255 && offset > 2000)
+    return (false);
+  this->_logoDevTeam.setColor(sf::Color(255, 255, 255, this->_logoDevTeamAlpha));
+  this->_logoDevTeam.setScale(scale, scale);
+  this->_window->draw(this->_logoDevTeam);
+  this->_window->draw(*this->_devTeamName);
+  (this->_logoDevTeamAlpha < 255) ? this->_logoDevTeamAlpha++ : 255;
+  offset++;
+  if (scale < 1)
+    scale += 0.002;
+  else
+  {
+    if (offset % 4 == 0)
+    {
+      xCursorPos = (xCursorPos > this->_logoDevTeam.getPosition().x + 400) ? xCursorPos - 5 : xCursorPos;
+      yCursorPos = (yCursorPos > this->_logoDevTeam.getPosition().y + 550) ? yCursorPos - 2 : yCursorPos;
+    }
+    if (xCursorPos <= this->_logoDevTeam.getPosition().x + 400 &&
+	yCursorPos <= this->_logoDevTeam.getPosition().y + 550 &&
+      	offset > 1400 &&
+      	!clickAnimateDone)
+    {
+      if (switchCursor)
+      {
+	scaleCursor += 0.05;
+	if (scaleCursor >= 1.3)
+	  switchCursor = false;
+      }
+      else
+      {
+	scaleCursor -= 0.005;
+	if (scaleCursor <= 1.0)
+	  clickAnimateDone = true;
+      }
+      this->_cursorDevTeam.setScale(scaleCursor, scaleCursor);
+    }
+    this->_cursorDevTeam.setPosition(xCursorPos, yCursorPos);
+    this->_window->draw(this->_cursorDevTeam);
+  }
+  return (true);
 }
 
 void	Menu::setBackGround(const std::string &path)
@@ -153,7 +219,7 @@ void	Menu::menuLoop(void)
   while (this->_window->isOpen())
   {
     sf::Event	event;
-    this->_window->clear();
+    this->_window->clear(sf::Color(9, 9, 11));
     while (this->_window->pollEvent(event))
     {
       if (event.type == sf::Event::Closed)
@@ -168,7 +234,7 @@ void	Menu::menuLoop(void)
       if (nb_frame % 1300 == 0)
 	++it;
     }
-    else
+    else if (!this->splashScreen())
     {
       this->_window->draw(this->_background);
       this->animateLogo();
