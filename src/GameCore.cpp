@@ -35,11 +35,9 @@ void GameCore::createScene()
   mConfig->forEachPlayer([&](Pc *player){this->_hud->getPlayerHp(player->getHp());});
   this->_hud->initLife();
   this->_hud->initScore(530, 30, Ogre::ColourValue(0.1, 0.1, 0.1));
-
-  /* ----------------------------START SET MUSIC ---------------------------*/
   Music *backgroundMusic = new Music("dist/media/musicgame/AmbianceDeadMine.ogg", "AmbientDeadmine");
 
-  backgroundMusic->setAudioVolume(30.0);
+  backgroundMusic->setAudioVolume(10.0);
   backgroundMusic->playAudio();
   backgroundMusic->setLoop(true);
   _mmusic.insert(std::make_pair("Waluni1", new Music("dist/media/musicgame/KarazhanMusic/KarazhanGeneralWaluni1.ogg", "Waluni1")));
@@ -100,7 +98,7 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
     if (++it == _mmusic.end())
       it = _mmusic.begin();
     this->setCurrMusicName(it->second->getCurrentName());
-    it->second->setAudioVolume(5);
+    it->second->setAudioVolume(15);
     it->second->playAudio();
   }
   /*mAnimationState->addTime(fe.timeSinceLastFrame);*/
