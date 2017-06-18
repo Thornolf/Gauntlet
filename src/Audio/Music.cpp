@@ -30,7 +30,7 @@ void Music::loadAudio(const std::string & filename, const std::string & newCurrN
   {
     if (!this->_music.openFromFile(filename))
     {
-      throw "Bad audio path";
+      throw IndieException("Bad audio path");
     }
     this->setMusicFilePath(filename);
     this->setCurrentName(newCurrName);
@@ -44,8 +44,19 @@ void Music::loadAudio(const std::string & filename, const std::string & newCurrN
 
 void Music::playAudio()
 {
-  this->_music.openFromFile(this->getMusicFilePath());
-  this->_music.play();
+  try
+  {
+    if (!this->_music.openFromFile(this->getMusicFilePath()))
+    {
+      throw IndieException("Bad audio path");
+    }
+    this->_music.play();
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << e.what() << std::endl;
+    exit(84);
+  }
 }
 
 void Music::stopAudio()

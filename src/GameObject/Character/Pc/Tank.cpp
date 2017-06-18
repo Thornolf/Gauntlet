@@ -21,8 +21,6 @@ Tank::Tank(const std::string &name, int x, int y, int z) : Melee(name, x, y, z)
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
   this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
-  this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Woman/WomanAttack.ogg", "Attack")));
-  this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Woman/WomanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Woman/WomanInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/PaladinSwordAttack.ogg", "Weapon")));
   this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
@@ -80,7 +78,7 @@ void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
   node = mSceneMgr->getRootSceneNode()->createChildSceneNode("TankHitNode",this->mNode->getPosition(),this->mNode->getOrientation());
   node->attachObject(entity);
   node->setScale(2, 1, 2);
-  node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
+  node->translate(Ogre::Vector3(180, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
 					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
 					    entity, true);
@@ -93,7 +91,8 @@ void Tank::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
 	if (!collider.entity->getName().compare(0, 6, "Zombie") ||
-	    !collider.entity->getName().compare(0, 4, "Boss"))
+	    !collider.entity->getName().compare(0, 4, "Boss") ||
+      !collider.entity->getName().compare(0, 8, "Skeleton"))
 	{
     this->_csound["GouleInjured"]->setAudioVolume(35);
 	  this->_csound["GouleInjured"]->playAudio();

@@ -14,7 +14,8 @@
 Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
   this->_health = 222;
-  this->_attack = 50;
+  this->_attack = 30;
+  this->_speed = 130;
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "BossNode" + std::to_string(id);
@@ -23,6 +24,10 @@ Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
   this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
+  this->_csound.insert(std::make_pair("ArcherInjured", new Sound("dist/media/soundeffect/Troll/TrollInjured.ogg", "ArcherInjured")));
+  this->_csound.insert(std::make_pair("MageInjured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "MageInjured")));
+  this->_csound.insert(std::make_pair("TankInjured", new Sound("dist/media/soundeffect/Woman/WomanInjured.ogg", "TankInjured")));
+  this->_csound.insert(std::make_pair("WarriorInjured", new Sound("dist/media/soundeffect/Orc/OrcInjured.ogg", "WarriorInjured")));
 }
 
 Boss::Boss(Boss const & other) : Npc(other)
@@ -60,6 +65,8 @@ void Boss::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, const
     this->setAnimationState();
     this->setAttackStatus(true);
     static_cast<Pc*>(target)->takeDamage(this->_attack);
+    this->_csound[static_cast<Pc*>(target)->getName() + "Injured"]->setAudioVolume(30.0);
+    this->_csound[static_cast<Pc*>(target)->getName() + "Injured"]->playAudio();
     if (static_cast<Pc*>(target)->isAlive() == false)
       {
         target->setAnimation(fe, GameObject::DIE);

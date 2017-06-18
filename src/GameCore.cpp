@@ -14,7 +14,12 @@
 
 #include "GameCore.hpp"
 
-GameCore::GameCore() {}
+GameCore::GameCore()
+{
+  this->_lootEvent["gol"]	= std::bind(&GameCore::takeGoldStack, this, std::placeholders::_1, std::placeholders::_2);
+  this->_lootEvent["foo"]	= std::bind(&GameCore::takeFoodStack, this, std::placeholders::_1, std::placeholders::_2);
+  this->_lootEvent["key"]	= std::bind(&GameCore::takeKey, this, std::placeholders::_1, std::placeholders::_2);
+}
 
 GameCore::~GameCore() {}
 
@@ -101,12 +106,54 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
   return ret;
 }
 
+void		GameCore::takeGoldStack(SCheckCollisionAnswer &collider, Pc *)
+{
+  GameObject			*tmp;
+
+  if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+  {
+    tmp->unsetEntity(mSceneMgr);
+    mConfig->addScorePoint(100);
+    _msound["gold"]->playAudio();
+    this->mRenderManager->eraseEntities(tmp);
+    collision->remove_entity(collider.entity);
+  }
+}
+
+void		GameCore::takeKey(SCheckCollisionAnswer &collider, Pc *)
+{
+  GameObject			*tmp;
+
+  if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+  {
+    tmp->unsetEntity(mSceneMgr);
+    this->_msound["key"]->playAudio();
+    this->mConfig->addKey();
+    this->mRenderManager->eraseEntities(tmp);
+    this->collision->remove_entity(collider.entity);
+  }
+}
+
+void		GameCore::takeFoodStack(SCheckCollisionAnswer &collider, Pc *player)
+{
+  GameObject	*tmp;
+
+  if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
+  {
+    tmp->unsetEntity(mSceneMgr);
+    player->gainHealth(50);
+    _msound["food"]->playAudio();
+    this->mRenderManager->eraseEntities(tmp);
+    collision->remove_entity(collider.entity);
+  }
+}
+
 bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 {
   Ogre::Vector3			dirVec = Ogre::Vector3::ZERO;
   Ogre::Vector3			CameraVec = Ogre::Vector3::ZERO;
   GameObject			*tmp;
-  static Ogre::Real toggleTimer = 0.0;
+  static Ogre::Real		toggleTimer = 0.0;
   std::stack<std::thread *>	threadPool;
 
   static bool actionKey = false;
@@ -118,7 +165,7 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mConfig->forEachPlayer([&](Pc *player){
     if (player->isAlive() == false)
       destroyPlayer(player);
-     });
+  });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
 
   mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
@@ -127,6 +174,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   this->_hud->updateKey(mConfig->getKey());
 
   this->_hud->showHUD();
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
@@ -135,21 +186,21 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
     Pc			*player	= itBinding->second.first;
     eventType		event	= itBinding->second.second;
 
-    if (mKeyboard->isKeyDown(key) && player->isAlive() == true)
+    if (mKeyboard->isKeyDown(key) && player->isAlive())
     {
       for (auto itEvent = player->_event.begin(); itEvent != player->_event.end(); ++itEvent)
       {
 	if (itEvent->first == event)
 	{
-
 	  SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
 										 player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 										 player->getEntity(),
 										 false);
-
 	  if (collider.collided)
 	  {
+	    std::string		substring = collider.entity->getName().substr(0, 3);
 	    dirVec.x -= 20 + player->getSpeed();
+<<<<<<< HEAD
 	    if (!collider.entity->getName().compare(0,9, "goldStack"))
 	    {
 	      if ((tmp = this->mRenderManager->searchEntities(collider.entity->getName())))
@@ -187,6 +238,11 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	    {
 	      exit(0);
 	    }
+=======
+
+	    if (this->_lootEvent.find(substring) != this->_lootEvent.end())
+	      this->_lootEvent[substring](collider, player);
+>>>>>>> master
 	  }
 	  else
 	  {
@@ -195,16 +251,16 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  }
 	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 	  mCamera->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
-    /*mConfig->forEachPlayer([&](Pc *player){
-      if (player->isAlive() == false)
-        destroyPlayer(player);
-    });*/
-    toggleTimer -= fe.timeSinceLastFrame;
-    if (toggleTimer < 0)
-      {
-        toggleTimer = 1.5;
-        this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
-      }
+	  /*mConfig->forEachPlayer([&](Pc *player){
+	    if (player->isAlive() == false)
+	      destroyPlayer(player);
+	  });*/
+	  toggleTimer -= fe.timeSinceLastFrame;
+	  if (toggleTimer < 0)
+	  {
+	    toggleTimer = 1.5;
+	    this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
+	  }
 	  return (true);
 	}
       }
@@ -213,10 +269,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   actionKey = false;
   toggleTimer -= fe.timeSinceLastFrame;
   if (toggleTimer < 0)
-    {
-      toggleTimer = 1.5;
-      this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
-    }
+  {
+    toggleTimer = 1.5;
+    this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->setAttackStatus(false);});
+  }
   /*
   for (;threadPool.size() > 0;)
   {

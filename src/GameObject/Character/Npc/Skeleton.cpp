@@ -9,17 +9,21 @@
 */
 
 #include "GameObject/Character/Npc/Skeleton.hpp"
+#include "GameObject/Character/Pc/Pc.hpp"
 
 Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
   this->_health = 2;
   this->_attack = 1;
-  this->_range = 5;
+  this->_speed = 75;
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "SkeletonNode" + std::to_string(id);
   this->_animations[IDLE] = new Animation("Stand", false);
   this->_animations[RUN] = new Animation("Run", false, this->_speed, 125);
+  this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
+  this->_animations[WALK] = new Animation("Walk", false, 1, 0, 0.5);
+  this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
 }
 
@@ -49,16 +53,29 @@ void Skeleton::setOgreBase(Ogre::SceneManager* mSceneMgr)
 
 void Skeleton::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, const Ogre::FrameEvent& fe)
 {
-  mSceneMgr->getSceneNode(mNodeName)->translate(
-    mScript->ZombieScript(this, target) * fe.timeSinceLastFrame,
-    Ogre::Node::TS_LOCAL);
-  if (mScript->ZombieScript(this, target) == Ogre::Vector3::ZERO){
-    mAnimationState = this->mAnimation->getAnimationState();
+  Ogre::Vector3 move = mScript->SkeletonScript(this, target);
+
+  if (move == Ogre::Vector3::ZERO){
+    this->setAnimation(fe, GameObject::IDLE);
+    this->setAnimationState();
   }
-  else{
-    this->launchAnimation(fe, RUN);
-    mAnimationState = this->mAnimation->getAnimationState();
+  else if (move.x == 1 && this->_hasAttacked == false){
+    this->setAnimation(fe, GameObject::ATTACK);
+    this->setAnimationState();
+    this->setAttackStatus(true);
+    static_cast<Pc*>(target)->takeDamage(this->_attack);
+    if (static_cast<Pc*>(target)->isAlive() == false)
+      {
+        target->setAnimation(fe, GameObject::DIE);
+        target->setAnimationState();
+      }
   }
+  else
+    {
+      this->setAnimation(fe, GameObject::RUN);
+      this->setAnimationState();
+      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame);
+    }
 }
 
 void Skeleton::initScript(CollisionTools* tool)

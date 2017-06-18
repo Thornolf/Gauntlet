@@ -7,7 +7,7 @@
 ** Login   <pierre@epitech.net>
 **
 ** Started on  Tue May 30 10:28:05 2017 Pierre
-// Last update Sat Jun 17 14:57:43 2017 Thomas Fossaert
+// Last update Sun Jun 18 16:01:27 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Mage.hpp"
@@ -24,8 +24,6 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_animations[ATTACK]	= new Animation("Spell", false, 1, 0, 0.5);
   this->_animations[DIE]	= new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
-  this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Human/HumanAttack.ogg", "Attack")));
-  this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Human/HumanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/castFireball.ogg", "Weapon")));
   this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
@@ -81,11 +79,11 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
   entity = mSceneMgr->createEntity("MageHit", "cube.mesh");
   node = mSceneMgr->getRootSceneNode()->createChildSceneNode("MageHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
   node->attachObject(entity);
-  node->setScale(9,1,0.9);
-  node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
+  node->setScale(9,1,1.2);
+  node->translate(Ogre::Vector3(190, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
-					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
-					    entity, true);
+					    node->getPosition() + Ogre::Vector3(100.0f, 1.0f, 100.0f), 1.0f, 1.0f, 1,
+					    entity, false);
   if (!this->_csound["Weapon"]->getStatus())
   {
     this->_csound["Weapon"]->playAudio();
@@ -95,11 +93,13 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
       //if (collider.entity !=)
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
-	if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+	if (!collider.entity->getName().compare(0,6, "Zombie") ||
+  !collider.entity->getName().compare(0,4, "Boss") ||
+  !collider.entity->getName().compare(0, 8, "Skeleton"))
 	{
-    this->_csound["GouleInjured"]->setAudioVolume(35);
+	  this->_csound["GouleInjured"]->setAudioVolume(35);
 	  this->_csound["GouleInjured"]->playAudio();
-    static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+	  static_cast<Npc*>(tmp)->takeDamage(this->_attack);
 	  if (static_cast<Npc*>(tmp)->isAlive() == false)
 	  {
 	    static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);

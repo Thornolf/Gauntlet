@@ -13,6 +13,7 @@
 
 # include <iostream>
 # include <SFML/Audio.hpp>
+# include <IndieException.hpp>
 
 # include <string>
 # include <map>
