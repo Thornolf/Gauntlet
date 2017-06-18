@@ -25,7 +25,6 @@ Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y
   this->mAnimation = this->_animations[IDLE];
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Troll/TrollInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/AttackBowSound.ogg", "Weapon")));
-  this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Archer::Archer(Archer const & other) : Ranged(other) {}
@@ -85,7 +84,7 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
   node->setScale(9,1,0.9);
   node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
-					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 400.0f, 100.0f, 1,
 					    entity, true);
   if (!this->_csound["Weapon"]->getStatus())
   {
@@ -93,7 +92,6 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
     this->_unset = new Particle("arrowNumber" + std::to_string(this->_nbrAttack), "Examples/arrow", mSceneMgr, mNode);
     if (collider.collided)
     {
-      //if (collider.entity !=)
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
 	if (!collider.entity->getName().compare(0,6, "Zombie") ||
