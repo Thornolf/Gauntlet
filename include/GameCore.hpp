@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Wed Jun 14 11:07:10 2017 Guillaume CAUCHOIS
-** Last update Thu Jun 15 10:42:53 2017 Thomas Fossaert
+** Last update Sat Jun 17 22:50:48 2017 Thomas Fossaert
 */
 
 #ifndef		_GAME_CORE__HPP_
@@ -35,6 +35,8 @@ public:
 
   void		setCurrMusicName(std::string);
   std::string		getCurrMusicName() const;
+  void          destroyPlayer(Pc *);
+
 
 private:
   void createScene(void);

@@ -5,7 +5,7 @@
 ** Login   <guillaume.cauchois@epitech.eu>
 **
 ** Started on  Mon May 22 13:07:27 2017 Guillaume CAUCHOIS
-** Last update Sat Jun 17 16:29:25 2017 Thomas Fossaert
+** Last update Sat Jun 17 22:53:17 2017 Thomas Fossaert
 */
 
 #ifndef		_CONFIGURATION__HPP_
@@ -21,11 +21,13 @@ public:
   Configuration		&operator=(const Configuration &);
 
   /* Member functions */
-  const std::vector<Pc*>	&getPlayers(void) const;
+  std::vector<Pc*>	&getPlayers(void);
   void			addPlayer(Pc*);
   void			addScorePoint(int nbPoint);
     int			getScore(void) const;
   void      addKey();
+  Pc*       getClosestPlayer(GameObject *);
+  void      erasePlayer(Pc *);
 
   template <typename UnaryFunction>
   void			forEachPlayer(UnaryFunction f)

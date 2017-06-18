@@ -64,7 +64,6 @@ void Boss::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, const
       {
         target->setAnimation(fe, GameObject::DIE);
         target->setAnimationState();
-        std::cerr << "VALKYDEATH" << '\n';
       }
     }
   else
