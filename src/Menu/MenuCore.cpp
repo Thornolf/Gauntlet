@@ -20,6 +20,13 @@ Menu::Menu()
   items.push_back("Parametres");
   items.push_back("Quitter");
 
+  this->_music.loadAudio("dist/media/assetMenu/musicMenu.ogg", "MenuMusic");
+  this->_music.setLoop(true);
+  this->_music.setAudioVolume(100.0);
+
+  this->_soundClickPStudio.loadAudio("dist/media/assetMenu/souris_clic.ogg", "ClickPascalienStudio");
+  this->_soundClickPStudio.setAudioVolume(100.0);
+
   this->_window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Gauntlet");
 
   this->setBackGround("dist/media/assetMenu/WallpaperMenu.jpg");
@@ -36,11 +43,10 @@ Menu::Menu()
   this->_cursorDevTeam		= this->setImage("dist/media/assetMenu/cursor_pascal.png");
   this->_cursorDevTeam.setPosition(1820, 980);
 
-  this->_font = new sf::Font();
-  this->_font->loadFromFile("dist/media/assetMenu/Augusta.ttf");
+  this->_font.loadFromFile("dist/media/assetMenu/Augusta.ttf");
 
-  this->_devTeamName = new sf::Text("PASCALIEN STUDIO", *this->_font, 40);
-  this->_devTeamName->setPosition(800, 650);
+  this->_devTeamName = sf::Text("PASCALIEN STUDIO", this->_font, 40);
+  this->_devTeamName.setPosition(800, 650);
 
   this->setMenuItem(items);
 
@@ -58,6 +64,7 @@ void	Menu::startGame()
 {
   GameCore	game;
 
+  this->_music.stopAudio();
   this->_window->close();
   try
   {
@@ -129,15 +136,15 @@ bool		Menu::splashScreen(void)
   static int	offset = 0;
   float		xCursorPos = this->_cursorDevTeam.getPosition().x;
   float		yCursorPos = this->_cursorDevTeam.getPosition().y;
-  static bool		clickAnimateDone = false;
-  static bool		switchCursor = true;
+  static bool	clickAnimateDone = false;
+  static bool	switchCursor = true;
 
   if (this->_logoDevTeamAlpha == 255 && offset > 2000)
     return (false);
   this->_logoDevTeam.setColor(sf::Color(255, 255, 255, this->_logoDevTeamAlpha));
   this->_logoDevTeam.setScale(scale, scale);
   this->_window->draw(this->_logoDevTeam);
-  this->_window->draw(*this->_devTeamName);
+  this->_window->draw(this->_devTeamName);
   (this->_logoDevTeamAlpha < 255) ? this->_logoDevTeamAlpha++ : 255;
   offset++;
   if (scale < 1)
@@ -154,6 +161,10 @@ bool		Menu::splashScreen(void)
       	offset > 1400 &&
       	!clickAnimateDone)
     {
+      if (switchCursor && scaleCursor == 1.0)
+      {
+	this->_soundClickPStudio.playAudio();
+      }
       if (switchCursor)
       {
 	scaleCursor += 0.05;
@@ -216,6 +227,7 @@ void	Menu::menuLoop(void)
   auto		it = this->_vecSprite.begin();
 
   sf::Mouse::setPosition(sf::Vector2i(0, 0));
+  this->_music.playAudio();
   while (this->_window->isOpen())
   {
     sf::Event	event;
@@ -240,7 +252,9 @@ void	Menu::menuLoop(void)
       this->animateLogo();
       this->_window->draw(this->_logo);
       if (!this->increaseBgAlpha())
+      {
 	displayItems();
+      }
     }
     this->_window->display();
     nb_frame++;

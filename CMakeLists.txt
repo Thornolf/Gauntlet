@@ -112,9 +112,10 @@ set(HDRS
         include/GameObject/Doodad/Doodad.hpp
         include/GameObject/Loot/key.hpp
         include/RenderManager.hpp
-        include/GameObject/Character/Npc/Spawner.hpp
-        include/Menu/MenuCore.hpp
-        )
+        include/HUD/HUD.hpp
+	include/Menu/MenuCore.hpp
+	include/GameObject/Character/Npc/Spawner.hpp)
+	
 
 set(SRCS
         src/main.cpp
@@ -157,7 +158,8 @@ set(SRCS
         src/Particle/Particle.cpp
         src/GameObject/Loot/key.cpp
         src/Menu/MenuCore.cpp
-        src/Menu/MenuItem.cpp)
+        src/Menu/MenuItem.cpp
+	src/HUD/HUD.cpp)
 
 include_directories(${OIS_INCLUDE_DIRS}
         ${OGRE_INCLUDE_DIRS}

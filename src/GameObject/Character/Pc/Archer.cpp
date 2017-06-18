@@ -59,7 +59,6 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->attachObject(mEntity);
   mNode->setScale(1.5f, 1.5f, 1.5f);
   mNode->setOrientation(-0.7,0,-0.7,0);
-  mNode->setPosition(Ogre::Vector3(0, 0, 0));
 
   this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
@@ -102,7 +101,7 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
 	if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
 	{
 	  static_cast<Npc*>(tmp)->takeDamage(this->_attack);
-	  this->_csound["GouleInjured"]->setAudioVolume(25);
+	  this->_csound["GouleInjured"]->setAudioVolume(35);
 	  this->_csound["GouleInjured"]->playAudio();
 	  if (static_cast<Npc*>(tmp)->isAlive() == false)
 	  {

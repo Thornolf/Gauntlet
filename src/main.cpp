@@ -14,10 +14,9 @@
 
 int	main()
 {
-  Menu	*menu = new Menu();
+  /*Menu	*menu = new Menu();
 
-  menu->menuLoop();
-  /*
+  menu->menuLoop();*/
   try
     {
       GameCore		app;
@@ -28,6 +27,5 @@ int	main()
       std::cerr << e.what() << " from " << e.getSource() << std::endl;
       return (0);
     }
-    */
   return (0);
 }

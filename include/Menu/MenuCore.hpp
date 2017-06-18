@@ -16,6 +16,8 @@
 # include <SFML/Graphics.hpp>
 # include <SFML/System/Clock.hpp>
 # include <SFML/Window.hpp>
+# include "Audio/Music.hpp"
+# include "Audio/SoundSystem.hpp"
 # include "Menu/MenuItem.hpp"
 # include "IndieException.hpp"
 # include "GameCore.hpp"
@@ -23,6 +25,8 @@
 class Menu {
 private:
   sf::RenderWindow					*_window;
+  Music							_music;
+  Sound							_soundClickPStudio;
   sf::Sprite						_background;
   sf::Sprite						_logo;
   sf::Uint8						_logoAlpha;
@@ -30,8 +34,8 @@ private:
   sf::Sprite						_logoDevTeam;
   sf::Sprite						_cursorDevTeam;
   sf::Uint8						_logoDevTeamAlpha;
-  sf::Font						*_font;
-  sf::Text						*_devTeamName;
+  sf::Font						_font;
+  sf::Text						_devTeamName;
   sf::Uint8						_backgroundAlpha;
   std::vector<sf::Sprite>				_vecSprite;
   std::vector<MenuItem>					_menuItems;
