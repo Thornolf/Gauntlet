@@ -559,3 +559,46 @@ particle_system Examples/invisiblearrow
         force_application add
     }
 }
+
+particle_system Examples/Gate
+{
+    material        Examples/Flare2
+    particle_width	150
+    particle_height 150
+    cull_each       false
+    cull_each       false
+    quota           5000
+    billboard_type  point
+
+    // Area emitter
+    emitter Box
+    {
+        angle           20
+        emission_rate   2000
+        time_to_live    0.3
+        direction       0 1 0
+        position        0 0 0
+        orientation     0 1 0
+        velocity    	60
+        colour_range_start  0 0 0 1
+        colour_range_end    1 1 1 1
+        width           20
+        height          10
+        depth           50
+    }
+
+    // Make em float upwards
+    affector LinearForce
+    {
+        force_vector      0 100 0
+        force_application add
+    }
+
+    // Fader
+    affector ColourFader
+    {
+        red -0.25
+        green -0.25
+        blue -0.25
+    }
+}

@@ -5,7 +5,7 @@
 ** Login   <robin.grattepanche@epitech.eu>
 **
 ** Started on  Sun Jun 18 13:41:32 2017 Robin GRATTEPANCHE
-** Last update Sun Jun 18 13:41:32 2017 Robin GRATTEPANCHE
+** Last update Sun Jun 18 18:15:49 2017 Adrien Warin
 */
 
 #include	"GameObject/Doodad/Gate.hpp"
@@ -37,6 +37,7 @@ void	gate::setOgreBase(Ogre::SceneManager *mSceneMgr)
   mNode->attachObject(mEntity);
   mNode->setScale(20.0f, 20.0f, 20.0f);
   mNode->setOrientation(1, 0, 0, 0);
+  this->_aura = new Particle("gate", "Examples/Gate", mSceneMgr, mNode);
 }
 
 void	gate::unsetEntity(Ogre::SceneManager *mSceneMgr)
