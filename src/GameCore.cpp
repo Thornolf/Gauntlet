@@ -89,7 +89,7 @@ bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
   if (_mmusic[this->_currentMusic]->getStatus() ==  sf::SoundSource::Status::Stopped)
   {
     if (it == _mmusic.end())
-      throw IndieException("Music can't be load");
+      throw IndieException("mMusic can't be load");
     if (++it == _mmusic.end())
       it = _mmusic.begin();
     this->setCurrMusicName(it->second->getCurrentName());

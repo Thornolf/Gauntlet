@@ -19,31 +19,31 @@ class RenderManager;
 
 class Character : public GameObject
 {
-public:
-  Character(int x, int y, int z);
-  Character(Character const &);
-  Character& operator=(Character const &);
-  virtual ~Character();
+  public:
+    Character(int x, int y, int z);
+    Character(Character const &);
+    Character& operator=(Character const &);
+    virtual ~Character();
 
-  void  setScore(int);
-  void  gainHealth(int);
-  void	Animate(const Ogre::FrameEvent&);
-  void		takeDamage(int dmg);
-  bool		isAlive() const;
-  virtual void		attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &) {};
+    void			setScore(int);
+    void			gainHealth(int);
+    void			Animate(const Ogre::FrameEvent&);
+    void			takeDamage(int dmg);
+    bool			isAlive() const;
+    virtual void		attack(CollisionTools *, Ogre::SceneManager*, RenderManager *, const Ogre::FrameEvent &) {};
 
-protected:
+  protected:
+    int				_health;
+    int				_attack;
+    int				_cooldown;
+    int				_speed;
+    int				_range;
+    std::unordered_map<std::string, Sound *>		_csound;
+    std::unordered_map<std::string, Sound *>		_injuredSound;
 
-  int		_health;
-  int		_attack;
-  int		_cooldown;
-  int		_speed;
-  int		_range;
-  std::unordered_map<std::string, Sound *>		_csound;
-
-  void launchAnimation(const Ogre::FrameEvent& fe, State state);
-  void		getDistance() const;
-  int		getRange(void) const;
+    void			launchAnimation(const Ogre::FrameEvent& fe, State state);
+    void			getDistance() const;
+    int				getRange(void) const;
 };
 
 #endif

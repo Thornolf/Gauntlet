@@ -17,6 +17,7 @@ Character::Character(int x, int y, int z) : GameObject(x, y, z)
   this->_speed = 350;
   /* this->_script = nullptr */
   this->_range = 1;
+  this->_injuredSound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Character::Character(Character const & other) : GameObject(other)
@@ -85,3 +86,4 @@ void Character::Animate(const Ogre::FrameEvent& fe)
   this->setAnimation(fe, GameObject::IDLE);
   this->setAnimationState();
 }
+
