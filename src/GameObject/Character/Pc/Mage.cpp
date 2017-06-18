@@ -24,8 +24,6 @@ Mage::Mage(const std::string &name, int x, int y, int z) : Ranged(name, x, y, z)
   this->_animations[ATTACK]	= new Animation("Spell", false, 1, 0, 0.5);
   this->_animations[DIE]	= new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
-  this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Human/HumanAttack.ogg", "Attack")));
-  this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Human/HumanDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Human/HumanInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/castFireball.ogg", "Weapon")));
   this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
@@ -97,9 +95,9 @@ void Mage::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Rend
       {
 	if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
 	{
-    this->_csound["GouleInjured"]->setAudioVolume(35);
+	  this->_csound["GouleInjured"]->setAudioVolume(35);
 	  this->_csound["GouleInjured"]->playAudio();
-    static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+	  static_cast<Npc*>(tmp)->takeDamage(this->_attack);
 	  if (static_cast<Npc*>(tmp)->isAlive() == false)
 	  {
 	    static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);

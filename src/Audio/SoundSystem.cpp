@@ -1,13 +1,14 @@
 /*
-** Sound.cpp for cpp_indie_studio in /home/pierre/Tek2/cpp_indie_studio/src/audio
+** SoundSystem.cpp for Gauntlet in /home/baudet_q/rendu/CPP/cpp_indie_studio/src/Audio/SoundSystem.cpp
 **
-** Made by Pierre
-** Login   <pierre@epitech.net>
+** Made by Quentin BAUDET
+** Login   <quentin.baudet@epitech.eu>
 **
-** Started on  Wed May 24 11:07:04 2017 Pierre
-** Last update Wed May 24 11:29:39 2017 Pierre
+** Started on  Wed Jun 14 11:27:03 2017 Quentin BAUDET
+** Last update Sun Jun 18 12:57:03 2017 Quentin BAUDET
 */
 
+#include <IndieException.hpp>
 #include "Audio/SoundSystem.hpp"
 
 Sound::Sound()
@@ -25,15 +26,27 @@ Sound::Sound(const std::string & pathFile, const std::string & newCurrSoundName)
 
 void Sound::loadAudio(const std::string & pathFile, const std::string &  newCurrName)
 {
-  this->_buffer.loadFromFile(pathFile);
-  this->_sound.setBuffer(this->_buffer);
-  this->setCurrentName(newCurrName);
-  this->setFilePath(pathFile);
+
+  try
+  {
+    if (this->_buffer.loadFromFile(pathFile) == false)
+    {
+      throw IndieException("Bad audio path");
+    }
+    this->_sound.setBuffer(this->_buffer);
+    this->setCurrentName(newCurrName);
+    this->setFilePath(pathFile);
+  }
+  catch (std::exception &e)
+  {
+    std::cerr << e.what() << std::endl;
+    exit(84);
+  }
 }
 
 void Sound::playAudio()
 {
-  std::cout << "Sound played : " << this->getCurrentName() << std::endl;
+  std::cout << "Current sound : |" << this->_currSoundName << "| " << std::endl;
   _sound.play();
 }
 
@@ -73,10 +86,10 @@ void Sound::setLoop(bool newLoop)
 }
 
 void Sound::setFilePath(std::string newFilePath) {
-	this->_filePath  = newFilePath;
+  this->_filePath  = newFilePath;
 }
 
 std::string Sound::getFilePath() const {
-  	return (this->_filePath);
+  return (this->_filePath);
 }
 Sound::~Sound() {}

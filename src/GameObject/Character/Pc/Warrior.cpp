@@ -21,8 +21,6 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_animations[ATTACK] = new Animation("Attack", false, 1, 0, 0.5);
   this->_animations[DIE] = new Animation("Death", true, 2);
   this->mAnimation = this->_animations[IDLE];
-  this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Orc/OrcAttack.ogg", "Attack")));
-  this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Orc/OrcDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Orc/OrcInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/SwordFleshHit2.ogg", "Weapon")));
   this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
