@@ -1,5 +1,3 @@
-
-
 /*
 ** Pc.cpp for cpp_indie_studio in /home/fossae_t/rendu2/cpp_indie_studio/src
 **
@@ -53,7 +51,6 @@ void		Pc::moveUp(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector
   dirVec.x += this->_speed;
   this->setAnimation(fe, GameObject::RUN);
   this->setAnimationState();
-//  camVec.z -= 1;
 }
 
 void		Pc::moveDown(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec, CollisionTools * collision, Ogre::SceneManager *mSceneMgr, RenderManager* render, bool & actionKey, Pc *player)
@@ -62,7 +59,6 @@ void		Pc::moveDown(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vect
   dirVec.x += this->_speed;
   this->setAnimation(fe, GameObject::RUN);
   this->setAnimationState();
-  //camVec.z -= 1;
 }
 
 void		Pc::moveLeft(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec, CollisionTools * collision, Ogre::SceneManager *mSceneMgr, RenderManager* render, bool & actionKey, Pc *player)
@@ -71,7 +67,6 @@ void		Pc::moveLeft(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vect
   dirVec.x += this->_speed;
   this->setAnimation(fe, GameObject::RUN);
   this->setAnimationState();
-  //.camVec.x += 1;
 }
 
 void		Pc::moveRight(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec, CollisionTools * collision, Ogre::SceneManager *mSceneMgr, RenderManager* render, bool & actionKey, Pc *player)
@@ -80,7 +75,6 @@ void		Pc::moveRight(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vec
   dirVec.x += this->_speed;
   this->setAnimation(fe, GameObject::RUN);
   this->setAnimationState();
-  // camVec.x += 1;
 }
 
 void  Pc::moveAttack(const Ogre::FrameEvent &fe, Ogre::Vector3 &dirVec, Ogre::Vector3 &camVec, CollisionTools * collision, Ogre::SceneManager *mSceneMgr, RenderManager* render, bool & actionKey, Pc *player)

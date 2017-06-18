@@ -10,7 +10,6 @@
 
 #include "Menu/MenuItem.hpp"
 
-/*****************************************************************************/
 MenuItem::MenuItem(const std::string &title, const sf::Vector2f &pos, const sf::Vector2f &scale)
 {
   this->_font = new sf::Font();
