@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 15:02:47 2017 Thomas Fossaert
-// Last update Sat Jun 17 17:35:39 2017 Thomas Fossaert
+// Last update Sat Jun 17 23:28:45 2017 Thomas Fossaert
 */
 
 #include <SFML/Graphics.hpp>
@@ -61,6 +61,11 @@ void GameCore::createScene()
   collision = new CollisionTools();
   this->mRenderManager->forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
+
+  /*this->mRenderManager->eraseEntities(static_cast<GameObject *>(this->mConfig->getPlayers().back()));
+  collision->remove_entity(this->mConfig->getPlayers().back()->getEntity());
+  this->mConfig->getPlayers().back()->unsetEntity(mSceneMgr);
+  this->mConfig->getPlayers().pop_back();*/
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -97,20 +102,28 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   static bool actionKey = false;
 
+  if (mConfig->getPlayers().empty() == true)
+    exit (0);
+
+  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mConfig->getClosestPlayer(gObj), fe);});
+  mConfig->forEachPlayer([&](Pc *player){
+    if (player->isAlive() == false)
+      destroyPlayer(player);
+     });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
-  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
     OIS::KeyCode	key	= itBinding->first;
     Pc			*player	= itBinding->second.first;
     eventType		event	= itBinding->second.second;
 
-    if (mKeyboard->isKeyDown(key))
+    if (mKeyboard->isKeyDown(key) && player->isAlive() == true)
     {
       for (auto itEvent = player->_event.begin(); itEvent != player->_event.end(); ++itEvent)
       {
 	if (itEvent->first == event)
 	{
+
 	  SCheckCollisionAnswer	collider = collision->check_ray_collision(player->getSceneNode()->getPosition(),
 										 player->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 										 player->getEntity(),
@@ -160,6 +173,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  }
 	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
 	  mCamera->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
+    /*mConfig->forEachPlayer([&](Pc *player){
+      if (player->isAlive() == false)
+        destroyPlayer(player);
+    });*/
     toggleTimer -= fe.timeSinceLastFrame;
     if (toggleTimer < 0)
       {
@@ -197,4 +214,12 @@ void		GameCore::setCurrMusicName(std::string newCurrName)
 std::string	GameCore::getCurrMusicName() const
 {
   return (this->_currentMusic);
+}
+
+void GameCore::destroyPlayer(Pc *player)
+{
+  this->mRenderManager->eraseEntities(static_cast<GameObject*>(player));
+  collision->remove_entity(player->getEntity());
+  player->unsetEntity(mSceneMgr);
+  this->mConfig->erasePlayer(player);
 }
