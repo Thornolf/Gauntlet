@@ -19,7 +19,7 @@ int	main()
     Menu	*menu = new Menu();
     menu->menuLoop();
   }
-  catch (const std::exception & e)
+  catch (const std::exception &e)
   {
     std::cerr << e.what() << std::endl;
     return (0);
