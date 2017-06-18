@@ -38,7 +38,6 @@ Ogre::Vector3 Script::ZombieScript(GameObject *current, GameObject *target)
     {
       dirVec += moveX(current, target);
       dirVec += moveZ(current, target);
-      //changeOrientation(current, dirVec);
     }
   }
   else
@@ -62,27 +61,26 @@ Ogre::Vector3 Script::SkeletonScript(GameObject *current, GameObject *target)
   int aggroX = 0;
   int aggroZ = 0;
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
-  SCheckCollisionAnswer collider = _collision->check_ray_collision(current->getSceneNode()->getPosition(),
-								   current->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
+  SCheckCollisionAnswer collider = _collision->check_ray_collision(current->getSceneNode()->getPosition(), current->getSceneNode()->getPosition() + Ogre::Vector3(100.0f, 100.0f, 100.0f), 100.0f, 100.0f, 1,
 								   _entity, false);
 
   aggroX = std::abs(current->getSceneNode()->getPosition().x - target->getSceneNode()->getPosition().x);
   aggroZ = std::abs(current->getSceneNode()->getPosition().z - target->getSceneNode()->getPosition().z);
   if (!collider.collided)
   {
-    if (aggroX < 400 && aggroZ < 400)
+    if (aggroX < 200 && aggroZ < 200)
       dirVec.x = 1;
     else if (aggroX < 775 && aggroZ < 775)
     {
-        dirVec += moveX(current, target);
-        dirVec += moveZ(current, target);
+      dirVec += moveX(current, target);
+      dirVec += moveZ(current, target);
     }
   }
   else
   {
-    if (aggroX < 400 && aggroZ < 400)
+    if (aggroX < 200 && aggroZ < 200)
       dirVec.x = 1;
-    else if (aggroX < 775 && aggroZ < 775)
+    else
     {
       dirVec.x = (current->getSceneNode()->getPosition().x < collider.position.x) ? 530 : dirVec.x;
       dirVec.x = (current->getSceneNode()->getPosition().x > collider.position.x) ? -530 : dirVec.x;
