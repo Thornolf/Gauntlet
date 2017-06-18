@@ -12,8 +12,13 @@
 #include	<SFML/System/Clock.hpp>
 #include	"Menu/MenuCore.hpp"
 
-int	main()
+int	main(int argc, char **argv, char **arge)
 {
+  if (!arge || arge[0] == 0)
+  {
+    std::cerr << "Error: no X server can be reached" << std::endl;
+    return (84);
+  }
   try
   {
     Menu	*menu = new Menu();
