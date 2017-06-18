@@ -32,7 +32,6 @@ Boss::Boss(int x, int y, int z, int id) : Npc(x, y, z, id)
 
 Boss::Boss(Boss const & other) : Npc(other)
 {
-  (void)other;
 }
 
 Boss& Boss::operator=(Boss const & other)

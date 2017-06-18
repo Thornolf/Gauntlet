@@ -12,19 +12,16 @@
 
 gate::gate(int x, int y, int z, int id) : GameObject(x, y, z)
 {
-  (void)id;
   mPosition = new Position(x, y, z);
   mNodeName = "gate";
 }
 
 gate::gate(gate const &other) : GameObject(other)
 {
-  (void)other;
 }
 
 gate&	gate::operator=(gate const &other)
 {
-  (void)other;
   return (*this);
 }
 

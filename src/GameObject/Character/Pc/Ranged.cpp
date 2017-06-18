@@ -14,12 +14,10 @@ Ranged::Ranged (const std::string &name, int newX, int newY, int newZ) : Pc(name
 
 Ranged::Ranged (Ranged const & other) : Pc(other)
 {
-  (void)other;
 }
 
-Ranged& Ranged::operator=(Ranged const & other)
+Ranged& Ranged::operator=(Ranged const & )
 {
-  (void)other;
   return (*this);
 }
 

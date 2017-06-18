@@ -33,7 +33,6 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
 
 Zombie::Zombie(Zombie const & other) : Npc(other)
 {
-  (void)other;
 }
 
 Zombie& Zombie::operator=(Zombie const & other)

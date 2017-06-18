@@ -102,7 +102,6 @@ void	MapManager::ObjASTNodeToGameObj(RenderManager &rManager, t_ast_node *object
       texture = (*it_objField)->value;
     else
       throw IndieException("Invalid AST data found");
-    (void)name;
   }
   rManager.createGameObject(ObjectType, pos, scale, orientation, texture);
 }

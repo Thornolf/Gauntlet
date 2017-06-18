@@ -30,7 +30,6 @@ Pc::Pc(Pc const & other) : Character(other)
 
 Pc& Pc::operator=(Pc const & other)
 {
-  (void)other;
   return *this;
 }
 

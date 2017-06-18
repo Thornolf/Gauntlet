@@ -18,12 +18,10 @@ foodStack::foodStack(int x, int y, int z, int id) : Loot(x, y, z, id)
 
 foodStack::foodStack(foodStack const & other) : Loot(other)
 {
-  (void) other;
 }
 
-foodStack& foodStack::operator=(foodStack const & other)
+foodStack& foodStack::operator=(foodStack const &)
 {
-  (void) other;
   return *this;
 }
 

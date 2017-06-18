@@ -18,12 +18,10 @@ key::key(int x, int y, int z, int id) : Loot(x, y, z, id)
 
 key::key(key const & other) : Loot(other)
 {
-  (void) other;
 }
 
-key& key::operator=(key const & other)
+key& key::operator=(key const &)
 {
-  (void) other;
   return *this;
 }
 

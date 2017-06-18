@@ -18,12 +18,10 @@ goldStack::goldStack(int x, int y, int z, int id) : Loot(x, y, z, id)
 
 goldStack::goldStack(goldStack const & other) : Loot(other)
 {
-  (void) other;
 }
 
-goldStack& goldStack::operator=(goldStack const & other)
+goldStack& goldStack::operator=(goldStack const &)
 {
-  (void) other;
   return *this;
 }
 

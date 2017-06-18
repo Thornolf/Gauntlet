@@ -75,11 +75,6 @@ void GameCore::createScene()
   collision = new CollisionTools();
   this->mRenderManager->forEachEntity([&](GameObject* gObj){collision->register_entity(gObj->getEntity(), Collision::COLLISION_BOX);});
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->initScript(collision);});
-
-  /*this->mRenderManager->eraseEntities(static_cast<GameObject *>(this->mConfig->getPlayers().back()));
-  collision->remove_entity(this->mConfig->getPlayers().back()->getEntity());
-  this->mConfig->getPlayers().back()->unsetEntity(mSceneMgr);
-  this->mConfig->getPlayers().pop_back();*/
 }
 
 bool GameCore::frameRenderingQueued(const Ogre::FrameEvent& fe)

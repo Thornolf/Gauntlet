@@ -17,12 +17,10 @@ Melee::Melee (const std::string &name, int x, int y, int z) : Pc(name, x, y, z)
 
 Melee::Melee(Melee const & other) : Pc(other)
 {
-  (void)other;
 }
 
-Melee& Melee::operator=(Melee const & other)
+Melee& Melee::operator=(Melee const &)
 {
-  (void)other;
   return(*this);
 }
 

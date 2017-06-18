@@ -50,10 +50,10 @@ private:
   std::unordered_map<std::string, Music *>	_mmusic;
   std::unordered_map<std::string, Sound *>	_msound;
   std::string					_currentMusic;
-  Ogre::AnimationState			*mAnimationState;
-  Ogre::AnimationState			*mAnimationStateZombie;
-  Ogre::Entity				*mEntity;
-  Ogre::Entity				*mZombieEnt;
+  Ogre::AnimationState				*mAnimationState;
+  Ogre::AnimationState				*mAnimationStateZombie;
+  Ogre::Entity					*mEntity;
+  Ogre::Entity					*mZombieEnt;
   Animation					*_animation;
   Ogre::SceneNode				*mNode;
   Ogre::SceneNode				*mZombie;

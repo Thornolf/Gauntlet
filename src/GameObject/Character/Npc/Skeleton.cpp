@@ -29,7 +29,6 @@ Skeleton::Skeleton(int x, int y, int z, int id) : Npc(x, y, z, id)
 
 Skeleton::Skeleton(Skeleton const & other) : Npc(other)
 {
-  (void)other;
 }
 
 Skeleton& Skeleton::operator=(Skeleton const & other)
