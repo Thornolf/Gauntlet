@@ -5,10 +5,11 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Mon May 22 15:24:56 2017 Adrien Warin
-** Last update Sun Jun 18 14:51:31 2017 Thomas Fossaert
+// Last update Sun Jun 18 17:06:36 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Script.hpp"
+#include "GameObject/Character/Character.hpp"
 
 Script::Script ()
 {
@@ -35,17 +36,16 @@ Ogre::Vector3 Script::ZombieScript(GameObject *current, GameObject *target)
       dirVec.x = 1;
     else if (aggroX < 775 && aggroZ < 775)
     {
-      if (aggroX > aggroZ)
-        dirVec = moveX(current, target);
-      else
-        dirVec = moveZ(current, target);
+      dirVec += moveX(current, target);
+      dirVec += moveZ(current, target);
+      //changeOrientation(current, dirVec);
     }
   }
   else
   {
     if (aggroX < 175 && aggroZ < 175)
       dirVec.x = 1;
-    else if (aggroX < 775 && aggroZ < 775)
+    else
     {
       dirVec.x = (current->getSceneNode()->getPosition().x < collider.position.x) ? 530 : dirVec.x;
       dirVec.x = (current->getSceneNode()->getPosition().x > collider.position.x) ? -530 : dirVec.x;
@@ -74,10 +74,8 @@ Ogre::Vector3 Script::SkeletonScript(GameObject *current, GameObject *target)
       dirVec.x = 1;
     else if (aggroX < 775 && aggroZ < 775)
     {
-      if (aggroX > aggroZ)
-        dirVec = moveX(current, target);
-      else
-        dirVec = moveZ(current, target);
+        dirVec += moveX(current, target);
+        dirVec += moveZ(current, target);
     }
   }
   else
@@ -113,10 +111,8 @@ Ogre::Vector3 Script::BossScript(GameObject *current, GameObject *target)
       dirVec.x = 1;
     else if (aggroX < 775 && aggroZ < 775)
     {
-      dirVec.x = (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x) ? 205: dirVec.x;
-      dirVec.x = (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x) ? -205: dirVec.x;
-      dirVec.z = (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z) ? -205: dirVec.z;
-      dirVec.z = (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z) ? 205: dirVec.z;
+      dirVec += moveX(current, target);
+      dirVec += moveZ(current, target);
     }
   }
   else
@@ -145,8 +141,8 @@ Ogre::Vector3 Script::moveX(GameObject *current, GameObject *target)
 {
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  dirVec.x = (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x) ? 123 : dirVec.x;
-  dirVec.x = (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x) ? -123 : dirVec.x;
+  dirVec.x = (current->getSceneNode()->getPosition().x < target->getSceneNode()->getPosition().x) ? static_cast<Character*>(current)->getSpeed() : dirVec.x;
+  dirVec.x = (current->getSceneNode()->getPosition().x > target->getSceneNode()->getPosition().x) ? -static_cast<Character*>(current)->getSpeed() : dirVec.x;
 
   return (dirVec);
 }
@@ -155,8 +151,26 @@ Ogre::Vector3 Script::moveZ(GameObject *current, GameObject *target)
 {
   Ogre::Vector3 dirVec = Ogre::Vector3::ZERO;
 
-  dirVec.z = (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z) ? 123 : dirVec.z;
-  dirVec.z = (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z) ? -123 : dirVec.z;
+  dirVec.z = (current->getSceneNode()->getPosition().z < target->getSceneNode()->getPosition().z) ? static_cast<Character*>(current)->getSpeed() : dirVec.z;
+  dirVec.z = (current->getSceneNode()->getPosition().z > target->getSceneNode()->getPosition().z) ? -static_cast<Character*>(current)->getSpeed() : dirVec.z;
 
   return (dirVec);
+}
+
+void Script::changeOrientation(GameObject *current, Ogre::Vector3 dirVec)
+{
+  if (dirVec.x <= dirVec.z)
+    {
+      if (dirVec.x < 0)
+        current->getSceneNode()->setOrientation(Ogre::Quaternion(0, 0, 1, 0));
+      else
+        current->getSceneNode()->setOrientation(Ogre::Quaternion(1, 0, 0, 0));
+    }
+  else
+    {
+      if (dirVec.z < 0)
+        current->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, -0.7, 0));
+      else
+        current->getSceneNode()->setOrientation(Ogre::Quaternion(-0.7, 0, 0.7, 0));
+    }
 }

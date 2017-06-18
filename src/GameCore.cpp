@@ -160,23 +160,17 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 
   if (mConfig->getPlayers().empty() == true)
     exit (0);
-
   this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, mConfig->getClosestPlayer(gObj), fe);});
   mConfig->forEachPlayer([&](Pc *player){
     if (player->isAlive() == false)
       destroyPlayer(player);
   });
   mConfig->forEachPlayer([&](Pc *player){player->Animate(fe);});
-
   mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
   this->_hud->updateScore(mConfig->getScore());
-
   this->_hud->updateKey(mConfig->getKey());
-
   this->_hud->showHUD();
 
-
-  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
     OIS::KeyCode	key	= itBinding->first;

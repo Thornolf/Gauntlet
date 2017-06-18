@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-// Last update Sat Jun 17 17:12:25 2017 Thomas Fossaert
+// Last update Sun Jun 18 16:56:49 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Npc/Zombie.hpp"
@@ -15,7 +15,7 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
   this->_health = 2;
   this->_attack = 1;
-  this->_speed = 130;
+  this->_speed = 200;
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "ZombieNode" + std::to_string(id);
@@ -79,7 +79,7 @@ void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, con
     {
       this->setAnimation(fe, GameObject::RUN);
       this->setAnimationState();
-      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame);
+      mSceneMgr->getSceneNode(mNodeName)->translate(move * fe.timeSinceLastFrame, Ogre::Node::TS_PARENT);
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <fossae_t@epitech.net>
 **
 ** Started on  Fri May 19 17:05:43 2017 Thomas Fossaert
-** Last update Sat Jun 17 19:53:05 2017 Thomas Fossaert
+** Last update Sun Jun 18 17:13:52 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Character.hpp"
@@ -60,6 +60,11 @@ int Character::getRange() const
   return (this->_range);
 }
 
+int Character::getSpeed() const
+{
+  return (this->_speed);
+}
+
 void Character::launchAnimation(const Ogre::FrameEvent& fe, State state)
 {
   if (this->mAnimation && (!this->mAnimation->isLooping() ||
@@ -85,4 +90,3 @@ void Character::Animate(const Ogre::FrameEvent& fe)
   this->setAnimation(fe, GameObject::IDLE);
   this->setAnimationState();
 }
-
