@@ -27,6 +27,7 @@ Archer::Archer(const std::string &name, int x, int y, int z) : Ranged(name, x, y
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Troll/TrollDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Troll/TrollInjured.ogg", "Injured")));
   this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/AttackBowSound.ogg", "Weapon")));
+  this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Archer::Archer(Archer const & other) : Ranged(other) {}
@@ -58,7 +59,6 @@ void Archer::setOgreBase(Ogre::SceneManager* mSceneMgr)
   mNode->attachObject(mEntity);
   mNode->setScale(1.5f, 1.5f, 1.5f);
   mNode->setOrientation(-0.7,0,-0.7,0);
-  mNode->setPosition(Ogre::Vector3(0, 0, 0));
 
   this->_aura = new Particle("Blue", "Examples/AureolaBLEU" , mSceneMgr, mNode);
   this->mEntity->attachObjectToBone("character/troll/male/trollmale_hd_bone_113", weapon, Ogre::Quaternion(1,0,0,0));
@@ -87,8 +87,8 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
   node->setScale(9,1,0.9);
   node->translate(Ogre::Vector3(530, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
-             node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
-             entity, true);
+					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+					    entity, true);
   if (!this->_csound["Weapon"]->getStatus())
   {
     this->_csound["Weapon"]->playAudio();
@@ -98,17 +98,16 @@ void Archer::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, Re
       //if (collider.entity !=)
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
-	if ((tmp = render->searchEntities(collider.entity->getName())))
+	if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
 	{
-	  if (!collider.entity->getName().compare(0,6, "Zombie") || !collider.entity->getName().compare(0,4, "Boss"))
+	  static_cast<Npc*>(tmp)->takeDamage(this->_attack);
+	  this->_csound["GouleInjured"]->setAudioVolume(35);
+	  this->_csound["GouleInjured"]->playAudio();
+	  if (static_cast<Npc*>(tmp)->isAlive() == false)
 	  {
-	    static_cast<Npc*>(tmp)->takeDamage(this->_attack);
-	    if (static_cast<Npc*>(tmp)->isAlive() == false)
-	    {
-	      static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
-	      render->eraseEntities(static_cast<Npc*>(tmp));
-	      collision->remove_entity(collider.entity);
-	    }
+	    static_cast<Npc*>(tmp)->unsetEntity(mSceneMgr);
+	    render->eraseEntities(static_cast<Npc*>(tmp));
+	    collision->remove_entity(collider.entity);
 	  }
 	}
       }

@@ -24,7 +24,8 @@ Warrior::Warrior(const std::string &name, int x, int y, int z) : Melee(name, x, 
   this->_csound.insert(std::make_pair("Attack", new Sound("dist/media/soundeffect/Orc/OrcAttack.ogg", "Attack")));
   this->_csound.insert(std::make_pair("Death", new Sound("dist/media/soundeffect/Orc/OrcDeath.ogg", "Death")));
   this->_csound.insert(std::make_pair("Injured", new Sound("dist/media/soundeffect/Orc/OrcInjured.ogg", "Injured")));
-  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/SwordFleshHit", "Weapon")));
+  this->_csound.insert(std::make_pair("Weapon", new Sound("dist/media/soundeffect/AttackSound/SwordFleshHit2.ogg", "Weapon")));
+  this->_csound.insert(std::make_pair("GouleInjured", new Sound("dist/media/soundeffect/Goul/GouleInjured.ogg", "GouleInjured")));
 }
 
 Warrior::Warrior(Warrior const & other) : Melee(other) {}
@@ -78,8 +79,8 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
   node->setScale(1.5,1,1.5);
   node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
-                  node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
-                  entity, true);
+					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
+					    entity, true);
   if (!this->_csound["Weapon"]->getStatus())
   {
     this->_csound["Weapon"]->playAudio();
@@ -87,18 +88,16 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
     {
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
-	if ((tmp = render->searchEntities(collider.entity->getName())))
+	if (!collider.entity->getName().compare(0, 6, "Zombie") ||
+	    !collider.entity->getName().compare(0, 4, "Boss"))
 	{
-	  if (!collider.entity->getName().compare(0, 6, "Zombie") ||
-	      !collider.entity->getName().compare(0, 4, "Boss"))
+	  //this->_csound["GouleInjured"]->playAudio();
+	  static_cast<Npc *>(tmp)->takeDamage(this->_attack);
+	  if (static_cast<Npc *>(tmp)->isAlive() == false)
 	  {
-	    static_cast<Npc *>(tmp)->takeDamage(this->_attack);
-	    if (static_cast<Npc *>(tmp)->isAlive() == false)
-	    {
-	      static_cast<Npc *>(tmp)->unsetEntity(mSceneMgr);
-	      render->eraseEntities(static_cast<Npc *>(tmp));
-	      collision->remove_entity(collider.entity);
-	    }
+	    static_cast<Npc *>(tmp)->unsetEntity(mSceneMgr);
+	    render->eraseEntities(static_cast<Npc *>(tmp));
+	    collision->remove_entity(collider.entity);
 	  }
 	}
       }

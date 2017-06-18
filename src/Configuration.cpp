@@ -40,6 +40,10 @@ void	Configuration::addScorePoint(int nbPoint)
   this->_score += nbPoint;
 }
 
+int	Configuration::getScore() const
+{
+  return (this->_score);
+}
 void Configuration::addKey()
 {
   this->_key = true;

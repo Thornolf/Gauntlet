@@ -24,6 +24,7 @@ public:
   std::vector<Pc*>	&getPlayers(void);
   void			addPlayer(Pc*);
   void			addScorePoint(int nbPoint);
+    int			getScore(void) const;
   void      addKey();
   Pc*       getClosestPlayer(GameObject *);
   void      erasePlayer(Pc *);

@@ -25,6 +25,7 @@
 # include "GameObject/Character/Npc/Skeleton.hpp"
 # include "GameObject/Doodad/Doodad.hpp"
 # include "MapManager.hpp"
+# include "HUD/HUD.hpp"
 
 class GameCore : public BaseGauntlet
 {
@@ -55,6 +56,7 @@ private:
   Position					*mPosition;
   MapManager					*map;
   GameObject					*warrior;
+    HUD						*_hud;
 };
 
 #endif			/* !_GAME_CORE__HPP_! */

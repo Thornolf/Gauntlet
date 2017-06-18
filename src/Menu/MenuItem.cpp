@@ -11,14 +11,11 @@
 #include "Menu/MenuItem.hpp"
 
 /*****************************************************************************/
-MenuItem::MenuItem(const std::string title, const sf::Vector2f pos, const sf::Vector2f scale)
+MenuItem::MenuItem(const std::string &title, const sf::Vector2f &pos, const sf::Vector2f &scale)
 {
   this->_font = new sf::Font();
   this->_font->loadFromFile("dist/media/assetMenu/Augusta.ttf");
-  this->_title = new sf::Text();
-  this->_title->setString(title);
-  this->_title->setFont(*this->_font);
-  this->_title->setCharacterSize(72);
+  this->_title = new sf::Text(title, *this->_font, 72);
   this->_title->setPosition(pos + sf::Vector2f(20, 5));
   this->_shape = new sf::RectangleShape(scale);
   this->_shape->setFillColor(sf::Color(135,89, 26, 225));
