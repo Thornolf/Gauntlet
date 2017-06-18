@@ -5,7 +5,7 @@
 ** Login   <warin_a@epitech.net>
 **
 ** Started on  Fri May 26 17:37:26 2017 Adrien Warin
-// Last update Sat Jun 17 14:57:55 2017 Thomas Fossaert
+// Last update Sun Jun 18 16:11:57 2017 Thomas Fossaert
 */
 
 #include "GameObject/Character/Pc/Warrior.hpp"
@@ -76,7 +76,7 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
   entity = mSceneMgr->createEntity("WarriorHit", "cube.mesh");
   node = mSceneMgr->getRootSceneNode()->createChildSceneNode("WarriorHitNode", this->mNode->getPosition(), this->mNode->getOrientation());
   node->attachObject(entity);
-  node->setScale(1.5,1,1.5);
+  node->setScale(2, 1, 2);
   node->translate(Ogre::Vector3(200, 0, 0), Ogre::Node::TS_LOCAL);
   collider = collision->check_ray_collision(node->getPosition(),
 					    node->getPosition() + Ogre::Vector3(60.0f, 60.0f, 60.0f), 70.0f, 70.0f, 1,
@@ -89,7 +89,8 @@ void Warrior::attack(CollisionTools* collision, Ogre::SceneManager* mSceneMgr, R
       if ((tmp = render->searchEntities(collider.entity->getName())))
       {
 	if (!collider.entity->getName().compare(0, 6, "Zombie") ||
-	    !collider.entity->getName().compare(0, 4, "Boss"))
+	    !collider.entity->getName().compare(0, 4, "Boss") ||
+      !collider.entity->getName().compare(0, 8, "Skeleton"))
 	{
     this->_csound["GouleInjured"]->setAudioVolume(35);
 	  this->_csound["GouleInjured"]->playAudio();

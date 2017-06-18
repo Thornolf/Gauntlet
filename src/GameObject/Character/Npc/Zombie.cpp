@@ -15,6 +15,7 @@ Zombie::Zombie(int x, int y, int z, int id) : Npc(x, y, z, id)
 {
   this->_health = 2;
   this->_attack = 1;
+  this->_speed = 130;
   mPosition = new Position(x, y, z);
   mScript = new Script();
   mNodeName = "ZombieNode" + std::to_string(id);
@@ -65,7 +66,6 @@ void Zombie::launchScript(Ogre::SceneManager *mSceneMgr, GameObject *target, con
       {
         target->setAnimation(fe, GameObject::DIE);
         target->setAnimationState();
-        std::cerr << "VALKYDEATH" << '\n';
       }
   }
   else

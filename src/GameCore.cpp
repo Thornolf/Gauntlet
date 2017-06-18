@@ -123,7 +123,6 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
   mConfig->forEachPlayer([&](Pc *player){this->_hud->updateLife(player->getHp(), player->getName());});
   this->_hud->updateScore(mConfig->getScore());
   this->_hud->showHUD();
-  this->mRenderManager->forEachEntity([&](GameObject* gObj){gObj->launchScript(mSceneMgr, *this->mConfig->getPlayers().begin(), fe);});
 
   for (auto itBinding = this->mKeyboardBinding.begin(); itBinding != this->mKeyboardBinding.end(); ++itBinding)
   {
