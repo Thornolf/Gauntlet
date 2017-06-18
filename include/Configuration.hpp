@@ -25,6 +25,7 @@ public:
   void			addPlayer(Pc*);
   void			addScorePoint(int nbPoint);
     int			getScore(void) const;
+    bool		getKey(void) const;
   void      addKey();
   Pc*       getClosestPlayer(GameObject *);
   void      erasePlayer(Pc *);
@@ -39,7 +40,7 @@ public:
 private:
   std::vector<Pc*>	_players;
   int			_score;
-  bool    _key;
+  bool			_key;
 };
 
 #endif		/* _CONFIGURATION__HPP_ */
