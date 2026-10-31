@@ -1948,7 +1948,7 @@ technique
 	{
 		texture_unit
 		{
-			texture Sol1.jpe
+			texture Sol1.jpg
 		}
 	}
 }

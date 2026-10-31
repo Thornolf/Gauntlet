@@ -11,6 +11,42 @@
 #include <filesystem>
 #include "BaseGauntlet.hpp"
 
+#ifdef _WIN32
+# include <cstring>
+# include <windows.h>
+
+// myKeyboard.cnf uses OIS key codes for letters ("KC_Z" = the key printed Z),
+// which is what OIS reports on Linux. On Windows OIS reports the physical key
+// position (US QWERTY), so move each letter to where it is on this layout.
+static std::map<OIS::KeyCode, std::pair<Pc *, eventType> >
+remapLettersToKeyboardLayout(const std::map<OIS::KeyCode, std::pair<Pc *, eventType> > &binding)
+{
+  static const std::pair<int, const char *>	rows[] = {
+    {OIS::KC_Q, "QWERTYUIOP"}, {OIS::KC_A, "ASDFGHJKL"}, {OIS::KC_Z, "ZXCVBNM"}
+  };
+  std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	result;
+
+  for (const auto &it : binding)
+  {
+    OIS::KeyCode	key = it.first;
+    for (const auto &row : rows)
+    {
+      int	pos = key - row.first;
+      if (pos >= 0 && pos < static_cast<int>(std::strlen(row.second)))
+      {
+	SHORT	vk = VkKeyScanA(row.second[pos]);
+	UINT	scan = (vk == -1) ? 0 : MapVirtualKeyA(vk & 0xff, MAPVK_VK_TO_VSC);
+	if (scan != 0)
+	  key = static_cast<OIS::KeyCode>(scan);
+	break;
+      }
+    }
+    result[key] = it.second;
+  }
+  return result;
+}
+#endif
+
 BaseGauntlet::BaseGauntlet(void)
   : mRoot(0),
     mCamera(0),
@@ -86,6 +122,9 @@ void BaseGauntlet::createCamera(void)
   mCamera->setNearClipDistance(5);
   mCameraNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
   mCameraNode->attachObject(mCamera);
+  // Keep the horizon level like Ogre::Camera did, otherwise lookAt() takes the
+  // shortest rotation and the view ends up upside down
+  mCameraNode->setFixedYawAxis(true);
   mCameraNode->setPosition(Ogre::Vector3(0,1500,-700));
   mCameraNode->lookAt(Ogre::Vector3(0,0,0), Ogre::Node::TS_WORLD);
 }
@@ -105,6 +144,9 @@ void BaseGauntlet::createFrameListener(void)
   mInputParser = new ParserInputFile();
   mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, true ));
   mKeyboardBinding = mInputParser->getArrayBindingFromFile("myKeyboard.cnf", mConfig->getPlayers());
+#ifdef _WIN32
+  mKeyboardBinding = remapLettersToKeyboardLayout(mKeyboardBinding);
+#endif
   mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse, true ));
 
   mMouse->setEventCallback(this);
