@@ -21,12 +21,12 @@ light::light(Ogre::SceneManager *scene, Ogre::SceneNode *node, std::string name,
 	this->_direction = Ogre::Vector3(0, -1, 0);
 
 	this->_light = this->_scene->createLight(name);
-	node->attachObject(this->_light);
+	this->_node = node->createChildSceneNode(this->_position->getVector());
+	this->_node->attachObject(this->_light);
 	this->_light->setType(type);
 	this->_light->setDiffuseColour(this->_diffColour);
 	this->_light->setSpecularColour(this->_specColour);
-	this->_light->setPosition(this->_position->getVector());
-	this->_light->setDirection(this->_direction);
+	this->_node->setDirection(this->_direction, Ogre::Node::TS_PARENT);
 }
 
 light::~light()
@@ -49,10 +49,9 @@ void			light::setSpecularColour(Ogre::ColourValue newColour)
 void			light::setPosition(int x, int y, int z)
 {
 	if (this->_type != Ogre::Light::LT_DIRECTIONAL) {
-		Position *tmp = new Position(x, y, z);
-		this->_position = tmp;
-		this->_light->setPosition(this->_position->getVector());
-		delete tmp;
+		delete this->_position;
+		this->_position = new Position(x, y, z);
+		this->_node->setPosition(this->_position->getVector());
 	}
 }
 
@@ -60,6 +59,6 @@ void			light::setDirection(Ogre::Vector3 direction)
 {
 	if (this->_type != Ogre::Light::LT_POINT) {
 		this->_direction = direction;
-		this->_light->setDirection(direction);
+		this->_node->setDirection(direction, Ogre::Node::TS_PARENT);
 	}
 }

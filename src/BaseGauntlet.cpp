@@ -8,19 +8,17 @@
 // Last update Sat Jun 17 12:03:18 2017 Thomas Fossaert
 */
 
+#include <filesystem>
 #include "BaseGauntlet.hpp"
 
 BaseGauntlet::BaseGauntlet(void)
   : mRoot(0),
     mCamera(0),
+    mCameraNode(0),
     mSceneMgr(0),
     mWindow(0),
-    mResourcesCfg(Ogre::StringUtil::BLANK),
-    mPluginsCfg(Ogre::StringUtil::BLANK),
-    mTrayMgr(0),
-    mCameraMan(0),
-    mDetailsPanel(0),
-    mCursorWasVisible(false),
+    mResourcesCfg(Ogre::BLANKSTRING),
+    mPluginsCfg(Ogre::BLANKSTRING),
     mShutDown(false),
     mInputManager(0),
     mMouse(0),
@@ -45,10 +43,7 @@ BaseGauntlet::BaseGauntlet(void)
 //------------------------------------------------------------------------------------
 BaseGauntlet::~BaseGauntlet(void)
 {
-  if (mTrayMgr) delete mTrayMgr;
-  if (mCameraMan) delete mCameraMan;
-
-  Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
+  OgreBites::WindowEventUtilities::removeWindowEventListener(mWindow, this);
   windowClosed(mWindow);
   delete mRoot;
 }
@@ -56,7 +51,17 @@ BaseGauntlet::~BaseGauntlet(void)
 //-------------------------------------------------------------------------------------
 bool BaseGauntlet::configure(void)
 {
-  if(mRoot->showConfigDialog())
+  // Reuse the settings saved in ogre.cfg, otherwise ask for them
+  bool restored = false;
+  try
+  {
+    restored = mRoot->restoreConfig();
+  }
+  catch (const Ogre::Exception &)
+  {
+    // ogre.cfg made by another Ogre version: just ask again
+  }
+  if(restored || mRoot->showConfigDialog(OgreBites::getNativeConfigDialog()))
   {
     mWindow = mRoot->initialise(true, "Gauntlet");
     return true;
@@ -67,8 +72,8 @@ bool BaseGauntlet::configure(void)
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::chooseSceneManager(void)
 {
-  mSceneMgr = mRoot->createSceneManager(Ogre::ST_GENERIC);
   mOverlaySystem = new Ogre::OverlaySystem();
+  mSceneMgr = mRoot->createSceneManager();
   mSceneMgr->addRenderQueueListener(mOverlaySystem);
 }
 
@@ -78,10 +83,11 @@ void BaseGauntlet::chooseSceneManager(void)
 void BaseGauntlet::createCamera(void)
 {
   mCamera = mSceneMgr->createCamera("PlayerCam");
-  mCamera->setPosition(Ogre::Vector3(0,1500,-700));
-  mCamera->lookAt(Ogre::Vector3(0,0,0));
   mCamera->setNearClipDistance(5);
-  mCameraMan = new OgreBites::SdkCameraMan(mCamera);   // create a default camera controller
+  mCameraNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+  mCameraNode->attachObject(mCamera);
+  mCameraNode->setPosition(Ogre::Vector3(0,1500,-700));
+  mCameraNode->lookAt(Ogre::Vector3(0,0,0), Ogre::Node::TS_WORLD);
 }
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::createFrameListener(void)
@@ -105,42 +111,9 @@ void BaseGauntlet::createFrameListener(void)
   mKeyboard->setEventCallback(this);
 
   windowResized(mWindow);
-  Ogre::WindowEventUtilities::addWindowEventListener(mWindow, this);
+  OgreBites::WindowEventUtilities::addWindowEventListener(mWindow, this);
 
-OgreBites::InputContext inputContext;
- inputContext.mMouse = mMouse;
- inputContext.mKeyboard = mKeyboard;
- mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, inputContext, this);
-  mTrayMgr->hideCursor();
-
-  Ogre::StringVector items;
-  items.push_back("cam.pX");
-  items.push_back("cam.pY");
-  items.push_back("cam.pZ");
-  items.push_back("");
-  items.push_back("cam.oW");
-  items.push_back("cam.oX");
-  items.push_back("cam.oY");
-  items.push_back("cam.oZ");
-  items.push_back("");
-  items.push_back("Filtering");
-  items.push_back("Poly Mode");
-
-  mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
-  mDetailsPanel->setParamValue(9, "Bilinear");
-  mDetailsPanel->setParamValue(10, "Solid");
-  mDetailsPanel->hide();
   mRoot->addFrameListener(this);
-}
-
-//------------------------------------------------------------------------------------
-
-void BaseGauntlet::buttonHit(OgreBites::Button *button)
-{
-    if (button->getName() == "Test")
-    	mTrayMgr->moveWidgetToTray("Test", OgreBites::TL_BOTTOMLEFT);
-		if (button->getName() == "Truc")
-			mTrayMgr->moveWidgetToTray("Truc", OgreBites::TL_TOPLEFT);
 }
 
 
@@ -163,20 +136,15 @@ void BaseGauntlet::setupResources(void)
   Ogre::ConfigFile cf;
   cf.load(mResourcesCfg);
 
-  Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();
-
-  Ogre::String secName, typeName, archName;
-  while (seci.hasMoreElements())
+  for (const auto &section : cf.getSettingsBySection())
   {
-    secName = seci.peekNextKey();
-    Ogre::ConfigFile::SettingsMultiMap *settings = seci.getNext();
-    Ogre::ConfigFile::SettingsMultiMap::iterator i;
-    for (i = settings->begin(); i != settings->end(); ++i)
+    for (const auto &setting : section.second)
     {
-      typeName = i->first;
-      archName = i->second;
+      // Skip folders that don't exist on this machine (e.g. old CEGUI paths)
+      if (setting.first == "FileSystem" && !std::filesystem::exists(setting.second))
+	continue;
       Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
-	archName, typeName, secName);
+	setting.second, setting.first, section.first);
     }
   }
 }
@@ -193,17 +161,22 @@ void BaseGauntlet::loadResources(void)
 //-------------------------------------------------------------------------------------
 void BaseGauntlet::go(void)
 {
-#ifdef _DEBUG
-  mResourcesCfg = "resources_d.cfg";
-  mPluginsCfg = "plugins_d.cfg";
-#else
   mResourcesCfg = "resources.cfg";
+#ifdef GAUNTLET_PLUGINS_CFG
+  mPluginsCfg = GAUNTLET_PLUGINS_CFG;
+#else
   mPluginsCfg = "plugins.cfg";
 #endif
 
   if (!setup())
     return;
-  mRoot->startRendering();
+  // Ogre >= 1.10 no longer pumps the window messages itself
+  while (!mShutDown && !mWindow->isClosed())
+  {
+    OgreBites::WindowEventUtilities::messagePump();
+    if (!mRoot->renderOneFrame())
+      break;
+  }
 
   // clean up
   destroyScene();
@@ -211,7 +184,7 @@ void BaseGauntlet::go(void)
 //-------------------------------------------------------------------------------------
 bool BaseGauntlet::setup(void)
 {
-  mRoot = new Ogre::Root(mPluginsCfg);
+  mRoot = new Ogre::Root(mPluginsCfg, "ogre.cfg", "Ogre.log");
 
   setupResources();
 
@@ -241,23 +214,7 @@ bool BaseGauntlet::frameRenderingQueued(const Ogre::FrameEvent& evt)
   if(mShutDown)
     return false;
 
-  mTrayMgr->refreshCursor();
-  mTrayMgr->frameRenderingQueued(evt);
-
-  if (!mTrayMgr->isDialogVisible())
-  {
-    mCameraMan->frameRenderingQueued(evt);
-    if (mDetailsPanel->isVisible())
-    {
-      mDetailsPanel->setParamValue(0, Ogre::StringConverter::toString(mCamera->getDerivedPosition().x));
-      mDetailsPanel->setParamValue(1, Ogre::StringConverter::toString(mCamera->getDerivedPosition().y));
-      mDetailsPanel->setParamValue(2, Ogre::StringConverter::toString(mCamera->getDerivedPosition().z));
-      mDetailsPanel->setParamValue(4, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().w));
-      mDetailsPanel->setParamValue(5, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().x));
-      mDetailsPanel->setParamValue(6, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().y));
-      mDetailsPanel->setParamValue(7, Ogre::StringConverter::toString(mCamera->getDerivedOrientation().z));
-    }
-  }
+  (void)evt;
   return true;
 }
 //-------------------------------------------------------------------------------------
@@ -270,37 +227,33 @@ bool BaseGauntlet::keyPressed( const OIS::KeyEvent &arg)
   return true;
 }
 
-bool BaseGauntlet::keyReleased( const OIS::KeyEvent &arg )
-{
-  mCameraMan->injectKeyUp(arg);
-  return true;
-}
-
-bool BaseGauntlet::mouseMoved( const OIS::MouseEvent &arg )
+bool BaseGauntlet::keyReleased( const OIS::KeyEvent & )
 {
   return true;
 }
 
-bool BaseGauntlet::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+bool BaseGauntlet::mouseMoved( const OIS::MouseEvent & )
 {
-  if (mTrayMgr->injectMouseDown(arg, id)) return true;
-  mCameraMan->injectMouseDown(arg, id);
   return true;
 }
 
-bool BaseGauntlet::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+bool BaseGauntlet::mousePressed( const OIS::MouseEvent &, OIS::MouseButtonID )
 {
-  if (mTrayMgr->injectMouseUp(arg, id)) return true;
-  mCameraMan->injectMouseUp(arg, id);
+  return true;
+}
+
+bool BaseGauntlet::mouseReleased( const OIS::MouseEvent &, OIS::MouseButtonID )
+{
   return true;
 }
 
 void BaseGauntlet::windowResized(Ogre::RenderWindow* rw)
 {
-  unsigned int width, height, depth;
-  int left, top;
-  rw->getMetrics(width, height, depth, left, top);
+  unsigned int width = rw->getWidth();
+  unsigned int height = rw->getHeight();
 
+  if (!mMouse)
+    return;
   const OIS::MouseState &ms = mMouse->getMouseState();
   ms.width = width;
   ms.height = height;

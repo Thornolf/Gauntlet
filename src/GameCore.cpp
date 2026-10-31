@@ -198,10 +198,10 @@ bool GameCore::processUnbufferedInput(const Ogre::FrameEvent& fe)
 	  else
 	  {
 	    itEvent->second(fe, dirVec, CameraVec, collision, mSceneMgr, mRenderManager, actionKey, player);
-	    this->mCamera->move(CameraVec);
+	    this->mCameraNode->translate(CameraVec);
 	  }
 	  player->getSceneNode()->translate(dirVec * fe.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
-	  mCamera->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
+	  mCameraNode->setPosition(Ogre::Vector3(player->getSceneNode()->getPosition().x, 1500, player->getSceneNode()->getPosition().z -600));
 	  toggleTimer -= fe.timeSinceLastFrame;
 	  if (toggleTimer < 0)
 	  {

@@ -49,7 +49,11 @@ void	MapManager::loadFromFile(void)
   if (!cfgFile.is_open())
     throw IndieException("Cannot load the map " + this->_path);
   for (std::string line; std::getline(cfgFile, line);)
+  {
+    if (!line.empty() && line.back() == '\r')	// Windows line endings
+      line.pop_back();
     this->feed(line);
+  }
 }
 
 void	MapManager::computeAbstractTree(void)

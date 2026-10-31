@@ -14,8 +14,8 @@
 # include <vector>
 # include <stack>
 # include <thread>
-# include <Terrain/OgreTerrain.h>
-# include <Terrain/OgreTerrainGroup.h>
+# include <functional>
+# include <unordered_map>
 # include "BaseGauntlet.hpp"
 # include "Position.hpp"
 # include "Animation.hpp"

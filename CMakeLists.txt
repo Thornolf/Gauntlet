@@ -1,122 +1,43 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.16)
 
-project(Gauntlet)
+project(Gauntlet CXX)
 
-if(WIN32)
-    set(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/CMake/;${CMAKE_MODULE_PATH}")
-    set(OGRE_SAMPLES_INCLUDEPATH
-            $ENV{OGRE_HOME}/Samples/include
-            )
-endif(WIN32)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(UNIX)
-    if(EXISTS "/usr/local/lib/OGRE/cmake")
-
-        set(CMAKE_MODULE_PATH "/usr/local/lib/OGRE/cmake/;${CMAKE_MODULE_PATH}")
-        set(OGRE_SAMPLES_INCLUDEPATH "/usr/local/share/OGRE/samples/Common/include/") # We could just *assume* that developers uses this basepath : /usr/local
-
-    elseif(EXISTS "/usr/lib/OGRE/cmake")
-
-        set(CMAKE_MODULE_PATH "/usr/lib/OGRE/cmake/;${CMAKE_MODULE_PATH}")
-        set(OGRE_SAMPLES_INCLUDEPATH "/usr/share/OGRE/samples/Common/include/") # Otherwise, this one
-
-    else ()
-        message(SEND_ERROR "Failed to find module path.")
-    endif(EXISTS "/usr/local/lib/OGRE/cmake")
-endif(UNIX)
-
-if (CMAKE_BUILD_TYPE STREQUAL "")
-    # CMake defaults to leaving CMAKE_BUILD_TYPE empty. This screws up
-    # differentiation between debug and release builds.
-    set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build, options are: None (CMAKE_CXX_FLAGS or CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel." FORCE)
+if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Build type" FORCE)
 endif ()
 
-set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/dist")
+# ---------------------------------------------------------------------------
+# Dependencies
+#
+#  - Linux (Debian/Ubuntu): sudo apt install libogre-1.12-dev libois-dev libsfml-dev
+#  - Windows / anything else: vcpkg (see vcpkg.json and README.md)
+#
+# Boost is NOT needed anymore: it was only pulled in by the old Ogre 1.9 template.
+# ---------------------------------------------------------------------------
 
-find_package(OGRE REQUIRED)
+# Ogre (1.12 or newer, tested with 1.12 and 14)
+find_package(OGRE REQUIRED COMPONENTS Bites Overlay CONFIG)
 
-#if(NOT "${OGRE_VERSION_NAME}" STREQUAL "Cthugha")
-#  message(SEND_ERROR "You need Ogre 1.7 Cthugha to build this.")
-#endif()
+# SFML 2.x (menu, sounds and music)
+find_package(SFML 2.5 REQUIRED COMPONENTS graphics window audio system)
 
-find_package(OIS REQUIRED)
+# OIS (keyboard / mouse in game). It doesn't ship a CMake config file,
+# so look it up by hand (works for distro packages and vcpkg alike).
+find_path(OIS_INCLUDE_DIR OIS.h PATH_SUFFIXES ois OIS)
+find_library(OIS_LIBRARY_RELEASE NAMES OIS)
+find_library(OIS_LIBRARY_DEBUG NAMES OIS_d)
+include(SelectLibraryConfigurations)
+select_library_configurations(OIS)
+if (NOT OIS_INCLUDE_DIR OR NOT OIS_LIBRARY)
+  message(FATAL_ERROR "OIS not found (install libois-dev, or 'ois' with vcpkg)")
+endif ()
 
-if(NOT OIS_FOUND)
-    message(SEND_ERROR "Failed to find OIS.")
-endif()
-
-# Find Boost
-if (NOT OGRE_BUILD_PLATFORM_IPHONE)
-    if (WIN32 OR APPLE)
-        set(Boost_USE_STATIC_LIBS TRUE)
-    else ()
-        # Statically linking boost to a dynamic Ogre build doesn't work on Linux 64bit
-        set(Boost_USE_STATIC_LIBS ${OGRE_STATIC})
-    endif ()
-    if (MINGW)
-        # this is probably a bug in CMake: the boost find module tries to look for
-        # boost libraries with name libboost_*, but CMake already prefixes library
-        # search names with "lib". This is the workaround.
-        set(CMAKE_FIND_LIBRARY_PREFIXES ${CMAKE_FIND_LIBRARY_PREFIXES} "")
-    endif ()
-    set(Boost_ADDITIONAL_VERSIONS "1.44" "1.44.0" "1.42" "1.42.0" "1.41.0" "1.41" "1.40.0" "1.40" "1.39.0" "1.39" "1.38.0" "1.38" "1.37.0" "1.37" )
-    # Components that need linking (NB does not include header-only components like bind)
-    set(OGRE_BOOST_COMPONENTS thread date_time)
-    find_package(Boost COMPONENTS ${OGRE_BOOST_COMPONENTS} QUIET)
-    if (NOT Boost_FOUND)
-        # Try again with the other type of libs
-        set(Boost_USE_STATIC_LIBS NOT ${Boost_USE_STATIC_LIBS})
-        find_package(Boost COMPONENTS ${OGRE_BOOST_COMPONENTS} QUIET)
-    endif()
-    find_package(Boost QUIET)
-
-    # Set up referencing of Boost
-    include_directories(${Boost_INCLUDE_DIR})
-    include_directories(./include)
-    add_definitions(-DBOOST_ALL_NO_LIB)
-    set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
-endif()
-
-set(HDRS
-        include/BaseGauntlet.hpp
-        include/GameCore.hpp
-        include/IndieException.hpp
-        include/GameObject/Character/Character.hpp
-        include/GameObject/Loot/foodStack.hpp
-        include/GameObject/Loot/goldStack.hpp
-        include/GameObject/Loot/Loot.hpp
-        include/GameObject/Character/Npc/Npc.hpp
-        include/GameObject/Character/Pc/Mage.hpp
-        include/GameObject/Character/Pc/Archer.hpp
-        include/GameObject/Character/Pc/Tank.hpp
-        include/GameObject/Character/Npc/Zombie.hpp
-        include/GameObject/Character/Npc/Skeleton.hpp
-        include/GameObject/GameObject.hpp
-        include/Position.hpp
-        include/Score/Score.hpp
-        include/Configuration.hpp
-        include/Particle.hpp
-        include/GameObject/Character/Pc/Ranged.hpp
-        include/Audio/IAudio.hpp
-        include/Audio/Music.hpp
-        include/Audio/SoundSystem.hpp
-        include/Input/DeviceManager.hpp
-        include/Input/ParserInputFile.hpp
-        include/Input/eventType.hpp
-        include/GameObject/Character/Pc/Melee.hpp
-        include/NewMOC.hpp
-        include/Animation.hpp
-        include/Light/light.hpp
-        include/GameObject/Character/Script.hpp
-        include/MapManager.hpp
-        include/GameObject/Doodad/Doodad.hpp
-        include/GameObject/Loot/key.hpp
-        include/RenderManager.hpp
-        include/HUD/HUD.hpp
-        include/GameObject/Doodad/Gate.hpp
-	include/Menu/MenuCore.hpp
-	include/GameObject/Character/Npc/Spawner.hpp)
-	
+# ---------------------------------------------------------------------------
+# Sources
+# ---------------------------------------------------------------------------
 
 set(SRCS
         src/main.cpp
@@ -127,150 +48,105 @@ set(SRCS
         src/GameObject/Loot/Loot.cpp
         src/GameObject/Loot/goldStack.cpp
         src/GameObject/Loot/foodStack.cpp
+        src/GameObject/Loot/key.cpp
         src/GameObject/Character/Character.cpp
         src/GameObject/Character/Npc/Npc.cpp
         src/GameObject/Character/Npc/Zombie.cpp
         src/GameObject/Character/Npc/Boss.cpp
         src/GameObject/Character/Npc/Skeleton.cpp
+        src/GameObject/Character/Npc/Spawner.cpp
         src/GameObject/Character/Pc/Pc.cpp
         src/GameObject/Character/Pc/Archer.cpp
         src/GameObject/Character/Pc/Warrior.cpp
         src/GameObject/Character/Pc/Mage.cpp
         src/GameObject/Character/Pc/Tank.cpp
+        src/GameObject/Character/Pc/Melee.cpp
+        src/GameObject/Character/Pc/Ranged.cpp
         src/GameObject/GameObject.cpp
+        src/GameObject/Doodad/Doodad.cpp
+        src/GameObject/Doodad/Gate.cpp
         src/Position/Position.cpp
         src/Score/Score.cpp
-        src/GameObject/Character/Pc/Melee.cpp
         src/Configuration.cpp
-        src/GameObject/Character/Pc/Ranged.cpp
         src/Audio/SoundSystem.cpp
         src/Audio/Music.cpp
         src/Input/DeviceManager.cpp
         src/Input/ParserInputFile.cpp
         src/NewMOC.cpp
         src/Script/Script.cpp
-        src/GameObject/Character/Pc/Warrior.cpp
-        src/GameObject/Character/Pc/Tank.cpp
         src/light/Light.cpp
         src/Parsing/MapManager.cpp
         src/RenderManager.cpp
-        src/GameObject/Character/Npc/Spawner.cpp
-        src/GameObject/Doodad/Doodad.cpp
         src/Particle/Particle.cpp
-        src/GameObject/Loot/key.cpp
         src/Menu/MenuCore.cpp
-        src/GameObject/Doodad/Gate.cpp
         src/Menu/MenuItem.cpp
-	src/HUD/HUD.cpp)
+        src/HUD/HUD.cpp)
 
-include_directories(${OIS_INCLUDE_DIRS}
-        ${OGRE_INCLUDE_DIRS}
-        ${OGRE_SAMPLES_INCLUDEPATH}
-        ${OGRE_Overlay_INCLUDE_DIRS}
-        )
+add_executable(Gauntlet ${SRCS})
 
-SET_SOURCE_FILES_PROPERTIES(${SRCS} PROPERTIES COMPILE_FLAGS -W -Wall -Wextra)
+target_include_directories(Gauntlet PRIVATE include ${OIS_INCLUDE_DIR})
 
-add_executable(Gauntlet WIN32 ${HDRS} ${SRCS})
+target_link_libraries(Gauntlet PRIVATE
+        OgreMain OgreOverlay OgreBites
+        sfml-graphics sfml-window sfml-audio sfml-system
+        ${OIS_LIBRARIES})
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+if (MSVC)
+  target_compile_options(Gauntlet PRIVATE /W3 /utf-8 /bigobj)
+  target_compile_definitions(Gauntlet PRIVATE _USE_MATH_DEFINES NOMINMAX)
+else ()
+  target_compile_options(Gauntlet PRIVATE -Wall -Wextra)
+endif ()
 
-find_package(SFML 2 REQUIRED network audio graphics window system)
-if(SFML_FOUND)
-    include_directories(${SFML_INCLUDE_DIR})
-    target_link_libraries(Gauntlet ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
-endif()
+# ---------------------------------------------------------------------------
+# Runtime files
+#
+# The game loads its assets with paths relative to the repository root
+# ("dist/media/...", "myKeyboard.cnf", ...). main() switches to that
+# directory at startup, so the executable can be launched from anywhere.
+# ---------------------------------------------------------------------------
 
-set_target_properties(Gauntlet PROPERTIES DEBUG_POSTFIX _d)
+# Generate plugins.cfg with the exact location of the Ogre plugins of
+# *this* machine / build type (it used to be hard-coded to /usr/local/lib/OGRE).
+set(GAUNTLET_PLUGINS_CFG "${CMAKE_BINARY_DIR}/$<CONFIG>/plugins.cfg")
 
-target_link_libraries(Gauntlet ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+set(GAUNTLET_OGRE_PLUGINS
+        RenderSystem_GL
+        RenderSystem_GL3Plus
+        RenderSystem_Direct3D11
+        Plugin_ParticleFX
+        Plugin_OctreeSceneManager
+        Codec_STBI
+        Codec_FreeImage)
 
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
+# vcpkg keeps the debug plugins (named *_d) in a separate folder
+set(_plugin_dir_debug "${OGRE_PLUGIN_DIR}")
+string(REPLACE "/plugins/" "/debug/plugins/" _vcpkg_debug_dir "${OGRE_PLUGIN_DIR}")
+if (WIN32 AND EXISTS "${_vcpkg_debug_dir}")
+  set(_plugin_dir_debug "${_vcpkg_debug_dir}")
+endif ()
+set(_debug_postfix "")
+if (WIN32)
+  set(_debug_postfix "$<$<CONFIG:Debug>:_d>")
+endif ()
 
-# post-build copy for win32
-if(WIN32 AND NOT MINGW)
-    add_custom_command( TARGET Gauntlet PRE_BUILD
-            COMMAND if not exist .\\dist\\bin mkdir .\\dist\\bin )
-    add_custom_command( TARGET Gauntlet POST_BUILD
-            COMMAND copy \"$(TargetPath)\" .\\dist\\bin )
-endif(WIN32 AND NOT MINGW)
+set(_plugins_cfg "# Generated by CMake, do not edit.\nPluginFolder=$<IF:$<CONFIG:Debug>,${_plugin_dir_debug},${OGRE_PLUGIN_DIR}>\n")
+foreach (_plugin ${GAUNTLET_OGRE_PLUGINS})
+  file(GLOB _found
+          "${OGRE_PLUGIN_DIR}/${_plugin}${CMAKE_SHARED_LIBRARY_SUFFIX}"
+          "${OGRE_PLUGIN_DIR}/${_plugin}${CMAKE_SHARED_LIBRARY_SUFFIX}.*")
+  if (_found)
+    set(_plugins_cfg "${_plugins_cfg}Plugin=${_plugin}${_debug_postfix}\n")
+  endif ()
+endforeach ()
+file(GENERATE OUTPUT "${GAUNTLET_PLUGINS_CFG}" CONTENT "${_plugins_cfg}")
 
-if(MINGW OR UNIX)
-    set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/dist/bin)
-endif(MINGW OR UNIX)
+target_compile_definitions(Gauntlet PRIVATE
+        GAUNTLET_ROOT_DIR="${CMAKE_SOURCE_DIR}"
+        GAUNTLET_PLUGINS_CFG="${GAUNTLET_PLUGINS_CFG}")
 
-if(WIN32)
-
-    install(TARGETS Gauntlet
-            RUNTIME DESTINATION bin
-            CONFIGURATIONS All)
-
-    install(DIRECTORY ${CMAKE_SOURCE_DIR}/dist/Media
-            DESTINATION ./
-            CONFIGURATIONS Release RelWithDebInfo Debug
-            )
-
-    install(FILES ${CMAKE_SOURCE_DIR}/dist/bin/plugins.cfg
-            ${CMAKE_SOURCE_DIR}/dist/bin/resources.cfg
-            DESTINATION bin
-            CONFIGURATIONS Release RelWithDebInfo
-            )
-
-    install(FILES ${CMAKE_SOURCE_DIR}/dist/bin/plugins_d.cfg
-            ${CMAKE_SOURCE_DIR}/dist/bin/resources_d.cfg
-            DESTINATION bin
-            CONFIGURATIONS Debug
-            )
-
-    # NOTE: for the 1.7.1 sdk the OIS dll is called OIS.dll instead of libOIS.dll
-    # so you'll have to change that to make it work with 1.7.1
-    install(FILES ${OGRE_PLUGIN_DIR_REL}/OgreMain.dll
-            ${OGRE_PLUGIN_DIR_REL}/RenderSystem_Direct3D9.dll
-            ${OGRE_PLUGIN_DIR_REL}/RenderSystem_GL.dll
-            ${OGRE_PLUGIN_DIR_REL}/libOIS.dll
-            DESTINATION bin
-            CONFIGURATIONS Release RelWithDebInfo
-            )
-
-    install(FILES ${OGRE_PLUGIN_DIR_DBG}/OgreMain_d.dll
-            ${OGRE_PLUGIN_DIR_DBG}/RenderSystem_Direct3D9_d.dll
-            ${OGRE_PLUGIN_DIR_DBG}/RenderSystem_GL_d.dll
-            ${OGRE_PLUGIN_DIR_DBG}/libOIS_d.dll
-            DESTINATION bin
-            CONFIGURATIONS Debug
-            )
-
-    # as of sdk 1.7.2 we need to copy the boost dll's as well
-    # because they're not linked statically (it worked with 1.7.1 though)
-    install(FILES ${Boost_DATE_TIME_LIBRARY_RELEASE}
-            ${Boost_THREAD_LIBRARY_RELEASE}
-            DESTINATION bin
-            CONFIGURATIONS Release RelWithDebInfo
-            )
-
-    install(FILES ${Boost_DATE_TIME_LIBRARY_DEBUG}
-            ${Boost_THREAD_LIBRARY_DEBUG}
-            DESTINATION bin
-            CONFIGURATIONS Debug
-            )
-endif(WIN32)
-
-if(UNIX)
-
-    install(TARGETS Gauntlet
-            RUNTIME DESTINATION bin
-            CONFIGURATIONS All)
-
-    install(DIRECTORY ${CMAKE_SOURCE_DIR}/dist/media
-            DESTINATION ./
-            CONFIGURATIONS Release RelWithDebInfo Debug
-            )
-
-    install(FILES ${CMAKE_SOURCE_DIR}/dist/bin/plugins.cfg
-            ${CMAKE_SOURCE_DIR}/dist/bin/resources.cfg
-            DESTINATION bin
-            CONFIGURATIONS Release RelWithDebInfo Debug
-            )
-
-endif(UNIX)
+if (WIN32)
+  # Start the Visual Studio debugger in the repository root as well.
+  set_target_properties(Gauntlet PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+  set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT Gauntlet)
+endif ()

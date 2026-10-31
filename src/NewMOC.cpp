@@ -130,21 +130,21 @@
                for (size_t i = 0; i < data.index_count; i += 3)
                {
                   // get transformation matrix
-                  const Ogre::Matrix4* mat;
+                  Ogre::Affine3 mat;
                   if (query_result->first->IsStatic)
                   {
-                     mat = &query_result->first->StaticData->Mat;
+                     mat = Ogre::Affine3(query_result->first->StaticData->Mat);
                   }
                   else
                   {
-                     mat = &query_result->first->Entity->getParentNode()->_getFullTransform();
+                     mat = query_result->first->Entity->getParentNode()->_getFullTransform();
                   }
 
                   // get corrent triangle and transform it
                   Ogre::Vector3 v1, v2, v3;
-                  v1 = (*mat) * data.vertices[data.indices[i]];
-                  v2 = (*mat) * data.vertices[data.indices[i+1]];
-                  v3 = (*mat) * data.vertices[data.indices[i+2]];
+                  v1 = mat * data.vertices[data.indices[i]];
+                  v2 = mat * data.vertices[data.indices[i+1]];
+                  v3 = mat * data.vertices[data.indices[i+2]];
 
                   // check for a hit against this triangle
                   std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, v1, v2, v3, true, false);

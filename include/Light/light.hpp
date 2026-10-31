@@ -18,7 +18,6 @@
 #include			<OgreLight.h>
 #include			<OgreColourValue.h>
 #include			<OgreSceneManager.h>
-#include			<SdkTrays.h>
 
 #include			"Position.hpp"
 
@@ -26,6 +25,7 @@ class light
 {
 		private:
 			Ogre::Light							*_light;
+			Ogre::SceneNode						*_node;
 
 			Ogre::SceneManager			*_scene;
 			std::string							_name;

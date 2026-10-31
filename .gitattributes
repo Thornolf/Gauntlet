@@ -1,0 +1,3 @@
+# Keep game config files with Unix line endings on every OS
+*.cfg text eol=lf
+*.cnf text eol=lf

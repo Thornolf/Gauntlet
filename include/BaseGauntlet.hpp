@@ -25,8 +25,9 @@
 # include <OISKeyboard.h>
 # include <OISMouse.h>
 
-# include <SdkTrays.h>
-# include <SdkCameraMan.h>
+# include <OgreOverlaySystem.h>
+# include <OgreWindowEventUtilities.h>
+# include <OgreBitesConfigDialog.h>
 
 # include "NewMOC.hpp"
 # include "Configuration.hpp"
@@ -38,14 +39,13 @@
 
 using namespace Collision;
 
-class BaseGauntlet : public Ogre::FrameListener, public Ogre::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener, OgreBites::SdkTrayListener
+class BaseGauntlet : public Ogre::FrameListener, public OgreBites::WindowEventListener, public OIS::KeyListener, public OIS::MouseListener
 {
 public:
   BaseGauntlet(void);
   virtual ~BaseGauntlet(void);
 
   virtual void	go(void);
-	void					buttonHit(OgreBites::Button *);
 
 protected:
   virtual bool setup();
@@ -73,6 +73,7 @@ protected:
 
   Ogre::Root			*mRoot;
   Ogre::Camera*			mCamera;
+  Ogre::SceneNode*		mCameraNode;
   Ogre::SceneManager*		mSceneMgr;
   Ogre::RenderWindow*		mWindow;
   Ogre::String			mResourcesCfg;
@@ -83,11 +84,6 @@ protected:
   Configuration			*mConfig;
   RenderManager			*mRenderManager;
 
-  // OgreBites
-  OgreBites::SdkTrayManager*					mTrayMgr;
-  OgreBites::SdkCameraMan*					mCameraMan;
-  OgreBites::ParamsPanel*					mDetailsPanel;
-  bool								mCursorWasVisible;
   bool								mShutDown;
 
   //OIS Input devices

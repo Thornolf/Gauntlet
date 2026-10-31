@@ -52,7 +52,10 @@ std::map<OIS::KeyCode, std::pair<Pc *, eventType> >	ParserInputFile::getArrayBin
     this->_binding.clear();
     while (file->getline(tmp, 256))
     {
-      ss << tmp;
+      std::string	line(tmp);
+      if (!line.empty() && line.back() == '\r')	// Windows line endings
+	line.pop_back();
+      ss << line;
       this->addLineSaveToBinding(ss.str(), playerList);
       ss.str("");
       ss.clear();

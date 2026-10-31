@@ -10,7 +10,7 @@
 
 #ifndef		_POSITION__HPP_
 # define	_POSITION__HPP_
-# include	<OgreVector3.h>
+# include	<OgreVector.h>
 # include	<regex>
 
 class Position

@@ -46,3 +46,7 @@ OgreApp.cbp
 
 dist/bin/OgreApp
 dist/bin/OgreApp_d
+# Build folders
+build/
+out/
+vcpkg_installed/

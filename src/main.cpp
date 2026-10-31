@@ -10,15 +10,17 @@
 #include	<SFML/Graphics.hpp>
 #include	<SFML/Window.hpp>
 #include	<SFML/System/Clock.hpp>
+#include	<filesystem>
 #include	"Menu/MenuCore.hpp"
 
-int	main(int argc, char **argv, char **arge)
+int	main()
 {
-  if (!arge || arge[0] == 0)
-  {
-    std::cerr << "Error: no X server can be reached" << std::endl;
-    return (84);
-  }
+  // All the assets are loaded relative to the repository root
+#ifdef GAUNTLET_ROOT_DIR
+  std::error_code	ec;
+  if (!std::filesystem::exists("dist/media", ec))
+    std::filesystem::current_path(GAUNTLET_ROOT_DIR, ec);
+#endif
   try
   {
     Menu	*menu = new Menu();

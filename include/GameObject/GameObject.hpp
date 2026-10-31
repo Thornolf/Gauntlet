@@ -82,7 +82,7 @@ public:
   virtual void		unsetEntity(Ogre::SceneManager *mSceneMgr) {};
   virtual void    initScript(CollisionTools* tool) {};
   virtual void setAttackStatus(bool stat) {};
-  virtual bool getAttackStatus() const {};
+  virtual bool getAttackStatus() const { return false; };
 
 };
 
