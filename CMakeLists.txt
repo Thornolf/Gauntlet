@@ -150,3 +150,83 @@ if (WIN32)
   set_target_properties(Gauntlet PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
   set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT Gauntlet)
 endif ()
+
+# ---------------------------------------------------------------------------
+# Packaging: "cmake --install" builds a self-contained game folder, and
+# "cpack" turns it into an installer (Windows) and a zip.
+# ---------------------------------------------------------------------------
+
+if (WIN32)
+  # Release builds: no console window next to the game
+  target_link_options(Gauntlet PRIVATE
+          $<$<NOT:$<CONFIG:Debug>>:/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup>)
+endif ()
+
+install(TARGETS Gauntlet RUNTIME DESTINATION .)
+install(DIRECTORY dist DESTINATION .
+        PATTERN "dist/bin/plugins.cfg" EXCLUDE
+        PATTERN "dist/bin/resources.cfg" EXCLUDE
+        PATTERN "dist/bin/ogre.cfg" EXCLUDE)
+install(DIRECTORY save DESTINATION .)
+install(FILES resources.cfg ogre.cfg myKeyboard.cnf DESTINATION .)
+
+if (WIN32)
+  # DLLs copied next to the exe by vcpkg (Ogre, SFML, OIS and their deps)
+  install(DIRECTORY "$<TARGET_FILE_DIR:Gauntlet>/" DESTINATION .
+          FILES_MATCHING PATTERN "*.dll")
+  # Ogre plugins, loaded from the game folder
+  set(_package_plugins_cfg "PluginFolder=.\n")
+  foreach (_plugin ${GAUNTLET_OGRE_PLUGINS})
+    if (EXISTS "${OGRE_PLUGIN_DIR}/${_plugin}.dll")
+      install(FILES "${OGRE_PLUGIN_DIR}/${_plugin}.dll" DESTINATION .)
+      string(APPEND _package_plugins_cfg "Plugin=${_plugin}\n")
+    endif ()
+  endforeach ()
+  # Visual C++ runtime, so players don't need to install it
+  set(CMAKE_INSTALL_SYSTEM_RUNTIME_DESTINATION .)
+  include(InstallRequiredSystemLibraries)
+else ()
+  set(_package_plugins_cfg "PluginFolder=${OGRE_PLUGIN_DIR}\n")
+  foreach (_plugin ${GAUNTLET_OGRE_PLUGINS})
+    file(GLOB _found "${OGRE_PLUGIN_DIR}/${_plugin}${CMAKE_SHARED_LIBRARY_SUFFIX}*")
+    if (_found)
+      string(APPEND _package_plugins_cfg "Plugin=${_plugin}\n")
+    endif ()
+  endforeach ()
+endif ()
+file(WRITE "${CMAKE_BINARY_DIR}/package/plugins.cfg" "${_package_plugins_cfg}")
+install(FILES "${CMAKE_BINARY_DIR}/package/plugins.cfg" DESTINATION .)
+
+set(CPACK_PACKAGE_NAME "Gauntlet")
+set(CPACK_PACKAGE_VENDOR "Pascalien Studio")
+set(CPACK_PACKAGE_VERSION "1.0.0")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "Gauntlet")
+set(CPACK_PACKAGE_EXECUTABLES "Gauntlet" "Gauntlet")
+# Gauntlet-Setup.exe (installer) and Gauntlet-portable.zip
+file(WRITE "${CMAKE_BINARY_DIR}/package/CPackOptions.cmake" "
+if (CPACK_GENERATOR STREQUAL \"NSIS\")
+  set(CPACK_PACKAGE_FILE_NAME \"Gauntlet-Setup\")
+else ()
+  set(CPACK_PACKAGE_FILE_NAME \"Gauntlet-portable\")
+endif ()
+")
+set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/package/CPackOptions.cmake")
+set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}/release")
+if (WIN32)
+  set(CPACK_GENERATOR "NSIS;ZIP")
+  # Install per user: no admin rights, and the game can write its
+  # settings, scores and log next to itself.
+  set(CPACK_NSIS_INSTALL_ROOT "$LOCALAPPDATA\\\\Programs")
+  set(CPACK_NSIS_DEFINES "RequestExecutionLevel user")
+  set(CPACK_NSIS_DISPLAY_NAME "Gauntlet")
+  set(CPACK_NSIS_PACKAGE_NAME "Gauntlet")
+  set(CPACK_NSIS_INSTALLED_ICON_NAME "Gauntlet.exe")
+  set(CPACK_NSIS_EXECUTABLES_DIRECTORY ".")
+  set(CPACK_NSIS_MUI_FINISHPAGE_RUN "Gauntlet.exe")
+  set(CPACK_NSIS_CREATE_ICONS_EXTRA
+          "CreateShortCut '$DESKTOP\\\\Gauntlet.lnk' '$INSTDIR\\\\Gauntlet.exe'")
+  set(CPACK_NSIS_DELETE_ICONS_EXTRA "Delete '$DESKTOP\\\\Gauntlet.lnk'")
+else ()
+  set(CPACK_GENERATOR "TGZ")
+endif ()
+include(CPack)

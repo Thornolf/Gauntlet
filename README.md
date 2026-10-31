@@ -3,6 +3,18 @@
 A 3D Gauntlet-like game for up to 4 players made with Ogre3D, OIS and SFML
 (Epitech Indie Studio project, 2017).
 
+## Download (Windows)
+
+Every push builds the game on GitHub: open the **Actions** tab, pick the
+latest *Build* run and download the **Gauntlet-windows** artifact. It contains:
+
+- `Gauntlet-Setup.exe`: installer (no admin rights needed), adds Start menu
+  and desktop shortcuts.
+- `Gauntlet-portable.zip`: unzip anywhere and run `Gauntlet.exe`.
+
+Pushing a tag such as `v1.0.0` also publishes both files on the
+repository's **Releases** page.
+
 ## Building
 
 You need CMake ≥ 3.16 and a C++17 compiler. Boost is **not** needed anymore.
@@ -52,6 +64,19 @@ cmake --build --preset windows
 The first configure builds Ogre, OIS and SFML through vcpkg (see
 `vcpkg.json`), which takes a while. You can also simply open the folder in
 Visual Studio and pick the *Windows (vcpkg)* preset.
+
+## Packaging
+
+```bash
+cmake --install build --config Release --prefix my-game-folder
+```
+
+```bash
+cd build && cpack -C Release
+```
+
+On Windows this produces `build/release/Gauntlet-Setup.exe` (needs
+[NSIS](https://nsis.sourceforge.io)) and `build/release/Gauntlet-portable.zip`.
 
 ## Running
 

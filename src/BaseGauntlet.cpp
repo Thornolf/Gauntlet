@@ -162,10 +162,11 @@ void BaseGauntlet::loadResources(void)
 void BaseGauntlet::go(void)
 {
   mResourcesCfg = "resources.cfg";
-#ifdef GAUNTLET_PLUGINS_CFG
-  mPluginsCfg = GAUNTLET_PLUGINS_CFG;
-#else
+  // A packaged game ships its own plugins.cfg, a build uses the generated one
   mPluginsCfg = "plugins.cfg";
+#ifdef GAUNTLET_PLUGINS_CFG
+  if (!std::filesystem::exists(mPluginsCfg))
+    mPluginsCfg = GAUNTLET_PLUGINS_CFG;
 #endif
 
   if (!setup())
