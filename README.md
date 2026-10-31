@@ -75,8 +75,8 @@ cmake --install build --config Release --prefix my-game-folder
 cd build && cpack -C Release
 ```
 
-On Windows this produces `build/release/Gauntlet-Setup.exe` (needs
-[NSIS](https://nsis.sourceforge.io)) and `build/release/Gauntlet-portable.zip`.
+On Windows this produces `build/packages/Gauntlet-Setup.exe` (needs
+[NSIS](https://nsis.sourceforge.io)) and `build/packages/Gauntlet-portable.zip`.
 
 ## Running
 

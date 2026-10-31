@@ -172,8 +172,11 @@ install(FILES resources.cfg ogre.cfg myKeyboard.cnf DESTINATION .)
 
 if (WIN32)
   # DLLs copied next to the exe by vcpkg (Ogre, SFML, OIS and their deps)
-  install(DIRECTORY "$<TARGET_FILE_DIR:Gauntlet>/" DESTINATION .
-          FILES_MATCHING PATTERN "*.dll")
+  # (only the top level: the build folder may contain packaging leftovers)
+  install(CODE "
+    file(GLOB _gauntlet_dlls \"$<TARGET_FILE_DIR:Gauntlet>/*.dll\")
+    file(INSTALL \${_gauntlet_dlls} DESTINATION \"\${CMAKE_INSTALL_PREFIX}\")
+  ")
   # Ogre plugins, loaded from the game folder
   set(_package_plugins_cfg "PluginFolder=.\n")
   foreach (_plugin ${GAUNTLET_OGRE_PLUGINS})
@@ -211,7 +214,7 @@ else ()
 endif ()
 ")
 set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_BINARY_DIR}/package/CPackOptions.cmake")
-set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}/release")
+set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}/packages")
 if (WIN32)
   set(CPACK_GENERATOR "NSIS;ZIP")
   # Install per user: no admin rights, and the game can write its
